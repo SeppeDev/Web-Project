@@ -1,1 +1,32 @@
-Web Project
+********************************
+**********Web Project***********
+********************************
+
+Persona
+{
+	Jean-Mariette
+	{
+		Jean-Mariette is 77 jaar oud en woont alleen en is niet goed tebeen na een heuptransplantatie. Ze breit graag, kijkt graag blokken en luistert naar Helmut Lotti. Lange tijd rechtstaan of wandelen kan ze niet meer goed, en ze wil dus graag hulp met strijken en winekelen. Ze heeft geen computer en wantrouwt het internet alsook vreemden. Haar twee kinderen beschikken wel over een computer en komen week om week langskomen bij haar. Ze heeft altijd geld in huis.
+	}
+
+	Nadinne
+	{
+		Nadinne is een alleenstaande moeder van 3. Ze werkt 120%, twee jobs en heeft dus weinig tijd voor zichzelf en haar gezin. Verder haat ze strijken, wat vaak een groot deel van haar weekend in beslag neemt. Ze kan vlot werken met een computer en kan ook online betalingen uitvoeren.
+	}
+
+	Jozef
+	{
+		Jozef is een arbeider van 24 die deeltijds werkt in het magazijn om de hoek, maar heeft variërende uren. Hij is vlot met de computer maar geen bijster snuggere jongen. Hij wilt wat extra verdienen door mensen te helpen met klusjes die ze liever niet zelf doen, aangezien hij tijd genoeg heeft.
+	}
+
+	=>
+	{
+		Eenvoudige aanmelding
+		Revieuw die betrouwbaarheid met zich meebrengen
+		Bij overeenkomst voor een klusje een "contract" accepteren (licentieovereenkomst)
+		Flexibel/korte termijn overeenkomsten
+		Op lokatie
+		Duidelijke weergave in contract dat je verzekert bent, en indien zwart werk niet verzekert
+	Dienstencheques, maar last minute
+	}
+}
