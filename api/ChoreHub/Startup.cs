@@ -34,6 +34,14 @@ namespace ChoreHub
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            var options = new JwtBearerOptions
+            {
+                Audience = Configuration["Auth0:ClientId"],
+                Authority = $"https://{Configuration["Auth0:Domain"]}/"
+            };
+
+            app.UseJwtBearerAuthentication(options);
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
