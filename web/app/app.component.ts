@@ -3,6 +3,6 @@ import { RouterModule } from "@angular/router";
 
 @Component({
     selector: "chorehub-app",
-    template: "<h1>My First Angular App</h1>"
+    templateUrl: "app/app.component.html"
 })
 export class AppComponent { }
