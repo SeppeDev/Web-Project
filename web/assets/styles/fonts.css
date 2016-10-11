@@ -1,0 +1,292 @@
+/* ----------------------- 
+------ Lato Regular ------
+----------------------- */
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-Hairline.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-Hairline.woff) format(woff);
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-Thin.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-Thin.woff) format(woff);
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-Light.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-Light.woff) format(woff);
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-Regular.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-Regular.woff) format(woff);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-Medium.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-Medium.woff) format(woff);
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-Semibold.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-Semibold.woff) format(woff);
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-Bold.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-Bold.woff) format(woff);
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-Heavy.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-Heavy.woff) format(woff);
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-Black.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-Black.woff) format(woff);
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* ----------------------- 
+------ Lato Italic -------
+----------------------- */
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-HairlineItalic.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-HairlineItalic.woff) format(woff);
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-ThinItalic.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-ThinItalic.woff) format(woff);
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-LightItalic.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-LightItalic.woff) format(woff);
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-Italic.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-Italic.woff) format(woff);
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-MediumItalic.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-MediumItalic.woff) format(woff);
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-SemiboldItalic.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-SemiboldItalic.woff) format(woff);
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-BoldItalic.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-BoldItalic.woff) format(woff);
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-HeavyItalic.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-HeavyItalic.woff) format(woff);
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Lato";
+    src:    url(../assets/fonts/lato/LatoLatin-BlackItalic.woff2) format(woff2),
+            url(../assets/fonts/lato/LatoLatin-BlackItalic.woff) format(woff);
+    font-weight: 900;
+    font-style: italic;
+}
+
+/* ----------------------- 
+ Cormorant Garamond Normal 
+----------------------- */
+@font-face {
+    font-family: "CormorantGaramond";
+    src:    url(../assets/fonts/cormorant-garamond/CormorantGaramond-Light.woff2) format(woff2),
+            url(../assets/fonts/cormorant-garamond/CormorantGaramond-Light.woff) format(woff);
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src:    url(../assets/fonts/cormorant-garamond/CormorantGaramond-Regular.woff2) format(woff2),
+            url(../assets/fonts/cormorant-garamond/CormorantGaramond-Regular.woff) format(woff);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src:    url(../assets/fonts/cormorant-garamond/CormorantGaramond-Medium.woff2) format(woff2),
+            url(../assets/fonts/cormorant-garamond/CormorantGaramond-Medium.woff) format(woff);
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src:    url(../assets/fonts/cormorant-garamond/CormorantGaramond-Semibold.woff2) format(woff2),
+            url(../assets/fonts/cormorant-garamond/CormorantGaramond-Semibold.woff) format(woff);
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src:    url(../assets/fonts/cormorant-garamond/CormorantGaramond-Bold.woff2) format(woff2),
+            url(../assets/fonts/cormorant-garamond/CormorantGaramond-Bold.woff) format(woff);
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* ----------------------- 
+ Cormorant Garamond Italic 
+----------------------- */
+@font-face {
+    font-family: "CormorantGaramond";
+    src:    url(../assets/fonts/cormorant-garamond/CormorantGaramond-LightItalic.woff2) format(woff2),
+            url(../assets/fonts/cormorant-garamond/CormorantGaramond-LightItalic.woff) format(woff);
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src:    url(../assets/fonts/cormorant-garamond/CormorantGaramond-Italic.woff2) format(woff2),
+            url(../assets/fonts/cormorant-garamond/CormorantGaramond-Italic.woff) format(woff);
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src:    url(../assets/fonts/cormorant-garamond/CormorantGaramond-MediumItalic.woff2) format(woff2),
+            url(../assets/fonts/cormorant-garamond/CormorantGaramond-MediumItalic.woff) format(woff);
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src:    url(../assets/fonts/cormorant-garamond/CormorantGaramond-SemiboldItalic.woff2) format(woff2),
+            url(../assets/fonts/cormorant-garamond/CormorantGaramond-SemiboldItalic.woff) format(woff);
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src:    url(../assets/fonts/cormorant-garamond/CormorantGaramond-BoldItalic.woff2) format(woff2),
+            url(../assets/fonts/cormorant-garamond/CormorantGaramond-BoldItalic.woff) format(woff);
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* ----------------------- 
+------ Assign Fonts ------
+----------------------- */
+h1, h2, h3, h4, h5 {
+    font-family: "Lato";
+    font-weight: 500;    
+}
+
+p, span, li, a {
+    font-size: 2rem;
+    font-family: "CormorantGaramond";
+    font-weight: 400;
+}
+
+/* ----------------------- 
+------ Font Helpers ------
+----------------------- */
+.hairline {
+    font-weight: 100;
+}
+
+.thin {
+    font-weight: 200;
+}
+
+.light {
+    font-weight: 300;
+}
+
+.regular {
+    font-weight: 400;
+}
+
+.medium {
+    font-weight: 500;
+}
+
+.semi-bold {
+    font-weight: 600;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.heavy {
+    font-weight: 800;
+}
+
+.black {
+    font-weight: 900;
+}
+
+.italic {
+    font-style: italic;
+}
