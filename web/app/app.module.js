@@ -13,6 +13,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
+var angular2_jwt_1 = require("angular2-jwt");
 // Import components
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
@@ -38,6 +39,10 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 home_component_1.HomeComponent
+            ],
+            // Register providers
+            providers: [
+                angular2_jwt_1.AUTH_PROVIDERS
             ],
             // Base component
             bootstrap: [app_component_1.AppComponent]

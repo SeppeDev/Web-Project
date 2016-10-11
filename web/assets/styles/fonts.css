@@ -246,6 +246,7 @@ p, span, li, a {
     font-size: 2rem;
     font-family: "CormorantGaramond";
     font-weight: 400;
+    color: #666;
 }
 
 /* ----------------------- 
@@ -289,4 +290,8 @@ p, span, li, a {
 
 .italic {
     font-style: italic;
+}
+
+.text-white {
+    color: #fff !important;
 }

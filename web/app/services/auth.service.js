@@ -9,26 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var auth_service_1 = require("./services/auth.service");
-var AppComponent = (function () {
-    function AppComponent(authSvc) {
-        this.authSvc = authSvc;
+var AuthService = (function () {
+    function AuthService() {
+        this.lock = new Auth0Lock('YOUR_CLIENT_ID', 'YOUR_NAMESPACE', {});
+        this.lock.on("authenticated", function (authResult) {
+            localStorage.setItem("id_token", authResult.idToken);
+        });
     }
-    AppComponent.prototype.showLogin = function () {
-        this.authSvc.showLogin();
+    AuthService.prototype.showLogin = function () {
+        this.lock.show();
     };
-    AppComponent.prototype.showRegister = function () {
-        this.authSvc.showRegister();
+    AuthService.prototype.showRegister = function () {
     };
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: "chorehub-app",
-            providers: [auth_service_1.AuthService],
-            templateUrl: "app/app.component.html"
-        }), 
-        __metadata('design:paramtypes', [auth_service_1.AuthService])
-    ], AppComponent);
-    return AppComponent;
+    AuthService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], AuthService);
+    return AuthService;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AuthService = AuthService;
+//# sourceMappingURL=auth.service.js.map

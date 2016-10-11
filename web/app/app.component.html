@@ -1,22 +1,32 @@
-<header class="container">
-    <nav class="row">
-        <div class="three column">
-            <!-- Logo here -->
+<header style="height: 60px">
+    <div class="container row">
+        <div class="four columns">
+            <h1 class="logo ch-green"><span>Chore</span>Hub</h1>
         </div>
-        <div class="six column">
-            <!-- Nav here -->
+        <div class="five columns">
+            <nav class="cf">
+                <ul>
+                    <li><a class="ch-blue" href="">Home</a></li>
+                    <li><a class="ch-red" href="">About</a></li>
+                    <li><a class="ch-yellow" href="">Browse</a></li>
+                    <li><a class="ch-green" href="">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="three column">
-            <!-- User stuff here -->
+        <div class="three columns">
+            <ul class="auth-list">  
+                <li><a (click)="showLogin()" class="clickable">Sign In</a></li>
+                <li><a (click)="showRegister()" class="clickable">Register</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
 </header>
-<main class="container">
+<main class="ch-bg-red">    
     <router-outlet></router-outlet>
 </main>
 <footer class="container">
     <div class="row">
-        <div class="twelve column">
+        <div class="twelve columns">
             <!-- Footer content here -->
         </div>
     </div>

@@ -1,7 +1,5 @@
 {
-  "name": "angular-quickstart",
-  "version": "1.0.0",
-  "description": "QuickStart package.json from the documentation, supplemented with testing support",
+  "name": "chorehub",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "docker-build": "docker build -t ng2-quickstart .",
@@ -45,6 +43,7 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
+    "angular2-jwt": "^0.1.24",
     "canonical-path": "0.0.2",
     "concurrently": "^3.0.0",
     "gulp": "^3.9.1",
