@@ -13,19 +13,33 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
+// Import components
 var app_component_1 = require("./app.component");
+var home_component_1 = require("./home/home.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
+            // Imported modules
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpModule,
-                router_1.RouterModule
+                // Routes
+                router_1.RouterModule.forRoot([
+                    {
+                        path: "",
+                        component: home_component_1.HomeComponent
+                    }
+                ])
             ],
-            declarations: [app_component_1.AppComponent],
+            // Declared view classes
+            declarations: [
+                app_component_1.AppComponent,
+                home_component_1.HomeComponent
+            ],
+            // Base component
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

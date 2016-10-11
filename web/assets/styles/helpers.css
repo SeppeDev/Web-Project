@@ -1,0 +1,54 @@
+/* Colors */
+.ch-green {
+    color: #979926;
+}
+
+.ch-blue {
+    color: #38CCB5;
+}
+
+.ch-yellow {
+    color: #FFD767;
+}
+
+.ch-red {
+    color: #CC2A09;
+}
+
+.ch-bg-green {
+    background-color: #979926;
+}
+
+.ch-bg-blue {
+    background-color: #38CCB5;
+}
+
+.ch-bg-yellow {
+    background-color: #FFD767;
+}
+
+.ch-bg-red {
+    background-color: #CC2A09;
+}
+
+/* Positioning */
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.cf:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
