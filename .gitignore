@@ -1,5 +1,6 @@
 # Own files 
 api/ChoreHub/Properties/PublishProfiles
+api/ChoreHub/appsettings.json
 api/.vs
 web/node_modules
 web/typings
