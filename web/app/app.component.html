@@ -1,6 +1,6 @@
 <header style="height: 60px">
     <div class="container row">
-        <div class="four columns">
+        <div class="three columns">
             <h1 class="logo ch-green"><span>Chore</span>Hub</h1>
         </div>
         <div class="five columns">
@@ -13,15 +13,19 @@
                 </ul>
             </nav>
         </div>
-        <div class="three columns">
-            <ul class="auth-list">  
-                <li><a (click)="showLogin()" class="clickable">Sign In</a></li>
-                <li><a (click)="showRegister()" class="clickable">Register</a></li>
+        <div class="four columns">
+            <ul *ngIf="!authSvc.authenticated()" class="auth-list">  
+                <li><a (click)="authSvc.showLogin()" class="clickable">Sign In</a></li>
+                <li><a (click)="authSvc.showRegister()" class="clickable">Register</a></li>
+            </ul>
+            <ul *ngIf="authSvc.authenticated() && authSvc.userProfile" class="auth-list">
+                <li><a href="#">My Profile</a></li>                
+                <li><a (click)="authSvc.logout()" class="clickable">{{ authSvc.userProfile.nickname }}, Logout</a></li>
             </ul>
         </div>
     </div>
 </header>
-<main class="ch-bg-red">    
+<main>    
     <router-outlet></router-outlet>
 </main>
 <footer class="container">

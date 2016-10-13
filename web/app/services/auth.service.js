@@ -15,6 +15,9 @@ var AuthService = (function () {
     function AuthService() {
         var _this = this;
         this.lock = new Auth0Lock(constants_1.Constants.AUTH0_CLIENTID, constants_1.Constants.AUTH0_DOMAIN, {});
+        if (this.authenticated)
+            this.userProfile = JSON.parse(localStorage.getItem("user_profile"));
+        console.log(this.userProfile);
         this.lock.on("authenticated", function (authResult) {
             localStorage.setItem("id_token", authResult.idToken);
             _this.getProfile(authResult.idToken);
@@ -29,6 +32,7 @@ var AuthService = (function () {
         });
     };
     AuthService.prototype.authenticated = function () {
+        console.log(JSON.parse(localStorage.getItem("user_profile")));
         return angular2_jwt_1.tokenNotExpired();
     };
     AuthService.prototype.logout = function () {
@@ -43,8 +47,8 @@ var AuthService = (function () {
                 console.log(error);
                 return;
             }
-            localStorage.setItem("user_profile", JSON.stringify(profile));
             _this.userProfile = profile;
+            localStorage.setItem("user_profile", JSON.stringify(profile));
         });
     };
     AuthService = __decorate([

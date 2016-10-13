@@ -9,12 +9,4 @@ import { AuthService }  from "./services/auth.service";
 })
 export class AppComponent {
     constructor (private authSvc: AuthService) { } 
-
-    showLogin () {
-        this.authSvc.showLogin();
-    }
-
-    showRegister () {
-        this.authSvc.showRegister();
-    }
  }

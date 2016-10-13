@@ -11,10 +11,13 @@ export class AuthService {
     userProfile: Object;
 
     constructor () {
+        if(this.authenticated) this.userProfile = JSON.parse(localStorage.getItem("user_profile"));
+        console.log(this.userProfile);
+
         this.lock.on("authenticated", (authResult: any) => {
             localStorage.setItem("id_token", authResult.idToken);
             
-            this.getProfile(authResult.idToken);            
+            this.getProfile(authResult.idToken);    
         });
     }
 
@@ -29,6 +32,8 @@ export class AuthService {
     }
 
     authenticated () {
+        
+        console.log(JSON.parse(localStorage.getItem("user_profile")));      
         return tokenNotExpired();
     }
 
@@ -46,8 +51,8 @@ export class AuthService {
                 return;    
             }
 
-            localStorage.setItem("user_profile", JSON.stringify(profile));
             this.userProfile = profile;
+            localStorage.setItem("user_profile", JSON.stringify(profile));
         });
     }
 }

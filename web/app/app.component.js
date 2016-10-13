@@ -14,12 +14,6 @@ var AppComponent = (function () {
     function AppComponent(authSvc) {
         this.authSvc = authSvc;
     }
-    AppComponent.prototype.showLogin = function () {
-        this.authSvc.showLogin();
-    };
-    AppComponent.prototype.showRegister = function () {
-        this.authSvc.showRegister();
-    };
     AppComponent = __decorate([
         core_1.Component({
             selector: "chorehub-app",
