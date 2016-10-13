@@ -1,4 +1,5 @@
 api/ChoreHub/Properties/PublishProfiles
+api/.vs
 web/node_modules
 web/typings
 web/dist
