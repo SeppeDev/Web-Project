@@ -7,6 +7,7 @@ import { AUTH_PROVIDERS }   from "angular2-jwt";
 // Import components
 import { AppComponent }     from "./app.component";
 import { HomeComponent }    from "./home/home.component";
+import { InfoComponent }    from "./info/info.component";
 
 @NgModule({
 
@@ -18,8 +19,17 @@ import { HomeComponent }    from "./home/home.component";
         // Routes
         RouterModule.forRoot([
             {
-                path: "", 
+                path: "",
+                redirectTo: "/home",
+                pathMatch: "full"
+            },
+            {
+                path: "home", 
                 component: HomeComponent       
+            },
+            {
+                path: "info",
+                component: InfoComponent
             }
         ])
     ],
@@ -27,7 +37,8 @@ import { HomeComponent }    from "./home/home.component";
     // Declared view classes
     declarations: [ 
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        InfoComponent
     ],
 
     // Register providers

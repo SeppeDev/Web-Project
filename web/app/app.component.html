@@ -1,15 +1,14 @@
-<header style="height: 60px">
+<header>
     <div class="container row">
-        <div class="three columns">
-            <h1 class="logo ch-green"><span>Chore</span>Hub</h1>
+        <div class="four columns">
+            <a routerLink="/home" class="logo ch-green"><span>Chore</span>Hub</a>
         </div>
-        <div class="five columns">
-            <nav class="cf">
+        <div class="four columns">
+            <nav>
                 <ul>
-                    <li><a class="ch-blue" href="">Home</a></li>
-                    <li><a class="ch-red" href="">About</a></li>
+                    <li><a routerLink="/home" class="ch-blue">Home</a></li>
+                    <li><a routerLink="/info" class="ch-red">Info</a></li>
                     <li><a class="ch-yellow" href="">Browse</a></li>
-                    <li><a class="ch-green" href="">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -28,8 +27,8 @@
 <main>    
     <router-outlet></router-outlet>
 </main>
-<footer class="container">
-    <div class="row">
+<footer>
+    <div class="container row">
         <div class="twelve columns">
             <!-- Footer content here -->
         </div>

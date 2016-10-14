@@ -16,6 +16,7 @@ var angular2_jwt_1 = require("angular2-jwt");
 // Import components
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
+var info_component_1 = require("./info/info.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -29,14 +30,24 @@ var AppModule = (function () {
                 router_1.RouterModule.forRoot([
                     {
                         path: "",
+                        redirectTo: "/home",
+                        pathMatch: "full"
+                    },
+                    {
+                        path: "home",
                         component: home_component_1.HomeComponent
+                    },
+                    {
+                        path: "info",
+                        component: info_component_1.InfoComponent
                     }
                 ])
             ],
             // Declared view classes
             declarations: [
                 app_component_1.AppComponent,
-                home_component_1.HomeComponent
+                home_component_1.HomeComponent,
+                info_component_1.InfoComponent
             ],
             // Register providers
             providers: [

@@ -14,32 +14,48 @@ var constants_1 = require("../shared/constants");
 var AuthService = (function () {
     function AuthService() {
         var _this = this;
+        // Create auth0 lock instance
         this.lock = new Auth0Lock(constants_1.Constants.AUTH0_CLIENTID, constants_1.Constants.AUTH0_DOMAIN, {});
+        // Check for existence of token in localStorage
         if (this.authenticated)
             this.userProfile = JSON.parse(localStorage.getItem("user_profile"));
-        console.log(this.userProfile);
+        // Listen to auth0 authenticated event and set token & user profile
         this.lock.on("authenticated", function (authResult) {
             localStorage.setItem("id_token", authResult.idToken);
             _this.getProfile(authResult.idToken);
         });
     }
+    /**
+     * Show auth0 lock - login screen
+     */
     AuthService.prototype.showLogin = function () {
         this.lock.show();
     };
+    /**
+     * Show auth0 lock - register screen
+     */
     AuthService.prototype.showRegister = function () {
         this.lock.show({
             initialScreen: "signUp"
         });
     };
+    /**
+     * Check if jwt token is expired
+     */
     AuthService.prototype.authenticated = function () {
-        console.log(JSON.parse(localStorage.getItem("user_profile")));
         return angular2_jwt_1.tokenNotExpired();
     };
+    /**
+     * Destroy jwt token to end session
+     */
     AuthService.prototype.logout = function () {
         localStorage.removeItem("id_token");
         localStorage.removeItem("user_profile");
         this.userProfile = undefined;
     };
+    /**
+     * Decrypt jwt token to access user profile
+     */
     AuthService.prototype.getProfile = function (idToken) {
         var _this = this;
         this.lock.getProfile(idToken, function (error, profile) {

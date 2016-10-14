@@ -1,9 +1,11 @@
 /* Header */
 .logo {
-    margin-top: 4px;
-    margin-bottom: 0;
+    display: block;
     font-size: 5rem;
     font-weight: 700;
+    font-family: "Lato";
+    text-decoration: none !important;
+    margin-top: -10px;
 }
 
 .logo > span {
@@ -14,10 +16,12 @@
 }
 
 header {
+    padding-top: 10px;
     width: 100%;
-    height: 60px;
+    height: 70px;
     background-color: white;
     position: absolute;
+    z-index: 1000;
 }
 
 header ul {
@@ -54,13 +58,31 @@ header ul > li > a:hover {
     font-size: 1.5rem;
 }
 
-/* Body */
-.bg-img-wrapper {
+/* Body - Home */
+.bg-img {
+    background-image: url("../images/groceries.jpg");
     height: 100vh;
     width: 100%;
-    overflow: hidden;
 }
 
-.bg-img {
+.bg-img-overlay {
+    background-color: rgba(30, 30, 30, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
 }
+
+.bg-img-overlay > h2 {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+/* Body - Info */
