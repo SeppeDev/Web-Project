@@ -293,6 +293,10 @@ p, span, li, a {
     font-style: italic;
 }
 
+.text-larger {
+    font-size: 2.4rem;
+}
+
 .text-white {
     color: #fff !important;
 }

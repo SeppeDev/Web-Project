@@ -53,6 +53,11 @@
 	height: 0;
 }
 
+/* Margins */
+.mar-top-l {
+    margin-top: 30px;
+}
+
 /* Miscellaneous */
 main {
   min-height: calc(100vh - 105px);
