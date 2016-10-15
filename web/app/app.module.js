@@ -17,6 +17,10 @@ var angular2_jwt_1 = require("angular2-jwt");
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
 var info_component_1 = require("./info/info.component");
+var dashboard_component_1 = require("./dashboard/dashboard.component");
+// Import guard 
+var auth_guard_1 = require("./guards/auth.guard");
+var auth_service_1 = require("./services/auth.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -40,6 +44,16 @@ var AppModule = (function () {
                     {
                         path: "info",
                         component: info_component_1.InfoComponent
+                    },
+                    {
+                        path: "hub",
+                        canActivate: [auth_guard_1.AuthGuard],
+                        children: [
+                            {
+                                path: "",
+                                component: dashboard_component_1.DashboardComponent
+                            }
+                        ]
                     }
                 ])
             ],
@@ -47,11 +61,14 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 home_component_1.HomeComponent,
-                info_component_1.InfoComponent
+                info_component_1.InfoComponent,
+                dashboard_component_1.DashboardComponent
             ],
             // Register providers
             providers: [
-                angular2_jwt_1.AUTH_PROVIDERS
+                angular2_jwt_1.AUTH_PROVIDERS,
+                auth_guard_1.AuthGuard,
+                auth_service_1.AuthService
             ],
             // Base component
             bootstrap: [app_component_1.AppComponent]

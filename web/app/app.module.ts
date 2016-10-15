@@ -5,9 +5,14 @@ import { RouterModule }     from "@angular/router";
 import { AUTH_PROVIDERS }   from "angular2-jwt";
 
 // Import components
-import { AppComponent }     from "./app.component";
-import { HomeComponent }    from "./home/home.component";
-import { InfoComponent }    from "./info/info.component";
+import { AppComponent }         from "./app.component";
+import { HomeComponent }        from "./home/home.component";
+import { InfoComponent }        from "./info/info.component";
+import { DashboardComponent }   from "./dashboard/dashboard.component";
+
+// Import guard 
+import { AuthGuard }    from "./guards/auth.guard";
+import { AuthService }  from "./services/auth.service";
 
 @NgModule({
 
@@ -30,6 +35,16 @@ import { InfoComponent }    from "./info/info.component";
             {
                 path: "info",
                 component: InfoComponent
+            },
+            {
+                path: "hub",
+                canActivate: [ AuthGuard ],
+                children: [
+                    {
+                        path: "",
+                        component: DashboardComponent
+                    }
+                ]
             }
         ])
     ],
@@ -38,12 +53,15 @@ import { InfoComponent }    from "./info/info.component";
     declarations: [ 
         AppComponent,
         HomeComponent,
-        InfoComponent
+        InfoComponent,
+        DashboardComponent
     ],
 
     // Register providers
     providers: [
-        AUTH_PROVIDERS
+        AUTH_PROVIDERS,
+        AuthGuard,
+        AuthService
     ],
 
     // Base component
