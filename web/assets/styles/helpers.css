@@ -8,7 +8,7 @@
 }
 
 .ch-yellow {
-    color: #FFD767;
+    color: #D9B731;
 }
 
 .ch-red {
@@ -54,18 +54,14 @@
 }
 
 /* Miscellaneous */
+main {
+  min-height: calc(100vh - 105px);
+}
+
 .clickable {
     cursor: pointer;
 }
 
 .view {
-    padding-top: 80px;
-    background-color: red;    
-}
-
-.page {
-    background-color: #fff;
-    display: block;
-    margin: 30px auto 0 auto;
-    width: 70%;
+    padding: 120px 0 40px 0;
 }
