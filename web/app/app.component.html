@@ -1,11 +1,11 @@
-<header>
+<header class="shadow">
     <div class="container row">
         <div class="four columns">
             <a routerLink="/home" class="logo ch-green"><span>Chore</span>Hub</a>
         </div>
         <div class="four columns">
             <nav>
-                <ul>
+                <ul class="nav-list">
                     <li><a routerLink="/home" class="ch-blue">Home</a></li>
                     <li><a routerLink="/info" class="ch-red">Info</a></li>
                     <li><a routerLink="/hub" class="ch-yellow">Hub</a></li>
@@ -14,8 +14,8 @@
         </div>
         <div class="four columns">
             <ul *ngIf="!authSvc.authenticated()" class="auth-list">  
-                <li><a (click)="authSvc.showLogin()" class="clickable">Sign In</a></li>
-                <li><a (click)="authSvc.showRegister()" class="clickable">Register</a></li>
+                <li><a (click)="authSvc.showLogin()" class="clickable">Aanmelden</a></li>
+                <li><a (click)="authSvc.showRegister()" class="clickable">Registreer</a></li>
             </ul>
             <ul *ngIf="authSvc.authenticated() && authSvc.userProfile" class="auth-list">
                 <li><a href="#">My Profile</a></li>                
@@ -42,8 +42,8 @@
         </div>
         <div class="four columns">
             <ul *ngIf="!authSvc.authenticated()" class="auth-list">  
-                <li><a (click)="authSvc.showLogin()" class="clickable">Sign In</a></li>
-                <li><a (click)="authSvc.showRegister()" class="clickable">Register</a></li>
+                <li><a (click)="authSvc.showLogin()" class="clickable">Aanmelden</a></li>
+                <li><a (click)="authSvc.showRegister()" class="clickable">Registreer</a></li>
             </ul>
             <ul *ngIf="authSvc.authenticated() && authSvc.userProfile" class="auth-list">
                 <li><a href="#">My Profile</a></li>                

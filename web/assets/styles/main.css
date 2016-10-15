@@ -33,7 +33,7 @@ header ul > li {
     margin-top: -12px;
 }
 
-header ul > li > a {    
+header .nav-list > li > a, header .auth-list > li > a {    
     padding: 10px 10px;
     font-family: "Lato";
     font-weight: 300;
@@ -47,13 +47,41 @@ header ul > li > a {
     font-family: "Lato";
 }
 
-header ul > li > a:hover {    
+header .nav-list > li > a:hover {    
     border-bottom: 2px solid;
 }
 
 header .auth-list {
     margin-top: 25px;
 }
+
+/* Dropdown */
+/*.dropdown-content {
+    display: none;
+    position: absolute;
+    margin: 10px 0 0 0;
+    text-align: center;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content > li {
+    width: 100%;
+    display: block;
+}
+
+.dropdown-content > li > a {
+    width: 100%;
+    display: block;
+    background-color: #fff;
+    font-family: "Lato";
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    padding: 5px 0;
+}*/
 
 .auth-list > li > a, .username {
     font-size: 1.5rem;
