@@ -13,13 +13,18 @@
             </nav>
         </div>
         <div class="four columns">
-            <ul *ngIf="!authSvc.authenticated()" class="auth-list">  
+            <ul *ngIf="!authSvc.authenticated()" class="auth-list u-pull-right">  
                 <li><a (click)="authSvc.showLogin()" class="clickable">Aanmelden</a></li>
                 <li><a (click)="authSvc.showRegister()" class="clickable">Registreer</a></li>
             </ul>
-            <ul *ngIf="authSvc.authenticated() && authSvc.userProfile" class="auth-list">
-                <li><a href="#">My Profile</a></li>                
-                <li><a (click)="authSvc.logout()" class="clickable">{{ authSvc.userProfile.nickname }}, Logout</a></li>
+            <ul *ngIf="authSvc.authenticated() && authSvc.userProfile" class="auth-list u-pull-right">
+                <li>
+                    <a class="clickable" (click)="showTopMenu()">{{ authSvc.userProfile.nickname }}<i class="material-icons fix-icon">arrow_drop_down</i></a>
+                    <ul class="dropdown-content shadow" *ngIf="topMenuActive">
+                        <li><a href="">My Profile</a></li>
+                        <li><a (click)="authSvc.logout()" class="clickable">Logout</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -34,7 +39,7 @@
                 &amp; Seppe Goossens 2017</p>
         </div>
         <div class="four columns">
-            <ul class="cf">
+            <ul class="cf nav-list">
                 <li><a routerLink="/home">Home</a></li>
                 <li><a routerLink="/info">Info</a></li>
                 <li><a routerLink="/hub">Hub</a></li>
@@ -45,9 +50,14 @@
                 <li><a (click)="authSvc.showLogin()" class="clickable">Aanmelden</a></li>
                 <li><a (click)="authSvc.showRegister()" class="clickable">Registreer</a></li>
             </ul>
-            <ul *ngIf="authSvc.authenticated() && authSvc.userProfile" class="auth-list">
-                <li><a href="#">My Profile</a></li>                
-                <li><a (click)="authSvc.logout()" class="clickable">{{ authSvc.userProfile.nickname }}, Logout</a></li>
+            <ul *ngIf="authSvc.authenticated() && authSvc.userProfile" class="auth-list u-pull-right">
+                <li>
+                    <a class="clickable" (click)="showBottomMenu()">{{ authSvc.userProfile.nickname }}<i class="material-icons fix-icon">arrow_drop_down</i></a>
+                    <ul class="dropdown-content dropdown-bottom shadow" *ngIf="bottomMenuActive">
+                        <li><a href="">My Profile</a></li>
+                        <li><a (click)="authSvc.logout()" class="clickable">Logout</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

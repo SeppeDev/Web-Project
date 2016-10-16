@@ -8,5 +8,16 @@ import { AuthService }  from "./services/auth.service";
     templateUrl: "app/app.component.html"
 })
 export class AppComponent {
+    topMenuActive: boolean = false;
+    bottomMenuActive: boolean = false;
+
     constructor (private authSvc: AuthService) { } 
+
+    showTopMenu () {
+        this.topMenuActive = !this.topMenuActive;
+    }
+
+    showBottomMenu () {
+        this.bottomMenuActive = !this.bottomMenuActive;
+    }
  }

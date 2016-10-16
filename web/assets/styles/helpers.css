@@ -76,5 +76,10 @@ main {
 }
 
 .view {
-    padding: 120px 0 40px 0;
+    padding: 140px 0 40px 0;
+}
+
+.fix-icon {
+    vertical-align: middle;
+    margin-top: -5px;
 }

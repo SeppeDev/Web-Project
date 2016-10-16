@@ -13,7 +13,15 @@ var auth_service_1 = require("./services/auth.service");
 var AppComponent = (function () {
     function AppComponent(authSvc) {
         this.authSvc = authSvc;
+        this.topMenuActive = false;
+        this.bottomMenuActive = false;
     }
+    AppComponent.prototype.showTopMenu = function () {
+        this.topMenuActive = !this.topMenuActive;
+    };
+    AppComponent.prototype.showBottomMenu = function () {
+        this.bottomMenuActive = !this.bottomMenuActive;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: "chorehub-app",

@@ -56,32 +56,39 @@ header .auth-list {
 }
 
 /* Dropdown */
-/*.dropdown-content {
-    display: none;
+.dropdown-content {
+    float: right;
     position: absolute;
-    margin: 10px 0 0 0;
+    margin: 15px 0 0 0;
     text-align: center;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+.dropdown-bottom {
+    margin: -150px 0 0 0;
+
 }
 
 .dropdown-content > li {
     width: 100%;
     display: block;
+    background-color: #fff;
+    margin-bottom: 0;
 }
 
 .dropdown-content > li > a {
     width: 100%;
     display: block;
-    background-color: #fff;
     font-family: "Lato";
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
+    text-decoration: none;
     font-weight: 300;
-    padding: 5px 0;
-}*/
+    padding: 15px 0;
+}
+
+.dropdown-content > li > a:hover {
+    text-decoration: underline;
+}
 
 .auth-list > li > a, .username {
     font-size: 1.5rem;
@@ -143,7 +150,7 @@ footer ul > li > a {
     height: 100%;
 }
 
-footer ul > li > a:hover {
+footer .nav-list > li > a:hover {
     border-bottom: 1px solid;
 }
 
