@@ -1,7 +1,20 @@
 <section class="view">
     <div class="container">
         <div class="row">
-            <h1>Dashboard</h1>
+            <h1>Hub</h1>
+        </div>
+        <div class="row">
+            <aside class="three columns ch-bg-green text-white">
+                <h5>Categories</h5>
+                <ul>
+                    <li *ngFor="let category of categories">
+                        <a>{{ category }}</a>
+                    </li>
+                </ul>
+            </aside>
+            <div class="nine columns hub-container">
+                <h5>Chores</h5>
+            </div>
         </div>
     </div>
 </section>

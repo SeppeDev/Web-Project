@@ -28,14 +28,14 @@ export class AuthService {
     /**
      * Show auth0 lock - login screen
      */
-    showLogin () {
+    showLogin (): void {
         this.lock.show();
     }
 
     /**
      * Show auth0 lock - register screen
      */
-    showRegister () {
+    showRegister (): void {
         this.lock.show({
             initialScreen: "signUp"
         });
@@ -44,14 +44,14 @@ export class AuthService {
     /**
      * Check if jwt token is expired
      */
-    authenticated () {            
+    authenticated (): boolean {            
         return tokenNotExpired();
     }
 
     /**
      * Destroy jwt token to end session
      */
-    logout () {
+    logout (): void {
         localStorage.removeItem("id_token");
         localStorage.removeItem("user_profile");
         this.userProfile = undefined;
@@ -60,7 +60,7 @@ export class AuthService {
     /**
      * Decrypt jwt token to access user profile
      */
-    private getProfile (idToken: string) {
+    private getProfile (idToken: string): void {
         this.lock.getProfile(idToken, (error: any, profile: Object) => {
             if (error) 
             {

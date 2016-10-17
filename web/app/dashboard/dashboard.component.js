@@ -11,7 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var DashboardComponent = (function () {
     function DashboardComponent() {
+        this.categories = [
+            "Do Shit",
+            "Do Some More Shit",
+            "Shit to be done",
+            "Clean my shit"
+        ];
     }
+    DashboardComponent.prototype.getCategories = function () {
+        return [];
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: "chorehub-dashboard",
