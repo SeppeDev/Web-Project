@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using ChoreHub.DAL;
 
+using ChoreHub.Models;
+
 namespace ChoreHub
 {
     public class Startup
@@ -34,6 +36,8 @@ namespace ChoreHub
             services.AddMvc();
 
             services.AddDbContext<ChoreHubContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddSingleton<IChoreRepository, ChoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
