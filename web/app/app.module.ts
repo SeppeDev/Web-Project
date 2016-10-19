@@ -11,8 +11,8 @@ import { InfoComponent }        from "./info/info.component";
 import { DashboardComponent }   from "./dashboard/dashboard.component";
 
 // Import guard 
-import { AuthGuard }    from "./guards/auth.guard";
-import { AuthService }  from "./services/auth.service";
+import { AuthGuard }    from "./shared/auth/auth.guard";
+import { AuthService }  from "./shared/auth/auth.service";
 
 @NgModule({
 

@@ -1,6 +1,6 @@
 import { Component }    from "@angular/core";
 
-import { AuthService }  from "./services/auth.service";
+import { AuthService }  from "./shared/auth/auth.service";
 
 @Component({
     selector: "chorehub-app",

@@ -19,8 +19,8 @@ var home_component_1 = require("./home/home.component");
 var info_component_1 = require("./info/info.component");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
 // Import guard 
-var auth_guard_1 = require("./guards/auth.guard");
-var auth_service_1 = require("./services/auth.service");
+var auth_guard_1 = require("./shared/auth/auth.guard");
+var auth_service_1 = require("./shared/auth/auth.service");
 var AppModule = (function () {
     function AppModule() {
     }

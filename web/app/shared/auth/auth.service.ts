@@ -1,7 +1,7 @@
 import { Injectable }       from "@angular/core";
 import { tokenNotExpired }  from "angular2-jwt";
 
-import { Constants }        from "../shared/constants";
+import { Constants }        from "../constants";
 
 declare var Auth0Lock: any;
 
@@ -14,6 +14,7 @@ export class AuthService {
     userProfile: Object;
 
     constructor () {
+         
         // Check for existence of token in localStorage
         if(this.authenticated) this.userProfile = JSON.parse(localStorage.getItem("user_profile"));
 

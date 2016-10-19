@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var angular2_jwt_1 = require("angular2-jwt");
-var constants_1 = require("../shared/constants");
+var constants_1 = require("../constants");
 var AuthService = (function () {
     function AuthService() {
         var _this = this;
