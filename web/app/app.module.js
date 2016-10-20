@@ -12,6 +12,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
+var http_1 = require("@angular/http");
 var angular2_jwt_1 = require("angular2-jwt");
 // Import components
 var app_component_1 = require("./app.component");
@@ -21,6 +22,8 @@ var dashboard_component_1 = require("./dashboard/dashboard.component");
 // Import guard 
 var auth_guard_1 = require("./shared/auth/auth.guard");
 var auth_service_1 = require("./shared/auth/auth.service");
+// Import services
+var dashboard_service_1 = require("./dashboard/dashboard.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,6 +33,7 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
+                http_1.HttpModule,
                 // Routes
                 router_1.RouterModule.forRoot([
                     {
@@ -68,7 +72,8 @@ var AppModule = (function () {
             providers: [
                 angular2_jwt_1.AUTH_PROVIDERS,
                 auth_guard_1.AuthGuard,
-                auth_service_1.AuthService
+                auth_service_1.AuthService,
+                dashboard_service_1.DashboardService
             ],
             // Base component
             bootstrap: [app_component_1.AppComponent]

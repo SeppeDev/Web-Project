@@ -1,23 +1,27 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+
+import { DashboardService } from "./dashboard.service";
 
 @Component({
     selector: "chorehub-dashboard",
     templateUrl: "app/dashboard/dashboard.component.html"
 })
-export class DashboardComponent {
-    categories: String[];
+export class DashboardComponent implements OnInit {
+    categories: String[] = [];
     
-    constructor () { 
-        this.categories = [
-            "Do Shit",
-            "Do Some More Shit",
-            "Shit to be done",
-            "Clean my shit"
-        ]
+    constructor (private dashSvc: DashboardService) { }
+
+    ngOnInit () {
+        this.getCategories();
     }
 
-    private getCategories (): String[] {
-        return [];
+    private getCategories (): void {
+        this.dashSvc.getCategories()
+            .subscribe((data: any) => {
+                this.categories.push(data);            
+            }, (error: any) => {
+                console.log(error);
+            });
     }
 
 

@@ -43,6 +43,7 @@ namespace ChoreHub
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ChoreHubContext context)
         {
+            // Auth0
             var options = new JwtBearerOptions
             {
                 Audience = Configuration["Auth0:ClientId"],
@@ -54,12 +55,21 @@ namespace ChoreHub
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            // Entity
             DbInitializer.Initialize(context);
 
+            // Exception page
             if(env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Enable cors
+            app.UseCors(builder =>
+                builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                );
 
             app.UseMvc();
         }
