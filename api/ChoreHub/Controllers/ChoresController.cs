@@ -13,7 +13,6 @@ namespace ChoreHub.Controllers
     [Route("api/[controller]")]
     public class ChoresController : Controller
     {
-
         public ChoresController(IChoreRepository chores)
         {
             Chores = chores;
@@ -73,7 +72,7 @@ namespace ChoreHub.Controllers
             return new NoContentResult();
         }
 
-        [HttpDelete("{id")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var chore = Chores.Find(id);
