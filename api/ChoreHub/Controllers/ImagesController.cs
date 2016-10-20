@@ -30,29 +30,64 @@ namespace ChoreHub.Controllers
             return Images.GetAll();
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET api/images/5
+        [HttpGet("{id}", Name = "GetImage")]
+        public IActionResult GetById(int id)
         {
-            return "value";
+            var image = Images.Find(id);
+
+            if (image == null)
+            {
+                return NotFound();
+            }
+
+            return new ObjectResult(image);
         }
 
-        // POST api/values
+        // POST api/images
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Create([FromBody] Image image)
         {
+            if (image == null)
+            {
+                return BadRequest();
+            }
+
+            Images.Add(image);
+            return CreatedAtRoute("GetImage", new { id = image.ID }, image);
         }
 
-        // PUT api/values/5
+        // PUT api/images/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Update(int id, [FromBody] Image image)
         {
+            if (image == null || image.ID != id)
+            {
+                return BadRequest();
+            }
+
+            var oldimage = Images.Find(id);
+            if (oldimage == null)
+            {
+                return NotFound();
+            }
+
+            Images.Update(image);
+            return new NoContentResult();
         }
 
-        // DELETE api/values/5
+        // DELETE api/images/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var image = Images.Find(id);
+            if (image == null)
+            {
+                return NotFound();
+            }
+
+            Images.Remove(id);
+            return new NoContentResult();
         }
     }
 }

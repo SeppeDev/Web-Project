@@ -21,7 +21,7 @@ namespace ChoreHub.DAL
                 return;
             }
 
-            var images = new Image[]
+            /*var images = new Image[]
             {
                 new Image { Link="http://images.clipartpanda.com/free-clip-art-children-chores-9TpejE9jc.jpeg" }
             };
@@ -29,7 +29,7 @@ namespace ChoreHub.DAL
             {
                 context.Images.Add(i);
             }
-            context.SaveChanges();
+            context.SaveChanges();*/
         }
     }
 }
