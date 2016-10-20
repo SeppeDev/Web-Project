@@ -17,7 +17,19 @@ var DashboardService = (function () {
         this.baseUrl = constants_1.Constants.API_BASE_URL;
     }
     DashboardService.prototype.getCategories = function () {
-        return this.http.get(this.baseUrl + "values")
+        var url = this.baseUrl + "/values";
+        return this.getData(url);
+    };
+    DashboardService.prototype.getChores = function () {
+        var url = this.baseUrl + "/chores";
+        return this.getData(url);
+    };
+    DashboardService.prototype.getChoresByCategory = function (category) {
+        var url = this.baseUrl + "/" + category + "/chores";
+        return this.getData(url);
+    };
+    DashboardService.prototype.getData = function (url) {
+        return this.http.get(url)
             .flatMap(this.extractData);
     };
     DashboardService.prototype.extractData = function (res) {

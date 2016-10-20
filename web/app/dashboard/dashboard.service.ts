@@ -13,7 +13,22 @@ export class DashboardService {
     }
 
     getCategories () {
-        return this.http.get(this.baseUrl + "values")
+        let url = `${this.baseUrl}/values`;
+        return this.getData(url);
+    }
+
+    getChores () {
+        let url = `${this.baseUrl}/chores`;
+        return this.getData(url);
+    }
+
+    getChoresByCategory (category: string) {        
+        let url = `${this.baseUrl}/${category}/chores`;
+        return this.getData(url);
+    }
+
+    private getData (url: string) {
+        return this.http.get(url)
                     .flatMap(this.extractData);
     }
 
