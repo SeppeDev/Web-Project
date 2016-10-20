@@ -16,22 +16,37 @@ var DashboardService = (function () {
         this.http = http;
         this.baseUrl = constants_1.Constants.API_BASE_URL;
     }
+    /**
+     * Get all categories
+     */
     DashboardService.prototype.getCategories = function () {
         var url = this.baseUrl + "/values";
         return this.getData(url);
     };
+    /**
+     * Get all chores
+     */
     DashboardService.prototype.getChores = function () {
         var url = this.baseUrl + "/chores";
         return this.getData(url);
     };
+    /**
+     * Get all chores belonging to a category
+     */
     DashboardService.prototype.getChoresByCategory = function (category) {
         var url = this.baseUrl + "/" + category + "/chores";
         return this.getData(url);
     };
+    /**
+     * Perform http get request
+     */
     DashboardService.prototype.getData = function (url) {
         return this.http.get(url)
             .flatMap(this.extractData);
     };
+    /**
+     * Extract json from response
+     */
     DashboardService.prototype.extractData = function (res) {
         return res.json() || {};
     };

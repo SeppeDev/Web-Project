@@ -7,11 +7,15 @@ declare var Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
-    // Create auth0 lock instance
+    /**
+     * Auth0 lock instance
+     */
     lock = new Auth0Lock(Constants.AUTH0_CLIENTID, Constants.AUTH0_DOMAIN, {});
 
-    // Create userProfile instance
-    userProfile: Object;
+    /**
+     * User profile 
+     */
+    userProfile: {};
 
     constructor () {
          

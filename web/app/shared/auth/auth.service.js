@@ -14,7 +14,9 @@ var constants_1 = require("../constants");
 var AuthService = (function () {
     function AuthService() {
         var _this = this;
-        // Create auth0 lock instance
+        /**
+         * Auth0 lock instance
+         */
         this.lock = new Auth0Lock(constants_1.Constants.AUTH0_CLIENTID, constants_1.Constants.AUTH0_DOMAIN, {});
         // Check for existence of token in localStorage
         if (this.authenticated)
