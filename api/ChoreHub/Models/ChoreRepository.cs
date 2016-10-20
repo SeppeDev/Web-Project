@@ -1,46 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
+using System.Linq;
+
+using ChoreHub.DAL;
 
 namespace ChoreHub.Models
 {
     public class ChoreRepository : IChoreRepository
     {
-        private static ConcurrentDictionary<int, Chore> _chores = new ConcurrentDictionary<int, Chore>();
+        private readonly ChoreHubContext _context;
 
-        public ChoreRepository()
+        public ChoreRepository(ChoreHubContext context)
         {
-            Add(new Chore { Title = "First chore" });
+            _context = context;
         }
 
         public IEnumerable<Chore> GetAll()
         {
-            return _chores.Values;
+            return _context.Chores;
         }
 
-        public void Add(Chore chore)
+        public void Add(Chore item)
         {
-            chore.ID = _chores.Count;
-            _chores[chore.ID] = chore;
+            _context.Chores.Add(item);
         }
 
         public Chore Find(int id)
         {
-            Chore chore;
-            _chores.TryGetValue(id, out chore);
-            return chore;
+            return _context.Chores
+                .SingleOrDefault(e => e.ID.Equals(id));
         }
 
-        public Chore Remove(int id)
+        public void Remove(int id)
         {
-            Chore chore;
-            _chores.TryRemove(id, out chore);
-            return chore;
+            var itemToRemove = _context.Chores.SingleOrDefault(e => e.ID.Equals(id));
+            if (itemToRemove != null)
+            {
+                _context.Chores.Remove(itemToRemove);
+            }
         }
 
-        public void Update(Chore chore)
+        public void Update(Chore item)
         {
-            _chores[chore.ID] = chore;
+            var itemToUpdate = _context.Chores.SingleOrDefault(e => e.ID.Equals(item.ID));
+            if (itemToUpdate != null)
+            {
+                itemToUpdate.Title = item.Title;
+                itemToUpdate.Description = item.Description;
+                itemToUpdate.User = item.User;
+            }
         }
     }
 }
