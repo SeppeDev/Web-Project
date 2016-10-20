@@ -9,24 +9,63 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var dashboard_service_1 = require("./dashboard.service");
 var DashboardComponent = (function () {
-    function DashboardComponent() {
-        this.categories = [
-            "Do Shit",
-            "Do Some More Shit",
-            "Shit to be done",
-            "Clean my shit"
-        ];
+    function DashboardComponent(dashSvc) {
+        this.dashSvc = dashSvc;
+        this.categories = [];
+        this.chores = [];
     }
+    DashboardComponent.prototype.ngOnInit = function () {
+        this.getCategories();
+        this.chore = {
+            title: "Title",
+            User: {
+                FirstName: "Benno",
+                LastName: "Meysmans",
+                Email: "test@example.com",
+                isAdmin: false,
+                Image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
+            },
+            Description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
+        };
+    };
+    DashboardComponent.prototype.clear = function () {
+        this.chores = [];
+    };
     DashboardComponent.prototype.getCategories = function () {
-        return [];
+        var _this = this;
+        this.dashSvc.getCategories()
+            .subscribe(function (data) {
+            _this.categories.push(data);
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    DashboardComponent.prototype.getChores = function () {
+        var _this = this;
+        this.dashSvc.getChores()
+            .subscribe(function (data) {
+            _this.chores.push(data);
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    DashboardComponent.prototype.getChoresByCategory = function (category) {
+        var _this = this;
+        this.dashSvc.getChoresByCategory(category)
+            .subscribe(function (data) {
+            _this.chores.push(data);
+        }, function (error) {
+            console.log(error);
+        });
     };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: "chorehub-dashboard",
             templateUrl: "app/dashboard/dashboard.component.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [dashboard_service_1.DashboardService])
     ], DashboardComponent);
     return DashboardComponent;
 }());

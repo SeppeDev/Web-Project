@@ -2,6 +2,7 @@ import { NgModule }         from "@angular/core";
 import { BrowserModule }    from "@angular/platform-browser";
 import { FormsModule }      from "@angular/forms";
 import { RouterModule }     from "@angular/router";
+import { HttpModule }       from "@angular/http";
 import { AUTH_PROVIDERS }   from "angular2-jwt";
 
 // Import components
@@ -14,12 +15,16 @@ import { DashboardComponent }   from "./dashboard/dashboard.component";
 import { AuthGuard }    from "./shared/auth/auth.guard";
 import { AuthService }  from "./shared/auth/auth.service";
 
+// Import services
+import { DashboardService } from "./dashboard/dashboard.service";
+
 @NgModule({
 
     // Imported modules
     imports: [ 
         BrowserModule, 
         FormsModule,
+        HttpModule,
 
         // Routes
         RouterModule.forRoot([
@@ -61,7 +66,8 @@ import { AuthService }  from "./shared/auth/auth.service";
     providers: [
         AUTH_PROVIDERS,
         AuthGuard,
-        AuthService
+        AuthService,
+        DashboardService
     ],
 
     // Base component

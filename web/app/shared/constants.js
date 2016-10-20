@@ -14,6 +14,12 @@ var Constants = (function () {
         configurable: true
     });
     ;
+    Object.defineProperty(Constants, "API_BASE_URL", {
+        get: function () { return "http://localhost:58766/api/"; },
+        enumerable: true,
+        configurable: true
+    });
+    ;
     return Constants;
 }());
 exports.Constants = Constants;
