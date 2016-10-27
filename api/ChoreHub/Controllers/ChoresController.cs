@@ -51,13 +51,13 @@ namespace ChoreHub.Controllers
             }
 
             Chores.Add(chore);
-            return CreatedAtRoute("GetChore", new { id = chore.ID }, chore);
+            return CreatedAtRoute("GetChore", new { id = chore.Id }, chore);
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Chore chore)
         {
-            if(chore == null || chore.ID != id)
+            if(chore == null || chore.Id != id)
             {
                 return BadRequest();
             }

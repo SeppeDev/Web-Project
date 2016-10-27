@@ -54,14 +54,14 @@ namespace ChoreHub.Controllers
             }
 
             Images.Add(image);
-            return CreatedAtRoute("GetImage", new { id = image.ID }, image);
+            return CreatedAtRoute("GetImage", new { Controller = "Images", id = image.Link }, image);
         }
 
         // PUT api/images/5
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Image image)
         {
-            if (image == null || image.ID != id)
+            if (image == null || image.Id != id)
             {
                 return BadRequest();
             }

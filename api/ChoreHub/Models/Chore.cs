@@ -7,7 +7,7 @@ namespace ChoreHub.Models
 {
     public class Chore
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public User User { get; set; }
         public string Description { get; set; }

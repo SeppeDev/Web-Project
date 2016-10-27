@@ -28,12 +28,12 @@ namespace ChoreHub.Models
         public User Find(int id)
         {
             return _context.Users
-                .SingleOrDefault(e => e.ID.Equals(id));
+                .SingleOrDefault(e => e.Id.Equals(id));
         }
 
         public void Remove(int id)
         {
-            var itemToRemove = _context.Users.SingleOrDefault(e => e.ID.Equals(id));
+            var itemToRemove = _context.Users.SingleOrDefault(e => e.Id.Equals(id));
             if (itemToRemove != null)
             {
                 _context.Users.Remove(itemToRemove);
@@ -42,7 +42,7 @@ namespace ChoreHub.Models
 
         public void Update(User item)
         {
-            var itemToUpdate = _context.Users.SingleOrDefault(e => e.ID.Equals(item.ID));
+            var itemToUpdate = _context.Users.SingleOrDefault(e => e.Id.Equals(item.Id));
             if (itemToUpdate != null)
             {
                 itemToUpdate.FirstName = item.FirstName;

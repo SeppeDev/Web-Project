@@ -7,7 +7,7 @@ namespace ChoreHub.Models
 {
     public class Review
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public User Author { get; set; }
         public User Subject { get; set; }
         public long Content { get; set; }
