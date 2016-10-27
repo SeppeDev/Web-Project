@@ -19,6 +19,7 @@ var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
 var info_component_1 = require("./info/info.component");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
+var profile_component_1 = require("./profile/profile.component");
 // Import guard 
 var auth_guard_1 = require("./shared/auth/auth.guard");
 var auth_service_1 = require("./shared/auth/auth.service");
@@ -58,6 +59,10 @@ var AppModule = (function () {
                                 component: dashboard_component_1.DashboardComponent
                             }
                         ]
+                    },
+                    {
+                        path: "profile",
+                        component: profile_component_1.ProfileComponent
                     }
                 ])
             ],
@@ -66,7 +71,8 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 home_component_1.HomeComponent,
                 info_component_1.InfoComponent,
-                dashboard_component_1.DashboardComponent
+                dashboard_component_1.DashboardComponent,
+                profile_component_1.ProfileComponent
             ],
             // Register providers
             providers: [

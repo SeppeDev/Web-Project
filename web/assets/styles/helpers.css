@@ -83,3 +83,24 @@ main {
     vertical-align: middle;
     margin-top: -5px;
 }
+
+/* Components */
+.ch-btn {
+    font-family: "Lato";
+    color: #fff;
+    display: inline-block;
+    padding: 0 30px;
+    text-align: center;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.ch-btn-lg {
+    height: 42px;
+    line-height: 42px;
+    font-size: 1.4rem;
+}

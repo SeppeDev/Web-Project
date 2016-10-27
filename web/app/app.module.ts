@@ -10,6 +10,7 @@ import { AppComponent }         from "./app.component";
 import { HomeComponent }        from "./home/home.component";
 import { InfoComponent }        from "./info/info.component";
 import { DashboardComponent }   from "./dashboard/dashboard.component";
+import { ProfileComponent }     from "./profile/profile.component";
 
 // Import guard 
 import { AuthGuard }    from "./shared/auth/auth.guard";
@@ -50,6 +51,10 @@ import { DashboardService } from "./dashboard/dashboard.service";
                         component: DashboardComponent
                     }
                 ]
+            },
+            {
+                path: "profile",
+                component: ProfileComponent
             }
         ])
     ],
@@ -59,7 +64,8 @@ import { DashboardService } from "./dashboard/dashboard.service";
         AppComponent,
         HomeComponent,
         InfoComponent,
-        DashboardComponent
+        DashboardComponent,
+        ProfileComponent
     ],
 
     // Register providers
