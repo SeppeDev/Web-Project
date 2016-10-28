@@ -10,7 +10,9 @@ using Microsoft.Extensions.Logging;
 
 
 
+
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
@@ -46,6 +48,10 @@ namespace ChoreHub
             // Add the Auth0 Settings object so it can be injected
             services.Configure<Auth0Settings>(Configuration.GetSection("Auth0"));
 
+            // Add authentication services
+            services.AddAuthentication(
+                options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
+
             services.AddDbContext<ChoreHubContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSingleton<IChoreRepository, ChoreRepository>();
@@ -69,6 +75,12 @@ namespace ChoreHub
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            // Add the cookie middleware
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
+            });
 
             //Auth0 get user info
             var OpenIdConnectionOptions = new OpenIdConnectOptions("Auth0")
