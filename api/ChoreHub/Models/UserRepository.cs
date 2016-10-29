@@ -23,6 +23,7 @@ namespace ChoreHub.Models
         public void Add(User item)
         {
             _context.Users.Add(item);
+            _context.SaveChanges();
         }
 
         public User Find(int id)
@@ -37,6 +38,7 @@ namespace ChoreHub.Models
             if (itemToRemove != null)
             {
                 _context.Users.Remove(itemToRemove);
+                _context.SaveChanges();
             }
         }
 

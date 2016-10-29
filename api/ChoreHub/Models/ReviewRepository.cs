@@ -23,6 +23,7 @@ namespace ChoreHub.Models
         public void Add(Review item)
         {
             _context.Reviews.Add(item);
+            _context.SaveChanges();
         }
 
         public Review Find(int id)
@@ -37,6 +38,7 @@ namespace ChoreHub.Models
             if (itemToRemove != null)
             {
                 _context.Reviews.Remove(itemToRemove);
+                _context.SaveChanges();
             }
         }
 
