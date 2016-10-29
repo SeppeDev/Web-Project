@@ -11,6 +11,7 @@ import { HomeComponent }        from "./home/home.component";
 import { InfoComponent }        from "./info/info.component";
 import { DashboardComponent }   from "./dashboard/dashboard.component";
 import { ProfileComponent }     from "./profile/profile.component";
+import { EditProfileComponent } from "./profile/edit-profile/edit-profile.component";
 
 // Import guard 
 import { AuthGuard }    from "./shared/auth/auth.guard";
@@ -44,7 +45,7 @@ import { DashboardService } from "./dashboard/dashboard.service";
             },
             {
                 path: "hub",
-                canActivate: [ AuthGuard ],
+                canActivate: [  ],
                 children: [
                     {
                         path: "",
@@ -54,7 +55,27 @@ import { DashboardService } from "./dashboard/dashboard.service";
             },
             {
                 path: "profile",
-                component: ProfileComponent
+                canActivate: [  ],
+                children: [
+                    {
+                        path: "",
+                        component: ProfileComponent
+                    },
+                    {
+                        path: "create",
+                        data: {
+                            state: "create"
+                        },
+                        component: EditProfileComponent
+                    },
+                    {
+                        path: "edit",
+                        data: {
+                            state: "edit"
+                        },                        
+                        component: EditProfileComponent
+                    }
+                ]
             }
         ])
     ],
@@ -65,7 +86,8 @@ import { DashboardService } from "./dashboard/dashboard.service";
         HomeComponent,
         InfoComponent,
         DashboardComponent,
-        ProfileComponent
+        ProfileComponent,
+        EditProfileComponent
     ],
 
     // Register providers

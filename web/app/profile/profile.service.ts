@@ -19,7 +19,7 @@ export class ProfileService {
         this.http.get(`${this.baseUrl}/${userId}`);       
     }
 
-    saveProfile () {
+    saveProfile (profile: Object) {
 
     }
 }

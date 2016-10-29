@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
             User: {
                 FirstName: "Benno",
                 LastName: "Meysmans",
+                Description: "Lorem Ipsum Zever",
                 Email: "test@example.com",
                 isAdmin: false,
                 Image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"

@@ -11,7 +11,7 @@ export class ProfileComponent {
     /**
      * User profile
      */
-    profile: {};
+    profile: Object;
 
     constructor (private authSvc: AuthService) {
         console.log(this.authSvc.userProfile);

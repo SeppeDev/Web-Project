@@ -15,7 +15,7 @@ export class AuthService {
     /**
      * User profile 
      */
-    userProfile: {};
+    userProfile: Object;
 
     constructor () {
          

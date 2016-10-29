@@ -58,6 +58,10 @@
     margin-top: 30px;
 }
 
+.mar-top-m {
+    margin-top: 15px;
+}
+
 /* Shadows */
 .shadow {
   box-shadow: 0 0 5px rgba(68,68,68,0.6);

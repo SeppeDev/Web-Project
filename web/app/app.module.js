@@ -20,6 +20,7 @@ var home_component_1 = require("./home/home.component");
 var info_component_1 = require("./info/info.component");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
 var profile_component_1 = require("./profile/profile.component");
+var edit_profile_component_1 = require("./profile/edit-profile/edit-profile.component");
 // Import guard 
 var auth_guard_1 = require("./shared/auth/auth.guard");
 var auth_service_1 = require("./shared/auth/auth.service");
@@ -52,7 +53,7 @@ var AppModule = (function () {
                     },
                     {
                         path: "hub",
-                        canActivate: [auth_guard_1.AuthGuard],
+                        canActivate: [],
                         children: [
                             {
                                 path: "",
@@ -62,7 +63,27 @@ var AppModule = (function () {
                     },
                     {
                         path: "profile",
-                        component: profile_component_1.ProfileComponent
+                        canActivate: [],
+                        children: [
+                            {
+                                path: "",
+                                component: profile_component_1.ProfileComponent
+                            },
+                            {
+                                path: "create",
+                                data: {
+                                    state: "create"
+                                },
+                                component: edit_profile_component_1.EditProfileComponent
+                            },
+                            {
+                                path: "edit",
+                                data: {
+                                    state: "edit"
+                                },
+                                component: edit_profile_component_1.EditProfileComponent
+                            }
+                        ]
                     }
                 ])
             ],
@@ -72,7 +93,8 @@ var AppModule = (function () {
                 home_component_1.HomeComponent,
                 info_component_1.InfoComponent,
                 dashboard_component_1.DashboardComponent,
-                profile_component_1.ProfileComponent
+                profile_component_1.ProfileComponent,
+                edit_profile_component_1.EditProfileComponent
             ],
             // Register providers
             providers: [
