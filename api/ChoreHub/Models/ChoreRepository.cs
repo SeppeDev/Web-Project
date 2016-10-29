@@ -20,6 +20,11 @@ namespace ChoreHub.Models
             return _context.Chores;
         }
 
+        public IEnumerable<Chore> GetByCategoryId(int id)
+        {
+            return _context.Chores.Where(e => e.Category.Id.Equals(id));
+        }
+
         public void Add(Chore item)
         {
             _context.Chores.Add(item);
@@ -50,6 +55,7 @@ namespace ChoreHub.Models
                 itemToUpdate.Title = item.Title;
                 itemToUpdate.Description = item.Description;
                 itemToUpdate.User = item.User;
+                itemToUpdate.Category = item.Category;
             }
         }
     }

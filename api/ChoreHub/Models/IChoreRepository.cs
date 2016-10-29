@@ -7,6 +7,8 @@ namespace ChoreHub.Models
     {
         void Add(Chore chore);
         IEnumerable<Chore> GetAll();
+
+        IEnumerable<Chore> GetByCategoryId(int id);
         Chore Find(int id);
         void Remove(int id);
         void Update(Chore chore);

@@ -10,6 +10,7 @@ namespace ChoreHub.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public User User { get; set; }
+        public Category Category { get; set; }
         public string Description { get; set; }
     }
 }

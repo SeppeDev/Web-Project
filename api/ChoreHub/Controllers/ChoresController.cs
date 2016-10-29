@@ -23,12 +23,14 @@ namespace ChoreHub.Controllers
             get; set;
         }
 
+        // GET : api/chores
         [HttpGet]
         public IEnumerable<Chore> GetAll()
         {
             return Chores.GetAll();
         }
 
+        // GET : api/chores/5
         [HttpGet("{id}", Name = "GetChore")]
         public IActionResult GetById(int id)
         {
@@ -40,6 +42,20 @@ namespace ChoreHub.Controllers
             }
 
             return new ObjectResult(chore);
+        }
+
+        // GET : api/chores/5
+        [HttpGet("{id}", Name = "GetChoreByCategory")]
+        public IEnumerable<Chore> GetByCategoryId(int id)
+        {
+            //var category = Categories.Find(id);
+
+            //if (chore == null)
+            //{
+            //    return NotFound();
+            //}
+
+            return Chores.GetByCategoryId(id);
         }
 
         [HttpPost]
