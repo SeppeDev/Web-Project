@@ -9,23 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var profile_service_1 = require("./profile.service");
-var ProfileComponent = (function () {
-    function ProfileComponent(profileSvc) {
-        this.profileSvc = profileSvc;
+var UserDetailComponent = (function () {
+    function UserDetailComponent() {
     }
-    ProfileComponent.prototype.getProfile = function () {
-        this.profileSvc.getProfile(this.authProfile.userId);
-    };
-    ProfileComponent = __decorate([
+    UserDetailComponent = __decorate([
         core_1.Component({
-            selector: "ch-profile",
-            providers: [profile_service_1.ProfileService],
-            templateUrl: "app/profile/profile.component.html"
+            selector: "ch-user-detail",
+            template: "<h1>User Detail</h1>"
         }), 
-        __metadata('design:paramtypes', [profile_service_1.ProfileService])
-    ], ProfileComponent);
-    return ProfileComponent;
+        __metadata('design:paramtypes', [])
+    ], UserDetailComponent);
+    return UserDetailComponent;
 }());
-exports.ProfileComponent = ProfileComponent;
-//# sourceMappingURL=profile.component.js.map
+exports.UserDetailComponent = UserDetailComponent;
+//# sourceMappingURL=user-detail.component.js.map

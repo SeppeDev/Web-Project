@@ -8,8 +8,8 @@ import { DashboardService } from "./dashboard.service";
 })
 export class DashboardComponent implements OnInit {
     categories: String[] = [];
-    chores: {}[] = []
-    chore: {};
+    chores: any = []
+    chore: any;
 
     constructor (private dashSvc: DashboardService) { }
 

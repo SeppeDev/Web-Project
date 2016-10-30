@@ -1,5 +1,7 @@
 import { Injectable }       from "@angular/core";
-import { tokenNotExpired }  from "angular2-jwt";
+import { Response }         from "@angular/http";
+import {    tokenNotExpired,
+            AuthHttp }      from "angular2-jwt";
 
 import { Constants }        from "../constants";
 
@@ -8,6 +10,11 @@ declare var Auth0Lock: any;
 @Injectable()
 export class AuthService {
     /**
+     * Base url for http requests
+     */
+    private baseUrl: string = Constants.API_BASE_URL;
+
+    /**
      * Auth0 lock instance
      */
     lock = new Auth0Lock(Constants.AUTH0_CLIENTID, Constants.AUTH0_DOMAIN, {});
@@ -15,18 +22,18 @@ export class AuthService {
     /**
      * User profile 
      */
-    userProfile: Object;
+    authProfile: any;
 
-    constructor () {
+    constructor (private http: AuthHttp) {
          
         // Check for existence of token in localStorage
-        if(this.authenticated) this.userProfile = JSON.parse(localStorage.getItem("user_profile"));
+        if(this.authenticated) this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
 
         // Listen to auth0 authenticated event and set token & user profile
         this.lock.on("authenticated", (authResult: any) => {
             localStorage.setItem("id_token", authResult.idToken);
             
-            this.getProfile(authResult.idToken);    
+            this.getAuthProfile(authResult.idToken);    
         });
     }
 
@@ -58,14 +65,14 @@ export class AuthService {
      */
     logout (): void {
         localStorage.removeItem("id_token");
-        localStorage.removeItem("user_profile");
-        this.userProfile = undefined;
+        localStorage.removeItem("auth_profile");
+        this.authProfile = undefined;
     }
 
     /**
      * Decrypt jwt token to access user profile
      */
-    private getProfile (idToken: string): void {
+    private getAuthProfile (idToken: string): void {
         this.lock.getProfile(idToken, (error: any, profile: Object) => {
             if (error) 
             {
@@ -73,8 +80,26 @@ export class AuthService {
                 return;    
             }
 
-            this.userProfile = profile;
-            localStorage.setItem("user_profile", JSON.stringify(profile));
+            this.authProfile = profile;
+            localStorage.setItem("auth_profile", JSON.stringify(profile));
         });
+    }
+
+    /**
+     * Get user profile
+     */
+    private getUserProfile () { 
+        let url = `${this.baseUrl}/${this.authProfile.userId}`;
+
+        this.http.get(url).flatMap(this.extractData).subscribe((data) => {
+            
+        });
+    }
+    
+    /**
+     * Extract json from response
+     */
+    private extractData (res: Response) {
+        return res.json() || {}; 
     }
 }

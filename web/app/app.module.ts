@@ -10,6 +10,8 @@ import { AppComponent }         from "./app.component";
 import { HomeComponent }        from "./home/home.component";
 import { InfoComponent }        from "./info/info.component";
 import { DashboardComponent }   from "./dashboard/dashboard.component";
+import { UserDetailComponent}   from "./dashboard/user-detail/user-detail.component";
+import { ChoreDetailComponent}  from "./dashboard/chore-detail/chore-detail.component";
 import { ProfileComponent }     from "./profile/profile.component";
 import { EditProfileComponent } from "./profile/edit-profile/edit-profile.component";
 
@@ -87,7 +89,9 @@ import { DashboardService } from "./dashboard/dashboard.service";
         InfoComponent,
         DashboardComponent,
         ProfileComponent,
-        EditProfileComponent
+        EditProfileComponent,
+        UserDetailComponent,
+        ChoreDetailComponent
     ],
 
     // Register providers

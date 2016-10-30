@@ -15,6 +15,7 @@ var EditProfileComponent = (function () {
     function EditProfileComponent(profileSvc, route) {
         this.profileSvc = profileSvc;
         this.route = route;
+        this.profile = {};
     }
     /**
      * Fires when component is loaded
@@ -33,7 +34,10 @@ var EditProfileComponent = (function () {
      * Save edited profile
      */
     EditProfileComponent.prototype.save = function () {
-        this.profileSvc.saveProfile({});
+        console.log(this.profile);
+        console.log(this.profileSvc.authProfile.userId);
+        // let userId = this.profileSvc.authProfile.userId;
+        // this.profileSvc.saveProfile(this.profile, userId);
     };
     EditProfileComponent = __decorate([
         core_1.Component({

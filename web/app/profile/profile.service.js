@@ -18,14 +18,32 @@ var ProfileService = (function () {
          * Base url for service http calls.
          */
         this.baseUrl = constants_1.Constants.API_BASE_URL;
+        /**
+         * Auth0 profile
+         */
+        this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
     }
     /**
      * Get user profile
      */
     ProfileService.prototype.getProfile = function (userId) {
-        this.http.get(this.baseUrl + "/" + userId);
+        var url = this.baseUrl + "/" + userId;
+        return this.http.get(url)
+            .flatMap(this.extractData);
     };
-    ProfileService.prototype.saveProfile = function (profile) {
+    /**
+     * Save user profile
+     */
+    ProfileService.prototype.saveProfile = function (profile, userId) {
+        var url = this.baseUrl + "/" + userId;
+        return this.http.post(url, profile)
+            .flatMap(this.extractData);
+    };
+    /**
+     * Extract json from response
+     */
+    ProfileService.prototype.extractData = function (res) {
+        return res.json() || {};
     };
     ProfileService = __decorate([
         core_1.Injectable(), 

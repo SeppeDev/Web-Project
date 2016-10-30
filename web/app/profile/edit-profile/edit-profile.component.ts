@@ -1,7 +1,7 @@
 import { Component, OnInit }    from "@angular/core";
 import { ActivatedRoute }       from "@angular/router";
 
-import { ProfileService } from "../profile.service";
+import { ProfileService }   from "../profile.service";
 
 @Component({
     selector: "ch-edit-profile",
@@ -10,16 +10,17 @@ import { ProfileService } from "../profile.service";
 })
 export class EditProfileComponent implements OnInit {
     state: String;
+    profile: any = {};
 
     constructor (
         private profileSvc: ProfileService,
-        private route: ActivatedRoute    
+        private route: ActivatedRoute   
     ) { }
 
     /**
      * Fires when component is loaded
      */
-    ngOnInit () {
+    ngOnInit () {     
         this.route.data.forEach((data: any) => data.state == "edit" ? this.state = "Bewerk" : this.state = "Maak");
     }
 
@@ -33,7 +34,10 @@ export class EditProfileComponent implements OnInit {
     /**
      * Save edited profile
      */
-    private save () {    
-        this.profileSvc.saveProfile({});
+    private save () {
+        console.log(this.profile);
+        console.log(this.profileSvc.authProfile.userId);
+        // let userId = this.profileSvc.authProfile.userId;
+        // this.profileSvc.saveProfile(this.profile, userId);
     }
 }

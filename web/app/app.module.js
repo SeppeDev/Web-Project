@@ -19,6 +19,8 @@ var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
 var info_component_1 = require("./info/info.component");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
+var user_detail_component_1 = require("./dashboard/user-detail/user-detail.component");
+var chore_detail_component_1 = require("./dashboard/chore-detail/chore-detail.component");
 var profile_component_1 = require("./profile/profile.component");
 var edit_profile_component_1 = require("./profile/edit-profile/edit-profile.component");
 // Import guard 
@@ -94,7 +96,9 @@ var AppModule = (function () {
                 info_component_1.InfoComponent,
                 dashboard_component_1.DashboardComponent,
                 profile_component_1.ProfileComponent,
-                edit_profile_component_1.EditProfileComponent
+                edit_profile_component_1.EditProfileComponent,
+                user_detail_component_1.UserDetailComponent,
+                chore_detail_component_1.ChoreDetailComponent
             ],
             // Register providers
             providers: [

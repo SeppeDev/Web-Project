@@ -7,24 +7,24 @@
         </div>
         <div class="row">
             <div class="columns six">
-                <label for="">Voornaam</label>
-                <input class="u-full-width" type="text" />                
+                <label for="first-name">Voornaam</label>
+                <input [(ngModel)]="profile.firstName" class="u-full-width" type="text" id="first-name" />                
             </div>
             <div class="columns six">
-                <label for="">Naam</label>
-                <input class="u-full-width" type="text" />   
+                <label for="last-name">Naam</label>
+                <input [(ngModel)]="profile.lastName" class="u-full-width" type="text" id="last-name" />   
             </div>            
         </div>
         <div class="row mar-top-m">
             <div class="columns twelve">
-                <label for="">Beschrijf jezelf</label>
-                <textarea class="u-full-width"></textarea>
+                <label for="description">Beschrijf jezelf</label>
+                <textarea [(ngModel)]="profile.description" class="u-full-width" id="description"></textarea>
             </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
                 <label for="is-active">Is uw profiel publiek?</label>
-                <select id="is-active">
+                <select  [(ngModel)]="profile.isPublic" id="is-active">
                     <option value="">Kies hier ...</option>
                     <option value="1">Ja</option>
                     <option value="0">Nee</option>
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="row mar-top-l">
-            <a class="ch-btn ch-btn-lg ch-bg-blue">Opslaan</a>
+            <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable">Opslaan</a>
         </div>
     </div>
 </section>

@@ -12,19 +12,24 @@ var core_1 = require("@angular/core");
 var angular2_jwt_1 = require("angular2-jwt");
 var constants_1 = require("../constants");
 var AuthService = (function () {
-    function AuthService() {
+    function AuthService(http) {
         var _this = this;
+        this.http = http;
+        /**
+         * Base url for http requests
+         */
+        this.baseUrl = constants_1.Constants.API_BASE_URL;
         /**
          * Auth0 lock instance
          */
         this.lock = new Auth0Lock(constants_1.Constants.AUTH0_CLIENTID, constants_1.Constants.AUTH0_DOMAIN, {});
         // Check for existence of token in localStorage
         if (this.authenticated)
-            this.userProfile = JSON.parse(localStorage.getItem("user_profile"));
+            this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
         // Listen to auth0 authenticated event and set token & user profile
         this.lock.on("authenticated", function (authResult) {
             localStorage.setItem("id_token", authResult.idToken);
-            _this.getProfile(authResult.idToken);
+            _this.getAuthProfile(authResult.idToken);
         });
     }
     /**
@@ -52,26 +57,40 @@ var AuthService = (function () {
      */
     AuthService.prototype.logout = function () {
         localStorage.removeItem("id_token");
-        localStorage.removeItem("user_profile");
-        this.userProfile = undefined;
+        localStorage.removeItem("auth_profile");
+        this.authProfile = undefined;
     };
     /**
      * Decrypt jwt token to access user profile
      */
-    AuthService.prototype.getProfile = function (idToken) {
+    AuthService.prototype.getAuthProfile = function (idToken) {
         var _this = this;
         this.lock.getProfile(idToken, function (error, profile) {
             if (error) {
                 console.log(error);
                 return;
             }
-            _this.userProfile = profile;
-            localStorage.setItem("user_profile", JSON.stringify(profile));
+            _this.authProfile = profile;
+            localStorage.setItem("auth_profile", JSON.stringify(profile));
         });
+    };
+    /**
+     * Get user profile
+     */
+    AuthService.prototype.getUserProfile = function () {
+        var url = this.baseUrl + "/" + this.authProfile.userId;
+        this.http.get(url).flatMap(this.extractData).subscribe(function (data) {
+        });
+    };
+    /**
+     * Extract json from response
+     */
+    AuthService.prototype.extractData = function (res) {
+        return res.json() || {};
     };
     AuthService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [angular2_jwt_1.AuthHttp])
     ], AuthService);
     return AuthService;
 }());
