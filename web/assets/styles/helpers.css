@@ -54,6 +54,10 @@
 }
 
 /* Margins */
+.no-mar-l {
+    margin-left: 0 !important;
+}
+
 .mar-top-l {
     margin-top: 30px;
 }
@@ -62,9 +66,13 @@
     margin-top: 15px;
 }
 
+.no-mar-b {
+    margin-bottom: 0 !important;
+}
+
 /* Shadows */
 .shadow {
-  box-shadow: 0 0 5px rgba(68,68,68,0.6);
+  box-shadow: 0 0 3px rgba(68,68,68,0.6);
 }
 /* Miscellaneous */
 /*body {

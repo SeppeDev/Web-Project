@@ -9,15 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var dashboard_service_1 = require("../dashboard.service");
 var UserDetailComponent = (function () {
-    function UserDetailComponent() {
+    function UserDetailComponent(dashSvc) {
+        this.dashSvc = dashSvc;
     }
+    UserDetailComponent.prototype.ngOnInit = function () {
+        this.getUser("lelqol");
+    };
+    UserDetailComponent.prototype.getUser = function (userName) {
+        var _this = this;
+        this.dashSvc.getUser(userName).subscribe(function (user) {
+            _this.user = user;
+        });
+    };
     UserDetailComponent = __decorate([
         core_1.Component({
             selector: "ch-user-detail",
             template: "<h1>User Detail</h1>"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [dashboard_service_1.DashboardService])
     ], UserDetailComponent);
     return UserDetailComponent;
 }());

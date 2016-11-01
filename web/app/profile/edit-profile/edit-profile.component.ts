@@ -10,7 +10,9 @@ import { ProfileService }   from "../profile.service";
 })
 export class EditProfileComponent implements OnInit {
     state: String;
-    profile: any = {};
+    profile: any = {
+        isPublic: ""
+    };
 
     constructor (
         private profileSvc: ProfileService,
@@ -36,7 +38,7 @@ export class EditProfileComponent implements OnInit {
      */
     private save () {
         console.log(this.profile);
-        console.log(this.profileSvc.authProfile.userId);
+        console.log(this.profileSvc.authProfile.user_id);
         // let userId = this.profileSvc.authProfile.userId;
         // this.profileSvc.saveProfile(this.profile, userId);
     }

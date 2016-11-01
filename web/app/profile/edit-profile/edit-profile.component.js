@@ -15,7 +15,9 @@ var EditProfileComponent = (function () {
     function EditProfileComponent(profileSvc, route) {
         this.profileSvc = profileSvc;
         this.route = route;
-        this.profile = {};
+        this.profile = {
+            isPublic: ""
+        };
     }
     /**
      * Fires when component is loaded
@@ -35,7 +37,7 @@ var EditProfileComponent = (function () {
      */
     EditProfileComponent.prototype.save = function () {
         console.log(this.profile);
-        console.log(this.profileSvc.authProfile.userId);
+        console.log(this.profileSvc.authProfile.user_id);
         // let userId = this.profileSvc.authProfile.userId;
         // this.profileSvc.saveProfile(this.profile, userId);
     };

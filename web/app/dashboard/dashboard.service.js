@@ -38,6 +38,13 @@ var DashboardService = (function () {
         return this.getData(url);
     };
     /**
+     * Get specific user
+     */
+    DashboardService.prototype.getUser = function (userName) {
+        var url = this.baseUrl + "/user/" + userName;
+        return this.getData(url);
+    };
+    /**
      * Perform http get request
      */
     DashboardService.prototype.getData = function (url) {

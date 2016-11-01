@@ -40,6 +40,14 @@ export class DashboardService {
     }
 
     /**
+     * Get specific user
+     */
+    getUser (userName: string) {
+        let url = `${this.baseUrl}/user/${userName}`;
+        return this.getData(url);
+    }
+
+    /**
      * Perform http get request 
      */
     private getData (url: string) {
