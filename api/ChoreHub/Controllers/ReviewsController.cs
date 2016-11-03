@@ -44,6 +44,34 @@ namespace ChoreHub.Controllers
             return new ObjectResult(review);
         }
 
+        // GET : api/reviews/author/5
+        [HttpGet("{id}", Name = "GetReviewByAuthor")]
+        public IEnumerable<Review> GetByAuthorId(int id)
+        {
+            //var review = Reviews.Find(id);
+
+            //if (review == null)
+            //{
+            //    return NotFound();
+            //}
+
+            return Reviews.GetByAuthorId(id);
+        }
+
+        // GET : api/reviews/subject/5
+        [HttpGet("{id}", Name = "GetReviewBySubject")]
+        public IEnumerable<Review> GetBySubjectId(int id)
+        {
+            //var review = Reviews.Find(id);
+
+            //if (review == null)
+            //{
+            //    return NotFound();
+            //}
+
+            return Reviews.GetByAuthorId(id);
+        }
+
         // POST api/reviews
         [HttpPost]
         public IActionResult Create([FromBody] Review review)

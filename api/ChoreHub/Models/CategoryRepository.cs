@@ -44,7 +44,7 @@ namespace ChoreHub.Models
 
         public void Update(Category item)
         {
-            var itemToUpdate = _context.Categories.SingleOrDefault(e => e.Id.Equals(id));
+            var itemToUpdate = _context.Categories.SingleOrDefault(e => e.Id.Equals(item.Id));
             if(itemToUpdate != null)
             {
                 itemToUpdate.Name = item.Name;

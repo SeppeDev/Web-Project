@@ -24,6 +24,10 @@ namespace ChoreHub.Models
         {
             return _context.Chores.Where(e => e.Category.Id.Equals(id));
         }
+        public IEnumerable<Chore> GetByUserId(int id)
+        {
+            return _context.Chores.Where(e => e.User.Id.Equals(id));
+        }
 
         public void Add(Chore item)
         {

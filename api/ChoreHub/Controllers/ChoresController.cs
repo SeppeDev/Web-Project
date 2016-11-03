@@ -13,15 +13,21 @@ namespace ChoreHub.Controllers
     [Route("api/[controller]")]
     public class ChoresController : Controller
     {
-        public ChoresController(IChoreRepository chores)
+        public ChoresController(IChoreRepository chores/*, ICategoryRepository categories*/)
         {
             Chores = chores;
+            //Categories = categories;
         }
 
         public IChoreRepository Chores
         {
             get; set;
         }
+
+        //public ICategoryRepository Categories
+        //{
+        //    get; set;
+        //}
 
         // GET : api/chores
         [HttpGet]
@@ -44,9 +50,23 @@ namespace ChoreHub.Controllers
             return new ObjectResult(chore);
         }
 
-        // GET : api/chores/5
+        // GET : api/chores/category/5
         [HttpGet("{id}", Name = "GetChoreByCategory")]
         public IEnumerable<Chore> GetByCategoryId(int id)
+        {
+            //var category = Categories.Find(id);
+
+            //if (category == null)
+            //{
+            //    return NotFound();
+            //}
+
+            return Chores.GetByCategoryId(id);
+        }
+
+        // GET : api/chores/user/5
+        [HttpGet("{id}", Name = "GetChoreByUser")]
+        public IEnumerable<Chore> GetByUserId(int id)
         {
             //var category = Categories.Find(id);
 
@@ -55,7 +75,7 @@ namespace ChoreHub.Controllers
             //    return NotFound();
             //}
 
-            return Chores.GetByCategoryId(id);
+            return Chores.GetByUserId(id);
         }
 
         [HttpPost]

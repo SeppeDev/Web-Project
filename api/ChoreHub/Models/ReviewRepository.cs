@@ -20,6 +20,16 @@ namespace ChoreHub.Models
             return _context.Reviews;
         }
 
+        public IEnumerable<Review> GetByAuthorId(int id)
+        {
+            return _context.Reviews.Where(e => e.Author.Id.Equals(id));
+        }
+
+        public IEnumerable<Review> GetBySubjectId(int id)
+        {
+            return _context.Reviews.Where(e => e.Subject.Id.Equals(id));
+        }
+
         public void Add(Review item)
         {
             _context.Reviews.Add(item);
