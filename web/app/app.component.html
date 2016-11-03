@@ -8,7 +8,7 @@
                 <ul class="nav-list">
                     <li><a routerLink="/home" class="ch-blue">Home</a></li>
                     <li><a routerLink="/info" class="ch-red">Info</a></li>
-                    <li><a routerLink="/hub" class="ch-yellow">Hub</a></li>
+                    <li><a routerLink="/hub/users" class="ch-green">Hub</a></li>
                 </ul>
             </nav>
         </div>
@@ -19,7 +19,7 @@
             </ul>
             <ul *ngIf="authSvc.authenticated()" class="auth-list u-pull-right">
                 <li>
-                    <a class="clickable" (click)="showTopMenu()">{{ authSvc.userProfile.nickname }}<i class="material-icons fix-icon">arrow_drop_down</i></a>
+                    <a class="clickable" (click)="showTopMenu()">{{ authSvc.authProfile.nickname }}<i class="material-icons fix-icon">arrow_drop_down</i></a>
                     <ul class="dropdown-content shadow" *ngIf="topMenuActive">
                         <li><a routerLink="/profile">My Profile</a></li>
                         <li><a (click)="authSvc.logout()" class="clickable">Logout</a></li>
@@ -42,7 +42,7 @@
             <ul class="cf nav-list">
                 <li><a routerLink="/home">Home</a></li>
                 <li><a routerLink="/info">Info</a></li>
-                <li><a routerLink="/hub">Hub</a></li>
+                <li><a routerLink="/hub/users">Hub</a></li>
             </ul>
         </div>
         <div class="four columns">

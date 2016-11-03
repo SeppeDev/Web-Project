@@ -1,0 +1,38 @@
+<section class="view">
+    <div class="container">
+        <div class="row">
+            <div class="columns six">
+                <h1 class="light ch-green no-mar-b">Hub</h1>
+                <h5 class="light">Zoek een chore die je past</h5>
+            </div>
+            <div class="columns six">
+                <ul class="u-pull-right hub-nav-list">
+                    <li><a routerLink="/hub/users">Personen</a></li>
+                    <li><a routerLink="/hub/chores">Chores</a></li>
+                </ul>
+                <span class="u-pull-right hub-nav-list regular">Zoek op: </span>
+            </div>
+        </div>
+        <div class="row shadow ch-bg-green">
+            <aside class="three columns text-white">
+                <h5>Categories</h5>
+                <ul>
+                    <li><a class="clickable" (click)="reset()" >Alle</a></li>
+                    <li *ngFor="let category of categories">
+                        <a class="clickable" (click)="changeCategory(category)">{{ category }}</a>
+                    </li>
+                </ul>
+            </aside>
+            <div class="nine columns hub-container u-pull-right">
+                <h5 class="ch-green">Chores</h5>
+                <div *ngFor="let chore of filteredChores; let e = even;" class="columns six card" [ngClass]="e == true ? 'no-mar-l' : ''">
+                    <h5>{{ chore.title }}</h5>
+                    <p style="max-height: 80px; overflow: hidden;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam ipsum adipisci inventore numquam, debitis aliquid nisi officiis, eaque saepe, optio in non quis voluptate eum dolores quae repudiandae expedita ex.</p>
+                    <label>Geplaatst door:</label>
+                    <p>{{ chore.author.firstName }} {{ chore.author.lastName }}</p>
+                    <a class="ch-blue" [routerLink]="['/hub/chores/', chore.title]">Verder...</a>         
+                </div>                            
+            </div>
+        </div>
+    </div>
+</section>

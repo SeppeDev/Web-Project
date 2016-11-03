@@ -11,6 +11,11 @@ export class DashboardService {
      */
     private baseUrl: string;
 
+    /**
+     * Auth0 profile
+     */
+    authProfile: any = JSON.parse(localStorage.getItem("auth_profile"));
+
     constructor (private http: AuthHttp) {
         this.baseUrl = Constants.API_BASE_URL;
     }
@@ -36,6 +41,14 @@ export class DashboardService {
      */
     getChoresByCategory (category: string) {        
         let url = `${this.baseUrl}/${category}/chores`;
+        return this.getData(url);
+    }
+
+    /**
+     * Get specific user
+     */
+    getUser (userName: string) {
+        let url = `${this.baseUrl}/user/${userName}`;
         return this.getData(url);
     }
 

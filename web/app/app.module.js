@@ -18,8 +18,13 @@ var angular2_jwt_1 = require("angular2-jwt");
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
 var info_component_1 = require("./info/info.component");
-var dashboard_component_1 = require("./dashboard/dashboard.component");
+var user_dashboard_component_1 = require("./dashboard/user-dashboard/user-dashboard.component");
+var user_detail_component_1 = require("./dashboard/user-detail/user-detail.component");
+var chore_dashboard_component_1 = require("./dashboard/chore-dashboard/chore-dashboard.component");
+var chore_detail_component_1 = require("./dashboard/chore-detail/chore-detail.component");
+var chore_create_component_1 = require("./dashboard/chore-create/chore-create.component");
 var profile_component_1 = require("./profile/profile.component");
+var edit_profile_component_1 = require("./profile/edit-profile/edit-profile.component");
 // Import guard 
 var auth_guard_1 = require("./shared/auth/auth.guard");
 var auth_service_1 = require("./shared/auth/auth.service");
@@ -52,17 +57,63 @@ var AppModule = (function () {
                     },
                     {
                         path: "hub",
-                        canActivate: [auth_guard_1.AuthGuard],
+                        canActivate: [],
                         children: [
                             {
-                                path: "",
-                                component: dashboard_component_1.DashboardComponent
+                                path: "users",
+                                children: [
+                                    {
+                                        path: "",
+                                        component: user_dashboard_component_1.UserDashboardComponent
+                                    },
+                                    {
+                                        path: ":userName",
+                                        component: user_detail_component_1.UserDetailComponent
+                                    }
+                                ]
+                            },
+                            {
+                                path: "chores",
+                                children: [
+                                    {
+                                        path: "",
+                                        component: chore_dashboard_component_1.ChoreDashboardComponent
+                                    },
+                                    {
+                                        path: ":choreName",
+                                        component: chore_detail_component_1.ChoreDetailComponent
+                                    },
+                                    {
+                                        path: "create",
+                                        component: chore_create_component_1.ChoreCreateComponent
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
                         path: "profile",
-                        component: profile_component_1.ProfileComponent
+                        canActivate: [],
+                        children: [
+                            {
+                                path: "",
+                                component: profile_component_1.ProfileComponent
+                            },
+                            {
+                                path: "create",
+                                data: {
+                                    state: "create"
+                                },
+                                component: edit_profile_component_1.EditProfileComponent
+                            },
+                            {
+                                path: "edit",
+                                data: {
+                                    state: "edit"
+                                },
+                                component: edit_profile_component_1.EditProfileComponent
+                            }
+                        ]
                     }
                 ])
             ],
@@ -71,10 +122,15 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 home_component_1.HomeComponent,
                 info_component_1.InfoComponent,
-                dashboard_component_1.DashboardComponent,
-                profile_component_1.ProfileComponent
+                user_dashboard_component_1.UserDashboardComponent,
+                chore_dashboard_component_1.ChoreDashboardComponent,
+                profile_component_1.ProfileComponent,
+                edit_profile_component_1.EditProfileComponent,
+                user_detail_component_1.UserDetailComponent,
+                chore_detail_component_1.ChoreDetailComponent,
+                chore_create_component_1.ChoreCreateComponent
             ],
-            // Register providers
+            // Register providersz
             providers: [
                 angular2_jwt_1.AUTH_PROVIDERS,
                 auth_guard_1.AuthGuard,

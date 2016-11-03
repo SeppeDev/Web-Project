@@ -9,21 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var ChoreCardComponent = (function () {
-    function ChoreCardComponent() {
+var dashboard_service_1 = require("../dashboard.service");
+var ChoreCreateComponent = (function () {
+    function ChoreCreateComponent(dashSvc) {
+        this.dashSvc = dashSvc;
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], ChoreCardComponent.prototype, "chore", void 0);
-    ChoreCardComponent = __decorate([
+    ChoreCreateComponent = __decorate([
         core_1.Component({
-            selector: "ch-chore-card",
-            templateUrl: "app/shared/chore-card/chore-card.component.html"
+            selector: "ch-chore-create",
+            templateUrl: "app/dashboard/chore-create/chore-create.component.html"
         }), 
-        __metadata('design:paramtypes', [])
-    ], ChoreCardComponent);
-    return ChoreCardComponent;
+        __metadata('design:paramtypes', [dashboard_service_1.DashboardService])
+    ], ChoreCreateComponent);
+    return ChoreCreateComponent;
 }());
-exports.ChoreCardComponent = ChoreCardComponent;
-//# sourceMappingURL=chore-card.component.js.map
+exports.ChoreCreateComponent = ChoreCreateComponent;
+//# sourceMappingURL=chore-create.component.js.map

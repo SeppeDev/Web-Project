@@ -6,11 +6,16 @@ import { HttpModule }       from "@angular/http";
 import { AUTH_PROVIDERS }   from "angular2-jwt";
 
 // Import components
-import { AppComponent }         from "./app.component";
-import { HomeComponent }        from "./home/home.component";
-import { InfoComponent }        from "./info/info.component";
-import { DashboardComponent }   from "./dashboard/dashboard.component";
-import { ProfileComponent }     from "./profile/profile.component";
+import { AppComponent }             from "./app.component";
+import { HomeComponent }            from "./home/home.component";
+import { InfoComponent }            from "./info/info.component";
+import { UserDashboardComponent }   from "./dashboard/user-dashboard/user-dashboard.component";
+import { UserDetailComponent}       from "./dashboard/user-detail/user-detail.component";
+import { ChoreDashboardComponent }  from "./dashboard/chore-dashboard/chore-dashboard.component";
+import { ChoreDetailComponent}      from "./dashboard/chore-detail/chore-detail.component";
+import { ChoreCreateComponent }     from "./dashboard/chore-create/chore-create.component";
+import { ProfileComponent }         from "./profile/profile.component";
+import { EditProfileComponent }     from "./profile/edit-profile/edit-profile.component";
 
 // Import guard 
 import { AuthGuard }    from "./shared/auth/auth.guard";
@@ -44,17 +49,63 @@ import { DashboardService } from "./dashboard/dashboard.service";
             },
             {
                 path: "hub",
-                canActivate: [ AuthGuard ],
+                canActivate: [  ],
                 children: [
                     {
-                        path: "",
-                        component: DashboardComponent
+                        path: "users",
+                        children: [
+                            {
+                                path: "",
+                                component: UserDashboardComponent
+                            },
+                            {
+                                path: ":userName",
+                                component: UserDetailComponent
+                            }
+                        ]
+                    },
+                    {
+                        path: "chores",
+                        children: [
+                            {
+                                path: "",
+                                component: ChoreDashboardComponent
+                            },
+                            {
+                                path: ":choreName",
+                                component: ChoreDetailComponent
+                            },
+                            {
+                                path: "create",
+                                component: ChoreCreateComponent
+                            }
+                        ]
                     }
                 ]
             },
             {
                 path: "profile",
-                component: ProfileComponent
+                canActivate: [  ],
+                children: [
+                    {
+                        path: "",
+                        component: ProfileComponent
+                    },
+                    {
+                        path: "create",
+                        data: {
+                            state: "create"
+                        },
+                        component: EditProfileComponent
+                    },
+                    {
+                        path: "edit",
+                        data: {
+                            state: "edit"
+                        },                        
+                        component: EditProfileComponent
+                    }
+                ]
             }
         ])
     ],
@@ -64,11 +115,16 @@ import { DashboardService } from "./dashboard/dashboard.service";
         AppComponent,
         HomeComponent,
         InfoComponent,
-        DashboardComponent,
-        ProfileComponent
+        UserDashboardComponent,
+        ChoreDashboardComponent,
+        ProfileComponent,
+        EditProfileComponent,
+        UserDetailComponent,
+        ChoreDetailComponent,
+        ChoreCreateComponent
     ],
 
-    // Register providers
+    // Register providersz
     providers: [
         AUTH_PROVIDERS,
         AuthGuard,

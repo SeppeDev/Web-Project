@@ -1,22 +1,18 @@
 <section class="view">
     <div class="container">
         <div class="row">
-            <div class="columns eight">
-                <h1>Mijn profiel</h1>
-            </div>
-            <div class="columns four">
-                <a routerLink="/profile/edit" class="button u-pull-right ch-btn ch-bg-blue ch-btn-lg">Edit</a>
+            <div class="columns twelve">
+                <h1>{{ user.firstName }} {{ user.lastName }}</h1>
             </div>
         </div>
         <div class="row">
             <div class="columns twelve">
-                <label>Naam:</label>
-                <p>Benno Meysmans</p>
+                <img style="height: 200px; width: 200px;" src="http://www.judithvandaalen.nl/wp-content/uploads/galleries/post-444/Profielfoto-Portretfotografie-Fotostudio-1.jpg" alt="profile picture" />
             </div>
         </div>
-        <div class="row">
+        <div class="row mar-top-m">
             <div class="columns twelve">
-                <label>Beschrijving:</label>
+                <label>Wie ben ik?</label>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
                     Odit temporibus earum, dolor numquam aspernatur, odio fugit nisi quos fuga laudantium neque sequi 
@@ -26,14 +22,16 @@
         </div>
         <div class="row">
             <div class="columns twelve">
-                <label>Status: </label>
-                <p>Publiek</p>
+                <label>Waar kan ik mee helpen?</label>
+                <ul class="category-list">
+                    <li *ngFor="let category of user.categories">{{ category }}</li>
+                </ul>
             </div>
         </div>
         <div class="row">
-            <div class="columns twelve">
-                <label>Profielfoto</label>
-                <img style="height: 200px; width: 200px;" src="http://www.judithvandaalen.nl/wp-content/uploads/galleries/post-444/Profielfoto-Portretfotografie-Fotostudio-1.jpg" alt="profile picture" />
+            <div class="twelve columns">
+                <label>Contacteer mij</label>
+                <span>{{ dashSvc.authProfile.email }}</span>
             </div>
         </div>
     </div>

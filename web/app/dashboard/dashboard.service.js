@@ -14,6 +14,10 @@ var constants_1 = require("../shared/constants");
 var DashboardService = (function () {
     function DashboardService(http) {
         this.http = http;
+        /**
+         * Auth0 profile
+         */
+        this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
         this.baseUrl = constants_1.Constants.API_BASE_URL;
     }
     /**
@@ -35,6 +39,13 @@ var DashboardService = (function () {
      */
     DashboardService.prototype.getChoresByCategory = function (category) {
         var url = this.baseUrl + "/" + category + "/chores";
+        return this.getData(url);
+    };
+    /**
+     * Get specific user
+     */
+    DashboardService.prototype.getUser = function (userName) {
+        var url = this.baseUrl + "/user/" + userName;
         return this.getData(url);
     };
     /**

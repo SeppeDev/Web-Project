@@ -1,0 +1,44 @@
+<section class="view">
+    <div class="container">
+        <div class="row">
+            <div class="columns twelve">
+                <h1>{{ state }} profiel</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns six">
+                <label for="first-name">Voornaam</label>
+                <input [(ngModel)]="profile.firstName" class="u-full-width" type="text" id="first-name" />                
+            </div>
+            <div class="columns six">
+                <label for="last-name">Naam</label>
+                <input [(ngModel)]="profile.lastName" class="u-full-width" type="text" id="last-name" />   
+            </div>            
+        </div>
+        <div class="row mar-top-m">
+            <div class="columns twelve">
+                <label for="description">Beschrijf jezelf</label>
+                <textarea [(ngModel)]="profile.description" class="u-full-width" id="description"></textarea>
+            </div>
+        </div>
+        <div class="row mar-top-m">
+            <div class="columns six">
+                <label for="is-active">Is uw profiel publiek?</label>
+                <select [(ngModel)]="profile.isPublic" id="is-active">
+                    <option value="">Kies hier ...</option>
+                    <option value="1">Ja</option>
+                    <option value="0">Nee</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mar-top-m">
+            <div class="columns six">
+                <label for="">Profiel foto</label>
+                <input type="file">
+            </div>
+        </div>
+        <div class="row mar-top-l">
+            <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable">Opslaan</a>
+        </div>
+    </div>
+</section>

@@ -9,19 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var Auth_Service_1 = require("../shared/auth/Auth.Service");
+var profile_service_1 = require("./profile.service");
 var ProfileComponent = (function () {
-    function ProfileComponent(authSvc) {
-        this.authSvc = authSvc;
-        console.log(this.authSvc.userProfile);
+    function ProfileComponent(profileSvc) {
+        this.profileSvc = profileSvc;
     }
+    ProfileComponent.prototype.getProfile = function () {
+        this.profileSvc.getProfile(this.authProfile.userId);
+    };
     ProfileComponent = __decorate([
         core_1.Component({
             selector: "ch-profile",
-            providers: [Auth_Service_1.AuthService],
+            providers: [profile_service_1.ProfileService],
             templateUrl: "app/profile/profile.component.html"
         }), 
-        __metadata('design:paramtypes', [Auth_Service_1.AuthService])
+        __metadata('design:paramtypes', [profile_service_1.ProfileService])
     ], ProfileComponent);
     return ProfileComponent;
 }());
