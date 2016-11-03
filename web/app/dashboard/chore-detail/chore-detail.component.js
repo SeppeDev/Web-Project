@@ -11,11 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var ChoreDetailComponent = (function () {
     function ChoreDetailComponent() {
+        this.chore = {
+            title: "Title",
+            category: "Cleaning",
+            author: {
+                firstName: "Benno",
+                lastName: "Meysmans",
+                description: "Lorem Ipsum Zever",
+                email: "test@example.com",
+                isAdmin: false,
+                image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
+            },
+            description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
+        };
     }
     ChoreDetailComponent = __decorate([
         core_1.Component({
             selector: "ch-chore-detail",
-            template: "<h1>Chore-detail</h1>"
+            templateUrl: "app/dashboard/chore-detail/chore-detail.component.html"
         }), 
         __metadata('design:paramtypes', [])
     ], ChoreDetailComponent);

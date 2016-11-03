@@ -24,8 +24,7 @@ export class UserDashboardComponent implements OnInit {
     /**
      * Filter users list by selected category
      */
-    changeCategory (category: any) {
-        console.log(this.users);
+    changeCategory (category: any): void {
         this.filteredUsers = this.users.filter((user: any) => {
             return user.categories.includes(category);
         });
@@ -48,24 +47,6 @@ export class UserDashboardComponent implements OnInit {
             }, (error: any) => {
                 console.log(error);
             });
-    }
-
-    private getChores (): void {
-        this.dashSvc.getChores()
-            .subscribe((data: any) => {
-                this.chores.push(data);
-            }, (error: any) => {
-                console.log(error)
-            });
-    }
-
-    private getChoresByCategory (category: string): void {
-        this.dashSvc.getChoresByCategory(category)
-            .subscribe((data: any) => {
-                this.chores.push(data);
-            }, (error: any) => {
-                console.log(error);
-            })
     }
 
     /**
@@ -108,61 +89,6 @@ export class UserDashboardComponent implements OnInit {
             image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
         }
 
-    ];
-
-    chores: any = [
-        {
-            title: "Title",
-            category: "Shopping",
-            user: {
-                firstName: "Benno",
-                lastName: "Meysmans",
-                description: "Lorem Ipsum Zever",
-                email: "test@example.com",
-                isAdmin: false,
-                image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-            },
-            description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
-        },
-        {
-            title: "Title",
-            category: "Shopping",
-            user: {
-                firstName: "Benno",
-                lastName: "Meysmans",
-                description: "Lorem Ipsum Zever",
-                email: "test@example.com",
-                isAdmin: false,
-                image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-            },
-            description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
-        },
-        {
-            title: "Title",
-            category: "Shopping",
-            user: {
-                firstName: "Benno",
-                lastName: "Meysmans",
-                description: "Lorem Ipsum Zever",
-                email: "test@example.com",
-                isAdmin: false,
-                image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-            },
-            description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
-        },
-        {
-            title: "Title",
-            category: "Shopping",
-            user: {
-                firstName: "Benno",
-                lastName: "Meysmans",
-                description: "Lorem Ipsum Zever",
-                email: "test@example.com",
-                isAdmin: false,
-                image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-            },
-            description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
-        }
     ];
 
     categories: any = [

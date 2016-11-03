@@ -11,7 +11,9 @@ import { HomeComponent }            from "./home/home.component";
 import { InfoComponent }            from "./info/info.component";
 import { UserDashboardComponent }   from "./dashboard/user-dashboard/user-dashboard.component";
 import { UserDetailComponent}       from "./dashboard/user-detail/user-detail.component";
+import { ChoreDashboardComponent }  from "./dashboard/chore-dashboard/chore-dashboard.component";
 import { ChoreDetailComponent}      from "./dashboard/chore-detail/chore-detail.component";
+import { ChoreCreateComponent }     from "./dashboard/chore-create/chore-create.component";
 import { ProfileComponent }         from "./profile/profile.component";
 import { EditProfileComponent }     from "./profile/edit-profile/edit-profile.component";
 
@@ -51,7 +53,33 @@ import { DashboardService } from "./dashboard/dashboard.service";
                 children: [
                     {
                         path: "users",
-                        component: UserDashboardComponent
+                        children: [
+                            {
+                                path: "",
+                                component: UserDashboardComponent
+                            },
+                            {
+                                path: ":userName",
+                                component: UserDetailComponent
+                            }
+                        ]
+                    },
+                    {
+                        path: "chores",
+                        children: [
+                            {
+                                path: "",
+                                component: ChoreDashboardComponent
+                            },
+                            {
+                                path: ":choreName",
+                                component: ChoreDetailComponent
+                            },
+                            {
+                                path: "create",
+                                component: ChoreCreateComponent
+                            }
+                        ]
                     }
                 ]
             },
@@ -88,10 +116,12 @@ import { DashboardService } from "./dashboard/dashboard.service";
         HomeComponent,
         InfoComponent,
         UserDashboardComponent,
+        ChoreDashboardComponent,
         ProfileComponent,
         EditProfileComponent,
         UserDetailComponent,
-        ChoreDetailComponent
+        ChoreDetailComponent,
+        ChoreCreateComponent
     ],
 
     // Register providersz

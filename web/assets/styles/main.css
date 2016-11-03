@@ -252,3 +252,11 @@ aside > ul > li > a:hover {
 .hub-nav-list > li > a:hover {
    border-bottom: 1px solid;
 }
+
+.category-list {
+    list-style: none;
+}
+
+.category-list > li {
+    margin: 0 !important;
+}

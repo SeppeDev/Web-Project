@@ -14,6 +14,10 @@ var constants_1 = require("../shared/constants");
 var DashboardService = (function () {
     function DashboardService(http) {
         this.http = http;
+        /**
+         * Auth0 profile
+         */
+        this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
         this.baseUrl = constants_1.Constants.API_BASE_URL;
     }
     /**

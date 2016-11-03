@@ -55,60 +55,6 @@ var UserDashboardComponent = (function () {
                 image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
             }
         ];
-        this.chores = [
-            {
-                title: "Title",
-                category: "Shopping",
-                user: {
-                    firstName: "Benno",
-                    lastName: "Meysmans",
-                    description: "Lorem Ipsum Zever",
-                    email: "test@example.com",
-                    isAdmin: false,
-                    image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-                },
-                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
-            },
-            {
-                title: "Title",
-                category: "Shopping",
-                user: {
-                    firstName: "Benno",
-                    lastName: "Meysmans",
-                    description: "Lorem Ipsum Zever",
-                    email: "test@example.com",
-                    isAdmin: false,
-                    image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-                },
-                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
-            },
-            {
-                title: "Title",
-                category: "Shopping",
-                user: {
-                    firstName: "Benno",
-                    lastName: "Meysmans",
-                    description: "Lorem Ipsum Zever",
-                    email: "test@example.com",
-                    isAdmin: false,
-                    image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-                },
-                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
-            },
-            {
-                title: "Title",
-                category: "Shopping",
-                user: {
-                    firstName: "Benno",
-                    lastName: "Meysmans",
-                    description: "Lorem Ipsum Zever",
-                    email: "test@example.com",
-                    isAdmin: false,
-                    image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-                },
-                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
-            }
-        ];
         this.categories = [
             "Shopping", "Cleaning", "Playing", "Cooking", "Overwatch"
         ];
@@ -124,7 +70,6 @@ var UserDashboardComponent = (function () {
      * Filter users list by selected category
      */
     UserDashboardComponent.prototype.changeCategory = function (category) {
-        console.log(this.users);
         this.filteredUsers = this.users.filter(function (user) {
             return user.categories.includes(category);
         });
@@ -143,24 +88,6 @@ var UserDashboardComponent = (function () {
         this.dashSvc.getCategories()
             .subscribe(function (data) {
             _this.categories.push(data);
-        }, function (error) {
-            console.log(error);
-        });
-    };
-    UserDashboardComponent.prototype.getChores = function () {
-        var _this = this;
-        this.dashSvc.getChores()
-            .subscribe(function (data) {
-            _this.chores.push(data);
-        }, function (error) {
-            console.log(error);
-        });
-    };
-    UserDashboardComponent.prototype.getChoresByCategory = function (category) {
-        var _this = this;
-        this.dashSvc.getChoresByCategory(category)
-            .subscribe(function (data) {
-            _this.chores.push(data);
         }, function (error) {
             console.log(error);
         });
