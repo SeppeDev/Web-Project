@@ -13,12 +13,18 @@ namespace ChoreHub.Controllers
     [Route("api/[controller]")]
     public class ReviewsController : Controller
     {
-        public ReviewsController(IReviewRepository reviews)
+        public ReviewsController(IReviewRepository reviews, IUserRepository users)
         {
             Reviews = reviews;
+            Users = users;
         }
 
         public IReviewRepository Reviews
+        {
+            get; set;
+        }
+
+        public IUserRepository Users
         {
             get; set;
         }
@@ -46,30 +52,32 @@ namespace ChoreHub.Controllers
 
         // GET : api/reviews/author/5
         [HttpGet("{id}", Name = "GetReviewByAuthor")]
+        [Route("author")]
         public IEnumerable<Review> GetByAuthorId(int id)
         {
-            //var review = Reviews.Find(id);
+            var author = Users.Find(id);
 
-            //if (review == null)
-            //{
-            //    return NotFound();
-            //}
+            if (author == null)
+            {
+                return null;
+            }
 
             return Reviews.GetByAuthorId(id);
         }
 
         // GET : api/reviews/subject/5
         [HttpGet("{id}", Name = "GetReviewBySubject")]
+        [Route("subject")]
         public IEnumerable<Review> GetBySubjectId(int id)
         {
-            //var review = Reviews.Find(id);
+            var subject = Users.Find(id);
 
-            //if (review == null)
-            //{
-            //    return NotFound();
-            //}
+            if (subject == null)
+            {
+                return null;
+            }
 
-            return Reviews.GetByAuthorId(id);
+            return Reviews.GetBySubjectId(id);
         }
 
         // POST api/reviews

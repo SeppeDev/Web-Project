@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using ChoreHub.Models;
+using System.Net.Http;
+using System.Net;
+using System.Web.Http;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,10 +16,11 @@ namespace ChoreHub.Controllers
     [Route("api/[controller]")]
     public class ChoresController : Controller
     {
-        public ChoresController(IChoreRepository chores/*, ICategoryRepository categories*/)
+        public ChoresController(IChoreRepository chores, ICategoryRepository categories, IUserRepository users)
         {
             Chores = chores;
-            //Categories = categories;
+            Categories = categories;
+            Users = users;
         }
 
         public IChoreRepository Chores
@@ -24,10 +28,15 @@ namespace ChoreHub.Controllers
             get; set;
         }
 
-        //public ICategoryRepository Categories
-        //{
-        //    get; set;
-        //}
+        public ICategoryRepository Categories
+        {
+            get; set;
+        }
+
+        public IUserRepository Users
+        {
+            get; set;
+        }
 
         // GET : api/chores
         [HttpGet]
@@ -52,28 +61,30 @@ namespace ChoreHub.Controllers
 
         // GET : api/chores/category/5
         [HttpGet("{id}", Name = "GetChoreByCategory")]
+        [Route("category")]
         public IEnumerable<Chore> GetByCategoryId(int id)
         {
-            //var category = Categories.Find(id);
+            var category = Categories.Find(id);
 
-            //if (category == null)
-            //{
-            //    return NotFound();
-            //}
+            if (category == null)
+            {
+                return null;
+            }
 
             return Chores.GetByCategoryId(id);
         }
 
         // GET : api/chores/user/5
         [HttpGet("{id}", Name = "GetChoreByUser")]
+        [Route("user")]
         public IEnumerable<Chore> GetByUserId(int id)
         {
-            //var category = Categories.Find(id);
+            var user = Users.Find(id);
 
-            //if (chore == null)
-            //{
-            //    return NotFound();
-            //}
+            if (user == null)
+            {
+                return null;
+            }
 
             return Chores.GetByUserId(id);
         }
