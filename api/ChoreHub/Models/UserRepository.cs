@@ -15,6 +15,11 @@ namespace ChoreHub.Models
             _context = context;
         }
 
+        public IEnumerable<User> GetAllPublic()
+        {
+            return _context.Users.Where(e => e.IsPublic.Equals(true));
+        }
+
         public IEnumerable<User> GetAll()
         {
             return _context.Users;

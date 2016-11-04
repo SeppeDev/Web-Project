@@ -32,7 +32,14 @@ namespace ChoreHub.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return Users.GetAll();
+            if (_session.GetInt32("IsAdmin") == 1)
+            {
+                return Users.GetAll();
+            }
+            else
+            {
+                return Users.GetAllPublic();
+            }
         }
 
         // GET api/users/id/5
