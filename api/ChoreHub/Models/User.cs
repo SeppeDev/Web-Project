@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,7 +29,7 @@ namespace ChoreHub.Models
         public string Email { get; set; }
 
         [Required]
-        [MaxLength(255)]
+        [Column(TypeName = "nvarchar(MAX)")]
 	    public string Description { get; set; }
 
         [DefaultValue(false)]
