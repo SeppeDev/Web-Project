@@ -31,7 +31,7 @@ namespace ChoreHub.Controllers
 
         // GET: api/admin/users
         [HttpGet]
-        [Route("/admin/[controller]")]
+        [Route("admin")]
         public IEnumerable<User> Get()
         {
             if (IsAdmin())
@@ -40,7 +40,7 @@ namespace ChoreHub.Controllers
             }
             else
             {
-                return null;
+                return Users.GetAllPublic();
             }
         }
 
@@ -48,14 +48,7 @@ namespace ChoreHub.Controllers
         [HttpGet]
         public IEnumerable<User> GetPublic()
         {
-            if (IsAdmin())
-            {
-                return Users.GetAllPublic();
-            }
-            else
-            {
-                return null;
-            }
+            return Users.GetAllPublic();
         }
 
         // GET api/users/id/5
