@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using ChoreHub.Models;
-using System.Net.Http;
-using System.Net;
-using System.Web.Http;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,6 +25,9 @@ namespace ChoreHub.Controllers
         {
             get; set;
         }
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private ISession _session => _httpContextAccessor.HttpContext.Session;
 
         public ICategoryRepository Categories
         {
@@ -115,8 +116,13 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            Chores.Update(chore);
-            return new NoContentResult();
+            if (oldchore.User.UserId == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
+            {
+                Chores.Update(chore);
+                return new NoContentResult();
+            }
+
+            return BadRequest();
         }
 
         [HttpDelete("{id}")]
@@ -128,8 +134,13 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            Chores.Remove(id);
-            return new NoContentResult();
+            if (chore.User.UserId == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
+            {
+                Chores.Remove(id);
+                return new NoContentResult();
+            }
+
+            return BadRequest();
         }
     }
 }
