@@ -54,6 +54,11 @@ namespace ChoreHub
 
             services.AddDbContext<ChoreHubContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            // Add MVC services to the services container.
+            services.AddMvc();
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.AddSession();
+
             services.AddSingleton<IChoreRepository, ChoreRepository>();
             services.AddSingleton<IImageRepository, ImageRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
@@ -136,6 +141,9 @@ namespace ChoreHub
 
 
 
+            // IMPORTANT: This session call MUST go before UseMvc()
+            app.UseSession();
+
             // Entity
             DbInitializer.Initialize(context);
 
@@ -152,7 +160,12 @@ namespace ChoreHub
                         .AllowAnyMethod()
                 );
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Users}/{action=Index}/{id?}");
+            });
         }
     }
 }

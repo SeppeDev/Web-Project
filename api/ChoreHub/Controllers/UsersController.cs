@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 using ChoreHub.Models;
 
@@ -23,6 +24,10 @@ namespace ChoreHub.Controllers
             get; set;
         }
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private ISession _session => _httpContextAccessor.HttpContext.Session;
+
+
         // GET: api/users
         [HttpGet]
         public IEnumerable<User> Get()
@@ -30,11 +35,31 @@ namespace ChoreHub.Controllers
             return Users.GetAll();
         }
 
-        // GET api/users/5
+        // GET api/users/id/5
         [HttpGet("{id}", Name = "GetUser")]
+        [Route("id")]
         public IActionResult GetById(int id)
         {
             var user = Users.Find(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return new ObjectResult(user);
+        }
+
+        // GET api/users/userid/5
+        [HttpGet("{id}", Name = "GetUserByUserId")]
+        [Route("userid")]
+        public IActionResult GetById(string id)
+        {
+            var user = Users.FindByUserId(id);
+
+            HttpContext.Session.SetString("Id", id);
+            HttpContext.Session.SetInt32("IsAdmin", Convert.ToInt32(user.IsAdmin));
+
 
             if (user == null)
             {
@@ -72,8 +97,13 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            Users.Update(user);
-            return new NoContentResult();
+            if (olduser.UserId == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
+            {
+                Users.Update(user);
+                return new NoContentResult();
+            }
+
+            return BadRequest();
         }
 
         // DELETE api/users/5
@@ -86,8 +116,13 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            Users.Remove(id);
-            return new NoContentResult();
+            if (user.UserId == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
+            {
+                Users.Remove(id);
+                return new NoContentResult();
+            }
+
+            return BadRequest();
         }
     }
 }

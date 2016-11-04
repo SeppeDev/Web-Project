@@ -48,7 +48,7 @@ namespace ChoreHub.Models
             if(itemToUpdate != null)
             {
                 itemToUpdate.Name = item.Name;
-                itemToUpdate.Image = item.Image;
+                //itemToUpdate.Image = item.Image;
             }
         }
     }

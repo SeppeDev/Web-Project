@@ -32,6 +32,12 @@ namespace ChoreHub.Models
                 .SingleOrDefault(e => e.Id.Equals(id));
         }
 
+        public User FindByUserId(string id)
+        {
+            return _context.Users
+                .SingleOrDefault(e => e.UserId.Equals(id));
+        }
+
         public void Remove(int id)
         {
             var itemToRemove = _context.Users.SingleOrDefault(e => e.Id.Equals(id));
@@ -52,6 +58,7 @@ namespace ChoreHub.Models
 		itemToUpdate.Description =  item.Description;
                 itemToUpdate.Email = item.Email;
                 itemToUpdate.IsAdmin = item.IsAdmin;
+                itemToUpdate.IsPublic = item.IsPublic;
                 itemToUpdate.Image = item.Image;
             }
         }

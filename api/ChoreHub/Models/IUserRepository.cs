@@ -8,6 +8,7 @@ namespace ChoreHub.Models
         void Add(User user);
         IEnumerable<User> GetAll();
         User Find(int id);
+        User FindByUserId(string id);
         void Remove(int id);
         void Update(User user);
     }

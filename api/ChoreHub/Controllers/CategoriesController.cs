@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using ChoreHub.Models;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,6 +23,9 @@ namespace ChoreHub.Controllers
         {
             get; set;
         }
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private ISession _session => _httpContextAccessor.HttpContext.Session;
 
         // GET: api/categories
         [HttpGet]
@@ -72,8 +76,13 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            Categories.Update(category);
-            return new NoContentResult();
+            if (_session.GetInt32("IsAdmin"))
+            {
+                Categories.Update(category);
+                return new NoContentResult();
+            }
+
+            return BadRequest();
         }
 
         // DELETE api/categories/5
@@ -86,8 +95,13 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            Categories.Remove(id);
-            return new NoContentResult();
+            if (_session.GetInt32("IsAdmin"))
+            {
+                Categories.Remove(id);
+                return new NoContentResult();
+            }
+
+            return BadRequest();
         }
     }
 }
