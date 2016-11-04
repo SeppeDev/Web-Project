@@ -76,7 +76,7 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (_session.GetInt32("IsAdmin"))
+            if (_session.GetInt32("IsAdmin") == 1)
             {
                 Categories.Update(category);
                 return new NoContentResult();
@@ -95,7 +95,7 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (_session.GetInt32("IsAdmin"))
+            if (_session.GetInt32("IsAdmin") == 1)
             {
                 Categories.Remove(id);
                 return new NoContentResult();
