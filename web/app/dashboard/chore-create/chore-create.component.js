@@ -13,6 +13,10 @@ var dashboard_service_1 = require("../dashboard.service");
 var ChoreCreateComponent = (function () {
     function ChoreCreateComponent(dashSvc) {
         this.dashSvc = dashSvc;
+        /**
+         * Chore being created
+         */
+        this.chore = {};
     }
     ChoreCreateComponent = __decorate([
         core_1.Component({

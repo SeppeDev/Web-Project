@@ -88,7 +88,6 @@ export class UserDashboardComponent implements OnInit {
             isAdmin: false,
             image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
         }
-
     ];
 
     categories: any = [

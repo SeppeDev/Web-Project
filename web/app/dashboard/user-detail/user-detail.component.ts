@@ -1,5 +1,6 @@
 import { Component, OnInit }        from "@angular/core";
 import { ActivatedRoute, Params }   from "@angular/router";
+import { Location }                 from "@angular/common";
 
 import { DashboardService } from "../dashboard.service";
 
@@ -8,11 +9,10 @@ import { DashboardService } from "../dashboard.service";
     templateUrl: "app/dashboard/user-detail/user-detail.component.html"
 })
 export class UserDetailComponent implements OnInit {
-
-
     constructor (
         private dashSvc: DashboardService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private location: Location
     ) { }
     
     /**
@@ -23,6 +23,13 @@ export class UserDetailComponent implements OnInit {
             let name = params["userName"];
             this.getUser(name);
         })
+    }
+    
+    /**
+     * Go to previous application state
+     */
+    goBack () {
+        this.location.back();
     }
 
     /**

@@ -7,10 +7,10 @@
             </div>
             <div class="columns six">
                 <ul class="u-pull-right hub-nav-list">
+                    <li class="regular">Zoek op:</li>
                     <li><a routerLink="/hub/users">Personen</a></li>
                     <li><a routerLink="/hub/chores">Chores</a></li>
                 </ul>
-                <span class="u-pull-right hub-nav-list regular">Zoek op: </span>
             </div>
         </div>
         <div class="row shadow ch-bg-green">
@@ -30,7 +30,7 @@
                     <img style="height: 100px; width: 200px;" src="{{ user.image }}" alt="user image">
                     <label>Beschrijving</label>
                     <p style="max-height: 80px; overflow: hidden;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam ipsum adipisci inventore numquam, debitis aliquid nisi officiis, eaque saepe, optio in non quis voluptate eum dolores quae repudiandae expedita ex.</p>
-                    <a class="ch-blue" [routerLink]="['/hub/users/', user.firstName + '-' + user.lastName]">Verder...</a>         
+                    <a class="ch-blue ch-link text-m" [routerLink]="['/hub/users/', user.firstName + '-' + user.lastName]">Verder...</a>         
                 </div>                            
             </div>
         </div>

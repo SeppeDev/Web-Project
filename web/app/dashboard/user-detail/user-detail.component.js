@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var common_1 = require("@angular/common");
 var dashboard_service_1 = require("../dashboard.service");
 var UserDetailComponent = (function () {
-    function UserDetailComponent(dashSvc, route) {
+    function UserDetailComponent(dashSvc, route, location) {
         this.dashSvc = dashSvc;
         this.route = route;
+        this.location = location;
         /**
          * The user in this detail view
          */
@@ -39,6 +41,12 @@ var UserDetailComponent = (function () {
         });
     };
     /**
+     * Go to previous application state
+     */
+    UserDetailComponent.prototype.goBack = function () {
+        this.location.back();
+    };
+    /**
      * Get user details
      */
     UserDetailComponent.prototype.getUser = function (userName) {
@@ -52,7 +60,7 @@ var UserDetailComponent = (function () {
             selector: "ch-user-detail",
             templateUrl: "app/dashboard/user-detail/user-detail.component.html"
         }), 
-        __metadata('design:paramtypes', [dashboard_service_1.DashboardService, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [dashboard_service_1.DashboardService, router_1.ActivatedRoute, common_1.Location])
     ], UserDetailComponent);
     return UserDetailComponent;
 }());

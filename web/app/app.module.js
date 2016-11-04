@@ -80,12 +80,12 @@ var AppModule = (function () {
                                         component: chore_dashboard_component_1.ChoreDashboardComponent
                                     },
                                     {
-                                        path: ":choreName",
-                                        component: chore_detail_component_1.ChoreDetailComponent
-                                    },
-                                    {
                                         path: "create",
                                         component: chore_create_component_1.ChoreCreateComponent
+                                    },
+                                    {
+                                        path: ":choreName",
+                                        component: chore_detail_component_1.ChoreDetailComponent
                                     }
                                 ]
                             }

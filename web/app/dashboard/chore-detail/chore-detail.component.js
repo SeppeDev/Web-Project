@@ -9,8 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var common_1 = require("@angular/common");
 var ChoreDetailComponent = (function () {
-    function ChoreDetailComponent() {
+    function ChoreDetailComponent(route, location) {
+        this.route = route;
+        this.location = location;
         this.chore = {
             title: "Title",
             category: "Cleaning",
@@ -25,12 +29,26 @@ var ChoreDetailComponent = (function () {
             description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
         };
     }
+    /**
+     * Fires when component is loaded
+     */
+    ChoreDetailComponent.prototype.ngOnInit = function () {
+        this.route.params.forEach(function (params) {
+            var name = params["choreName"];
+        });
+    };
+    /**
+     * Go to previous application state
+     */
+    ChoreDetailComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     ChoreDetailComponent = __decorate([
         core_1.Component({
             selector: "ch-chore-detail",
             templateUrl: "app/dashboard/chore-detail/chore-detail.component.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, common_1.Location])
     ], ChoreDetailComponent);
     return ChoreDetailComponent;
 }());

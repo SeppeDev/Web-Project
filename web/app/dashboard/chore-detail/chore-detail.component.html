@@ -2,6 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="columns twelve">
+                <a class="ch-blue ch-link text-l clickable" (click)="goBack()">Terug</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns twelve">
                 <h1>{{ chore.title }}</h1>
             </div>
         </div>
@@ -24,7 +29,7 @@
         <div class="row">
             <div class="twelve columns">
                 <label>Geplaatst door</label>
-                <a [routerLink]="['/hub/users/', chore.author.firstName + '-' + chore.author.lastName ]">{{ chore.author.firstName }} {{ chore.author.lastName }}</a>
+                <a class="ch-blue ch-link text-l" [routerLink]="['/hub/users/', chore.author.firstName + '-' + chore.author.lastName ]">{{ chore.author.firstName }} {{ chore.author.lastName }}</a>
                 <label class="mar-top-m">Contacteer</label>
                 <span>{{ chore.author.email }}</span>
             </div>

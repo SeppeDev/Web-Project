@@ -72,13 +72,13 @@ import { DashboardService } from "./dashboard/dashboard.service";
                                 component: ChoreDashboardComponent
                             },
                             {
-                                path: ":choreName",
-                                component: ChoreDetailComponent
-                            },
-                            {
                                 path: "create",
                                 component: ChoreCreateComponent
-                            }
+                            },
+                            {
+                                path: ":choreName",
+                                component: ChoreDetailComponent
+                            }                            
                         ]
                     }
                 ]

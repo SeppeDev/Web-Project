@@ -2,6 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="columns twelve">
+               <a class="ch-blue ch-link text-l clickable" (click)="goBack()">Terug</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns twelve">
                 <h1>{{ user.firstName }} {{ user.lastName }}</h1>
             </div>
         </div>
@@ -31,7 +36,7 @@
         <div class="row">
             <div class="twelve columns">
                 <label>Contacteer mij</label>
-                <span>{{ dashSvc.authProfile.email }}</span>
+                <span>{{ user.email }}</span>
             </div>
         </div>
     </div>

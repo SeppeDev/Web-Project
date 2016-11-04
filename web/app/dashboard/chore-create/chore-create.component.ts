@@ -7,5 +7,10 @@ import { DashboardService } from "../dashboard.service";
     templateUrl: "app/dashboard/chore-create/chore-create.component.html"
 })
 export class ChoreCreateComponent {
+    /**
+     * Chore being created
+     */
+    chore: any = {};
+
     constructor (private dashSvc: DashboardService) { }
 }

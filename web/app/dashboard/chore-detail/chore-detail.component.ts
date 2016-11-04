@@ -1,12 +1,33 @@
-import { Component } from "@angular/core";
+import { Component }                from "@angular/core";
+import { ActivatedRoute, Params }   from "@angular/router";
+import { Location }                 from "@angular/common";
 
 @Component({
     selector: "ch-chore-detail",
     templateUrl: "app/dashboard/chore-detail/chore-detail.component.html"
 })
 export class ChoreDetailComponent {
-    constructor () { }
+    constructor (
+        private route: ActivatedRoute,
+        private location: Location
+    ) { }
     
+    /**
+     * Fires when component is loaded
+     */
+    ngOnInit (): void {
+        this.route.params.forEach((params: Params) => {
+            let name = params["choreName"];
+        });
+    }
+    
+    /**
+     * Go to previous application state
+     */
+    goBack () {
+        this.location.back();
+    }
+
     chore: any = {
         title: "Title",
         category: "Cleaning",

@@ -1,0 +1,33 @@
+<section class="view">
+    <div class="container">
+        <div class="row">
+            <div class="columns twelve">
+                <h1>Nieuwe Chore</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns six">
+                <label for="title">Titel</label>
+                <input [(ngModel)]="chore.title" class="u-full-width" type="text" id="title" />                
+            </div>         
+        </div>
+        <div class="row mar-top-m">
+            <div class="columns twelve">
+                <label for="description">Wat heb je nodig?</label>
+                <textarea [(ngModel)]="chore.description" class="u-full-width" id="description"></textarea>
+            </div>
+        </div>
+        <div class="row mar-top-m">
+            <div class="columns six">
+                <label for="is-active">Welke categorie valt deze chore onder?</label>
+                <select id="is-active">
+                    <option value="">Kies hier ...</option>
+                    <option>Waarde</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mar-top-l">
+            <a class="ch-btn ch-btn-lg ch-bg-blue clickable">Opslaan</a>
+        </div>
+    </div>
+</section>

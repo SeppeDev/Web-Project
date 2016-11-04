@@ -121,8 +121,6 @@ header .auth-list {
     text-transform: uppercase;
 }
 
-/* Body - Info */
-
 /* Footer */
 footer {
     height: 80px;
@@ -225,13 +223,13 @@ aside > ul > li > a:hover {
     line-height: 24px;
 }
 
-.card a {
-    font-size: 1.6rem;
+.ch-link {
     text-decoration: none;
+    border-bottom: 1px solid;
     font-family: "Lato";
 }
 
-.card a:hover {
+.ch-link:hover {
     border-bottom: 1px solid;
 }
 

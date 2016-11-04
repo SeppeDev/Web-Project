@@ -15,12 +15,16 @@ var AppComponent = (function () {
         this.authSvc = authSvc;
         this.topMenuActive = false;
         this.bottomMenuActive = false;
+        this.hubMenuActive = false;
     }
     AppComponent.prototype.showTopMenu = function () {
         this.topMenuActive = !this.topMenuActive;
     };
     AppComponent.prototype.showBottomMenu = function () {
         this.bottomMenuActive = !this.bottomMenuActive;
+    };
+    AppComponent.prototype.showHubMenu = function () {
+        this.hubMenuActive = !this.hubMenuActive;
     };
     AppComponent = __decorate([
         core_1.Component({
