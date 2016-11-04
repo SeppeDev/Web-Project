@@ -14,9 +14,10 @@ namespace ChoreHub.Controllers
     [Route("api/[controller]")]
     public class CategoriesController : Controller
     {
-        public CategoriesController(ICategoryRepository categories)
+        public CategoriesController(ICategoryRepository categories, IHttpContextAccessor httpContextAccessor)
         {
             Categories = categories;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public ICategoryRepository Categories

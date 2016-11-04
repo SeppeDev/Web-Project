@@ -29,14 +29,28 @@ namespace ChoreHub.Controllers
         private ISession _session => _httpContextAccessor.HttpContext.Session;
 
 
-        // GET: api/users
+        // GET: api/admin/users
         [HttpGet]
-        [Route("/admin/")]
+        [Route("/admin/[controller]")]
         public IEnumerable<User> Get()
         {
             if (IsAdmin())
             {
                 return Users.GetAll();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        // GET: api/users
+        [HttpGet]
+        public IEnumerable<User> GetPublic()
+        {
+            if (IsAdmin())
+            {
+                return Users.GetAllPublic();
             }
             else
             {

@@ -14,11 +14,12 @@ namespace ChoreHub.Controllers
     [Route("api/[controller]")]
     public class ChoresController : Controller
     {
-        public ChoresController(IChoreRepository chores, ICategoryRepository categories, IUserRepository users)
+        public ChoresController(IChoreRepository chores, ICategoryRepository categories, IUserRepository users, IHttpContextAccessor httpContextAccessor)
         {
             Chores = chores;
             Categories = categories;
             Users = users;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IChoreRepository Chores
