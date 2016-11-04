@@ -116,7 +116,7 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (oldchore.User.UserId == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
+            if (oldchore.User.Auth0Id == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
             {
                 Chores.Update(chore);
                 return new NoContentResult();
@@ -134,7 +134,7 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (chore.User.UserId == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
+            if (chore.User.Auth0Id == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
             {
                 Chores.Remove(id);
                 return new NoContentResult();

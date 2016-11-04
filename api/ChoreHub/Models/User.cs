@@ -14,7 +14,7 @@ namespace ChoreHub.Models
 
         [Required]
         [MaxLength(255)]
-        public string UserId { get; set; }
+        public string Auth0Id { get; set; }
 
         [Required]
         [MaxLength(46)]

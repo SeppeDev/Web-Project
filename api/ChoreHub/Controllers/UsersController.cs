@@ -14,9 +14,10 @@ namespace ChoreHub.Controllers
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
-        public UsersController(IUserRepository users)
+        public UsersController(IUserRepository users, IHttpContextAccessor httpContextAccessor)
         {
             Users = users;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IUserRepository Users
@@ -30,15 +31,16 @@ namespace ChoreHub.Controllers
 
         // GET: api/users
         [HttpGet]
+        [Route("/admin/")]
         public IEnumerable<User> Get()
         {
-            if (_session.GetInt32("IsAdmin") == 1)
+            if (IsAdmin())
             {
                 return Users.GetAll();
             }
             else
             {
-                return Users.GetAllPublic();
+                return null;
             }
         }
 
@@ -104,7 +106,7 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (olduser.UserId == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
+            if (olduser.Auth0Id == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
             {
                 Users.Update(user);
                 return new NoContentResult();
@@ -123,13 +125,27 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (user.UserId == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
+            if (user.Auth0Id == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
             {
                 Users.Remove(id);
                 return new NoContentResult();
             }
 
             return BadRequest();
+        }
+
+        //PRIVATE FUNCTIONS
+
+        private bool IsAdmin()
+        {
+            if (_session.GetInt32("IsAdmin") == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

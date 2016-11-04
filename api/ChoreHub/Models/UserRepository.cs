@@ -40,7 +40,7 @@ namespace ChoreHub.Models
         public User FindByUserId(string id)
         {
             return _context.Users
-                .SingleOrDefault(e => e.UserId.Equals(id));
+                .SingleOrDefault(e => e.Auth0Id.Equals(id));
         }
 
         public void Remove(int id)

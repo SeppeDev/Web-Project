@@ -59,10 +59,14 @@ namespace ChoreHub
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddSession();
 
+            // Repositories
             services.AddSingleton<IChoreRepository, ChoreRepository>();
             services.AddSingleton<IImageRepository, ImageRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
-            services.AddSingleton<IReviewRepository, ReviewRepository>();
+            //services.AddSingleton<IReviewRepository, ReviewRepository>();
+
+            // HttpContext
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
