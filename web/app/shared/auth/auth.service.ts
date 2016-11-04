@@ -12,7 +12,7 @@ export class AuthService {
     /**
      * Base url for http requests
      */
-    private baseUrl: string = Constants.API_BASE_URL;
+    private baseUrl: string = `${Constants.API_BASE_URL}/users`;
 
     /**
      * Auth0 lock instance
@@ -27,13 +27,13 @@ export class AuthService {
     constructor (private http: AuthHttp) {
          
         // Check for existence of token in localStorage
-        if(this.authenticated) this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
+        if(this.authenticated()) this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
 
         // Listen to auth0 authenticated event and set token & user profile
         this.lock.on("authenticated", (authResult: any) => {
             localStorage.setItem("id_token", authResult.idToken);
             
-            this.getAuthProfile(authResult.idToken);    
+            this.getAuthProfile(authResult.idToken);
         });
     }
 
@@ -73,14 +73,18 @@ export class AuthService {
      * Decrypt jwt token to access user profile
      */
     private getAuthProfile (idToken: string): void {
-        this.lock.getProfile(idToken, (error: any, profile: Object) => {
+        this.lock.getProfile(idToken, (error: any, profile: any) => {
             if (error) 
             {
                 console.log(error);
                 return;    
             }
-
+            
+            console.log(profile);
+            
             this.authProfile = profile;
+            this.getUserProfile();
+
             localStorage.setItem("auth_profile", JSON.stringify(profile));
         });
     }
@@ -89,12 +93,19 @@ export class AuthService {
      * Get user profile
      */
     private getUserProfile () { 
-        let url = `${this.baseUrl}/${this.authProfile.userId}`;
+        let url = `${this.baseUrl}/${this.authProfile.identities[0].user_id}`;
+        console.log(url);
 
         this.http.get(url).flatMap(this.extractData).subscribe((data) => {
-            
+           console.log(data); 
+        //    localStorage.setItem("user_profile", JSON.stringify(data));                 
         });
     }
+
+    /**
+     * 
+     */
+    
     
     /**
      * Extract json from response

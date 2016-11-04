@@ -17,7 +17,7 @@
                 <li><a (click)="authSvc.showLogin()" class="clickable">Aanmelden</a></li>
                 <li><a (click)="authSvc.showRegister()" class="clickable">Registreer</a></li>
             </ul>
-            <ul *ngIf="authSvc.authenticated()" class="auth-list u-pull-right">
+            <ul *ngIf="authSvc.authenticated() && authSvc.authProfile" class="auth-list u-pull-right">
                 <li>
                     <a class="clickable" (click)="showTopMenu()">{{ authSvc.authProfile.nickname }}<i class="material-icons fix-icon">arrow_drop_down</i></a>
                     <ul class="dropdown-content shadow" *ngIf="topMenuActive">
@@ -50,9 +50,9 @@
                 <li><a (click)="authSvc.showLogin()" class="clickable">Aanmelden</a></li>
                 <li><a (click)="authSvc.showRegister()" class="clickable">Registreer</a></li>
             </ul>
-            <ul *ngIf="authSvc.authenticated() && authSvc.userProfile" class="auth-list u-pull-right">
+            <ul *ngIf="authSvc.authenticated() && authSvc.authProfile" class="auth-list u-pull-right">
                 <li>
-                    <a class="clickable" (click)="showBottomMenu()">{{ authSvc.userProfile.nickname }}<i class="material-icons fix-icon">arrow_drop_down</i></a>
+                    <a class="clickable" (click)="showBottomMenu()">{{ authSvc.authProfile.nickname }}<i class="material-icons fix-icon">arrow_drop_down</i></a>
                     <ul class="dropdown-content dropdown-bottom shadow" *ngIf="bottomMenuActive">
                         <li><a routerLink="/profile">My Profile</a></li>
                         <li><a (click)="authSvc.logout()" class="clickable">Logout</a></li>

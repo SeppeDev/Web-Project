@@ -227,6 +227,7 @@ aside > ul > li > a:hover {
     text-decoration: none;
     border-bottom: 1px solid;
     font-family: "Lato";
+    font-weight: 500;
 }
 
 .ch-link:hover {
@@ -257,4 +258,15 @@ aside > ul > li > a:hover {
 
 .category-list > li {
     margin: 0 !important;
+}
+
+input, textarea, select {
+    margin-bottom: 5px !important;
+}
+
+.error {
+    padding-left: 5px;
+    color: #CC2A09;
+    font-weight: 400;
+    font-size: 1.6rem;
 }

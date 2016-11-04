@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 var constants_1 = require("../shared/constants");
 var angular2_jwt_1 = require("angular2-jwt");
 var ProfileService = (function () {
@@ -17,11 +18,15 @@ var ProfileService = (function () {
         /**
          * Base url for service http calls.
          */
-        this.baseUrl = constants_1.Constants.API_BASE_URL;
+        this.baseUrl = constants_1.Constants.API_BASE_URL + "/users";
         /**
          * Auth0 profile
          */
         this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
+        /**
+         * Custom headers
+         */
+        this.headers = new http_1.Headers({ "Content-type": "application/json" });
     }
     /**
      * Get user profile
@@ -34,9 +39,11 @@ var ProfileService = (function () {
     /**
      * Save user profile
      */
-    ProfileService.prototype.saveProfile = function (profile, userId) {
-        var url = this.baseUrl + "/" + userId;
-        return this.http.post(url, profile)
+    ProfileService.prototype.saveProfile = function (profile) {
+        profile.Auth0Id = this.authProfile.user_id;
+        profile.Email = this.authProfile.email;
+        var url = "" + this.baseUrl;
+        return this.http.post(url, JSON.stringify(profile), { headers: this.headers })
             .flatMap(this.extractData);
     };
     /**

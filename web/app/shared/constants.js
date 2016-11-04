@@ -15,7 +15,13 @@ var Constants = (function () {
     });
     ;
     Object.defineProperty(Constants, "API_BASE_URL", {
-        get: function () { return "http://localhost:58766/api/"; },
+        get: function () { return "http://localhost:58766/api"; },
+        enumerable: true,
+        configurable: true
+    });
+    ;
+    Object.defineProperty(Constants, "IMGUR_CLIENTID", {
+        get: function () { return "d5c6317c48bd8ff"; },
         enumerable: true,
         configurable: true
     });

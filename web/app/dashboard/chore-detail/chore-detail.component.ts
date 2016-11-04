@@ -17,7 +17,7 @@ export class ChoreDetailComponent {
      */
     ngOnInit (): void {
         this.route.params.forEach((params: Params) => {
-            let name = params["choreName"];
+            let name = +params["choreId"];
         });
     }
     
@@ -39,6 +39,6 @@ export class ChoreDetailComponent {
             isAdmin: false,
             image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
         },
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
+        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
     }
 }

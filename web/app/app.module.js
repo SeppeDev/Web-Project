@@ -14,6 +14,7 @@ var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var http_1 = require("@angular/http");
 var angular2_jwt_1 = require("angular2-jwt");
+var ng2_uploader_1 = require("ng2-uploader");
 // Import components
 var app_component_1 = require("./app.component");
 var home_component_1 = require("./home/home.component");
@@ -67,7 +68,7 @@ var AppModule = (function () {
                                         component: user_dashboard_component_1.UserDashboardComponent
                                     },
                                     {
-                                        path: ":userName",
+                                        path: ":userId",
                                         component: user_detail_component_1.UserDetailComponent
                                     }
                                 ]
@@ -84,7 +85,7 @@ var AppModule = (function () {
                                         component: chore_create_component_1.ChoreCreateComponent
                                     },
                                     {
-                                        path: ":choreName",
+                                        path: ":choreId",
                                         component: chore_detail_component_1.ChoreDetailComponent
                                     }
                                 ]
@@ -128,7 +129,9 @@ var AppModule = (function () {
                 edit_profile_component_1.EditProfileComponent,
                 user_detail_component_1.UserDetailComponent,
                 chore_detail_component_1.ChoreDetailComponent,
-                chore_create_component_1.ChoreCreateComponent
+                chore_create_component_1.ChoreCreateComponent,
+                // External directives
+                ng2_uploader_1.UPLOAD_DIRECTIVES
             ],
             // Register providersz
             providers: [

@@ -28,6 +28,7 @@
       "rxjs":         "npm:rxjs",
       "angular2-jwt": "npm:angular2-jwt/angular2-jwt.js",
       "js-base64":    "npm:angular2-jwt/node_modules/js-base64/base64.js",
+      "ng2-uploader": "npm:ng2-uploader/ng2-uploader.js",
       "buffer":       "@empty"
     },
     // packages tells the System loader how to load when no filename and/or no extension

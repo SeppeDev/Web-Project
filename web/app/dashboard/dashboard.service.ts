@@ -47,8 +47,8 @@ export class DashboardService {
     /**
      * Get specific user
      */
-    getUser (userName: string) {
-        let url = `${this.baseUrl}/user/${userName}`;
+    getUser (userId: number) {
+        let url = `${this.baseUrl}/user/${userId}`;
         return this.getData(url);
     }
 

@@ -34,7 +34,7 @@ var ChoreDetailComponent = (function () {
      */
     ChoreDetailComponent.prototype.ngOnInit = function () {
         this.route.params.forEach(function (params) {
-            var name = params["choreName"];
+            var name = +params["choreId"];
         });
     };
     /**

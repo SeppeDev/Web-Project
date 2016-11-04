@@ -1,9 +1,10 @@
-import { NgModule }         from "@angular/core";
-import { BrowserModule }    from "@angular/platform-browser";
-import { FormsModule }      from "@angular/forms";
-import { RouterModule }     from "@angular/router";
-import { HttpModule }       from "@angular/http";
-import { AUTH_PROVIDERS }   from "angular2-jwt";
+import { NgModule }             from "@angular/core";
+import { BrowserModule }        from "@angular/platform-browser";
+import { FormsModule }          from "@angular/forms";
+import { RouterModule }         from "@angular/router";
+import { HttpModule }           from "@angular/http";
+import { AUTH_PROVIDERS }       from "angular2-jwt";
+import { UPLOAD_DIRECTIVES }    from "ng2-uploader";
 
 // Import components
 import { AppComponent }             from "./app.component";
@@ -59,7 +60,7 @@ import { DashboardService } from "./dashboard/dashboard.service";
                                 component: UserDashboardComponent
                             },
                             {
-                                path: ":userName",
+                                path: ":userId",
                                 component: UserDetailComponent
                             }
                         ]
@@ -76,7 +77,7 @@ import { DashboardService } from "./dashboard/dashboard.service";
                                 component: ChoreCreateComponent
                             },
                             {
-                                path: ":choreName",
+                                path: ":choreId",
                                 component: ChoreDetailComponent
                             }                            
                         ]
@@ -121,7 +122,10 @@ import { DashboardService } from "./dashboard/dashboard.service";
         EditProfileComponent,
         UserDetailComponent,
         ChoreDetailComponent,
-        ChoreCreateComponent
+        ChoreCreateComponent,
+
+        // External directives
+        UPLOAD_DIRECTIVES
     ],
 
     // Register providersz

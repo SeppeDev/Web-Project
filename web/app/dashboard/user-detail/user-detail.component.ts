@@ -20,8 +20,8 @@ export class UserDetailComponent implements OnInit {
      */
     ngOnInit (): void {
         this.route.params.forEach((params: Params) => {
-            let name = params["userName"];
-            this.getUser(name);
+            let id = +params["userId"];
+            this.getUser(id);
         })
     }
     
@@ -35,9 +35,9 @@ export class UserDetailComponent implements OnInit {
     /**
      * Get user details
      */
-    private getUser (userName: string): void {
-        console.log(userName);
-        // this.dashSvc.getUser(userName).subscribe((user) => {
+    private getUser (userId: number): void {
+        console.log(userId);
+        // this.dashSvc.getUser(userId).subscribe((user) => {
         //     this.user = user;
         // });
     }    

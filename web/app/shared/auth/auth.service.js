@@ -18,13 +18,13 @@ var AuthService = (function () {
         /**
          * Base url for http requests
          */
-        this.baseUrl = constants_1.Constants.API_BASE_URL;
+        this.baseUrl = constants_1.Constants.API_BASE_URL + "/users";
         /**
          * Auth0 lock instance
          */
         this.lock = new Auth0Lock(constants_1.Constants.AUTH0_CLIENTID, constants_1.Constants.AUTH0_DOMAIN, {});
         // Check for existence of token in localStorage
-        if (this.authenticated)
+        if (this.authenticated())
             this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
         // Listen to auth0 authenticated event and set token & user profile
         this.lock.on("authenticated", function (authResult) {
@@ -70,7 +70,9 @@ var AuthService = (function () {
                 console.log(error);
                 return;
             }
+            console.log(profile);
             _this.authProfile = profile;
+            _this.getUserProfile();
             localStorage.setItem("auth_profile", JSON.stringify(profile));
         });
     };
@@ -78,10 +80,16 @@ var AuthService = (function () {
      * Get user profile
      */
     AuthService.prototype.getUserProfile = function () {
-        var url = this.baseUrl + "/" + this.authProfile.userId;
+        var url = this.baseUrl + "/" + this.authProfile.identities[0].user_id;
+        console.log(url);
         this.http.get(url).flatMap(this.extractData).subscribe(function (data) {
+            console.log(data);
+            //    localStorage.setItem("user_profile", JSON.stringify(data));                 
         });
     };
+    /**
+     *
+     */
     /**
      * Extract json from response
      */

@@ -8,33 +8,42 @@
         <div class="row">
             <div class="columns six">
                 <label for="first-name">Voornaam</label>
-                <input [(ngModel)]="profile.firstName" class="u-full-width" type="text" id="first-name" />                
+                <input [(ngModel)]="profile.FirstName" class="u-full-width" type="text" id="first-name" />
+                <p class="error">{{ errors.firstNameError }}</p>                
             </div>
             <div class="columns six">
                 <label for="last-name">Naam</label>
-                <input [(ngModel)]="profile.lastName" class="u-full-width" type="text" id="last-name" />   
+                <input [(ngModel)]="profile.LastName" class="u-full-width" type="text" id="last-name" />
+                <p class="error">{{ errors.lastNameError }}</p>                   
             </div>            
         </div>
         <div class="row mar-top-m">
             <div class="columns twelve">
                 <label for="description">Beschrijf jezelf</label>
-                <textarea [(ngModel)]="profile.description" class="u-full-width" id="description"></textarea>
+                <textarea [(ngModel)]="profile.Description" class="u-full-width" id="description"></textarea>
+                <p class="error">{{ errors.descriptionError }}</p>                
             </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
                 <label for="is-active">Is uw profiel publiek?</label>
-                <select [(ngModel)]="profile.isPublic" id="is-active">
+                <select [(ngModel)]="profile.IsPublic" id="is-active">
                     <option value="">Kies hier ...</option>
                     <option value="1">Ja</option>
                     <option value="0">Nee</option>
                 </select>
+                <p class="error">{{ errors.isPublicError }}</p>
             </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
-                <label for="">Profiel foto</label>
-                <input type="file">
+                <input type="file"
+                    (change)="fileChange($event)"
+                    ngFileSelect
+                    [options]="ngUploadOptions" 
+                    [events]="uploadEvents"
+                    (onUpload)="handleUpload($event)">
+                <p class="error">{{ errors.pictureError }}</p>
             </div>
         </div>
         <div class="row mar-top-l">

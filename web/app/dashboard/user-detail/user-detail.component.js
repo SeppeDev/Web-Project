@@ -36,8 +36,8 @@ var UserDetailComponent = (function () {
     UserDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.forEach(function (params) {
-            var name = params["userName"];
-            _this.getUser(name);
+            var id = +params["userId"];
+            _this.getUser(id);
         });
     };
     /**
@@ -49,9 +49,9 @@ var UserDetailComponent = (function () {
     /**
      * Get user details
      */
-    UserDetailComponent.prototype.getUser = function (userName) {
-        console.log(userName);
-        // this.dashSvc.getUser(userName).subscribe((user) => {
+    UserDetailComponent.prototype.getUser = function (userId) {
+        console.log(userId);
+        // this.dashSvc.getUser(userId).subscribe((user) => {
         //     this.user = user;
         // });
     };
