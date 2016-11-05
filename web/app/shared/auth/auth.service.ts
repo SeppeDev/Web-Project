@@ -1,7 +1,9 @@
 import { Injectable }       from "@angular/core";
 import { Response }         from "@angular/http";
+
 import {    tokenNotExpired,
             AuthHttp }      from "angular2-jwt";
+import "rxjs/Rx";
 
 import { Constants }        from "../constants";
 
@@ -93,24 +95,14 @@ export class AuthService {
      * Get user profile
      */
     private getUserProfile () { 
-        let url = `${this.baseUrl}/${this.authProfile.identities[0].user_id}`;
-        console.log(url);
+        let url = `${this.baseUrl}/userid/${this.authProfile.user_id}`;
 
-        this.http.get(url).flatMap(this.extractData).subscribe((data) => {
-           console.log(data); 
-        //    localStorage.setItem("user_profile", JSON.stringify(data));                 
-        });
-    }
-
-    /**
-     * 
-     */
-    
-    
-    /**
-     * Extract json from response
-     */
-    private extractData (res: Response) {
-        return res.json() || {}; 
-    }
+        this.http.get(url).toPromise()
+            .then((res: Response) => {
+                let body = res.json();
+                console.log(body);
+            }, (error) => {
+                console.log(error);
+            });
+    } 
 }

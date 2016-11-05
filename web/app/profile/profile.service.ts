@@ -1,8 +1,10 @@
 import { Injectable }           from "@angular/core";
 import { Response, Headers }    from "@angular/http";
 
-import { Constants }    from "../shared/constants";
+import "rxjs/Rx";
 import { AuthHttp }     from "angular2-jwt";
+
+import { Constants }    from "../shared/constants";
 
 @Injectable()
 export class ProfileService {
@@ -19,7 +21,7 @@ export class ProfileService {
     /**
      * Custom headers
      */
-    headers: Headers = new Headers({"Content-type": "application/json"});
+    headers: Headers = new Headers({"Content-Type": "application/json"});
 
     constructor (private http: AuthHttp) { }
 
@@ -28,8 +30,7 @@ export class ProfileService {
      */
     getProfile (userId: string) {
         let url = `${this.baseUrl}/${userId}`;
-        return this.http.get(url)
-                    .flatMap(this.extractData);       
+        return this.http.get(url).toPromise();      
     }
 
     /**
@@ -40,14 +41,6 @@ export class ProfileService {
         profile.Email = this.authProfile.email;
         
         let url = `${this.baseUrl}`;
-        return this.http.post(url, JSON.stringify(profile), { headers: this.headers })
-                    .flatMap(this.extractData);
-    }
-
-    /**
-     * Extract json from response
-     */
-    private extractData (res: Response) {
-        return res.json() || {}; 
+        return this.http.post(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
     }
 }

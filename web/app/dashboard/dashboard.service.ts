@@ -56,14 +56,6 @@ export class DashboardService {
      * Perform http get request 
      */
     private getData (url: string) {
-        return this.http.get(url)
-                    .flatMap(this.extractData);
-    }
-
-    /**
-     * Extract json from response
-     */
-    private extractData (res: Response) {
-        return res.json() || {}; 
+        return this.http.get(url).toPromise();
     }
 }

@@ -16,10 +16,10 @@ namespace ChoreHub.DAL
         {
             context.Database.EnsureCreated();
 
-            if (context.Categories.Any())
-            {
-                return;
-            }
+            //if (context.Categories.Any())
+            //{
+            //    return;
+            //}
 
             /*var images = new Image[]
             {

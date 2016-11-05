@@ -10,8 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var constants_1 = require("../shared/constants");
+require("rxjs/Rx");
 var angular2_jwt_1 = require("angular2-jwt");
+var constants_1 = require("../shared/constants");
 var ProfileService = (function () {
     function ProfileService(http) {
         this.http = http;
@@ -26,15 +27,14 @@ var ProfileService = (function () {
         /**
          * Custom headers
          */
-        this.headers = new http_1.Headers({ "Content-type": "application/json" });
+        this.headers = new http_1.Headers({ "Content-Type": "application/json" });
     }
     /**
      * Get user profile
      */
     ProfileService.prototype.getProfile = function (userId) {
         var url = this.baseUrl + "/" + userId;
-        return this.http.get(url)
-            .flatMap(this.extractData);
+        return this.http.get(url).toPromise();
     };
     /**
      * Save user profile
@@ -43,14 +43,7 @@ var ProfileService = (function () {
         profile.Auth0Id = this.authProfile.user_id;
         profile.Email = this.authProfile.email;
         var url = "" + this.baseUrl;
-        return this.http.post(url, JSON.stringify(profile), { headers: this.headers })
-            .flatMap(this.extractData);
-    };
-    /**
-     * Extract json from response
-     */
-    ProfileService.prototype.extractData = function (res) {
-        return res.json() || {};
+        return this.http.post(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
     };
     ProfileService = __decorate([
         core_1.Injectable(), 

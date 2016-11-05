@@ -29,8 +29,8 @@
                 <label for="is-active">Is uw profiel publiek?</label>
                 <select [(ngModel)]="profile.IsPublic" id="is-active">
                     <option value="">Kies hier ...</option>
-                    <option value="1">Ja</option>
-                    <option value="0">Nee</option>
+                    <option value="true">Ja</option>
+                    <option value="false">Nee</option>
                 </select>
                 <p class="error">{{ errors.isPublicError }}</p>
             </div>

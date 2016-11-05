@@ -29,7 +29,7 @@ namespace ChoreHub.Controllers
         private ISession _session => _httpContextAccessor.HttpContext.Session;
 
 
-        // GET: api/admin/users
+        // GET: api/users/admin
         [HttpGet]
         [Route("admin")]
         public IEnumerable<User> Get()
@@ -67,27 +67,25 @@ namespace ChoreHub.Controllers
         }
 
         // GET api/users/userid/5
-        [HttpGet("{id}", Name = "GetUserByUserId")]
-        [Route("userid")]
+        [HttpGet("userid/{id}", Name = "GetUserByUserId")]
         public IActionResult GetById(string id)
         {
             var user = Users.FindByUserId(id);
-
-            HttpContext.Session.SetString("Id", id);
-            HttpContext.Session.SetInt32("IsAdmin", Convert.ToInt32(user.IsAdmin));
-
 
             if (user == null)
             {
                 return NotFound();
             }
 
+            HttpContext.Session.SetString("Id", id);
+            HttpContext.Session.SetInt32("IsAdmin", Convert.ToInt32(user.IsAdmin));
+
             return new ObjectResult(user);
         }
 
         // POST api/users
         [HttpPost]
-        public IActionResult Create([FromBody] User user)
+        public IActionResult Create([FromBody]User user)
         {
             if (user == null)
             {
@@ -100,7 +98,7 @@ namespace ChoreHub.Controllers
 
         // PUT api/users/5
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] User user)
+        public IActionResult Update(int id, User user)
         {
             if (user == null || user.Id != id)
             {

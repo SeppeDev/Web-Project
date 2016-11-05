@@ -51,9 +51,6 @@ var UserDetailComponent = (function () {
      */
     UserDetailComponent.prototype.getUser = function (userId) {
         console.log(userId);
-        // this.dashSvc.getUser(userId).subscribe((user) => {
-        //     this.user = user;
-        // });
     };
     UserDetailComponent = __decorate([
         core_1.Component({

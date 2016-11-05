@@ -9,6 +9,8 @@ namespace ChoreHub.Models
 {
     public class Chore
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]

@@ -86,7 +86,7 @@ var UserDashboardComponent = (function () {
     UserDashboardComponent.prototype.getCategories = function () {
         var _this = this;
         this.dashSvc.getCategories()
-            .subscribe(function (data) {
+            .then(function (data) {
             _this.categories.push(data);
         }, function (error) {
             console.log(error);

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var angular2_jwt_1 = require("angular2-jwt");
+require("rxjs/Rx");
 var constants_1 = require("../constants");
 var AuthService = (function () {
     function AuthService(http) {
@@ -80,21 +81,14 @@ var AuthService = (function () {
      * Get user profile
      */
     AuthService.prototype.getUserProfile = function () {
-        var url = this.baseUrl + "/" + this.authProfile.identities[0].user_id;
-        console.log(url);
-        this.http.get(url).flatMap(this.extractData).subscribe(function (data) {
-            console.log(data);
-            //    localStorage.setItem("user_profile", JSON.stringify(data));                 
+        var url = this.baseUrl + "/userid/" + this.authProfile.user_id;
+        this.http.get(url).toPromise()
+            .then(function (res) {
+            var body = res.json();
+            console.log(body);
+        }, function (error) {
+            console.log(error);
         });
-    };
-    /**
-     *
-     */
-    /**
-     * Extract json from response
-     */
-    AuthService.prototype.extractData = function (res) {
-        return res.json() || {};
     };
     AuthService = __decorate([
         core_1.Injectable(), 

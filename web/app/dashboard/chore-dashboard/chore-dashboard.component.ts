@@ -42,7 +42,7 @@ export class ChoreDashboardComponent implements OnInit {
      */
     private getCategories (): void {
         this.dashSvc.getCategories()
-            .subscribe((data: any) => {
+            .then((data: any) => {
                 this.categories.push(data);            
             }, (error: any) => {
                 console.log(error);
@@ -54,7 +54,7 @@ export class ChoreDashboardComponent implements OnInit {
      */
     private getChores (): void {
         this.dashSvc.getChores()
-            .subscribe((data: any) => {
+            .then((data: any) => {
                 this.chores.push(data);
             }, (error: any) => {
                 console.log(error)
@@ -66,7 +66,7 @@ export class ChoreDashboardComponent implements OnInit {
      */
     private getChoresByCategory (category: string): void {
         this.dashSvc.getChoresByCategory(category)
-            .subscribe((data: any) => {
+            .then((data: any) => {
                 this.chores.push(data);
             }, (error: any) => {
                 console.log(error);

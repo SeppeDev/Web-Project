@@ -36,10 +36,7 @@ export class UserDetailComponent implements OnInit {
      * Get user details
      */
     private getUser (userId: number): void {
-        console.log(userId);
-        // this.dashSvc.getUser(userId).subscribe((user) => {
-        //     this.user = user;
-        // });
+        console.log(userId);        
     }    
 
     /**

@@ -138,8 +138,10 @@ export class EditProfileComponent implements OnInit {
      * Save edited profile
      */
     private save () {
-        this.profileSvc.saveProfile(this.profile).subscribe((data) => {
+        this.profileSvc.saveProfile(this.profile).then((data) => {
             console.log(data);
+        }, (error) => {
+            console.log(error)
         });
     }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 using ChoreHub.DAL;
 
@@ -22,7 +23,7 @@ namespace ChoreHub.Models
 
         public IEnumerable<User> GetAll()
         {
-            return _context.Users;
+            return _context.Users.Include(e => e.Image);
         }
 
         public void Add(User item)
@@ -33,13 +34,13 @@ namespace ChoreHub.Models
 
         public User Find(int id)
         {
-            return _context.Users
+            return _context.Users.Include(e => e.Image)
                 .SingleOrDefault(e => e.Id.Equals(id));
         }
 
         public User FindByUserId(string id)
         {
-            return _context.Users
+            return _context.Users.Include(e => e.Image)
                 .SingleOrDefault(e => e.Auth0Id.Equals(id));
         }
 

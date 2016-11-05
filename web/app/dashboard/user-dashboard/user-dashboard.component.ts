@@ -42,7 +42,7 @@ export class UserDashboardComponent implements OnInit {
      */
     private getCategories (): void {
         this.dashSvc.getCategories()
-            .subscribe((data: any) => {
+            .then((data: any) => {
                 this.categories.push(data);            
             }, (error: any) => {
                 console.log(error);

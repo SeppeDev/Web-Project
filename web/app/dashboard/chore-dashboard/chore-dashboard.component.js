@@ -103,7 +103,7 @@ var ChoreDashboardComponent = (function () {
     ChoreDashboardComponent.prototype.getCategories = function () {
         var _this = this;
         this.dashSvc.getCategories()
-            .subscribe(function (data) {
+            .then(function (data) {
             _this.categories.push(data);
         }, function (error) {
             console.log(error);
@@ -115,7 +115,7 @@ var ChoreDashboardComponent = (function () {
     ChoreDashboardComponent.prototype.getChores = function () {
         var _this = this;
         this.dashSvc.getChores()
-            .subscribe(function (data) {
+            .then(function (data) {
             _this.chores.push(data);
         }, function (error) {
             console.log(error);
@@ -127,7 +127,7 @@ var ChoreDashboardComponent = (function () {
     ChoreDashboardComponent.prototype.getChoresByCategory = function (category) {
         var _this = this;
         this.dashSvc.getChoresByCategory(category)
-            .subscribe(function (data) {
+            .then(function (data) {
             _this.chores.push(data);
         }, function (error) {
             console.log(error);

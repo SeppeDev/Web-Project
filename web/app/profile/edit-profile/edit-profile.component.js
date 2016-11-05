@@ -107,8 +107,10 @@ var EditProfileComponent = (function () {
      * Save edited profile
      */
     EditProfileComponent.prototype.save = function () {
-        this.profileSvc.saveProfile(this.profile).subscribe(function (data) {
+        this.profileSvc.saveProfile(this.profile).then(function (data) {
             console.log(data);
+        }, function (error) {
+            console.log(error);
         });
     };
     /**

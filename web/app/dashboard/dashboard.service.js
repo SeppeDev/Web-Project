@@ -52,14 +52,7 @@ var DashboardService = (function () {
      * Perform http get request
      */
     DashboardService.prototype.getData = function (url) {
-        return this.http.get(url)
-            .flatMap(this.extractData);
-    };
-    /**
-     * Extract json from response
-     */
-    DashboardService.prototype.extractData = function (res) {
-        return res.json() || {};
+        return this.http.get(url).toPromise();
     };
     DashboardService = __decorate([
         core_1.Injectable(), 
