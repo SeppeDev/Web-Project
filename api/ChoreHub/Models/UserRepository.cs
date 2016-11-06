@@ -18,7 +18,7 @@ namespace ChoreHub.Models
 
         public IEnumerable<User> GetAllPublic()
         {
-            return _context.Users.Where(e => e.IsPublic.Equals(true));
+            return _context.Users.Include(e => e.Image).Where(e => e.IsPublic.Equals(true));
         }
 
         public IEnumerable<User> GetAll()

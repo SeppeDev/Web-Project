@@ -16,12 +16,12 @@
         <div class="row shadow ch-bg-green">
             <div class="columns twelve hub-container u-pull-right">
                 <h5 class="ch-green">Users</h5>
-                <div *ngFor="let user of filteredUsers; let e = even;" class="columns six card" [ngClass]="e == true ? 'no-mar-l' : ''">
+                <div *ngFor="let user of users; let e = even;" class="columns six card" [ngClass]="e == true ? 'no-mar-l' : ''">
                     <h5>{{ user.firstName }} {{ user.lastName }}</h5>
-                    <img style="height: 100px; width: 200px;" src="{{ user.image }}" alt="user image">
+                    <img style="height: 100px; width: 200px;" [src]="user.image.link" alt="user image">
                     <label>Beschrijving</label>
-                    <p style="max-height: 80px; overflow: hidden;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam ipsum adipisci inventore numquam, debitis aliquid nisi officiis, eaque saepe, optio in non quis voluptate eum dolores quae repudiandae expedita ex.</p>
-                    <a class="ch-blue ch-link text-m" [routerLink]="['/hub/users/', user.firstName + '-' + user.lastName]">Verder...</a>         
+                    <p style="max-height: 80px; overflow: hidden;">{{ user.description }}</p>
+                    <a class="ch-blue ch-link text-m" [routerLink]="['/hub/users/', user.id]">Verder...</a>         
                 </div>                            
             </div>
         </div>

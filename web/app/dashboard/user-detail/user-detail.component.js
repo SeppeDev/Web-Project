@@ -16,16 +16,10 @@ var UserDetailComponent = (function () {
         this.dashSvc = dashSvc;
         this.route = route;
         /**
-         * The user in this detail view
+         * User variable
          */
         this.user = {
-            firstName: "Benno",
-            lastName: "Meysmans",
-            categories: ["Cooking", "Shopping"],
-            description: "Lorem Ipsum Zever",
-            email: "test2@example.com",
-            isAdmin: false,
-            image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
+            image: {}
         };
     }
     /**
@@ -48,7 +42,14 @@ var UserDetailComponent = (function () {
      * Get user details
      */
     UserDetailComponent.prototype.getUser = function (userId) {
-        console.log(userId);
+        var _this = this;
+        this.dashSvc.getUser(userId)
+            .then(function (data) {
+            _this.user = JSON.parse(data._body);
+            console.log(_this.user);
+        }, function (error) {
+            console.log(error);
+        });
     };
     UserDetailComponent = __decorate([
         core_1.Component({

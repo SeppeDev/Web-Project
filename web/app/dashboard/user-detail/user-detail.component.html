@@ -10,27 +10,17 @@
                 <h1>{{ user.firstName }} {{ user.lastName }}</h1>
             </div>
         </div>
-        <div class="row">
+        <div *ngIf="user.image.link" class="row">
             <div class="columns twelve">
-                <img class="profile-picture" src="http://www.judithvandaalen.nl/wp-content/uploads/galleries/post-444/Profielfoto-Portretfotografie-Fotostudio-1.jpg" alt="profile picture" />
+                <img class="profile-picture" [src]="user.image.link" alt="profile picture" />
             </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns twelve">
                 <label>Wie ben ik?</label>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                    Odit temporibus earum, dolor numquam aspernatur, odio fugit nisi quos fuga laudantium neque sequi 
-                    suscipit voluptatibus natus necessitatibus laboriosam, cum accusamus voluptate.
+                    {{ user.description }}
                 </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="columns twelve">
-                <label>Waar kan ik mee helpen?</label>
-                <ul class="category-list">
-                    <li *ngFor="let category of user.categories">{{ category }}</li>
-                </ul>
             </div>
         </div>
         <div class="row">

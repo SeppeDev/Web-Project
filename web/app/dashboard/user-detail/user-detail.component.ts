@@ -9,6 +9,14 @@ import { DashboardService } from "../dashboard.service";
     templateUrl: "app/dashboard/user-detail/user-detail.component.html"
 })
 export class UserDetailComponent implements OnInit {
+    
+    /**
+     * User variable
+     */
+    user: any = {
+        image: {}
+    };
+    
     constructor (
         private dashSvc: DashboardService,
         private route: ActivatedRoute
@@ -35,19 +43,12 @@ export class UserDetailComponent implements OnInit {
      * Get user details
      */
     private getUser (userId: number): void {
-        console.log(userId);        
+        this.dashSvc.getUser(userId)
+            .then((data: any) => {
+                this.user = JSON.parse(data._body);
+                console.log(this.user);
+            }, (error: any) => {
+                console.log(error);
+            });       
     }    
-
-    /**
-     * The user in this detail view
-     */
-    user: any = {
-        firstName: "Benno",
-        lastName: "Meysmans",
-        categories: ["Cooking", "Shopping"],
-        description: "Lorem Ipsum Zever",
-        email: "test2@example.com",
-        isAdmin: false,
-        image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-    }
 }

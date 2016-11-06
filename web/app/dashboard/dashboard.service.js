@@ -51,7 +51,14 @@ var DashboardService = (function () {
      * Get specific user
      */
     DashboardService.prototype.getUser = function (userId) {
-        var url = this.baseUrl + "/user/" + userId;
+        var url = this.baseUrl + "/users/id/" + userId;
+        return this.getData(url);
+    };
+    /**
+     * Get all users
+     */
+    DashboardService.prototype.getUsers = function () {
+        var url = this.baseUrl + "/users";
         return this.getData(url);
     };
     /**

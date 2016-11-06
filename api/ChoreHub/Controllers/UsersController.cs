@@ -40,8 +40,7 @@ namespace ChoreHub.Controllers
         }
 
         // GET api/users/id/5
-        [HttpGet("{id}", Name = "GetUser")]
-        [Route("id")]
+        [HttpGet("id/{id}", Name = "GetUser")]
         public IActionResult GetById(int id)
         {
             var user = Users.Find(id);
