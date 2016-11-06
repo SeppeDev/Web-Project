@@ -28,8 +28,6 @@ export class ChoreDashboardComponent implements OnInit {
      */
     ngOnInit () {
         this.getChores();
-        this.getCategories();
-        this.reset();
     }
     
     /**
@@ -38,7 +36,7 @@ export class ChoreDashboardComponent implements OnInit {
     changeCategory (category: any): void {
         console.log(this.chores);
         this.filteredChores = this.chores.filter((chore: any) => {
-            return chore.category == category.name;
+            return chore.category == category;
         });
     }
 
@@ -49,18 +47,18 @@ export class ChoreDashboardComponent implements OnInit {
         this.filteredChores = this.chores;
     }
 
-    /**
-     * Get all categories
-     */
-    private getCategories (): void {
-        this.dashSvc.getCategories()
-            .then((data: any) => {
-                this.categories = JSON.parse(data._body);   
-                console.log(this.categories);         
-            }, (error: any) => {
-                console.log(error);
-            });
-    }
+    // /**
+    //  * Get all categories
+    //  */
+    // private getCategories (): void {
+    //     this.dashSvc.getCategories()
+    //         .then((data: any) => {
+    //             this.categories = JSON.parse(data._body); 
+    //             console.log(data);       
+    //         }, (error: any) => {
+    //             console.log(error);
+    //         });
+    // }
 
     /**
      * Get all chores
@@ -68,22 +66,36 @@ export class ChoreDashboardComponent implements OnInit {
     private getChores (): void {
         this.dashSvc.getChores()
             .then((data: any) => {
-                this.chores = JSON.parse(data._body);
-                console.log(this.chores);
+                this.chores = JSON.parse(data._body);                
+                this.reset();
+                this.extractCategories(this.chores);
             }, (error: any) => {
                 console.log(error)
             });
     }
 
     /**
-     * Get chores of certain category
+     * Extract used categories from chores
      */
-    private getChoresByCategory (category: string): void {
-        this.dashSvc.getChoresByCategory(category)
-            .then((data: any) => {
-                this.chores.push(data);
-            }, (error: any) => {
-                console.log(error);
-            })
-    } 
+    private extractCategories (chores: any) {
+        chores.forEach((chore: any) => {
+            if(this.categories.indexOf(chore.category) == -1) {
+                this.categories.push(chore.category);
+            }            
+        });
+
+        console.log(this.categories);
+    }
+
+    // /**
+    //  * Get chores of certain category
+    //  */
+    // private getChoresByCategory (category: string): void {
+    //     this.dashSvc.getChoresByCategory(category)
+    //         .then((data: any) => {
+    //             this.chores.push(data);
+    //         }, (error: any) => {
+    //             console.log(error);
+    //         })
+    // } 
 }

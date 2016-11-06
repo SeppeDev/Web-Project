@@ -9,13 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var auth_service_1 = require("./shared/auth/auth.service");
 var AppComponent = (function () {
-    function AppComponent(authSvc) {
+    function AppComponent(authSvc, router) {
+        var _this = this;
         this.authSvc = authSvc;
+        this.router = router;
         this.topMenuActive = false;
         this.bottomMenuActive = false;
         this.hubMenuActive = false;
+        router.events.forEach(function (event) {
+            if (event instanceof router_1.NavigationStart) {
+                _this.topMenuActive = false;
+                _this.bottomMenuActive = false;
+            }
+        });
     }
     AppComponent.prototype.showTopMenu = function () {
         this.topMenuActive = !this.topMenuActive;
@@ -32,7 +41,7 @@ var AppComponent = (function () {
             providers: [auth_service_1.AuthService],
             templateUrl: "app/app.component.html"
         }), 
-        __metadata('design:paramtypes', [auth_service_1.AuthService])
+        __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
     ], AppComponent);
     return AppComponent;
 }());

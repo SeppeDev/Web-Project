@@ -27,7 +27,7 @@
         <div *ngIf="chore.user.firstName" class="row">
             <div class="twelve columns">
                 <label>Geplaatst door</label>
-                <a class="ch-blue ch-link text-l" [routerLink]="['/hub/users/', chore.user.firstName + '-' + chore.user.lastName ]">{{ chore.user.firstName }} {{ chore.user.lastName }}</a>
+                <a class="ch-blue ch-link text-l" [routerLink]="['/hub/users/', chore.user.id ]">{{ chore.user.firstName }} {{ chore.user.lastName }}</a>
                 <label class="mar-top-m">Contacteer</label>
                 <span>{{ chore.user.email }}</span>
             </div>

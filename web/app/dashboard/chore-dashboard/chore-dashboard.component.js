@@ -28,8 +28,6 @@ var ChoreDashboardComponent = (function () {
      */
     ChoreDashboardComponent.prototype.ngOnInit = function () {
         this.getChores();
-        this.getCategories();
-        this.reset();
     };
     /**
      * Filter users list by selected category
@@ -37,7 +35,7 @@ var ChoreDashboardComponent = (function () {
     ChoreDashboardComponent.prototype.changeCategory = function (category) {
         console.log(this.chores);
         this.filteredChores = this.chores.filter(function (chore) {
-            return chore.category == category.name;
+            return chore.category == category;
         });
     };
     /**
@@ -46,19 +44,18 @@ var ChoreDashboardComponent = (function () {
     ChoreDashboardComponent.prototype.reset = function () {
         this.filteredChores = this.chores;
     };
-    /**
-     * Get all categories
-     */
-    ChoreDashboardComponent.prototype.getCategories = function () {
-        var _this = this;
-        this.dashSvc.getCategories()
-            .then(function (data) {
-            _this.categories = JSON.parse(data._body);
-            console.log(_this.categories);
-        }, function (error) {
-            console.log(error);
-        });
-    };
+    // /**
+    //  * Get all categories
+    //  */
+    // private getCategories (): void {
+    //     this.dashSvc.getCategories()
+    //         .then((data: any) => {
+    //             this.categories = JSON.parse(data._body); 
+    //             console.log(data);       
+    //         }, (error: any) => {
+    //             console.log(error);
+    //         });
+    // }
     /**
      * Get all chores
      */
@@ -67,22 +64,23 @@ var ChoreDashboardComponent = (function () {
         this.dashSvc.getChores()
             .then(function (data) {
             _this.chores = JSON.parse(data._body);
-            console.log(_this.chores);
+            _this.reset();
+            _this.extractCategories(_this.chores);
         }, function (error) {
             console.log(error);
         });
     };
     /**
-     * Get chores of certain category
+     * Extract used categories from chores
      */
-    ChoreDashboardComponent.prototype.getChoresByCategory = function (category) {
+    ChoreDashboardComponent.prototype.extractCategories = function (chores) {
         var _this = this;
-        this.dashSvc.getChoresByCategory(category)
-            .then(function (data) {
-            _this.chores.push(data);
-        }, function (error) {
-            console.log(error);
+        chores.forEach(function (chore) {
+            if (_this.categories.indexOf(chore.category) == -1) {
+                _this.categories.push(chore.category);
+            }
         });
+        console.log(this.categories);
     };
     ChoreDashboardComponent = __decorate([
         core_1.Component({

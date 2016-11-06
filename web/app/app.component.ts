@@ -1,4 +1,5 @@
-import { Component }    from "@angular/core";
+import { Component }                        from "@angular/core";
+import { Router, Event, NavigationStart }   from "@angular/router";
 
 import { AuthService }  from "./shared/auth/auth.service";
 
@@ -12,7 +13,17 @@ export class AppComponent {
     bottomMenuActive:   boolean = false;
     hubMenuActive:      boolean = false;
 
-    constructor (private authSvc: AuthService) { } 
+    constructor (
+        private authSvc: AuthService,
+        private router: Router
+    ) {         
+        router.events.forEach((event: Event) => {
+                if(event instanceof NavigationStart) {
+                    this.topMenuActive = false;
+                    this.bottomMenuActive = false;
+                }            
+            });
+    }
 
     showTopMenu (): void {
         this.topMenuActive = !this.topMenuActive;

@@ -18,9 +18,9 @@
                 <h5 class="ch-green">Users</h5>
                 <div *ngFor="let user of users; let e = even;" class="columns six card" [ngClass]="e == true ? 'no-mar-l' : ''">
                     <h5>{{ user.firstName }} {{ user.lastName }}</h5>
-                    <img style="height: 100px; width: 200px;" [src]="user.image.link" alt="user image">
+                    <img class="profile-picture-s" [src]="user.image.link" alt="user image">
                     <label>Beschrijving</label>
-                    <p style="max-height: 80px; overflow: hidden;">{{ user.description }}</p>
+                    <p>LOCATIE</p>
                     <a class="ch-blue ch-link text-m" [routerLink]="['/hub/users/', user.id]">Verder...</a>         
                 </div>                            
             </div>
