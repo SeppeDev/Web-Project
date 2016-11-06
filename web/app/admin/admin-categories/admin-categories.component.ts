@@ -51,7 +51,7 @@ export class AdminCategoriesComponent implements OnInit {
         this.adminSvc.deleteCategory(id)
             .then((data) => {
                 console.log(data);
-                this.categories.filter((category: any) => category.id != id );
+                this.categories = this.categories.filter((category: any) => category.id != id );
             }, (error) => {
                 console.log(error);
             })
@@ -75,7 +75,7 @@ export class AdminCategoriesComponent implements OnInit {
     private saveCategory () {
         this.adminSvc.saveCategory(this.newCategory)
             .then((data: any) => {
-                console.log(data);
+                this.categories.push(JSON.parse(data._body));
             }, (error: any) => {
                 console.log(error);
             })

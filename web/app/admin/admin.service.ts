@@ -53,6 +53,14 @@ export class AdminService {
     }
 
     /**
+     * Delete a user
+     */
+    deleteUser (userId: number) {
+        let url = `${this.baseUrl}/users/${userId}`;
+        return this.http.delete(url).toPromise();
+    }
+
+    /**
      * Get chores
      */
     getChores () {

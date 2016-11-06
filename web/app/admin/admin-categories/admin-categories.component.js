@@ -37,7 +37,7 @@ var AdminCategoriesComponent = (function () {
         this.adminSvc.deleteCategory(id)
             .then(function (data) {
             console.log(data);
-            _this.categories.filter(function (category) { return category.id != id; });
+            _this.categories = _this.categories.filter(function (category) { return category.id != id; });
         }, function (error) {
             console.log(error);
         });
@@ -58,9 +58,10 @@ var AdminCategoriesComponent = (function () {
      * Create new category
      */
     AdminCategoriesComponent.prototype.saveCategory = function () {
+        var _this = this;
         this.adminSvc.saveCategory(this.newCategory)
             .then(function (data) {
-            console.log(data);
+            _this.categories.push(JSON.parse(data._body));
         }, function (error) {
             console.log(error);
         });

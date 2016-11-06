@@ -20,6 +20,12 @@ var AdminUsersComponent = (function () {
     AdminUsersComponent.prototype.ngOnInit = function () {
         this.getUsers();
     };
+    AdminUsersComponent.prototype.deleteUser = function (user) {
+        this.adminSvc.deleteUser(user.id)
+            .then(function (data) {
+        }, function (error) {
+        });
+    };
     /**
      * Gets all users
      */

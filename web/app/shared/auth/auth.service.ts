@@ -78,6 +78,8 @@ export class AuthService {
         localStorage.removeItem("auth_profile");
         localStorage.removeItem("user_profile");
         this.authProfile = undefined;
+        this.router.navigate(["/home"]);
+        window.location.reload();
     }
 
     /**

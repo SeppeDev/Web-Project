@@ -67,6 +67,8 @@ var AuthService = (function () {
         localStorage.removeItem("auth_profile");
         localStorage.removeItem("user_profile");
         this.authProfile = undefined;
+        this.router.navigate(["/home"]);
+        window.location.reload();
     };
     /**
      * Decrypt jwt token to access user profile
