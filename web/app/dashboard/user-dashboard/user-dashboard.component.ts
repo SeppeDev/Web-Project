@@ -29,7 +29,6 @@ export class UserDashboardComponent implements OnInit {
         this.dashSvc.getUsers()
             .then((data: any) => {
                 this.users = JSON.parse(data._body);
-                console.log(this.users);
             }, (error: any) => {
                 console.log(error);
             });

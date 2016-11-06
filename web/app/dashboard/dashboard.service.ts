@@ -44,6 +44,14 @@ export class DashboardService {
     }
 
     /**
+     * Get a chore
+     */
+    getChore (choreId: number) {
+        let url = `${this.baseUrl}/chores/${choreId}`;
+        return this.getData(url);
+    }
+
+    /**
      * Get all chores belonging to a category
      */
     getChoresByCategory (category: string) {        

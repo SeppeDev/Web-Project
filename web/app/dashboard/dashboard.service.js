@@ -41,6 +41,13 @@ var DashboardService = (function () {
         return this.getData(url);
     };
     /**
+     * Get a chore
+     */
+    DashboardService.prototype.getChore = function (choreId) {
+        var url = this.baseUrl + "/chores/" + choreId;
+        return this.getData(url);
+    };
+    /**
      * Get all chores belonging to a category
      */
     DashboardService.prototype.getChoresByCategory = function (category) {

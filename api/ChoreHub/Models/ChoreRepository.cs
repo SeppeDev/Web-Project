@@ -18,7 +18,8 @@ namespace ChoreHub.Models
 
         public IEnumerable<Chore> GetAll()
         {
-            return _context.Chores;
+            return _context.Chores.Include(e => e.User)
+                .Include(e => e.Category);
         }
 
         public IEnumerable<Chore> GetByCategoryId(int id)
@@ -38,7 +39,8 @@ namespace ChoreHub.Models
 
         public Chore Find(int id)
         {
-            return _context.Chores
+            return _context.Chores.Include(e => e.User)
+                .Include(c => c.Category)
                 .SingleOrDefault(e => e.Id.Equals(id));
         }
 

@@ -32,7 +32,6 @@ var UserDashboardComponent = (function () {
         this.dashSvc.getUsers()
             .then(function (data) {
             _this.users = JSON.parse(data._body);
-            console.log(_this.users);
         }, function (error) {
             console.log(error);
         });

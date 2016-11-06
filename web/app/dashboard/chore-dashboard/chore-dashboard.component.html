@@ -36,9 +36,9 @@
                 <h5 class="ch-green">Chores</h5>
                 <div *ngFor="let chore of filteredChores; let e = even;" class="columns six card" [ngClass]="e == true ? 'no-mar-l' : ''">
                     <h5>{{ chore.title }}</h5>
-                    <p style="max-height: 80px; overflow: hidden;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam ipsum adipisci inventore numquam, debitis aliquid nisi officiis, eaque saepe, optio in non quis voluptate eum dolores quae repudiandae expedita ex.</p>
+                    <p style="max-height: 80px; overflow: hidden;">{{ chore.description }}</p>
                     <label>Geplaatst door:</label>
-                    <p>{{ chore.author.firstName }} {{ chore.author.lastName }}</p>
+                    <p>{{ chore.user.firstName }} {{ chore.user.lastName }}</p>
                     <a class="ch-blue ch-link text-m" [routerLink]="['/hub/chores/', chore.title]">Verder...</a>         
                 </div>                            
             </div>

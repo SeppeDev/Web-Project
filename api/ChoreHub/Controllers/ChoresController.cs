@@ -59,7 +59,7 @@ namespace ChoreHub.Controllers
         }
 
         // GET : api/chores/category/5
-        [HttpGet("{id}", Name = "GetChoreByCategory")]
+        [HttpGet("category/{id}", Name = "GetChoreByCategory")]
         [Route("category")]
         public IEnumerable<Chore> GetByCategoryId(int id)
         {

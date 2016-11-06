@@ -15,9 +15,17 @@ var ChoreDashboardComponent = (function () {
         this.dashSvc = dashSvc;
         this.selectedCategory = "Cooking";
         /**
+         * Variable for all chores
+         */
+        this.chores = [];
+        /**
+         * Variable for all categories
+         */
+        this.categories = [];
+        /**
          * Test data
          */
-        this.chores = [
+        /*chores: any = [
             {
                 title: "Title",
                 category: "Shopping",
@@ -29,7 +37,7 @@ var ChoreDashboardComponent = (function () {
                     isAdmin: false,
                     image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
                 },
-                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
+                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
             },
             {
                 title: "Title",
@@ -42,7 +50,7 @@ var ChoreDashboardComponent = (function () {
                     isAdmin: false,
                     image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
                 },
-                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
+                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
             },
             {
                 title: "Title",
@@ -55,7 +63,7 @@ var ChoreDashboardComponent = (function () {
                     isAdmin: false,
                     image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
                 },
-                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
+                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
             },
             {
                 title: "Title",
@@ -68,9 +76,9 @@ var ChoreDashboardComponent = (function () {
                     isAdmin: false,
                     image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
                 },
-                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
+                description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
             }
-        ];
+        ];*/
         this.categories = [
             "Shopping", "Cleaning", "Playing", "Cooking", "Overwatch"
         ];
@@ -81,6 +89,7 @@ var ChoreDashboardComponent = (function () {
     ChoreDashboardComponent.prototype.ngOnInit = function () {
         // this.getCategories();
         this.reset();
+        this.getChores();
     };
     /**
      * Filter users list by selected category
@@ -104,7 +113,7 @@ var ChoreDashboardComponent = (function () {
         var _this = this;
         this.dashSvc.getCategories()
             .then(function (data) {
-            _this.categories.push(data);
+            _this.categories = JSON.parse(data._body);
         }, function (error) {
             console.log(error);
         });
@@ -116,7 +125,7 @@ var ChoreDashboardComponent = (function () {
         var _this = this;
         this.dashSvc.getChores()
             .then(function (data) {
-            _this.chores.push(data);
+            _this.filteredChores = JSON.parse(data._body);
         }, function (error) {
             console.log(error);
         });

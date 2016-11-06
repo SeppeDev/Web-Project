@@ -11,6 +11,16 @@ export class ChoreDashboardComponent implements OnInit {
     selectedCategory: String = "Cooking";
     filteredChores: any;
 
+    /**
+     * Variable for all chores
+     */
+    chores: any = [];
+
+    /**
+     * Variable for all categories
+     */
+    categories: any = [];
+
     constructor (private dashSvc: DashboardService) { }
 
     /**
@@ -19,6 +29,7 @@ export class ChoreDashboardComponent implements OnInit {
     ngOnInit () {
         // this.getCategories();
         this.reset();
+        this.getChores();
     }
     
     /**
@@ -44,7 +55,7 @@ export class ChoreDashboardComponent implements OnInit {
     private getCategories (): void {
         this.dashSvc.getCategories()
             .then((data: any) => {
-                this.categories.push(data);            
+                this.categories = JSON.parse(data._body);            
             }, (error: any) => {
                 console.log(error);
             });
@@ -56,7 +67,7 @@ export class ChoreDashboardComponent implements OnInit {
     private getChores (): void {
         this.dashSvc.getChores()
             .then((data: any) => {
-                this.chores.push(data);
+                this.filteredChores = JSON.parse(data._body);
             }, (error: any) => {
                 console.log(error)
             });
@@ -77,7 +88,7 @@ export class ChoreDashboardComponent implements OnInit {
     /**
      * Test data
      */
-    chores: any = [
+    /*chores: any = [
         {
             title: "Title",
             category: "Shopping",
@@ -130,7 +141,7 @@ export class ChoreDashboardComponent implements OnInit {
             },
             description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
         }
-    ];
+    ];*/
 
     categories: any = [
         "Shopping", "Cleaning", "Playing", "Cooking", "Overwatch"
