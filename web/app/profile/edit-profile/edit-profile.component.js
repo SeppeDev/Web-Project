@@ -21,6 +21,10 @@ var EditProfileComponent = (function () {
          */
         this.errors = {};
         /**
+         * User profile
+         */
+        this.profile = {};
+        /**
          * Event emitter for uploads
          */
         this.uploadEvents = new core_1.EventEmitter();
@@ -105,7 +109,7 @@ var EditProfileComponent = (function () {
                 _this.profile.image = {
                     link: parsedResponse.data.link
                 };
-                _this.state == "Maak" ? _this.save() : _this.update();
+                _this.state == "Maak" ? _this.saveProfile() : _this.updateProfile();
             }
         });
     };
@@ -119,9 +123,10 @@ var EditProfileComponent = (function () {
      * Save edited profile
      */
     EditProfileComponent.prototype.saveProfile = function () {
+        var _this = this;
         this.profileSvc.saveProfile(this.profile).then(function (data) {
-            // this.goBack();
-            console.log(data);
+            _this.goBack();
+            localStorage.setItem("user_profile", data._body);
         }, function (error) {
             console.log(error);
         });
@@ -130,9 +135,11 @@ var EditProfileComponent = (function () {
      * Update existing user profile
      */
     EditProfileComponent.prototype.updateProfile = function () {
+        var _this = this;
         this.profileSvc.updateProfile(this.profile).then(function (data) {
-            // localStorage.removeItem("user_profile");            
-            // this.goBack();
+            localStorage.removeItem("user_profile");
+            localStorage.setItem("user_profile", data._body);
+            _this.goBack();
             console.log(data);
         }, function (error) {
             console.log(error);

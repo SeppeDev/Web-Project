@@ -23,7 +23,7 @@ export class EditProfileComponent implements OnInit {
     /**
      * User profile
      */
-    profile: any;
+    profile: any = {};
 
     /**
      * Has the user selected a profile picture?
@@ -134,7 +134,7 @@ export class EditProfileComponent implements OnInit {
                     link: parsedResponse.data.link
                 };
 
-                this.state == "Maak" ? this.save() : this.update();            
+                this.state == "Maak" ? this.saveProfile() : this.updateProfile();            
             }
         });
     }
@@ -150,10 +150,10 @@ export class EditProfileComponent implements OnInit {
      * Save edited profile
      */
     private saveProfile () {
-        this.profileSvc.saveProfile(this.profile).then((data) => {
-            // this.goBack();
-            console.log(data);
-        }, (error) => {
+        this.profileSvc.saveProfile(this.profile).then((data: any) => {
+            this.goBack();
+            localStorage.setItem("user_profile", data._body);
+        }, (error: any) => {
             console.log(error)
         });
     }
@@ -162,11 +162,12 @@ export class EditProfileComponent implements OnInit {
      * Update existing user profile
      */
     private updateProfile () {
-        this.profileSvc.updateProfile(this.profile).then((data) => {
-            // localStorage.removeItem("user_profile");            
-            // this.goBack();
+        this.profileSvc.updateProfile(this.profile).then((data: any) => {
+            localStorage.removeItem("user_profile");
+            localStorage.setItem("user_profile", data._body);            
+            this.goBack();
             console.log(data);
-        }, (error) => {
+        }, (error: any) => {
             console.log(error)
         });
     }

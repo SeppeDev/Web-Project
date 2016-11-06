@@ -61,9 +61,12 @@ namespace ChoreHub.Models
             {
                 itemToUpdate.FirstName = item.FirstName;
                 itemToUpdate.LastName = item.LastName;
-		        itemToUpdate.Description =  item.Description;
+                itemToUpdate.Description = item.Description;
                 itemToUpdate.IsPublic = item.IsPublic;
                 itemToUpdate.Image = item.Image;
+
+                _context.Entry(itemToUpdate).State = EntityState.Modified;
+                _context.SaveChanges();
             }
         }
     }
