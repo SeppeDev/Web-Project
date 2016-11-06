@@ -28,7 +28,7 @@
                 <ul>
                     <li><a class="clickable" (click)="reset()" >Alle</a></li>
                     <li *ngFor="let category of categories">
-                        <a class="clickable" (click)="changeCategory(category)">{{ category }}</a>
+                        <a class="clickable" (click)="changeCategory(category)">{{ category.name }}</a>
                     </li>
                 </ul>
             </aside>

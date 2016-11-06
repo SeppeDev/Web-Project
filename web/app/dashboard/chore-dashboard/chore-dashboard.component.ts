@@ -27,9 +27,9 @@ export class ChoreDashboardComponent implements OnInit {
      * Fires when component is loaded
      */
     ngOnInit () {
-        // this.getCategories();
-        this.reset();
         this.getChores();
+        this.getCategories();
+        this.reset();
     }
     
     /**
@@ -38,7 +38,7 @@ export class ChoreDashboardComponent implements OnInit {
     changeCategory (category: any): void {
         console.log(this.chores);
         this.filteredChores = this.chores.filter((chore: any) => {
-            return chore.category == category;
+            return chore.category == category.name;
         });
     }
 
@@ -55,7 +55,8 @@ export class ChoreDashboardComponent implements OnInit {
     private getCategories (): void {
         this.dashSvc.getCategories()
             .then((data: any) => {
-                this.categories = JSON.parse(data._body);            
+                this.categories = JSON.parse(data._body);   
+                console.log(this.categories);         
             }, (error: any) => {
                 console.log(error);
             });
@@ -67,7 +68,8 @@ export class ChoreDashboardComponent implements OnInit {
     private getChores (): void {
         this.dashSvc.getChores()
             .then((data: any) => {
-                this.filteredChores = JSON.parse(data._body);
+                this.chores = JSON.parse(data._body);
+                console.log(this.chores);
             }, (error: any) => {
                 console.log(error)
             });
@@ -83,67 +85,5 @@ export class ChoreDashboardComponent implements OnInit {
             }, (error: any) => {
                 console.log(error);
             })
-    }
-
-    /**
-     * Test data
-     */
-    /*chores: any = [
-        {
-            title: "Title",
-            category: "Shopping",
-            author: {
-                firstName: "Benno",
-                lastName: "Meysmans",
-                description: "Lorem Ipsum Zever",
-                email: "test@example.com",
-                isAdmin: false,
-                image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-            },
-            description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
-        },
-        {
-            title: "Title",
-            category: "Cleaning",
-            author: {
-                firstName: "Benno",
-                lastName: "Meysmans",
-                description: "Lorem Ipsum Zever",
-                email: "test@example.com",
-                isAdmin: false,
-                image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-            },
-            description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
-        },
-        {
-            title: "Title",
-            category: "Playing",
-            author: {
-                firstName: "Benno",
-                lastName: "Meysmans",
-                description: "Lorem Ipsum Zever",
-                email: "test@example.com",
-                isAdmin: false,
-                image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-            },
-            description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
-        },
-        {
-            title: "Title",
-            category: "Overwatch",
-            author: {
-                firstName: "Benno",
-                lastName: "Meysmans",
-                description: "Lorem Ipsum Zever",
-                email: "test@example.com",
-                isAdmin: false,
-                image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-            },
-            description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum";
-        }
-    ];*/
-
-    categories: any = [
-        "Shopping", "Cleaning", "Playing", "Cooking", "Overwatch"
-    ];    
+    } 
 }
