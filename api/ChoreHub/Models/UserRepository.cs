@@ -61,9 +61,7 @@ namespace ChoreHub.Models
             {
                 itemToUpdate.FirstName = item.FirstName;
                 itemToUpdate.LastName = item.LastName;
-		itemToUpdate.Description =  item.Description;
-                itemToUpdate.Email = item.Email;
-                itemToUpdate.IsAdmin = item.IsAdmin;
+		        itemToUpdate.Description =  item.Description;
                 itemToUpdate.IsPublic = item.IsPublic;
                 itemToUpdate.Image = item.Image;
             }

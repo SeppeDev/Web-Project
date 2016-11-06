@@ -8,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var angular2_jwt_1 = require("angular2-jwt");
 var core_1 = require("@angular/core");
+require("rxjs/Rx");
+var angular2_jwt_1 = require("angular2-jwt");
 var constants_1 = require("../shared/constants");
 var DashboardService = (function () {
     function DashboardService(http) {
@@ -24,7 +25,7 @@ var DashboardService = (function () {
      * Get all categories
      */
     DashboardService.prototype.getCategories = function () {
-        var url = this.baseUrl + "/values";
+        var url = this.baseUrl + "/categories";
         return this.getData(url);
     };
     /**

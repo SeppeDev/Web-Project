@@ -95,6 +95,7 @@ var UserDashboardComponent = (function () {
     UserDashboardComponent = __decorate([
         core_1.Component({
             selector: "ch-user-dashboard",
+            providers: [dashboard_service_1.DashboardService],
             templateUrl: "app/dashboard/user-dashboard/user-dashboard.component.html"
         }), 
         __metadata('design:paramtypes', [dashboard_service_1.DashboardService])

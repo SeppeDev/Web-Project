@@ -31,11 +31,19 @@ var EditProfileComponent = (function () {
     EditProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.hasFile = false;
-        this.profile = {
-            IsPublic: ""
-        };
         this.zone = new core_1.NgZone({ enableLongStackTrace: false });
-        this.route.data.forEach(function (data) { return data.state == "edit" ? _this.state = "Bewerk" : _this.state = "Maak"; });
+        this.route.data.forEach(function (data) {
+            if (data.state == "edit") {
+                _this.state = "Bewerk";
+                _this.profile = JSON.parse(localStorage.getItem("user_profile"));
+            }
+            else {
+                _this.state = "Maak";
+                _this.profile = {
+                    isPublic: ""
+                };
+            }
+        });
         this.ngUploadOptions = {
             url: "https://api.imgur.com/3/image",
             autoUpload: false,
@@ -49,32 +57,31 @@ var EditProfileComponent = (function () {
      */
     EditProfileComponent.prototype.validate = function () {
         this.errors = {};
-        if (!this.profile.FirstName || typeof (this.profile.FirstName) == "undefined") {
+        if (!this.profile.firstName || typeof (this.profile.firstName) == "undefined") {
             this.errors.firstNameError = "Vul dit veld aub in.";
         }
-        else if (this.profile.FirstName.length > 46) {
+        else if (this.profile.firstName.length > 46) {
             this.errors.firstNameError = "Dit veld kan maximaal 46 letters bevatten.";
         }
-        if (!this.profile.LastName || typeof (this.profile.LastName) == "undefined") {
+        if (!this.profile.lastName || typeof (this.profile.lastName) == "undefined") {
             this.errors.lastNameError = "Vul dit veld aub in.";
         }
-        else if (this.profile.LastName.length > 46) {
+        else if (this.profile.lastName.length > 46) {
             this.errors.lastNameErrors = "Dit veld kan maximaal 46 letters bevatten";
         }
-        if (!this.profile.Description || typeof (this.profile.Description) == "undefined") {
+        if (!this.profile.description || typeof (this.profile.description) == "undefined") {
             this.errors.descriptionError = "Vul dit veld aub in.";
         }
-        else if (this.profile.Description.length > 500) {
+        else if (this.profile.description.length > 500) {
             this.errors.descriptionError = "Dit veld kan maximaal 500 letters bevatten";
         }
-        if (!this.profile.IsPublic || typeof (this.profile.IsPublic) == "undefined") {
+        if (this.profile.isPublic == null || typeof (this.profile.isPublic) == "undefined") {
             this.errors.isPublicError = "Selecteer een optie aub.";
         }
-        if (!this.hasFile) {
+        if (!this.hasFile && this.state == "Maak") {
             this.errors.pictureError = "Selecteer een profielfoto";
         }
         if (Object.keys(this.errors).length == 0) {
-            console.log("validatie geslaagd");
             this.startUpload();
         }
     };
@@ -93,21 +100,39 @@ var EditProfileComponent = (function () {
     EditProfileComponent.prototype.handleUpload = function (data) {
         var _this = this;
         this.zone.run(function () {
-            console.log(data);
             if (data.response && JSON.parse(data.response).success) {
                 var parsedResponse = JSON.parse(data.response);
-                _this.profile.Image = {
-                    Link: parsedResponse.data.link
+                _this.profile.image = {
+                    link: parsedResponse.data.link
                 };
-                _this.save();
+                _this.state == "Maak" ? _this.save() : _this.update();
             }
         });
     };
     /**
+     * Return to previous state
+     */
+    EditProfileComponent.prototype.goBack = function () {
+        window.history.back();
+    };
+    /**
      * Save edited profile
      */
-    EditProfileComponent.prototype.save = function () {
+    EditProfileComponent.prototype.saveProfile = function () {
         this.profileSvc.saveProfile(this.profile).then(function (data) {
+            // this.goBack();
+            console.log(data);
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    /**
+     * Update existing user profile
+     */
+    EditProfileComponent.prototype.updateProfile = function () {
+        this.profileSvc.updateProfile(this.profile).then(function (data) {
+            // localStorage.removeItem("user_profile");            
+            // this.goBack();
             console.log(data);
         }, function (error) {
             console.log(error);
@@ -117,7 +142,16 @@ var EditProfileComponent = (function () {
      * Fire upload event
      */
     EditProfileComponent.prototype.startUpload = function () {
-        this.uploadEvents.emit("startUpload");
+        if (this.state == "Maak" || (this.hasFile && this.state == "Bewerk")) {
+            this.uploadEvents.emit("startUpload");
+        }
+        else {
+            this.update();
+        }
+    };
+    EditProfileComponent.prototype.storeProfile = function (profile) {
+        console.log(profile);
+        // localStorage.setItem("user_profile", profile);
     };
     EditProfileComponent = __decorate([
         core_1.Component({

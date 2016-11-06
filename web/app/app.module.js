@@ -26,11 +26,13 @@ var chore_detail_component_1 = require("./dashboard/chore-detail/chore-detail.co
 var chore_create_component_1 = require("./dashboard/chore-create/chore-create.component");
 var profile_component_1 = require("./profile/profile.component");
 var edit_profile_component_1 = require("./profile/edit-profile/edit-profile.component");
+var admin_categories_component_1 = require("./admin/admin-categories/admin-categories.component");
+var admin_users_component_1 = require("./admin/admin-users/admin-users.component");
+var admin_chores_component_1 = require("./admin/admin-chores/admin-chores.component");
 // Import guard 
 var auth_guard_1 = require("./shared/auth/auth.guard");
-var auth_service_1 = require("./shared/auth/auth.service");
 // Import services
-var dashboard_service_1 = require("./dashboard/dashboard.service");
+var auth_service_1 = require("./shared/auth/auth.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -55,6 +57,23 @@ var AppModule = (function () {
                     {
                         path: "info",
                         component: info_component_1.InfoComponent
+                    },
+                    {
+                        path: "admin",
+                        children: [
+                            {
+                                path: "categories",
+                                component: admin_categories_component_1.AdminCategoriesComponent
+                            },
+                            {
+                                path: "users",
+                                component: admin_users_component_1.AdminUsersComponent
+                            },
+                            {
+                                path: "chores",
+                                component: admin_chores_component_1.AdminChoresComponent
+                            }
+                        ]
                     },
                     {
                         path: "hub",
@@ -130,6 +149,9 @@ var AppModule = (function () {
                 user_detail_component_1.UserDetailComponent,
                 chore_detail_component_1.ChoreDetailComponent,
                 chore_create_component_1.ChoreCreateComponent,
+                admin_categories_component_1.AdminCategoriesComponent,
+                admin_users_component_1.AdminUsersComponent,
+                admin_chores_component_1.AdminChoresComponent,
                 // External directives
                 ng2_uploader_1.UPLOAD_DIRECTIVES
             ],
@@ -137,8 +159,7 @@ var AppModule = (function () {
             providers: [
                 angular2_jwt_1.AUTH_PROVIDERS,
                 auth_guard_1.AuthGuard,
-                auth_service_1.AuthService,
-                dashboard_service_1.DashboardService
+                auth_service_1.AuthService
             ],
             // Base component
             bootstrap: [app_component_1.AppComponent]

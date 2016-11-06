@@ -1,0 +1,43 @@
+<section class="view">
+    <div class="container">
+        <div class="row">
+            <div class="columns twelve">
+                <h1>Admin - categoriëen</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns twelve">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let category of categories">
+                            <td>{{ category.id }}</td>
+                            <td>{{ category.name }}</td>
+                            <td>
+                                <a (click)="deleteCategory(category.id)" class="clickable ch-btn ch-btn-s ch-bg-red">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>          
+        </div>
+        <div class="row mar-top-l">
+            <div class="columns twelve">
+                <label for="new-category">Voeg nieuwe categorie toe</label>
+                <input [(ngModel)]="newCategory" type="text" id="new-category">
+                <p class="error">{{ newCategoryError }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns twelve">                
+                <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable">Opslaan</a>
+            </div>
+        </div>
+    </div>
+</section>

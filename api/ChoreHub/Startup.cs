@@ -48,15 +48,13 @@ namespace ChoreHub
 
             services.AddDbContext<ChoreHubContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            // Add MVC services to the services container.
             services.AddMvc();
-            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
-            services.AddSession();
 
             // Repositories
             services.AddSingleton<IChoreRepository, ChoreRepository>();
             services.AddSingleton<IImageRepository, ImageRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<ICategoryRepository, CategoryRepository>();
             //services.AddSingleton<IReviewRepository, ReviewRepository>();
 
             // HttpContext
@@ -139,9 +137,6 @@ namespace ChoreHub
             OpenIdConnectionOptions.Scope.Add("email");
             OpenIdConnectionOptions.Scope.Add("picture");
             app.UseOpenIdConnectAuthentication(OpenIdConnectionOptions);
-
-            // IMPORTANT: This session call MUST go before UseMvc()
-            app.UseSession();
 
             // Entity
             DbInitializer.Initialize(context);

@@ -19,10 +19,10 @@
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
-                <label for="is-active">Welke categorie valt deze chore onder?</label>
-                <select id="is-active">
+                <label for="category">Welke categorie valt deze chore onder?</label>
+                <select [(ngModel)]="chore.category" (change)="test()" id="category">
                     <option value="">Kies hier ...</option>
-                    <option>Waarde</option>
+                    <option *ngFor="let category of categories" [ngValue]="category">{{ category.name }}</option>
                 </select>
             </div>
         </div>

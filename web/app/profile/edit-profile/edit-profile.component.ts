@@ -52,13 +52,19 @@ export class EditProfileComponent implements OnInit {
     ngOnInit () {    
         this.hasFile = false;
 
-        this.profile = {
-            IsPublic: ""
-        };
-
         this.zone = new NgZone({ enableLongStackTrace: false }); 
 
-        this.route.data.forEach((data: any) => data.state == "edit" ? this.state = "Bewerk" : this.state = "Maak");
+        this.route.data.forEach((data: any) => {
+            if(data.state  == "edit") {
+                this.state = "Bewerk";
+                this.profile = JSON.parse(localStorage.getItem("user_profile"));
+            } else {
+                this.state = "Maak";
+                this.profile = {
+                    isPublic: ""
+                };
+            }
+        });
 
         this.ngUploadOptions = {
             url: "https://api.imgur.com/3/image",
@@ -75,34 +81,33 @@ export class EditProfileComponent implements OnInit {
     validate () {
         this.errors = {};
 
-        if(!this.profile.FirstName || typeof(this.profile.FirstName) == "undefined") {
+        if(!this.profile.firstName || typeof(this.profile.firstName) == "undefined") {
             this.errors.firstNameError = "Vul dit veld aub in.";
-        } else if (this.profile.FirstName.length > 46) {
+        } else if (this.profile.firstName.length > 46) {
             this.errors.firstNameError = "Dit veld kan maximaal 46 letters bevatten.";
         }
 
-        if(!this.profile.LastName || typeof(this.profile.LastName) == "undefined") {
+        if(!this.profile.lastName || typeof(this.profile.lastName) == "undefined") {
             this.errors.lastNameError = "Vul dit veld aub in.";
-        } else if (this.profile.LastName.length > 46) {
+        } else if (this.profile.lastName.length > 46) {
             this.errors.lastNameErrors = "Dit veld kan maximaal 46 letters bevatten";
         }
 
-        if(!this.profile.Description || typeof(this.profile.Description) == "undefined") {
+        if(!this.profile.description || typeof(this.profile.description) == "undefined") {
             this.errors.descriptionError = "Vul dit veld aub in.";
-        } else if (this.profile.Description.length > 500) {
+        } else if (this.profile.description.length > 500) {
             this.errors.descriptionError = "Dit veld kan maximaal 500 letters bevatten";            
         }
 
-        if(!this.profile.IsPublic || typeof(this.profile.IsPublic) == "undefined") {
+        if(this.profile.isPublic == null || typeof(this.profile.isPublic) == "undefined") {
             this.errors.isPublicError = "Selecteer een optie aub.";
         }
 
-        if(!this.hasFile) {
+        if(!this.hasFile && this.state == "Maak") {
             this.errors.pictureError = "Selecteer een profielfoto";
         }
 
         if(Object.keys(this.errors).length == 0) {
-            console.log("validatie geslaagd");
             this.startUpload();
         } 
     }
@@ -123,22 +128,43 @@ export class EditProfileComponent implements OnInit {
      */
     handleUpload(data: any): void {
         this.zone.run(() => {
-            console.log(data);
             if(data.response && JSON.parse(data.response).success) {
                 let parsedResponse = JSON.parse(data.response);
-                this.profile.Image = {
-                    Link: parsedResponse.data.link
+                this.profile.image = {
+                    link: parsedResponse.data.link
                 };
-                this.save();
+
+                this.state == "Maak" ? this.save() : this.update();            
             }
         });
     }
 
     /**
+     * Return to previous state
+     */
+    goBack () {
+        window.history.back();
+    }
+
+    /**
      * Save edited profile
      */
-    private save () {
+    private saveProfile () {
         this.profileSvc.saveProfile(this.profile).then((data) => {
+            // this.goBack();
+            console.log(data);
+        }, (error) => {
+            console.log(error)
+        });
+    }
+
+    /**
+     * Update existing user profile
+     */
+    private updateProfile () {
+        this.profileSvc.updateProfile(this.profile).then((data) => {
+            // localStorage.removeItem("user_profile");            
+            // this.goBack();
             console.log(data);
         }, (error) => {
             console.log(error)
@@ -149,6 +175,15 @@ export class EditProfileComponent implements OnInit {
      * Fire upload event
      */
     private startUpload() {
-        this.uploadEvents.emit("startUpload");
+        if(this.state == "Maak" || (this.hasFile && this.state == "Bewerk")) {
+            this.uploadEvents.emit("startUpload");
+        } else {
+            this.update();
+        }
+    }
+
+    private storeProfile (profile: any) {
+        console.log(profile);
+        // localStorage.setItem("user_profile", profile);
     }
 }

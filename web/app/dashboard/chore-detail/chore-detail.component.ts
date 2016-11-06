@@ -1,15 +1,16 @@
 import { Component }                from "@angular/core";
 import { ActivatedRoute, Params }   from "@angular/router";
-import { Location }                 from "@angular/common";
+
+import { DashboardService } from "../dashboard.service";
 
 @Component({
     selector: "ch-chore-detail",
+    providers: [ DashboardService ],
     templateUrl: "app/dashboard/chore-detail/chore-detail.component.html"
 })
 export class ChoreDetailComponent {
     constructor (
-        private route: ActivatedRoute,
-        private location: Location
+        private route: ActivatedRoute
     ) { }
     
     /**
@@ -25,7 +26,7 @@ export class ChoreDetailComponent {
      * Go to previous application state
      */
     goBack () {
-        this.location.back();
+        window.history.back();
     }
 
     chore: any = {

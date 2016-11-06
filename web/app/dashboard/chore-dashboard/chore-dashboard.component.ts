@@ -4,6 +4,7 @@ import { DashboardService } from "../dashboard.service";
 
 @Component({
     selector: "ch-chore-dashboard",
+    providers: [ DashboardService ],
     templateUrl: "app/dashboard/chore-dashboard/chore-dashboard.component.html"
 })
 export class ChoreDashboardComponent implements OnInit {

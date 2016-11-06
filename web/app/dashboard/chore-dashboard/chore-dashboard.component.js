@@ -136,6 +136,7 @@ var ChoreDashboardComponent = (function () {
     ChoreDashboardComponent = __decorate([
         core_1.Component({
             selector: "ch-chore-dashboard",
+            providers: [dashboard_service_1.DashboardService],
             templateUrl: "app/dashboard/chore-dashboard/chore-dashboard.component.html"
         }), 
         __metadata('design:paramtypes', [dashboard_service_1.DashboardService])

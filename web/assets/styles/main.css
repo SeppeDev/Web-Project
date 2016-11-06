@@ -270,3 +270,13 @@ input, textarea, select {
     font-weight: 400;
     font-size: 1.6rem;
 }
+
+.profile-picture {
+    height: 200px;
+    width: 200px;
+}
+
+.alert {
+    padding: 20px 0;
+    text-align: center;
+}

@@ -10,11 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var common_1 = require("@angular/common");
+var dashboard_service_1 = require("../dashboard.service");
 var ChoreDetailComponent = (function () {
-    function ChoreDetailComponent(route, location) {
+    function ChoreDetailComponent(route) {
         this.route = route;
-        this.location = location;
         this.chore = {
             title: "Title",
             category: "Cleaning",
@@ -41,14 +40,15 @@ var ChoreDetailComponent = (function () {
      * Go to previous application state
      */
     ChoreDetailComponent.prototype.goBack = function () {
-        this.location.back();
+        window.history.back();
     };
     ChoreDetailComponent = __decorate([
         core_1.Component({
             selector: "ch-chore-detail",
+            providers: [dashboard_service_1.DashboardService],
             templateUrl: "app/dashboard/chore-detail/chore-detail.component.html"
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, common_1.Location])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute])
     ], ChoreDetailComponent);
     return ChoreDetailComponent;
 }());

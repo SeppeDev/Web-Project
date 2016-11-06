@@ -37,10 +37,18 @@ export class ProfileService {
      * Save user profile
      */
     saveProfile (profile: any) {
-        profile.Auth0Id = this.authProfile.user_id;
-        profile.Email = this.authProfile.email;
+        profile.auth0Id = this.authProfile.user_id;
+        profile.email = this.authProfile.email;
         
         let url = `${this.baseUrl}`;
         return this.http.post(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
+    }
+
+    /**
+     * Update user profile
+     */
+    updateProfile (profile: any) {
+        let url = `${this.baseUrl}/${profile.id}`;
+        return this.http.put(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
     }
 }

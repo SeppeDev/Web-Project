@@ -9,45 +9,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var dashboard_service_1 = require("../dashboard.service");
-var ChoreCreateComponent = (function () {
-    function ChoreCreateComponent(dashSvc) {
-        this.dashSvc = dashSvc;
+var admin_service_1 = require("../admin.service");
+var AdminUsersComponent = (function () {
+    function AdminUsersComponent(adminSvc) {
+        this.adminSvc = adminSvc;
     }
     /**
      * Fires when component is loaded
      */
-    ChoreCreateComponent.prototype.ngOnInit = function () {
-        this.chore = {
-            category: ""
-        };
-        this.getCategories();
-    };
-    ChoreCreateComponent.prototype.test = function () {
-        console.log(this.chore);
+    AdminUsersComponent.prototype.ngOnInit = function () {
+        this.getUsers();
     };
     /**
-     * Get all categories
+     * Gets all users
      */
-    ChoreCreateComponent.prototype.getCategories = function () {
+    AdminUsersComponent.prototype.getUsers = function () {
         var _this = this;
-        this.dashSvc.getCategories()
+        this.adminSvc.getUsers()
             .then(function (data) {
             console.log(data);
-            _this.categories = JSON.parse(data._body);
+            _this.users = JSON.parse(data._body);
+            console.log(_this.users);
         }, function (error) {
             console.log(error);
         });
     };
-    ChoreCreateComponent = __decorate([
+    AdminUsersComponent = __decorate([
         core_1.Component({
-            selector: "ch-chore-create",
-            providers: [dashboard_service_1.DashboardService],
-            templateUrl: "app/dashboard/chore-create/chore-create.component.html"
+            selector: "ch-admin-users",
+            providers: [admin_service_1.AdminService],
+            templateUrl: "app/admin/admin-users/admin-users.component.html"
         }), 
-        __metadata('design:paramtypes', [dashboard_service_1.DashboardService])
-    ], ChoreCreateComponent);
-    return ChoreCreateComponent;
+        __metadata('design:paramtypes', [admin_service_1.AdminService])
+    ], AdminUsersComponent);
+    return AdminUsersComponent;
 }());
-exports.ChoreCreateComponent = ChoreCreateComponent;
-//# sourceMappingURL=chore-create.component.js.map
+exports.AdminUsersComponent = AdminUsersComponent;
+//# sourceMappingURL=admin-users.component.js.map

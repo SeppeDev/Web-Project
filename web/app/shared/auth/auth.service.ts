@@ -1,5 +1,6 @@
 import { Injectable }       from "@angular/core";
 import { Response }         from "@angular/http";
+import { Router }           from "@angular/router";
 
 import {    tokenNotExpired,
             AuthHttp }      from "angular2-jwt";
@@ -22,12 +23,19 @@ export class AuthService {
     lock = new Auth0Lock(Constants.AUTH0_CLIENTID, Constants.AUTH0_DOMAIN, {});
 
     /**
-     * User profile 
+     * Auth0 profile 
      */
     authProfile: any;
 
-    constructor (private http: AuthHttp) {
-         
+    /**
+     * Does the user have a profile with Chorehub?
+     */
+    hasProfile: boolean = false;
+
+    constructor (
+        private http: AuthHttp,
+        private router: Router
+    ) {         
         // Check for existence of token in localStorage
         if(this.authenticated()) this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
 
@@ -68,6 +76,7 @@ export class AuthService {
     logout (): void {
         localStorage.removeItem("id_token");
         localStorage.removeItem("auth_profile");
+        localStorage.removeItem("user_profile");
         this.authProfile = undefined;
     }
 
@@ -80,9 +89,7 @@ export class AuthService {
             {
                 console.log(error);
                 return;    
-            }
-            
-            console.log(profile);
+            }        
             
             this.authProfile = profile;
             this.getUserProfile();
@@ -100,9 +107,9 @@ export class AuthService {
         this.http.get(url).toPromise()
             .then((res: Response) => {
                 let body = res.json();
-                console.log(body);
+                localStorage.setItem("user_profile", JSON.stringify(body));
             }, (error) => {
-                console.log(error);
+                this.router.navigate(["/profile/create"]);
             });
     } 
 }

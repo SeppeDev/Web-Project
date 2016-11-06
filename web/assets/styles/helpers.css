@@ -66,6 +66,10 @@
     margin-top: 15px;
 }
 
+.mar-lft-m {
+    margin-left: 15px;
+}
+
 .no-mar-b {
     margin-bottom: 0 !important;
 }
@@ -115,4 +119,10 @@ main {
     height: 42px;
     line-height: 42px;
     font-size: 1.4rem;
+}
+
+.ch-btn-s {
+    height: 30px;
+    line-height: 30px;
+    font-size: 1.2rem;
 }

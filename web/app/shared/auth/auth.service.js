@@ -9,13 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var angular2_jwt_1 = require("angular2-jwt");
 require("rxjs/Rx");
 var constants_1 = require("../constants");
 var AuthService = (function () {
-    function AuthService(http) {
+    function AuthService(http, router) {
         var _this = this;
         this.http = http;
+        this.router = router;
         /**
          * Base url for http requests
          */
@@ -24,6 +26,10 @@ var AuthService = (function () {
          * Auth0 lock instance
          */
         this.lock = new Auth0Lock(constants_1.Constants.AUTH0_CLIENTID, constants_1.Constants.AUTH0_DOMAIN, {});
+        /**
+         * Does the user have a profile with Chorehub?
+         */
+        this.hasProfile = false;
         // Check for existence of token in localStorage
         if (this.authenticated())
             this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
@@ -59,6 +65,7 @@ var AuthService = (function () {
     AuthService.prototype.logout = function () {
         localStorage.removeItem("id_token");
         localStorage.removeItem("auth_profile");
+        localStorage.removeItem("user_profile");
         this.authProfile = undefined;
     };
     /**
@@ -71,7 +78,6 @@ var AuthService = (function () {
                 console.log(error);
                 return;
             }
-            console.log(profile);
             _this.authProfile = profile;
             _this.getUserProfile();
             localStorage.setItem("auth_profile", JSON.stringify(profile));
@@ -81,18 +87,19 @@ var AuthService = (function () {
      * Get user profile
      */
     AuthService.prototype.getUserProfile = function () {
+        var _this = this;
         var url = this.baseUrl + "/userid/" + this.authProfile.user_id;
         this.http.get(url).toPromise()
             .then(function (res) {
             var body = res.json();
-            console.log(body);
+            localStorage.setItem("user_profile", JSON.stringify(body));
         }, function (error) {
-            console.log(error);
+            _this.router.navigate(["/profile/create"]);
         });
     };
     AuthService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [angular2_jwt_1.AuthHttp])
+        __metadata('design:paramtypes', [angular2_jwt_1.AuthHttp, router_1.Router])
     ], AuthService);
     return AuthService;
 }());

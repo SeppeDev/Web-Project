@@ -21,6 +21,8 @@
                 <li>
                     <a class="clickable" (click)="showTopMenu()">{{ authSvc.authProfile.nickname }}<i class="material-icons fix-icon">arrow_drop_down</i></a>
                     <ul class="dropdown-content shadow" *ngIf="topMenuActive">
+                        <li><a routerLink="/admin/categories">Admin Panel</a></li>
+                        <!--<li><a routerLink="/profile/chores">My Chores</a></li>-->
                         <li><a routerLink="/profile">My Profile</a></li>
                         <li><a (click)="authSvc.logout()" class="clickable">Logout</a></li>
                     </ul>
@@ -29,7 +31,7 @@
         </div>
     </div>
 </header>
-<main>    
+<main>        
     <router-outlet></router-outlet>
 </main>
 <footer>

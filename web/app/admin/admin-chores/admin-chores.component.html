@@ -1,0 +1,31 @@
+<section class="view">
+    <div class="container">
+        <div class="row">
+            <div class="columns twelve">
+                <h1>Admin - chores</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns twelve">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let chore of chores">
+                            <td>{{ chore.id }}</td>
+                            <td>{{ chore.title }}</td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>          
+        </div>
+    </div>
+</section>

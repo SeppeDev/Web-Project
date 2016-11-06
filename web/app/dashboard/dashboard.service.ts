@@ -1,6 +1,8 @@
-import { AuthHttp }     from "angular2-jwt";
 import { Injectable }   from "@angular/core";
 import { Response }     from "@angular/http";
+
+import "rxjs/Rx";
+import { AuthHttp }     from "angular2-jwt";
 
 import { Constants }    from "../shared/constants";
 
@@ -24,7 +26,7 @@ export class DashboardService {
      * Get all categories
      */
     getCategories () {
-        let url = `${this.baseUrl}/values`;
+        let url = `${this.baseUrl}/categories`;
         return this.getData(url);
     }
 

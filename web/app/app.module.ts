@@ -17,13 +17,15 @@ import { ChoreDetailComponent}      from "./dashboard/chore-detail/chore-detail.
 import { ChoreCreateComponent }     from "./dashboard/chore-create/chore-create.component";
 import { ProfileComponent }         from "./profile/profile.component";
 import { EditProfileComponent }     from "./profile/edit-profile/edit-profile.component";
+import { AdminCategoriesComponent } from "./admin/admin-categories/admin-categories.component";
+import { AdminUsersComponent }      from "./admin/admin-users/admin-users.component";
+import { AdminChoresComponent }     from "./admin/admin-chores/admin-chores.component";
 
 // Import guard 
 import { AuthGuard }    from "./shared/auth/auth.guard";
-import { AuthService }  from "./shared/auth/auth.service";
 
 // Import services
-import { DashboardService } from "./dashboard/dashboard.service";
+import { AuthService }  from "./shared/auth/auth.service";
 
 @NgModule({
 
@@ -47,6 +49,23 @@ import { DashboardService } from "./dashboard/dashboard.service";
             {
                 path: "info",
                 component: InfoComponent
+            },
+            {
+                path: "admin",
+                children: [
+                    {
+                        path: "categories",
+                        component: AdminCategoriesComponent
+                    },
+                    {
+                        path: "users",
+                        component: AdminUsersComponent
+                    },
+                    {
+                        path: "chores",
+                        component: AdminChoresComponent
+                    }
+                ]
             },
             {
                 path: "hub",
@@ -123,6 +142,9 @@ import { DashboardService } from "./dashboard/dashboard.service";
         UserDetailComponent,
         ChoreDetailComponent,
         ChoreCreateComponent,
+        AdminCategoriesComponent,
+        AdminUsersComponent,
+        AdminChoresComponent,
 
         // External directives
         UPLOAD_DIRECTIVES
@@ -132,8 +154,7 @@ import { DashboardService } from "./dashboard/dashboard.service";
     providers: [
         AUTH_PROVIDERS,
         AuthGuard,
-        AuthService,
-        DashboardService
+        AuthService
     ],
 
     // Base component

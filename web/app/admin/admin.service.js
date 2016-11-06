@@ -13,50 +13,58 @@ var http_1 = require("@angular/http");
 require("rxjs/Rx");
 var angular2_jwt_1 = require("angular2-jwt");
 var constants_1 = require("../shared/constants");
-var ProfileService = (function () {
-    function ProfileService(http) {
+var AdminService = (function () {
+    function AdminService(http) {
         this.http = http;
         /**
-         * Base url for service http calls.
+         * Base url for http requests
          */
-        this.baseUrl = constants_1.Constants.API_BASE_URL + "/users";
-        /**
-         * Auth0 profile
-         */
-        this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
+        this.baseUrl = constants_1.Constants.API_BASE_URL;
         /**
          * Custom headers
          */
         this.headers = new http_1.Headers({ "Content-Type": "application/json" });
     }
     /**
-     * Get user profile
+     * Get categories
      */
-    ProfileService.prototype.getProfile = function (userId) {
-        var url = this.baseUrl + "/" + userId;
+    AdminService.prototype.getCategories = function () {
+        var url = this.baseUrl + "/categories";
         return this.http.get(url).toPromise();
     };
     /**
-     * Save user profile
+     * Create new category
      */
-    ProfileService.prototype.saveProfile = function (profile) {
-        profile.auth0Id = this.authProfile.user_id;
-        profile.email = this.authProfile.email;
-        var url = "" + this.baseUrl;
-        return this.http.post(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
+    AdminService.prototype.saveCategory = function (category) {
+        var url = this.baseUrl + "/categories";
+        return this.http.post(url, JSON.stringify({ name: category }), { headers: this.headers }).toPromise();
     };
     /**
-     * Update user profile
+     * Delete a category
      */
-    ProfileService.prototype.updateProfile = function (profile) {
-        var url = this.baseUrl + "/" + profile.id;
-        return this.http.put(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
+    AdminService.prototype.deleteCategory = function (id) {
+        var url = this.baseUrl + "/categories/" + id;
+        return this.http.delete(url).toPromise();
     };
-    ProfileService = __decorate([
+    /**
+     * Get users
+     */
+    AdminService.prototype.getUsers = function () {
+        var url = this.baseUrl + "/users/admin";
+        return this.http.get(url).toPromise();
+    };
+    /**
+     * Get chores
+     */
+    AdminService.prototype.getChores = function () {
+        var url = this.baseUrl + "/chores";
+        return this.http.get(url).toPromise();
+    };
+    AdminService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [angular2_jwt_1.AuthHttp])
-    ], ProfileService);
-    return ProfileService;
+    ], AdminService);
+    return AdminService;
 }());
-exports.ProfileService = ProfileService;
-//# sourceMappingURL=profile.service.js.map
+exports.AdminService = AdminService;
+//# sourceMappingURL=admin.service.js.map

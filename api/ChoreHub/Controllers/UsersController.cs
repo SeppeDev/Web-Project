@@ -14,10 +14,9 @@ namespace ChoreHub.Controllers
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
-        public UsersController(IUserRepository users, IHttpContextAccessor httpContextAccessor)
+        public UsersController(IUserRepository users )
         {
             Users = users;
-            _httpContextAccessor = httpContextAccessor;
         }
 
         public IUserRepository Users
@@ -25,23 +24,12 @@ namespace ChoreHub.Controllers
             get; set;
         }
 
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private ISession _session => _httpContextAccessor.HttpContext.Session;
-
-
         // GET: api/users/admin
         [HttpGet]
         [Route("admin")]
         public IEnumerable<User> Get()
         {
-            if (IsAdmin())
-            {
-                return Users.GetAll();
-            }
-            else
-            {
-                return Users.GetAllPublic();
-            }
+            return Users.GetAll();
         }
 
         // GET: api/users
@@ -77,9 +65,6 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            HttpContext.Session.SetString("Id", id);
-            HttpContext.Session.SetInt32("IsAdmin", Convert.ToInt32(user.IsAdmin));
-
             return new ObjectResult(user);
         }
 
@@ -98,7 +83,7 @@ namespace ChoreHub.Controllers
 
         // PUT api/users/5
         [HttpPut("{id}")]
-        public IActionResult Update(int id, User user)
+        public IActionResult Update(int id, [FromBody]User user)
         {
             if (user == null || user.Id != id)
             {
@@ -109,9 +94,9 @@ namespace ChoreHub.Controllers
             if (olduser == null)
             {
                 return NotFound();
-            }
+            }           
 
-            if (olduser.Auth0Id == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
+            if (olduser.Auth0Id == user.Auth0Id || user.IsAdmin == true)
             {
                 Users.Update(user);
                 return new NoContentResult();
@@ -130,27 +115,27 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (user.Auth0Id == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
-            {
+            //if (user.Auth0Id == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
+            //{
                 Users.Remove(id);
                 return new NoContentResult();
-            }
+            //}
 
-            return BadRequest();
+            //return BadRequest();
         }
 
         //PRIVATE FUNCTIONS
 
-        private bool IsAdmin()
-        {
-            if (_session.GetInt32("IsAdmin") == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //private bool IsAdmin()
+        //{
+        //    if (_session.GetInt32("IsAdmin") == 1)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }

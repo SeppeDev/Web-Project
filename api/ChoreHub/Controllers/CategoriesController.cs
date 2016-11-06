@@ -14,10 +14,9 @@ namespace ChoreHub.Controllers
     [Route("api/[controller]")]
     public class CategoriesController : Controller
     {
-        public CategoriesController(ICategoryRepository categories, IHttpContextAccessor httpContextAccessor)
+        public CategoriesController(ICategoryRepository categories)
         {
             Categories = categories;
-            _httpContextAccessor = httpContextAccessor;
         }
 
         public ICategoryRepository Categories
@@ -26,7 +25,6 @@ namespace ChoreHub.Controllers
         }
 
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private ISession _session => _httpContextAccessor.HttpContext.Session;
 
         // GET: api/categories
         [HttpGet]
@@ -77,13 +75,13 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (_session.GetInt32("IsAdmin") == 1)
-            {
+            //if (_session.GetInt32("IsAdmin") == 1)
+            //{
                 Categories.Update(category);
                 return new NoContentResult();
-            }
+            //}
 
-            return BadRequest();
+            //return BadRequest();
         }
 
         // DELETE api/categories/5
@@ -96,13 +94,13 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (_session.GetInt32("IsAdmin") == 1)
-            {
+            //if (_session.GetInt32("IsAdmin") == 1)
+            //{
                 Categories.Remove(id);
                 return new NoContentResult();
-            }
+            //}
 
-            return BadRequest();
+            //return BadRequest();
         }
     }
 }

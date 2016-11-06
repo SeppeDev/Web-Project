@@ -1,0 +1,35 @@
+<section class="view">
+    <div class="container">
+        <div class="row">
+            <div class="columns twelve">
+                <h1>Admin - gebruikers</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns twelve">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Email</th>
+                            <th>Admin?</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users">
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.lastName }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.isAdmin }}</td>
+                            <td>
+                                <a [routerLink]="['/hub/users', user.id]" class="clickable ch-btn-s ch-btn ch-bg-blue">Profiel</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>          
+        </div>
+    </div>
+</section>
