@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using ChoreHub.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChoreHub.Models
 {
@@ -60,6 +61,9 @@ namespace ChoreHub.Models
                 itemToUpdate.Description = item.Description;
                 itemToUpdate.User = item.User;
                 itemToUpdate.Category = item.Category;
+
+                _context.Entry(itemToUpdate).State = EntityState.Modified;
+                _context.SaveChanges();
             }
         }
     }
