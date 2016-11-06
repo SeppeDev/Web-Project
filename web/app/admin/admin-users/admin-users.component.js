@@ -21,9 +21,13 @@ var AdminUsersComponent = (function () {
         this.getUsers();
     };
     AdminUsersComponent.prototype.deleteUser = function (user) {
+        var _this = this;
         this.adminSvc.deleteUser(user.id)
             .then(function (data) {
+            console.log(data);
+            _this.users = _this.users.filter(function (u) { return u.id != user.id; });
         }, function (error) {
+            console.log(error);
         });
     };
     /**

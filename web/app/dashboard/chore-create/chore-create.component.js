@@ -9,10 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var dashboard_service_1 = require("../dashboard.service");
 var ChoreCreateComponent = (function () {
-    function ChoreCreateComponent(dashSvc) {
+    function ChoreCreateComponent(dashSvc, router) {
         this.dashSvc = dashSvc;
+        this.router = router;
         /**
          * List of errors
          */
@@ -69,9 +71,10 @@ var ChoreCreateComponent = (function () {
      * Create new chore
      */
     ChoreCreateComponent.prototype.saveChore = function () {
+        var _this = this;
         this.dashSvc.saveChore(this.chore)
             .then(function (data) {
-            console.log(data);
+            _this.router.navigate(["/hub/chores", JSON.parse(data._body).id]);
         }, function (error) {
             console.log(error);
         });
@@ -82,7 +85,7 @@ var ChoreCreateComponent = (function () {
             providers: [dashboard_service_1.DashboardService],
             templateUrl: "app/dashboard/chore-create/chore-create.component.html"
         }), 
-        __metadata('design:paramtypes', [dashboard_service_1.DashboardService])
+        __metadata('design:paramtypes', [dashboard_service_1.DashboardService, router_1.Router])
     ], ChoreCreateComponent);
     return ChoreCreateComponent;
 }());

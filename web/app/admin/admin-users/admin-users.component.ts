@@ -25,9 +25,10 @@ export class AdminUsersComponent implements OnInit {
     deleteUser (user: any) {
         this.adminSvc.deleteUser(user.id)
             .then((data: any) => {
-
+                console.log(data);
+                this.users = this.users.filter((u: any) => u.id != user.id)
             }, (error: any) => {
-
+                console.log(error);
             });
     }
 

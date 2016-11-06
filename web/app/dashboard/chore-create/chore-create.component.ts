@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit }    from "@angular/core";
+import { Router }               from "@angular/router";
 
 import { DashboardService } from "../dashboard.service";
 
@@ -23,7 +24,10 @@ export class ChoreCreateComponent implements OnInit {
      */
     errors: any = {};
 
-    constructor (private dashSvc: DashboardService) { }
+    constructor (
+        private dashSvc: DashboardService,
+        private router: Router
+    ) { }
 
     /**
      * Fires when component is loaded
@@ -84,7 +88,7 @@ export class ChoreCreateComponent implements OnInit {
     private saveChore () {
         this.dashSvc.saveChore(this.chore)
             .then((data: any) => {
-                console.log(data);
+                this.router.navigate(["/hub/chores", JSON.parse(data._body).id]);
             }, (error: any) => {
                 console.log(error);
             })
