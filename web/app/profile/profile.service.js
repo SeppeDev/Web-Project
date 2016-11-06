@@ -19,7 +19,7 @@ var ProfileService = (function () {
         /**
          * Base url for service http calls.
          */
-        this.baseUrl = constants_1.Constants.API_BASE_URL + "/users";
+        this.baseUrl = "" + constants_1.Constants.API_BASE_URL;
         /**
          * Auth0 profile
          */
@@ -34,7 +34,7 @@ var ProfileService = (function () {
      */
     ProfileService.prototype.getProfile = function () {
         var userId = JSON.parse(localStorage.getItem("auth_profile")).user_id;
-        var url = this.baseUrl + "/userid/" + userId;
+        var url = this.baseUrl + "/users/userid/" + userId;
         return this.http.get(url).toPromise();
     };
     /**
@@ -42,22 +42,29 @@ var ProfileService = (function () {
      */
     ProfileService.prototype.getUserChores = function () {
         var user = JSON.parse(localStorage.getItem("user_profile"));
-        var url = constants_1.Constants.API_BASE_URL + "/chores/user/" + user.id;
+        var url = this.baseUrl + "/chores/user/" + user.id;
         return this.http.get(url).toPromise();
     };
     /**
      * Get user chore by id
      */
-    ProfileService.prototype.getChoreById = function (id) {
-        var url = this.baseUrl + "/chores/" + id;
+    ProfileService.prototype.getChoreById = function (choreId) {
+        var url = this.baseUrl + "/chores/" + choreId;
         return this.http.get(url).toPromise();
     };
     /**
      * Delete chore
      */
-    ProfileService.prototype.deleteChore = function (id) {
-        var url = constants_1.Constants.API_BASE_URL + "/chores/" + id;
+    ProfileService.prototype.deleteChore = function (choreId) {
+        var url = this.baseUrl + "/chores/" + choreId;
         return this.http.delete(url).toPromise();
+    };
+    /**
+     * Update a chore
+     */
+    ProfileService.prototype.updateChore = function (chore) {
+        var url = this.baseUrl + "/chores/" + chore.id;
+        return this.http.put(url, chore, { headers: this.headers }).toPromise();
     };
     /**
      * Save user profile
@@ -65,14 +72,14 @@ var ProfileService = (function () {
     ProfileService.prototype.saveProfile = function (profile) {
         profile.auth0Id = this.authProfile.user_id;
         profile.email = this.authProfile.email;
-        var url = "" + this.baseUrl;
+        var url = this.baseUrl + "/users";
         return this.http.post(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
     };
     /**
      * Update user profile
      */
     ProfileService.prototype.updateProfile = function (profile) {
-        var url = this.baseUrl + "/" + profile.id;
+        var url = this.baseUrl + "/users/" + profile.id;
         return this.http.put(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
     };
     ProfileService = __decorate([

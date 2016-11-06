@@ -24,7 +24,7 @@
                             <td>{{ chore.title }}</td>
                             <td>
                                 <a [routerLink]="['/hub/chores', chore.id]" class="clickable ch-btn ch-btn-s ch-bg-green">Bekijk</a>
-                                <a [routerLink]="['/profile/chores/edit', choreId]" class="mar-lft-m clickable ch-btn ch-btn-s ch-bg-blue">Bewerk</a>
+                                <a [routerLink]="['/profile/chores/edit', chore.id]" class="mar-lft-m clickable ch-btn ch-btn-s ch-bg-blue">Bewerk</a>
                                 <a (click)="deleteChore(chore.id)" class="mar-lft-m clickable ch-btn ch-btn-s ch-bg-red">Verwijder</a>
                             </td>
                         </tr>

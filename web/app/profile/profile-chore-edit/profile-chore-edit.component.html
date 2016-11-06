@@ -1,7 +1,12 @@
 <section class="view">
     <div class="container">
         <div class="row">
-            <h1>Bewerk {{ chore.title }}</h1>
+            <div class="columns twelve">
+               <a class="ch-blue ch-link text-l clickable" (click)="goBack()">Terug</a>
+            </div>
+        </div>
+        <div class="row">
+            <h1>Bewerk "{{ chore.title }}"</h1>
         </div>
         <div class="row">
             <div class="columns six">
@@ -17,7 +22,7 @@
                 <p class="error">{{ errors.descriptionError }}</p> 
             </div>
         </div>
-        <div class="row mar-top-m">
+        <!--<div class="row mar-top-m">
             <div class="columns six">
                 <label for="category">Welke categorie valt deze chore onder?</label>
                 <select [(ngModel)]="chore.category" id="category">
@@ -26,7 +31,7 @@
                 </select>
                 <p class="error">{{ errors.categoryError }}</p>
             </div>
-        </div>
+        </div>-->
         <div class="row mar-top-l">
             <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable">Opslaan</a>
         </div>

@@ -11,7 +11,7 @@ export class ProfileService {
     /**
      * Base url for service http calls.
      */
-    private baseUrl: string = `${Constants.API_BASE_URL}/users`;
+    private baseUrl: string = `${Constants.API_BASE_URL}`;
 
     /**
      * Auth0 profile
@@ -30,7 +30,7 @@ export class ProfileService {
      */
     getProfile () {
         let userId = JSON.parse(localStorage.getItem("auth_profile")).user_id;
-        let url = `${this.baseUrl}/userid/${userId}`;
+        let url = `${this.baseUrl}/users/userid/${userId}`;
         return this.http.get(url).toPromise();      
     }
 
@@ -39,24 +39,32 @@ export class ProfileService {
      */
     getUserChores () {
         let user = JSON.parse(localStorage.getItem("user_profile"));
-        let url = `${Constants.API_BASE_URL}/chores/user/${user.id}`;
+        let url = `${this.baseUrl}/chores/user/${user.id}`;
         return this.http.get(url).toPromise();
     }
 
     /**
      * Get user chore by id
      */
-    getChoreById (id: any) {
-        let url = `${this.baseUrl}/chores/${id}`;
+    getChoreById (choreId: any) {
+        let url = `${this.baseUrl}/chores/${choreId}`;
         return this.http.get(url).toPromise();
     }
 
     /**
      * Delete chore
      */
-    deleteChore (id: any) {
-        let url = `${Constants.API_BASE_URL}/chores/${id}`;
+    deleteChore (choreId: number) {
+        let url = `${this.baseUrl}/chores/${choreId}`;
         return this.http.delete(url).toPromise();
+    }
+
+    /**
+     * Update a chore
+     */
+    updateChore (chore: any) {
+        let url = `${this.baseUrl}/chores/${chore.id}`;
+        return this.http.put(url, chore, { headers: this.headers }).toPromise();
     }
 
     /**
@@ -66,7 +74,7 @@ export class ProfileService {
         profile.auth0Id = this.authProfile.user_id;
         profile.email = this.authProfile.email;
         
-        let url = `${this.baseUrl}`;
+        let url = `${this.baseUrl}/users`;
         return this.http.post(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
     }
 
@@ -74,7 +82,15 @@ export class ProfileService {
      * Update user profile
      */
     updateProfile (profile: any) {
-        let url = `${this.baseUrl}/${profile.id}`;
+        let url = `${this.baseUrl}/users/${profile.id}`;
         return this.http.put(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
     }
+
+    /**
+     * Get all categories
+     */
+    // getCategories () {
+    //     let url = `${this.baseUrl}/categories`;
+    //     return this.http.get(url).toPromise();
+    // }
 }

@@ -63,11 +63,10 @@ namespace ChoreHub.Models
                 itemToUpdate.LastName = item.LastName;
                 itemToUpdate.Description = item.Description;
                 itemToUpdate.IsPublic = item.IsPublic;
-                itemToUpdate.Image = item.Image;
 
                 var img = new Image()
                 {
-                    Link = itemToUpdate.Image.Link
+                    Link = item.Image.Link
                 };
 
                 itemToUpdate.Image = img;

@@ -58,21 +58,6 @@ namespace ChoreHub.Controllers
             return new ObjectResult(chore);
         }
 
-        // GET : api/chores/category/5
-        [HttpGet("category/{id}", Name = "GetChoreByCategory")]
-        [Route("category")]
-        public IEnumerable<Chore> GetByCategoryId(int id)
-        {
-            var category = Categories.Find(id);
-
-            if (category == null)
-            {
-                return null;
-            }
-
-            return Chores.GetByCategoryId(id);
-        }
-
         // GET : api/chores/user/5
         [HttpGet("user/{id}", Name = "GetChoreByUser")]
         public IEnumerable<Chore> GetByUserId(int id)
