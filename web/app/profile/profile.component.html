@@ -11,29 +11,26 @@
         <div class="row">
             <div class="columns twelve">
                 <label>Naam:</label>
-                <p>Benno Meysmans</p>
+                <p>{{ profile.firstName }} {{ profile.lastName }}</p>
             </div>
         </div>
         <div class="row">
             <div class="columns twelve">
                 <label>Beschrijving:</label>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                    Odit temporibus earum, dolor numquam aspernatur, odio fugit nisi quos fuga laudantium neque sequi 
-                    suscipit voluptatibus natus necessitatibus laboriosam, cum accusamus voluptate.
-                </p>
+                <p>{{ profile.description }} </p>
             </div>
         </div>
         <div class="row">
             <div class="columns twelve">
                 <label>Status: </label>
-                <p>Publiek</p>
+                <p *ngIf="profile.isPublic">Publiek</p>
+                <p *ngIf="!profile.isPublic">Geheim</p>
             </div>
         </div>
-        <div class="row">
+        <div *ngIf="profile.image.link" class="row">
             <div class="columns twelve">
                 <label>Profielfoto</label>
-                <img style="height: 200px; width: 200px;" src="http://www.judithvandaalen.nl/wp-content/uploads/galleries/post-444/Profielfoto-Portretfotografie-Fotostudio-1.jpg" alt="profile picture" />
+                <img class="profile-picture" [src]="profile.image.link" alt="profile picture" />
             </div>
         </div>
     </div>

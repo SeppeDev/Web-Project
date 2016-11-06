@@ -1,5 +1,4 @@
 import { Injectable }       from "@angular/core";
-import { Response }         from "@angular/http";
 import { Router }           from "@angular/router";
 
 import {    tokenNotExpired,
@@ -107,9 +106,8 @@ export class AuthService {
         let url = `${this.baseUrl}/userid/${this.authProfile.user_id}`;
 
         this.http.get(url).toPromise()
-            .then((res: Response) => {
-                let body = res.json();
-                localStorage.setItem("user_profile", JSON.stringify(body));
+            .then((data: any) => {
+                console.log(data);
             }, (error) => {
                 this.router.navigate(["/profile/create"]);
             });

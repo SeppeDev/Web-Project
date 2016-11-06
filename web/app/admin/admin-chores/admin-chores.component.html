@@ -19,16 +19,19 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Title</th>
-                            <th>Actions</th>
+                            <th>Titel</th>
+                            <th>Categorie</th>
+                            <th>Handelingen</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let chore of chores">
                             <td>{{ chore.id }}</td>
                             <td>{{ chore.title }}</td>
+                            <td>{{ chore.category.name }}</td>
                             <td>
-
+                                <a [routerLink]="['/hub/chores', chore.id]" class="ch-btn ch-btn-s ch-bg-green">Bekijk</a>
+                                <a (click)="deleteChore(chore.id)" class="mar-lft-m clickable ch-btn ch-btn-s ch-bg-red">Verwijder</a>
                             </td>
                         </tr>
                     </tbody>

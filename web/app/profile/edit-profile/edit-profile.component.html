@@ -41,9 +41,9 @@
             </div>
         </div>
         <div *ngIf="profile.image" class="row mar-top-m">
-            <label>Huidige foto</label>
             <div class="columns six">
-                <img [src]="profile.image.link" alt="profiel foto" />
+                <label>Huidige foto</label>
+                <img class="profile-picture" [src]="profile.image.link" alt="profiel foto" />
             </div>
         </div>
         <div class="row mar-top-m">

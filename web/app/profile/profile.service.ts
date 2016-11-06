@@ -28,8 +28,9 @@ export class ProfileService {
     /**
      * Get user profile
      */
-    getProfile (userId: string) {
-        let url = `${this.baseUrl}/${userId}`;
+    getProfile () {
+        let userId = JSON.parse(localStorage.getItem("auth_profile")).user_id;
+        let url = `${this.baseUrl}/userid/${userId}`;
         return this.http.get(url).toPromise();      
     }
 

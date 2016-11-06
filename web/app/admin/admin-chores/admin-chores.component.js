@@ -13,9 +13,29 @@ var admin_service_1 = require("../admin.service");
 var AdminChoresComponent = (function () {
     function AdminChoresComponent(adminSvc) {
         this.adminSvc = adminSvc;
+        /**
+         * All chores
+         */
+        this.chores = [];
     }
+    /**
+     * Fires when component is loaded
+     */
     AdminChoresComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.adminSvc.getChores()
+            .then(function (data) {
+            _this.chores = JSON.parse(data._body);
+            console.log(data);
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    /**
+     * Deletes a chore
+     */
+    AdminChoresComponent.prototype.deleteChore = function (choreId) {
+        this.adminSvc.deleteChore(choreId)
             .then(function (data) {
             console.log(data);
         }, function (error) {

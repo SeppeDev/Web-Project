@@ -67,4 +67,12 @@ export class AdminService {
         let url = `${this.baseUrl}/chores`;
         return this.http.get(url).toPromise();
     }
+
+    /**
+     * Delete a chore
+     */
+    deleteChore (choreId: number) {
+        let url = `${this.baseUrl}/chores/${choreId}`;
+        return this.http.delete(url).toPromise();
+    }
 }
