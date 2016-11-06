@@ -67,6 +67,13 @@ var AdminService = (function () {
         var url = this.baseUrl + "/chores";
         return this.http.get(url).toPromise();
     };
+    /**
+     * Delete a chore
+     */
+    AdminService.prototype.deleteChore = function (choreId) {
+        var url = this.baseUrl + "/chores/" + choreId;
+        return this.http.delete(url).toPromise();
+    };
     AdminService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [angular2_jwt_1.AuthHttp])

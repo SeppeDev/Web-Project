@@ -39,7 +39,12 @@ var EditProfileComponent = (function () {
         this.route.data.forEach(function (data) {
             if (data.state == "edit") {
                 _this.state = "Bewerk";
-                _this.profile = JSON.parse(localStorage.getItem("user_profile"));
+                _this.profileSvc.getProfile()
+                    .then(function (data) {
+                    _this.profile = JSON.parse(data._body);
+                }, function (error) {
+                    console.log(error);
+                });
             }
             else {
                 _this.state = "Maak";

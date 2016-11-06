@@ -65,6 +65,13 @@ namespace ChoreHub.Models
                 itemToUpdate.IsPublic = item.IsPublic;
                 itemToUpdate.Image = item.Image;
 
+                var img = new Image()
+                {
+                    Link = itemToUpdate.Image.Link
+                };
+
+                itemToUpdate.Image = img;
+
                 _context.Entry(itemToUpdate).State = EntityState.Modified;
                 _context.SaveChanges();
             }

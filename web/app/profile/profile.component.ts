@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { ProfileService } from "./profile.service";
 
@@ -7,20 +7,32 @@ import { ProfileService } from "./profile.service";
     providers: [ ProfileService ],
     templateUrl: "app/profile/profile.component.html"
 })
-export class ProfileComponent { 
+export class ProfileComponent implements OnInit { 
     /**
      * User profile
      */
-    profile: any;
-
-    /**
-     * Auth0 profile
-     */
-    private authProfile: any;
+    profile: any = {
+        image: {}
+    };
 
     constructor (private profileSvc: ProfileService) { }
 
+    /**
+     * Fires when component is loaded
+     */
+    ngOnInit () {
+        this.getProfile();
+    }
+
+    /**
+     * Get logged in user profile
+     */
     private getProfile () {
-        this.profileSvc.getProfile(this.authProfile.userId);
+        this.profileSvc.getProfile()
+            .then((data: any) => {
+                this.profile = JSON.parse(data._body);
+            }, (error: any) => {
+                console.log(error);
+            });
     }
 }

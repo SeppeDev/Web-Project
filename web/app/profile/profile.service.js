@@ -32,8 +32,9 @@ var ProfileService = (function () {
     /**
      * Get user profile
      */
-    ProfileService.prototype.getProfile = function (userId) {
-        var url = this.baseUrl + "/" + userId;
+    ProfileService.prototype.getProfile = function () {
+        var userId = JSON.parse(localStorage.getItem("auth_profile")).user_id;
+        var url = this.baseUrl + "/userid/" + userId;
         return this.http.get(url).toPromise();
     };
     /**

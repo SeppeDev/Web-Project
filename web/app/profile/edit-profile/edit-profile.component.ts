@@ -57,7 +57,13 @@ export class EditProfileComponent implements OnInit {
         this.route.data.forEach((data: any) => {
             if(data.state  == "edit") {
                 this.state = "Bewerk";
-                this.profile = JSON.parse(localStorage.getItem("user_profile"));
+                this.profileSvc.getProfile()
+                    .then((data: any) => {
+                        this.profile = JSON.parse(data._body);
+                    }, (error: any) => {
+                        console.log(error);
+                    })
+
             } else {
                 this.state = "Maak";
                 this.profile = {
