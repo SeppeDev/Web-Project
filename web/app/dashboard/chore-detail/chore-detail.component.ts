@@ -1,4 +1,4 @@
-import { Component }                from "@angular/core";
+import { Component, OnInit }                from "@angular/core";
 import { ActivatedRoute, Params }   from "@angular/router";
 
 import { DashboardService } from "../dashboard.service";
@@ -8,8 +8,18 @@ import { DashboardService } from "../dashboard.service";
     providers: [ DashboardService ],
     templateUrl: "app/dashboard/chore-detail/chore-detail.component.html"
 })
-export class ChoreDetailComponent {
+export class ChoreDetailComponent implements OnInit {
+
+    /**
+     * User variable
+     */
+    chore: any = {
+        category: {},
+        user: {}
+    };
+
     constructor (
+        private dashSvc: DashboardService,
         private route: ActivatedRoute
     ) { }
     
@@ -19,6 +29,7 @@ export class ChoreDetailComponent {
     ngOnInit (): void {
         this.route.params.forEach((params: Params) => {
             let id = +params["choreId"];
+            this.getChore(id);
         });
     }
     
@@ -29,17 +40,16 @@ export class ChoreDetailComponent {
         window.history.back();
     }
 
-    chore: any = {
-        title: "Title",
-        category: "Cleaning",
-        author: {
-            firstName: "Benno",
-            lastName: "Meysmans",
-            description: "Lorem Ipsum Zever",
-            email: "test@example.com",
-            isAdmin: false,
-            image: "https://www.solo.be/uploadedimages/ingredienten/960x446/960/446/appel.jpg"
-        },
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
+    /**
+     * Get chore details
+     */
+    private getChore (choreId: number): void {
+        this.dashSvc.getChore(choreId)
+            .then((data: any) => {
+                this.chore = JSON.parse(data._body);
+                console.log(this.chore);
+            }, (error: any) => {
+                console.log(error);
+            });       
     }
 }

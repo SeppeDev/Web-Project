@@ -39,7 +39,7 @@
                     <p style="max-height: 80px; overflow: hidden;">{{ chore.description }}</p>
                     <label>Geplaatst door:</label>
                     <p>{{ chore.user.firstName }} {{ chore.user.lastName }}</p>
-                    <a class="ch-blue ch-link text-m" [routerLink]="['/hub/chores/', chore.title]">Verder...</a>         
+                    <a class="ch-blue ch-link text-m" [routerLink]="['/hub/chores/', chore.id]">Verder...</a>         
                 </div>                            
             </div>
         </div>

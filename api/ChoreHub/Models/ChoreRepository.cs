@@ -40,7 +40,7 @@ namespace ChoreHub.Models
         public Chore Find(int id)
         {
             return _context.Chores.Include(e => e.User)
-                .Include(c => c.Category)
+                .Include(e => e.Category)
                 .SingleOrDefault(e => e.Id.Equals(id));
         }
 

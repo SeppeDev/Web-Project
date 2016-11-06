@@ -13,25 +13,23 @@
         <div class="row">
             <div class="columns twelve">
                 <label>Waar heb ik hulp mee nodig?</label>
-                <span>{{ chore.category }}</span>
+                <span>{{ chore.category.name }}</span>
             </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns twelve">
                 <label>Wat verwacht ik?</label>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                    Odit temporibus earum, dolor numquam aspernatur, odio fugit nisi quos fuga laudantium neque sequi 
-                    suscipit voluptatibus natus necessitatibus laboriosam, cum accusamus voluptate.
+                    {{ chore.description }}
                 </p>
             </div>
         </div>
-        <div class="row">
+        <div *ngIf="chore.user.firstName" class="row">
             <div class="twelve columns">
                 <label>Geplaatst door</label>
-                <a class="ch-blue ch-link text-l" [routerLink]="['/hub/users/', chore.author.firstName + '-' + chore.author.lastName ]">{{ chore.author.firstName }} {{ chore.author.lastName }}</a>
+                <a class="ch-blue ch-link text-l" [routerLink]="['/hub/users/', chore.user.firstName + '-' + chore.user.lastName ]">{{ chore.user.firstName }} {{ chore.user.lastName }}</a>
                 <label class="mar-top-m">Contacteer</label>
-                <span>{{ chore.author.email }}</span>
+                <span>{{ chore.user.email }}</span>
             </div>
         </div>
     </div>
