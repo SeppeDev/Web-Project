@@ -33,7 +33,7 @@ var ChoreDetailComponent = (function () {
      */
     ChoreDetailComponent.prototype.ngOnInit = function () {
         this.route.params.forEach(function (params) {
-            var name = +params["choreId"];
+            var id = +params["choreId"];
         });
     };
     /**

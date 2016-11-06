@@ -2,15 +2,24 @@
     <div class="container">
         <div class="row">
             <div class="columns six">
-                <h1 class="light ch-green no-mar-b">Hub</h1>
-                <h5 class="light">Zoek een chore die je past</h5>
+                <div class="row">
+                    <h1 class="light ch-green no-mar-b">Hub</h1>
+                </div>
+                <div class="row">
+                    <h5 class="light">Zoek een chore die je past</h5>
+                </div>     
             </div>
             <div class="columns six">
-                <ul class="u-pull-right hub-nav-list">
-                    <li class="regular">Zoek op:</li>
-                    <li><a routerLink="/hub/users">Personen</a></li>
-                    <li><a routerLink="/hub/chores">Chores</a></li>
-                </ul>
+                <div class="row">
+                    <ul class="u-pull-right hub-nav-list mar-btm-s">
+                        <li class="regular">Zoek op:</li>
+                        <li><a routerLink="/hub/users">Personen</a></li>
+                        <li><a routerLink="/hub/chores">Chores</a></li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <a class="ch-btn ch-btn-lg ch-bg-green u-pull-right" routerLink="/hub/chores/create">Nieuwe chore</a>
+                </div>
             </div>
         </div>
         <div class="row shadow ch-bg-green">

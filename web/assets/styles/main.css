@@ -243,6 +243,10 @@ aside > ul > li > a:hover {
     margin-left: 20px;    
 }
 
+.hub-nav-list > li:first-child {
+    margin-left: 0;
+}
+
 .hub-nav-list > li > a {
     width: 100%;  
     text-decoration: none;

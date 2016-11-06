@@ -9,12 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 require("rxjs/Rx");
 var angular2_jwt_1 = require("angular2-jwt");
 var constants_1 = require("../shared/constants");
 var DashboardService = (function () {
     function DashboardService(http) {
         this.http = http;
+        /**
+         * Custom headers
+         */
+        this.headers = new http_1.Headers({ "Content-Type": "application/json" });
         /**
          * Auth0 profile
          */
@@ -48,6 +53,14 @@ var DashboardService = (function () {
     DashboardService.prototype.getUser = function (userId) {
         var url = this.baseUrl + "/user/" + userId;
         return this.getData(url);
+    };
+    /**
+     * Create new chore
+     */
+    DashboardService.prototype.saveChore = function (chore) {
+        chore.user = JSON.parse(localStorage.getItem("user_profile"));
+        var url = this.baseUrl + "/chores";
+        return this.http.post(url, JSON.stringify(chore), { headers: this.headers }).toPromise();
     };
     /**
      * Perform http get request

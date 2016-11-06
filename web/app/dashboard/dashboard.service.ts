@@ -1,5 +1,5 @@
-import { Injectable }   from "@angular/core";
-import { Response }     from "@angular/http";
+import { Injectable }           from "@angular/core";
+import { Response, Headers }    from "@angular/http";
 
 import "rxjs/Rx";
 import { AuthHttp }     from "angular2-jwt";
@@ -12,6 +12,11 @@ export class DashboardService {
      * Base url for requests in this service
      */
     private baseUrl: string;
+
+    /** 
+     * Custom headers
+     */
+    private headers: Headers = new Headers({"Content-Type": "application/json"});
 
     /**
      * Auth0 profile
@@ -52,6 +57,15 @@ export class DashboardService {
     getUser (userId: number) {
         let url = `${this.baseUrl}/user/${userId}`;
         return this.getData(url);
+    }
+
+    /**
+     * Create new chore
+     */
+    saveChore (chore: any) {
+        chore.user = JSON.parse(localStorage.getItem("user_profile"));
+        let url = `${this.baseUrl}/chores`;
+        return this.http.post(url, JSON.stringify(chore), { headers: this.headers }).toPromise();
     }
 
     /**

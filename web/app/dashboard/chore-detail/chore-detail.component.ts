@@ -18,7 +18,7 @@ export class ChoreDetailComponent {
      */
     ngOnInit (): void {
         this.route.params.forEach((params: Params) => {
-            let name = +params["choreId"];
+            let id = +params["choreId"];
         });
     }
     

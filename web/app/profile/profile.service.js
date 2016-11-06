@@ -37,6 +37,20 @@ var ProfileService = (function () {
         return this.http.get(url).toPromise();
     };
     /**
+     * Get user chores
+     */
+    ProfileService.prototype.getUserChores = function () {
+        var url = this.baseUrl + "/chores/";
+        return this.http.get(url).toPromise();
+    };
+    /**
+     * Get user chore by id
+     */
+    ProfileService.prototype.getChoreById = function (id) {
+        var url = this.baseUrl + "/chores/" + id;
+        return this.http.get(url).toPromise();
+    };
+    /**
      * Save user profile
      */
     ProfileService.prototype.saveProfile = function (profile) {

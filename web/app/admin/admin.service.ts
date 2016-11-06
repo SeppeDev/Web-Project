@@ -16,7 +16,7 @@ export class AdminService {
     /**
      * Custom headers
      */
-    headers: Headers = new Headers({"Content-Type": "application/json"});
+    private headers: Headers = new Headers({"Content-Type": "application/json"});
 
     constructor (private http: AuthHttp) { }
 

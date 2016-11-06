@@ -2,32 +2,40 @@
     <div class="container">
         <div class="row">
             <div class="columns twelve">
+               <a class="ch-blue ch-link text-l clickable" (click)="goBack()">Terug</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns twelve">
                 <h1>Nieuwe Chore</h1>
             </div>
         </div>
         <div class="row">
             <div class="columns six">
                 <label for="title">Titel</label>
-                <input [(ngModel)]="chore.title" class="u-full-width" type="text" id="title" />                
+                <input [(ngModel)]="chore.title" class="u-full-width" type="text" id="title" />
+                <p class="error">{{ errors.titleError }}</p>                
             </div>         
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
                 <label for="description">Wat heb je nodig?</label>
                 <textarea style="height: 200px" [(ngModel)]="chore.description" class="u-full-width" id="description"></textarea>
+                <p class="error">{{ errors.descriptionError }}</p> 
             </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
                 <label for="category">Welke categorie valt deze chore onder?</label>
-                <select [(ngModel)]="chore.category" (change)="test()" id="category">
+                <select [(ngModel)]="chore.category" id="category">
                     <option value="">Kies hier ...</option>
                     <option *ngFor="let category of categories" [ngValue]="category">{{ category.name }}</option>
                 </select>
+                <p class="error">{{ errors.categoryError }}</p>
             </div>
         </div>
         <div class="row mar-top-l">
-            <a class="ch-btn ch-btn-lg ch-bg-blue clickable">Opslaan</a>
+            <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable">Opslaan</a>
         </div>
     </div>
 </section>

@@ -13,6 +13,10 @@ var dashboard_service_1 = require("../dashboard.service");
 var ChoreCreateComponent = (function () {
     function ChoreCreateComponent(dashSvc) {
         this.dashSvc = dashSvc;
+        /**
+         * List of errors
+         */
+        this.errors = {};
     }
     /**
      * Fires when component is loaded
@@ -23,8 +27,30 @@ var ChoreCreateComponent = (function () {
         };
         this.getCategories();
     };
-    ChoreCreateComponent.prototype.test = function () {
+    /**
+     * Return to previous application state
+     */
+    ChoreCreateComponent.prototype.goBack = function () {
+        window.history.back();
+    };
+    /**
+     * Validate chore creation form
+     */
+    ChoreCreateComponent.prototype.validate = function () {
+        this.errors = [];
         console.log(this.chore);
+        if (!this.chore.title || typeof (this.chore.title) == "undefined") {
+            this.errors.titleError = "Geef een titel in.";
+        }
+        if (!this.chore.description || typeof (this.chore.description) == "undefined") {
+            this.errors.descriptionError = "Voeg een beschrijving toe.";
+        }
+        if (this.chore.category == "") {
+            this.errors.categoryError = "Selecteer een categorie.";
+        }
+        if (Object.keys(this.errors).length == 0) {
+            this.saveChore();
+        }
     };
     /**
      * Get all categories
@@ -35,6 +61,17 @@ var ChoreCreateComponent = (function () {
             .then(function (data) {
             console.log(data);
             _this.categories = JSON.parse(data._body);
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    /**
+     * Create new chore
+     */
+    ChoreCreateComponent.prototype.saveChore = function () {
+        this.dashSvc.saveChore(this.chore)
+            .then(function (data) {
+            console.log(data);
         }, function (error) {
             console.log(error);
         });

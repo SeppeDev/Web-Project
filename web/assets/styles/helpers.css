@@ -58,12 +58,20 @@
     margin-left: 0 !important;
 }
 
+.mar-btm-s {
+    margin-bottom: 10px;
+}
+
 .mar-top-l {
     margin-top: 30px;
 }
 
 .mar-top-m {
     margin-top: 15px;
+}
+
+.mar-top-xs {
+    margin-top: 5px;
 }
 
 .mar-lft-m {
@@ -125,4 +133,8 @@ main {
     height: 30px;
     line-height: 30px;
     font-size: 1.2rem;
+}
+
+.is-active {
+    border-bottom: 1px solid;
 }

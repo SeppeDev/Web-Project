@@ -1,16 +1,11 @@
 <section class="view">
     <div class="container">
         <div class="row">
-            <ul class="hub-nav-list u-pull-left">
-                <li class="regular">Navigatie:</li>
-                <li><a routerLink="/admin/categories" [routerLinkActive]="['is-active']">Categoriëen</a></li>
-                <li><a routerLink="/admin/users" [routerLinkActive]="['is-active']">Gebruikers</a></li>
-                <li><a routerLink="/admin/chores" [routerLinkActive]="['is-active']">Chores</a></li>
-            </ul>
-        </div>
-        <div class="row">
-            <div class="columns twelve">
-                <h1>Admin - chores</h1>
+            <div class="columns six">
+                <h1>Mijn chores</h1>
+            </div>
+            <div class="columns six">
+                <a routerLink="/hub/chores/create" class="mar-top-xs ch-btn ch-btn-lg ch-bg-green u-pull-right">Nieuwe chore</a>
             </div>
         </div>
         <div class="row">
@@ -28,7 +23,7 @@
                             <td>{{ chore.id }}</td>
                             <td>{{ chore.title }}</td>
                             <td>
-
+                                
                             </td>
                         </tr>
                     </tbody>

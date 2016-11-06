@@ -21,7 +21,7 @@ export class ProfileService {
     /**
      * Custom headers
      */
-    headers: Headers = new Headers({"Content-Type": "application/json"});
+    private headers: Headers = new Headers({"Content-Type": "application/json"});
 
     constructor (private http: AuthHttp) { }
 
@@ -31,6 +31,22 @@ export class ProfileService {
     getProfile (userId: string) {
         let url = `${this.baseUrl}/${userId}`;
         return this.http.get(url).toPromise();      
+    }
+
+    /**
+     * Get user chores
+     */
+    getUserChores () {
+        let url = `${this.baseUrl}/chores/`;
+        return this.http.get(url).toPromise();
+    }
+
+    /**
+     * Get user chore by id
+     */
+    getChoreById (id: any) {
+        let url = `${this.baseUrl}/chores/${id}`;
+        return this.http.get(url).toPromise();
     }
 
     /**

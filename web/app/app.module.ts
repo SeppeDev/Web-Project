@@ -7,19 +7,21 @@ import { AUTH_PROVIDERS }       from "angular2-jwt";
 import { UPLOAD_DIRECTIVES }    from "ng2-uploader";
 
 // Import components
-import { AppComponent }             from "./app.component";
-import { HomeComponent }            from "./home/home.component";
-import { InfoComponent }            from "./info/info.component";
-import { UserDashboardComponent }   from "./dashboard/user-dashboard/user-dashboard.component";
-import { UserDetailComponent}       from "./dashboard/user-detail/user-detail.component";
-import { ChoreDashboardComponent }  from "./dashboard/chore-dashboard/chore-dashboard.component";
-import { ChoreDetailComponent}      from "./dashboard/chore-detail/chore-detail.component";
-import { ChoreCreateComponent }     from "./dashboard/chore-create/chore-create.component";
-import { ProfileComponent }         from "./profile/profile.component";
-import { EditProfileComponent }     from "./profile/edit-profile/edit-profile.component";
-import { AdminCategoriesComponent } from "./admin/admin-categories/admin-categories.component";
-import { AdminUsersComponent }      from "./admin/admin-users/admin-users.component";
-import { AdminChoresComponent }     from "./admin/admin-chores/admin-chores.component";
+import { AppComponent }                 from "./app.component";
+import { HomeComponent }                from "./home/home.component";
+import { InfoComponent }                from "./info/info.component";
+import { UserDashboardComponent }       from "./dashboard/user-dashboard/user-dashboard.component";
+import { UserDetailComponent}           from "./dashboard/user-detail/user-detail.component";
+import { ChoreDashboardComponent }      from "./dashboard/chore-dashboard/chore-dashboard.component";
+import { ChoreDetailComponent}          from "./dashboard/chore-detail/chore-detail.component";
+import { ChoreCreateComponent }         from "./dashboard/chore-create/chore-create.component";
+import { ProfileComponent }             from "./profile/profile.component";
+import { ProfileChoresComponent }       from "./profile/profile-chores/profile-chores.component";
+import { ProfileChoreEditComponent }    from "./profile/profile-chore-edit/profile-chore-edit.component";
+import { EditProfileComponent }         from "./profile/edit-profile/edit-profile.component";
+import { AdminCategoriesComponent }     from "./admin/admin-categories/admin-categories.component";
+import { AdminUsersComponent }          from "./admin/admin-users/admin-users.component";
+import { AdminChoresComponent }         from "./admin/admin-chores/admin-chores.component";
 
 // Import guard 
 import { AuthGuard }    from "./shared/auth/auth.guard";
@@ -124,6 +126,19 @@ import { AuthService }  from "./shared/auth/auth.service";
                             state: "edit"
                         },                        
                         component: EditProfileComponent
+                    },
+                    {
+                        path: "chores",
+                        children: [
+                            {
+                                path: "",
+                                component: ProfileChoresComponent
+                            },
+                            {
+                                path: ":choreId",
+                                component: ProfileChoreEditComponent
+                            }
+                        ]
                     }
                 ]
             }
@@ -139,6 +154,8 @@ import { AuthService }  from "./shared/auth/auth.service";
         ChoreDashboardComponent,
         ProfileComponent,
         EditProfileComponent,
+        ProfileChoresComponent,
+        ProfileChoreEditComponent,
         UserDetailComponent,
         ChoreDetailComponent,
         ChoreCreateComponent,

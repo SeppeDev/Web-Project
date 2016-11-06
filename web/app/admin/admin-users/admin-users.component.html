@@ -1,6 +1,14 @@
 <section class="view">
     <div class="container">
         <div class="row">
+            <ul class="hub-nav-list u-pull-left">
+                <li class="regular">Navigatie:</li>
+                <li><a routerLink="/admin/categories" [routerLinkActive]="['is-active']">Categoriëen</a></li>
+                <li><a routerLink="/admin/users" [routerLinkActive]="['is-active']">Gebruikers</a></li>
+                <li><a routerLink="/admin/chores" [routerLinkActive]="['is-active']">Chores</a></li>
+            </ul>
+        </div>
+        <div class="row">
             <div class="columns twelve">
                 <h1>Admin - gebruikers</h1>
             </div>

@@ -18,6 +18,11 @@ export class ChoreCreateComponent implements OnInit {
      */
     categories: any;
 
+    /**
+     * List of errors
+     */
+    errors: any = {};
+
     constructor (private dashSvc: DashboardService) { }
 
     /**
@@ -30,8 +35,34 @@ export class ChoreCreateComponent implements OnInit {
         this.getCategories();
     }
 
-    test () {
+    /**
+     * Return to previous application state
+     */
+    goBack () {
+        window.history.back();
+    }
+
+    /**
+     * Validate chore creation form
+     */
+    validate () {
+        this.errors = [];
         console.log(this.chore);
+        if(!this.chore.title || typeof(this.chore.title) == "undefined") {
+            this.errors.titleError = "Geef een titel in.";
+        }
+
+        if(!this.chore.description || typeof(this.chore.description) == "undefined") {
+            this.errors.descriptionError = "Voeg een beschrijving toe."
+        }
+
+        if(this.chore.category == "") {
+            this.errors.categoryError = "Selecteer een categorie.";
+        }
+
+        if(Object.keys(this.errors).length == 0) {
+            this.saveChore();
+        }
     }
 
     /**
@@ -45,5 +76,17 @@ export class ChoreCreateComponent implements OnInit {
             }, (error: any) => {
                 console.log(error);
             });
+    }
+
+    /**
+     * Create new chore
+     */
+    private saveChore () {
+        this.dashSvc.saveChore(this.chore)
+            .then((data: any) => {
+                console.log(data);
+            }, (error: any) => {
+                console.log(error);
+            })
     }
 }

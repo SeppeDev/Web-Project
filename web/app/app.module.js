@@ -25,6 +25,8 @@ var chore_dashboard_component_1 = require("./dashboard/chore-dashboard/chore-das
 var chore_detail_component_1 = require("./dashboard/chore-detail/chore-detail.component");
 var chore_create_component_1 = require("./dashboard/chore-create/chore-create.component");
 var profile_component_1 = require("./profile/profile.component");
+var profile_chores_component_1 = require("./profile/profile-chores/profile-chores.component");
+var profile_chore_edit_component_1 = require("./profile/profile-chore-edit/profile-chore-edit.component");
 var edit_profile_component_1 = require("./profile/edit-profile/edit-profile.component");
 var admin_categories_component_1 = require("./admin/admin-categories/admin-categories.component");
 var admin_users_component_1 = require("./admin/admin-users/admin-users.component");
@@ -132,6 +134,19 @@ var AppModule = (function () {
                                     state: "edit"
                                 },
                                 component: edit_profile_component_1.EditProfileComponent
+                            },
+                            {
+                                path: "chores",
+                                children: [
+                                    {
+                                        path: "",
+                                        component: profile_chores_component_1.ProfileChoresComponent
+                                    },
+                                    {
+                                        path: ":choreId",
+                                        component: profile_chore_edit_component_1.ProfileChoreEditComponent
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -146,6 +161,8 @@ var AppModule = (function () {
                 chore_dashboard_component_1.ChoreDashboardComponent,
                 profile_component_1.ProfileComponent,
                 edit_profile_component_1.EditProfileComponent,
+                profile_chores_component_1.ProfileChoresComponent,
+                profile_chore_edit_component_1.ProfileChoreEditComponent,
                 user_detail_component_1.UserDetailComponent,
                 chore_detail_component_1.ChoreDetailComponent,
                 chore_create_component_1.ChoreCreateComponent,
