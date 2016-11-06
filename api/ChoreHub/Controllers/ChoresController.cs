@@ -14,21 +14,18 @@ namespace ChoreHub.Controllers
     [Route("api/[controller]")]
     public class ChoresController : Controller
     {
-        public ChoresController(IChoreRepository chores, ICategoryRepository categories, IUserRepository users, IHttpContextAccessor httpContextAccessor)
+        public ChoresController(IChoreRepository chores, ICategoryRepository categories, IUserRepository users)
         {
             Chores = chores;
             Categories = categories;
             Users = users;
-            _httpContextAccessor = httpContextAccessor;
         }
 
         public IChoreRepository Chores
         {
             get; set;
         }
-
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private ISession _session => _httpContextAccessor.HttpContext.Session;
+        
 
         public ICategoryRepository Categories
         {
@@ -77,8 +74,7 @@ namespace ChoreHub.Controllers
         }
 
         // GET : api/chores/user/5
-        [HttpGet("{id}", Name = "GetChoreByUser")]
-        [Route("user")]
+        [HttpGet("user/{id}", Name = "GetChoreByUser")]
         public IEnumerable<Chore> GetByUserId(int id)
         {
             var user = Users.Find(id);
@@ -117,13 +113,9 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (oldchore.User.Auth0Id == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
-            {
-                Chores.Update(chore);
-                return new NoContentResult();
-            }
 
-            return BadRequest();
+            Chores.Update(chore);
+            return new NoContentResult();
         }
 
         [HttpDelete("{id}")]
@@ -135,13 +127,8 @@ namespace ChoreHub.Controllers
                 return NotFound();
             }
 
-            if (chore.User.Auth0Id == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
-            {
-                Chores.Remove(id);
-                return new NoContentResult();
-            }
-
-            return BadRequest();
+            Chores.Remove(id);
+            return new NoContentResult();
         }
     }
 }

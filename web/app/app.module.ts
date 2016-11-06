@@ -135,7 +135,7 @@ import { AuthService }  from "./shared/auth/auth.service";
                                 component: ProfileChoresComponent
                             },
                             {
-                                path: ":choreId",
+                                path: "edit/:choreId",
                                 component: ProfileChoreEditComponent
                             }
                         ]

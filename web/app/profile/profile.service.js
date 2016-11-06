@@ -40,7 +40,8 @@ var ProfileService = (function () {
      * Get user chores
      */
     ProfileService.prototype.getUserChores = function () {
-        var url = this.baseUrl + "/chores/";
+        var user = JSON.parse(localStorage.getItem("user_profile"));
+        var url = constants_1.Constants.API_BASE_URL + "/chores/user/" + user.id;
         return this.http.get(url).toPromise();
     };
     /**
@@ -49,6 +50,13 @@ var ProfileService = (function () {
     ProfileService.prototype.getChoreById = function (id) {
         var url = this.baseUrl + "/chores/" + id;
         return this.http.get(url).toPromise();
+    };
+    /**
+     * Delete chore
+     */
+    ProfileService.prototype.deleteChore = function (id) {
+        var url = constants_1.Constants.API_BASE_URL + "/chores/" + id;
+        return this.http.delete(url).toPromise();
     };
     /**
      * Save user profile

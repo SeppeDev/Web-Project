@@ -143,7 +143,7 @@ var AppModule = (function () {
                                         component: profile_chores_component_1.ProfileChoresComponent
                                     },
                                     {
-                                        path: ":choreId",
+                                        path: "edit/:choreId",
                                         component: profile_chore_edit_component_1.ProfileChoreEditComponent
                                     }
                                 ]

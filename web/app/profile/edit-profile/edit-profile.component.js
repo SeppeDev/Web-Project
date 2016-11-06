@@ -153,7 +153,7 @@ var EditProfileComponent = (function () {
             this.uploadEvents.emit("startUpload");
         }
         else {
-            this.update();
+            this.updateProfile();
         }
     };
     EditProfileComponent.prototype.storeProfile = function (profile) {

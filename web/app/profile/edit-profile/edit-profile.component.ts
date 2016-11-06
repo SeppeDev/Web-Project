@@ -179,7 +179,7 @@ export class EditProfileComponent implements OnInit {
         if(this.state == "Maak" || (this.hasFile && this.state == "Bewerk")) {
             this.uploadEvents.emit("startUpload");
         } else {
-            this.update();
+            this.updateProfile();
         }
     }
 

@@ -13,20 +13,34 @@ var profile_service_1 = require("../profile.service");
 var ProfileChoresComponent = (function () {
     function ProfileChoresComponent(profileSvc) {
         this.profileSvc = profileSvc;
+        /**
+         * Chores belonging to this user
+         */
+        this.chores = [];
     }
     /**
      * Fires when component is loaded
      */
     ProfileChoresComponent.prototype.ngOnInit = function () {
-        this.getCategories();
+        this.getChores();
+    };
+    ProfileChoresComponent.prototype.deleteChore = function (id) {
+        var _this = this;
+        this.profileSvc.deleteChore(id)
+            .then(function (data) {
+            _this.chores = _this.chores.filter(function (chore) { return chore.id != id; });
+        }, function (error) {
+            console.log(error);
+        });
     };
     /**
      * Get all categories
      */
-    ProfileChoresComponent.prototype.getCategories = function () {
+    ProfileChoresComponent.prototype.getChores = function () {
+        var _this = this;
         this.profileSvc.getUserChores()
             .then(function (data) {
-            console.log(data);
+            _this.chores = JSON.parse(data._body);
         }, function (error) {
             console.log(error);
         });

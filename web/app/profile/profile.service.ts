@@ -37,7 +37,8 @@ export class ProfileService {
      * Get user chores
      */
     getUserChores () {
-        let url = `${this.baseUrl}/chores/`;
+        let user = JSON.parse(localStorage.getItem("user_profile"));
+        let url = `${Constants.API_BASE_URL}/chores/user/${user.id}`;
         return this.http.get(url).toPromise();
     }
 
@@ -47,6 +48,14 @@ export class ProfileService {
     getChoreById (id: any) {
         let url = `${this.baseUrl}/chores/${id}`;
         return this.http.get(url).toPromise();
+    }
+
+    /**
+     * Delete chore
+     */
+    deleteChore (id: any) {
+        let url = `${Constants.API_BASE_URL}/chores/${id}`;
+        return this.http.delete(url).toPromise();
     }
 
     /**

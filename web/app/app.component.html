@@ -23,7 +23,8 @@
                     <ul class="dropdown-content shadow" *ngIf="topMenuActive">
                         <li><a routerLink="/admin/categories">Admin Panel</a></li>
                         <!--<li><a routerLink="/profile/chores">My Chores</a></li>-->
-                        <li><a routerLink="/profile">My Profile</a></li>
+                        <li><a routerLink="/profile">Mijn Profiel</a></li>
+                        <li><a routerLink="/profile/chores">Mijn Chores</a></li>
                         <li><a (click)="authSvc.logout()" class="clickable">Logout</a></li>
                     </ul>
                 </li>
@@ -56,7 +57,10 @@
                 <li>
                     <a class="clickable" (click)="showBottomMenu()">{{ authSvc.authProfile.nickname }}<i class="material-icons fix-icon">arrow_drop_down</i></a>
                     <ul class="dropdown-content dropdown-bottom shadow" *ngIf="bottomMenuActive">
-                        <li><a routerLink="/profile">My Profile</a></li>
+                        <li><a routerLink="/admin/categories">Admin Panel</a></li>
+                        <!--<li><a routerLink="/profile/chores">My Chores</a></li>-->
+                        <li><a routerLink="/profile">Mijn Profiel</a></li>
+                        <li><a routerLink="/profile/chores">Mijn Chores</a></li>
                         <li><a (click)="authSvc.logout()" class="clickable">Logout</a></li>
                     </ul>
                 </li>
