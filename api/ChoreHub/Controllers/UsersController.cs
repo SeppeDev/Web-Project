@@ -99,7 +99,7 @@ namespace ChoreHub.Controllers
             if (olduser.Auth0Id == user.Auth0Id || user.IsAdmin == true)
             {
                 Users.Update(user);
-                return new NoContentResult();
+                return CreatedAtRoute("GetUser", new { id = user.Id }, user);
             }
 
             return BadRequest();
