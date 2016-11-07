@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 
 using ChoreHub.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ChoreHub.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class ChoresController : Controller
     {
         public ChoresController(IChoreRepository chores, ICategoryRepository categories, IUserRepository users)
