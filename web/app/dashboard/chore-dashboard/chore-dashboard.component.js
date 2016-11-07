@@ -35,7 +35,7 @@ var ChoreDashboardComponent = (function () {
     ChoreDashboardComponent.prototype.changeCategory = function (category) {
         console.log(this.chores);
         this.filteredChores = this.chores.filter(function (chore) {
-            return chore.category == category;
+            return chore.category.id == category.id;
         });
     };
     /**
@@ -76,11 +76,21 @@ var ChoreDashboardComponent = (function () {
     ChoreDashboardComponent.prototype.extractCategories = function (chores) {
         var _this = this;
         chores.forEach(function (chore) {
-            if (_this.categories.indexOf(chore.category) == -1) {
+            console.log(_this.categories);
+            if (_this.categories.length == 0) {
                 _this.categories.push(chore.category);
             }
+            else {
+                _this.categories.forEach(function (category) {
+                    if (category.id != chore.category.id) {
+                        _this.categories.push(chore.category);
+                    }
+                });
+            }
+            /*if(!this.categories.includes(chore.category)) {
+                this.categories.push(chore.category);
+            } */
         });
-        console.log(this.categories);
     };
     ChoreDashboardComponent = __decorate([
         core_1.Component({

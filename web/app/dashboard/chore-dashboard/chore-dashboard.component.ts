@@ -36,7 +36,7 @@ export class ChoreDashboardComponent implements OnInit {
     changeCategory (category: any): void {
         console.log(this.chores);
         this.filteredChores = this.chores.filter((chore: any) => {
-            return chore.category == category;
+            return chore.category.id == category.id;
         });
     }
 
@@ -79,12 +79,22 @@ export class ChoreDashboardComponent implements OnInit {
      */
     private extractCategories (chores: any) {
         chores.forEach((chore: any) => {
-            if(this.categories.indexOf(chore.category) == -1) {
+            console.log(this.categories);
+            if(this.categories.length == 0) {
                 this.categories.push(chore.category);
-            }            
-        });
+            } else {
+                this.categories.forEach((category: any) => {
+                    if(category.id != chore.category.id) {
+                        this.categories.push(chore.category);
+                    }
+                });
+            }
+            
 
-        console.log(this.categories);
+            /*if(!this.categories.includes(chore.category)) {
+                this.categories.push(chore.category);
+            } */           
+        });
     }
 
     // /**
