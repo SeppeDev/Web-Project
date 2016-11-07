@@ -1,32 +1,21 @@
-********************************
-**********Web Project***********
-********************************
+# ChoreHub
 
-Persona
-{
-	Jean-Mariette
-	{
-		Jean-Mariette is 77 jaar oud en woont alleen en is niet goed tebeen na een heuptransplantatie. Ze breit graag, kijkt graag blokken en luistert naar Helmut Lotti. Lange tijd rechtstaan of wandelen kan ze niet meer goed, en ze wil dus graag hulp met strijken en winekelen. Ze heeft geen computer en wantrouwt het internet alsook vreemden. Haar twee kinderen beschikken wel over een computer en komen week om week langskomen bij haar. Ze heeft altijd geld in huis.
-	}
+## Wat?
 
-	Nadinne
-	{
-		Nadinne is een alleenstaande moeder van 3. Ze werkt 120%, twee jobs en heeft dus weinig tijd voor zichzelf en haar gezin. Verder haat ze strijken, wat vaak een groot deel van haar weekend in beslag neemt. Ze kan vlot werken met een computer en kan ook online betalingen uitvoeren.
-	}
+ChoreHub is een online platform voor het aanbieden van, of het vragen naar hulp voor alledaagse zaken.
 
-	Jozef
-	{
-		Jozef is een arbeider van 24 die deeltijds werkt in het magazijn om de hoek, maar heeft variërende uren. Hij is vlot met de computer maar geen bijster snuggere jongen. Hij wilt wat extra verdienen door mensen te helpen met klusjes die ze liever niet zelf doen, aangezien hij tijd genoeg heeft.
-	}
+## Hoe werkt het?
 
-	=>
-	{
-		Eenvoudige aanmelding
-		Revieuw die betrouwbaarheid met zich meebrengen
-		Bij overeenkomst voor een klusje een "contract" accepteren (licentieovereenkomst)
-		Flexibel/korte termijn overeenkomsten
-		Op lokatie
-		Duidelijke weergave in contract dat je verzekert bent, en indien zwart werk niet verzekert
-	Dienstencheques, maar last minute
-	}
-}
+Gebruikers creëeren een account, hierna een profiel (deze flow komt uit het gebruik van auth0 voor authenticate - niet lokaal gehost).
+
+Hun profiel kan publiek of niet publiek zijn. Publieke profielen zijn de mensen die hun hulp aanbieden aan anderen.
+Nadat men een profiel heeft gemaakt kan men een "Chore" - klus/taak online plaatsen, die dan te vinden is in de hub.
+
+Gebruikers kunnen ten allen tijden hun eigen profiel en geplaatste Chores beheren.
+
+Er is een admin module voor administrators, waarin een dashboard is voorzien om Chores, gebruikers en categoriëen te beheren.
+
+## Gebruikte technologiëen
+
+- Angular2 Front-End
+- .NET Core Web Api & Auth0 voor authenticatie
