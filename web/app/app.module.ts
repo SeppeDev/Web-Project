@@ -24,7 +24,9 @@ import { AdminUsersComponent }          from "./admin/admin-users/admin-users.co
 import { AdminChoresComponent }         from "./admin/admin-chores/admin-chores.component";
 
 // Import guard 
-import { AuthGuard }    from "./shared/auth/auth.guard";
+import { AuthGuard }        from "./shared/auth/auth.guard";
+import { AuthProfileGuard } from "./shared/auth/auth-profile.guard";
+import { AuthAdminGuard }   from "./shared/auth/auth-admin.guard";
 
 // Import services
 import { AuthService }  from "./shared/auth/auth.service";
@@ -54,6 +56,7 @@ import { AuthService }  from "./shared/auth/auth.service";
             },
             {
                 path: "admin",
+                canActivate: [ AuthGuard, AuthAdminGuard ], 
                 children: [
                     {
                         path: "categories",
@@ -71,7 +74,7 @@ import { AuthService }  from "./shared/auth/auth.service";
             },
             {
                 path: "hub",
-                canActivate: [  ],
+                canActivate: [ AuthGuard ],
                 children: [
                     {
                         path: "users",
@@ -95,6 +98,7 @@ import { AuthService }  from "./shared/auth/auth.service";
                             },
                             {
                                 path: "create",
+                                canActivate: [ AuthProfileGuard ],
                                 component: ChoreCreateComponent
                             },
                             {
@@ -107,10 +111,10 @@ import { AuthService }  from "./shared/auth/auth.service";
             },
             {
                 path: "profile",
-                canActivate: [  ],
                 children: [
                     {
                         path: "",
+                        canActivate: [ AuthGuard, AuthProfileGuard ],
                         component: ProfileComponent
                     },
                     {
@@ -122,6 +126,7 @@ import { AuthService }  from "./shared/auth/auth.service";
                     },
                     {
                         path: "edit",
+                        canActivate: [ AuthGuard, AuthProfileGuard ],
                         data: {
                             state: "edit"
                         },                        
@@ -129,6 +134,7 @@ import { AuthService }  from "./shared/auth/auth.service";
                     },
                     {
                         path: "chores",
+                        canActivate: [ AuthGuard, AuthProfileGuard ],
                         children: [
                             {
                                 path: "",
@@ -171,6 +177,8 @@ import { AuthService }  from "./shared/auth/auth.service";
     providers: [
         AUTH_PROVIDERS,
         AuthGuard,
+        AuthProfileGuard,
+        AuthAdminGuard,
         AuthService
     ],
 

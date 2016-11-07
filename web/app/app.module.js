@@ -33,6 +33,8 @@ var admin_users_component_1 = require("./admin/admin-users/admin-users.component
 var admin_chores_component_1 = require("./admin/admin-chores/admin-chores.component");
 // Import guard 
 var auth_guard_1 = require("./shared/auth/auth.guard");
+var auth_profile_guard_1 = require("./shared/auth/auth-profile.guard");
+var auth_admin_guard_1 = require("./shared/auth/auth-admin.guard");
 // Import services
 var auth_service_1 = require("./shared/auth/auth.service");
 var AppModule = (function () {
@@ -62,6 +64,7 @@ var AppModule = (function () {
                     },
                     {
                         path: "admin",
+                        canActivate: [auth_guard_1.AuthGuard, auth_admin_guard_1.AuthAdminGuard],
                         children: [
                             {
                                 path: "categories",
@@ -79,7 +82,7 @@ var AppModule = (function () {
                     },
                     {
                         path: "hub",
-                        canActivate: [],
+                        canActivate: [auth_guard_1.AuthGuard],
                         children: [
                             {
                                 path: "users",
@@ -103,6 +106,7 @@ var AppModule = (function () {
                                     },
                                     {
                                         path: "create",
+                                        canActivate: [auth_profile_guard_1.AuthProfileGuard],
                                         component: chore_create_component_1.ChoreCreateComponent
                                     },
                                     {
@@ -115,10 +119,10 @@ var AppModule = (function () {
                     },
                     {
                         path: "profile",
-                        canActivate: [],
                         children: [
                             {
                                 path: "",
+                                canActivate: [auth_guard_1.AuthGuard, auth_profile_guard_1.AuthProfileGuard],
                                 component: profile_component_1.ProfileComponent
                             },
                             {
@@ -130,6 +134,7 @@ var AppModule = (function () {
                             },
                             {
                                 path: "edit",
+                                canActivate: [auth_guard_1.AuthGuard, auth_profile_guard_1.AuthProfileGuard],
                                 data: {
                                     state: "edit"
                                 },
@@ -137,6 +142,7 @@ var AppModule = (function () {
                             },
                             {
                                 path: "chores",
+                                canActivate: [auth_guard_1.AuthGuard, auth_profile_guard_1.AuthProfileGuard],
                                 children: [
                                     {
                                         path: "",
@@ -176,6 +182,8 @@ var AppModule = (function () {
             providers: [
                 angular2_jwt_1.AUTH_PROVIDERS,
                 auth_guard_1.AuthGuard,
+                auth_profile_guard_1.AuthProfileGuard,
+                auth_admin_guard_1.AuthAdminGuard,
                 auth_service_1.AuthService
             ],
             // Base component
