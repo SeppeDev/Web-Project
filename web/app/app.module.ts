@@ -74,7 +74,6 @@ import { AuthService }  from "./shared/auth/auth.service";
             },
             {
                 path: "hub",
-                canActivate: [ AuthGuard ],
                 children: [
                     {
                         path: "users",
@@ -98,7 +97,7 @@ import { AuthService }  from "./shared/auth/auth.service";
                             },
                             {
                                 path: "create",
-                                canActivate: [ AuthProfileGuard ],
+                                canActivate: [ AuthGuard, AuthProfileGuard ],
                                 component: ChoreCreateComponent
                             },
                             {

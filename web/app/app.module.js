@@ -82,7 +82,6 @@ var AppModule = (function () {
                     },
                     {
                         path: "hub",
-                        canActivate: [auth_guard_1.AuthGuard],
                         children: [
                             {
                                 path: "users",
@@ -106,7 +105,7 @@ var AppModule = (function () {
                                     },
                                     {
                                         path: "create",
-                                        canActivate: [auth_profile_guard_1.AuthProfileGuard],
+                                        canActivate: [auth_guard_1.AuthGuard, auth_profile_guard_1.AuthProfileGuard],
                                         component: chore_create_component_1.ChoreCreateComponent
                                     },
                                     {
