@@ -93,6 +93,7 @@ var AuthService = (function () {
         var url = this.baseUrl + "/userid/" + this.authProfile.user_id;
         this.http.get(url).toPromise()
             .then(function (data) {
+            localStorage.setItem("user_profile", data._body);
             console.log(data);
         }, function (error) {
             _this.router.navigate(["/profile/create"]);

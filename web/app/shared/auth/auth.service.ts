@@ -107,6 +107,7 @@ export class AuthService {
 
         this.http.get(url).toPromise()
             .then((data: any) => {
+                localStorage.setItem("user_profile", data._body);
                 console.log(data);
             }, (error) => {
                 this.router.navigate(["/profile/create"]);
