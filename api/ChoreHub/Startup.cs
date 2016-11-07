@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using ChoreHub.DAL;
 
 using ChoreHub.Models;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ChoreHub
 {
@@ -56,11 +57,18 @@ namespace ChoreHub
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ChoreHubContext context)
         {
+            var keyAsBase64 = Configuration["Auth0:ClientSecret"].Replace('_', '/').Replace('-', '+');
+            var keyAsBytes = Convert.FromBase64String(keyAsBase64);
+
             // Auth0
             var options = new JwtBearerOptions
             {
-                Audience = Configuration["Auth0:ClientId"],
-                Authority = $"https://{Configuration["Auth0:Domain"]}/"
+                TokenValidationParameters =
+                {
+                    ValidIssuer = $"https://{Configuration["Auth0:Domain"]}/",
+                    ValidAudience = Configuration["Auth0:ClientId"],
+                    IssuerSigningKey = new SymmetricSecurityKey(keyAsBytes)
+                }
             };
 
             app.UseJwtBearerAuthentication(options);

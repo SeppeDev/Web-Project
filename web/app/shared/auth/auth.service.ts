@@ -93,9 +93,9 @@ export class AuthService {
             }        
             
             this.authProfile = profile;
-            this.getUserProfile();
-
             localStorage.setItem("auth_profile", JSON.stringify(profile));
+
+            this.getUserProfile();
         });
     }
 

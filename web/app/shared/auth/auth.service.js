@@ -81,8 +81,8 @@ var AuthService = (function () {
                 return;
             }
             _this.authProfile = profile;
-            _this.getUserProfile();
             localStorage.setItem("auth_profile", JSON.stringify(profile));
+            _this.getUserProfile();
         });
     };
     /**
