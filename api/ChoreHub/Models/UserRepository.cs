@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 using ChoreHub.DAL;
+using System.Security.Claims;
 
 namespace ChoreHub.Models
 {
@@ -75,6 +76,12 @@ namespace ChoreHub.Models
                 _context.Entry(itemToUpdate).State = EntityState.Modified;
                 _context.SaveChanges();
             }
+        }
+
+        public bool IsAdmin(ClaimsPrincipal user)
+        {
+            var auth0Id = user.Claims.FirstOrDefault(u => u.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")?.Value;
+            return _context.Users.Any(u => u.Auth0Id == auth0Id);
         }
     }
 }

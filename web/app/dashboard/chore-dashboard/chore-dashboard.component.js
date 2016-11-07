@@ -76,21 +76,25 @@ var ChoreDashboardComponent = (function () {
     ChoreDashboardComponent.prototype.extractCategories = function (chores) {
         var _this = this;
         chores.forEach(function (chore) {
-            console.log(_this.categories);
-            if (_this.categories.length == 0) {
-                _this.categories.push(chore.category);
+            // if(this.chores.length == 0) {                
+            _this.categories.push(chore.category);
+            // } else {
+            // }
+        });
+        var filtered = this.unique(this.categories);
+        console.log(filtered);
+    };
+    ChoreDashboardComponent.prototype.unique = function (a) {
+        a.sort();
+        for (var i = 1; i < a.length;) {
+            if (a[i - 1].id == a[i].id) {
+                a.splice(i, 1);
             }
             else {
-                _this.categories.forEach(function (category) {
-                    if (category.id != chore.category.id) {
-                        _this.categories.push(chore.category);
-                    }
-                });
+                i++;
             }
-            /*if(!this.categories.includes(chore.category)) {
-                this.categories.push(chore.category);
-            } */
-        });
+        }
+        return a;
     };
     ChoreDashboardComponent = __decorate([
         core_1.Component({

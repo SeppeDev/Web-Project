@@ -79,23 +79,31 @@ export class ChoreDashboardComponent implements OnInit {
      */
     private extractCategories (chores: any) {
         chores.forEach((chore: any) => {
-            console.log(this.categories);
-            if(this.categories.length == 0) {
+            // if(this.chores.length == 0) {                
                 this.categories.push(chore.category);
-            } else {
-                this.categories.forEach((category: any) => {
-                    if(category.id != chore.category.id) {
-                        this.categories.push(chore.category);
-                    }
-                });
-            }
-            
+            // } else {
 
-            /*if(!this.categories.includes(chore.category)) {
-                this.categories.push(chore.category);
-            } */           
+
+            // }
         });
+
+        let filtered = this.unique(this.categories);
+        console.log(filtered);
     }
+
+    private unique (a: any){
+        a.sort();
+
+        for(var i = 1; i < a.length; ) {
+            if(a[i-1].id == a[i].id) {
+                a.splice(i, 1);
+            } else {
+                i++;
+            }
+        }
+        return a;
+    }  
+
 
     // /**
     //  * Get chores of certain category

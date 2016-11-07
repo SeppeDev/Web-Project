@@ -26,7 +26,11 @@ namespace ChoreHub.Controllers
             get; set;
         }
 
-        // GET: api/users/admin
+        /**
+         * GET: api/users/admin
+         * 
+         * Get all users
+         */
         [HttpGet]
         [Route("admin")]
         public IEnumerable<User> Get()
@@ -34,14 +38,22 @@ namespace ChoreHub.Controllers
             return Users.GetAll();
         }
 
-        // GET: api/users
+        /**
+         * GET: api/users
+         * 
+         * Get all public users
+         */
         [HttpGet]
         public IEnumerable<User> GetPublic()
         {
             return Users.GetAllPublic();
         }
 
-        // GET api/users/id/5
+        /**
+         * GET: api/users/id/5
+         * 
+         * Get a specific user by his id
+         */
         [HttpGet("id/{id}", Name = "GetUser")]
         public IActionResult GetById(int id)
         {
@@ -55,7 +67,11 @@ namespace ChoreHub.Controllers
             return new ObjectResult(user);
         }
 
-        // GET api/users/userid/5
+        /**
+         * GET api/users/userid/5
+         * 
+         * Get a specific user by his Auth0Id
+         */
         [HttpGet("userid/{id}", Name = "GetUserByUserId")]
         public IActionResult GetById(string id)
         {
@@ -69,7 +85,11 @@ namespace ChoreHub.Controllers
             return new ObjectResult(user);
         }
 
-        // POST api/users
+        /**
+         * POST: api/users
+         * 
+         * Create a new user
+         */
         [HttpPost]
         public IActionResult Create([FromBody]User user)
         {
@@ -82,6 +102,9 @@ namespace ChoreHub.Controllers
             return CreatedAtRoute("GetUser", new { id = user.Id }, user);
         }
 
+        /**
+         * 
+         */
         // PUT api/users/5
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody]User user)
@@ -110,33 +133,16 @@ namespace ChoreHub.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (!Users.IsAdmin(HttpContext.User)) return BadRequest();
+
             var user = Users.Find(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            //if (user.Auth0Id == _session.GetString("Id") || _session.GetInt32("IsAdmin") == 1)
-            //{
-                Users.Remove(id);
-                return new NoContentResult();
-            //}
-
-            //return BadRequest();
+            Users.Remove(id);
+            return new NoContentResult();
         }
-
-        //PRIVATE FUNCTIONS
-
-        //private bool IsAdmin()
-        //{
-        //    if (_session.GetInt32("IsAdmin") == 1)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
     }
 }

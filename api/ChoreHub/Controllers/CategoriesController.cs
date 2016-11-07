@@ -16,9 +16,10 @@ namespace ChoreHub.Controllers
     [Authorize]
     public class CategoriesController : Controller
     {
-        public CategoriesController(ICategoryRepository categories)
+        public CategoriesController(ICategoryRepository categories, IUserRepository users)
         {
             Categories = categories;
+            Users = users;
         }
 
         public ICategoryRepository Categories
@@ -26,7 +27,10 @@ namespace ChoreHub.Controllers
             get; set;
         }
 
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        public IUserRepository Users
+        {
+            get; set;
+        }
 
         // GET: api/categories
         [HttpGet]
@@ -62,47 +66,20 @@ namespace ChoreHub.Controllers
             return CreatedAtRoute("GetCategory", new { Controller = "Categories", id = category.Id }, category);
         }
 
-        // PUT api/categories/5
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Category category)
-        {
-            if (category == null || category.Id != id)
-            {
-                return BadRequest();
-            }
-
-            var oldcategory = Categories.Find(id);
-            if (oldcategory == null)
-            {
-                return NotFound();
-            }
-
-            //if (_session.GetInt32("IsAdmin") == 1)
-            //{
-                Categories.Update(category);
-                return new NoContentResult();
-            //}
-
-            //return BadRequest();
-        }
-
         // DELETE api/categories/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (!Users.IsAdmin(HttpContext.User)) return BadRequest();
+
             var category = Categories.Find(id);
             if (category == null)
             {
                 return NotFound();
             }
 
-            //if (_session.GetInt32("IsAdmin") == 1)
-            //{
-                Categories.Remove(id);
-                return new NoContentResult();
-            //}
-
-            //return BadRequest();
+            Categories.Remove(id);
+            return new NoContentResult();
         }
     }
 }

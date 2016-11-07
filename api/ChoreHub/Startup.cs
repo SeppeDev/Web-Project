@@ -39,8 +39,6 @@ namespace ChoreHub
 
             services.AddDbContext<ChoreHubContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddMvc();
-
             // Repositories
             services.AddSingleton<IChoreRepository, ChoreRepository>();
             services.AddSingleton<IImageRepository, ImageRepository>();

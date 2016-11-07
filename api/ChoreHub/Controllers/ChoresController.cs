@@ -108,6 +108,8 @@ namespace ChoreHub.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (!Users.IsAdmin(HttpContext.User)) return BadRequest();
+
             var chore = Chores.Find(id);
             if(chore == null)
             {

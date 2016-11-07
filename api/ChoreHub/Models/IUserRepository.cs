@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace ChoreHub.Models
 {
@@ -12,5 +13,7 @@ namespace ChoreHub.Models
         User FindByUserId(string id);
         void Remove(int id);
         void Update(User user);
+
+        bool IsAdmin(ClaimsPrincipal user);
     }
 }
