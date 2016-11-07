@@ -34,6 +34,10 @@ namespace ChoreHub.Models
         [Column(TypeName = "nvarchar(MAX)")]
 	    public string Description { get; set; }
 
+        [Required]
+        [MaxLength(46)]
+        public string Location { get; set; }
+
         [DefaultValue(false)]
         public bool IsAdmin { get; set; }
 

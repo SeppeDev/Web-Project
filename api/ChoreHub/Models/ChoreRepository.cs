@@ -60,7 +60,8 @@ namespace ChoreHub.Models
             if (itemToUpdate != null)
             {
                 itemToUpdate.Title = item.Title;
-                itemToUpdate.Description = item.Description;   
+                itemToUpdate.Description = item.Description;
+                itemToUpdate.Location = item.Location;
 
                 _context.Entry(itemToUpdate).State = EntityState.Modified;
                 _context.SaveChanges();

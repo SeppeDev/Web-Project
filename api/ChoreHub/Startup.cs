@@ -45,7 +45,6 @@ namespace ChoreHub
             services.AddSingleton<IImageRepository, ImageRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<ICategoryRepository, CategoryRepository>();
-            //services.AddSingleton<IReviewRepository, ReviewRepository>();
 
             // HttpContext
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
