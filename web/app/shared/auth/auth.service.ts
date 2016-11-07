@@ -31,6 +31,11 @@ export class AuthService {
      */
     hasProfile: boolean = false;
 
+    /**
+     * Is the current user an admin?
+     */
+    isAdmin: boolean = false;
+
     constructor (
         private http: AuthHttp,
         private router: Router
@@ -108,6 +113,7 @@ export class AuthService {
         this.http.get(url).toPromise()
             .then((data: any) => {
                 localStorage.setItem("user_profile", data._body);
+                this.isAdmin = JSON.parse(data._body).isAdmin;
                 console.log(data);
             }, (error) => {
                 this.router.navigate(["/profile/create"]);

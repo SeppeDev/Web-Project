@@ -30,6 +30,10 @@ var AuthService = (function () {
          * Does the user have a profile with Chorehub?
          */
         this.hasProfile = false;
+        /**
+         * Is the current user an admin?
+         */
+        this.isAdmin = false;
         // Check for existence of token in localStorage
         if (this.authenticated())
             this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
@@ -94,6 +98,7 @@ var AuthService = (function () {
         this.http.get(url).toPromise()
             .then(function (data) {
             localStorage.setItem("user_profile", data._body);
+            _this.isAdmin = JSON.parse(data._body).isAdmin;
             console.log(data);
         }, function (error) {
             _this.router.navigate(["/profile/create"]);
