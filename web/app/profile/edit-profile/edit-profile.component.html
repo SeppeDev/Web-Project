@@ -29,6 +29,13 @@
                 <p class="error">{{ errors.descriptionError }}</p>                
             </div>
         </div>
+        <div class="row mar-top-p">
+            <div class="columns six">
+                <label for="location">Waar kan u werken?</label>
+                <input [(ngModel)]="profile.location" type="text">
+                <p class="error">{{ errors.locationError }}</p>
+            </div>
+        </div>
         <div class="row mar-top-m">
             <div class="columns six">
                 <label for="is-active">Is uw profiel publiek?</label>

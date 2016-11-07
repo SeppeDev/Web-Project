@@ -22,6 +22,12 @@
         </div>
         <div class="row">
             <div class="columns twelve">
+                <label>Locatie:</label>
+                <p>{{ profile.location }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns twelve">
                 <label>Status: </label>
                 <p *ngIf="profile.isPublic">Publiek</p>
                 <p *ngIf="!profile.isPublic">Geheim</p>
@@ -29,7 +35,7 @@
         </div>
         <div *ngIf="profile.image.link" class="row">
             <div class="columns twelve">
-                <label>Profielfoto</label>
+                <label>Profielfoto:</label>
                 <img class="profile-picture" [src]="profile.image.link" alt="profile picture" />
             </div>
         </div>

@@ -61,10 +61,18 @@ export class ProfileChoreEditComponent implements OnInit {
         
         if(!this.chore.title || typeof(this.chore.title) == "undefined") {
             this.errors.titleError = "Geef een titel in.";
+        } else if (this.chore.title.length > 46) {
+            this.errors.titleError = "Dit veld kan maximaal 46 karakters bevatten";
         }
 
         if(!this.chore.description || typeof(this.chore.description) == "undefined") {
             this.errors.descriptionError = "Voeg een beschrijving toe."
+        }
+
+        if(!this.chore.location || typeof(this.chore.location) == "undefined") {
+            this.errors.locationError = "Geef een locatie in.";
+        } else if (this.chore.location.length > 46) {
+            this.errors.locationError = "Dit veld kan maximaal 46 karakters bevatten";
         }
 
         // if(this.chore.category == "") {

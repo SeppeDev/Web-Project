@@ -18,13 +18,17 @@
         <div class="row mar-top-m">
             <div class="columns twelve">
                 <label>Wie ben ik?</label>
-                <p>
-                    {{ user.description }}
-                </p>
+                <p>{{ user.description }}</p>
             </div>
         </div>
         <div class="row">
-            <div class="twelve columns">
+            <div class="columns twelve">
+                <label>Waar ben ik?</label>
+                <p>{{ user.location }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns twelve">
                 <label>Contacteer mij</label>
                 <span>{{ user.email }}</span>
             </div>

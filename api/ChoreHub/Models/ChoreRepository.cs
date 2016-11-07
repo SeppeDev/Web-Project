@@ -33,6 +33,9 @@ namespace ChoreHub.Models
 
         public void Add(Chore item)
         {
+            var user = _context.Users.SingleOrDefault(e => e.Id == item.User.Id);
+            item.User = user;
+
             _context.Chores.Add(item);
             _context.SaveChanges();
         }

@@ -40,6 +40,10 @@ export class AdminUsersComponent implements OnInit {
             .then((data: any) => {
                 console.log(data);
                 this.users = JSON.parse(data._body);
+                this.users = this.users.filter((user: any) => {
+                    return user.auth0Id != JSON.parse(localStorage.getItem("auth_profile")).user_id;
+                });
+                
                 console.log(this.users);
             }, (error: any) => {
                 console.log(error);

@@ -62,7 +62,7 @@ export class ProfileService {
     /**
      * Update a chore
      */
-    updateChore (chore: any) {
+    updateChore (chore: any) {  
         let url = `${this.baseUrl}/chores/${chore.id}`;
         return this.http.put(url, chore, { headers: this.headers }).toPromise();
     }

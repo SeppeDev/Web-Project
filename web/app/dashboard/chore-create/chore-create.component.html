@@ -26,6 +26,13 @@
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
+                <label for="location">Waar vindt deze chore plaats?</label>
+                <input [(ngModel)]="chore.location" type="text" id="location">
+                <p class="error">{{ errors.locationError }}</p>
+            </div>
+        </div>
+        <div class="row mar-top-m">
+            <div class="columns six">
                 <label for="category">Welke categorie valt deze chore onder?</label>
                 <select [(ngModel)]="chore.category" id="category">
                     <option value="">Kies hier ...</option>

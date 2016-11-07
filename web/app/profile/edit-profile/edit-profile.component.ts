@@ -105,6 +105,12 @@ export class EditProfileComponent implements OnInit {
             this.errors.descriptionError = "Dit veld kan maximaal 500 letters bevatten";            
         }
 
+        if(!this.profile.location || typeof(this.profile.location) == "undefined") {
+            this.errors.locationError = "Vul dit veld aub in.";
+        } else if (this.profile.location.length > 46) {
+            this.errors.locationError = "Dit veld kan maximaal 46 letters bevatten";            
+        }        
+
         if(this.profile.isPublic == null || typeof(this.profile.isPublic) == "undefined") {
             this.errors.isPublicError = "Selecteer een optie aub.";
         }
@@ -187,10 +193,5 @@ export class EditProfileComponent implements OnInit {
         } else {
             this.updateProfile();
         }
-    }
-
-    private storeProfile (profile: any) {
-        console.log(profile);
-        // localStorage.setItem("user_profile", profile);
     }
 }

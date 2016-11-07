@@ -42,10 +42,22 @@ var ChoreCreateComponent = (function () {
         this.errors = [];
         console.log(this.chore);
         if (!this.chore.title || typeof (this.chore.title) == "undefined") {
-            this.errors.titleError = "Geef een titel in.";
+            this.errors.titleError = "Vul dit veld aub in.";
+        }
+        else if (this.chore.title.length > 46) {
+            this.errors.titleError = "Dit veld mag max. 46 karakters bevatten";
         }
         if (!this.chore.description || typeof (this.chore.description) == "undefined") {
-            this.errors.descriptionError = "Voeg een beschrijving toe.";
+            this.errors.descriptionError = "Vul dit veld aub in.";
+        }
+        else if (this.chore.description.length > 500) {
+            this.errors.descriptionError = "Dit veld kan maximaal 500 karaters bevatten.";
+        }
+        if (!this.chore.location || typeof (this.chore.location) == "undefined") {
+            this.errors.locationError = "Vul dit veld aub in.";
+        }
+        else if (this.chore.location.length > 46) {
+            this.errors.locationError = "Dit veld kan maximaal 46 karakters bevatten.";
         }
         if (this.chore.category == "") {
             this.errors.categoryError = "Selecteer een categorie.";

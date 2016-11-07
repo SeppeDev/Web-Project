@@ -19,9 +19,13 @@
         <div class="row mar-top-m">
             <div class="columns twelve">
                 <label>Wat verwacht ik?</label>
-                <p>
-                    {{ chore.description }}
-                </p>
+                <p>{{ chore.description }}</p>
+            </div>
+        </div>
+            <div class="row">
+            <div class="columns twelve">
+                <label>Waar is het?</label>
+                <p>{{ chore.location }}</p>
             </div>
         </div>
         <div *ngIf="chore.user.firstName" class="row">

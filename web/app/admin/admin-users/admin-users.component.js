@@ -39,6 +39,9 @@ var AdminUsersComponent = (function () {
             .then(function (data) {
             console.log(data);
             _this.users = JSON.parse(data._body);
+            _this.users = _this.users.filter(function (user) {
+                return user.auth0Id != JSON.parse(localStorage.getItem("auth_profile")).user_id;
+            });
             console.log(_this.users);
         }, function (error) {
             console.log(error);
