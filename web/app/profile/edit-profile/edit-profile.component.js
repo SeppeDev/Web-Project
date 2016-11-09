@@ -104,7 +104,7 @@ var EditProfileComponent = (function () {
                 this.startUpload();
             }
             else {
-                this.saveProfile();
+                this.state == "Maak" ? this.saveProfile() : this.updateProfile();
             }
         }
     };

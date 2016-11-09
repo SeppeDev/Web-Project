@@ -127,7 +127,7 @@ export class EditProfileComponent implements OnInit {
             if(this.hasFile) {
                 this.startUpload();
             } else {
-                this.saveProfile();
+                this.state == "Maak" ? this.saveProfile() : this.updateProfile();
             }
         } 
     }
