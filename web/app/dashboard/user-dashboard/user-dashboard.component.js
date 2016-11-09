@@ -33,7 +33,7 @@ var UserDashboardComponent = (function () {
             .then(function (data) {
             _this.users = JSON.parse(data._body);
         }, function (error) {
-            console.log(error);
+            // console.log(error);
         });
     };
     UserDashboardComponent = __decorate([

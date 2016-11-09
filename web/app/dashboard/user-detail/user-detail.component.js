@@ -46,9 +46,9 @@ var UserDetailComponent = (function () {
         this.dashSvc.getUser(userId)
             .then(function (data) {
             _this.user = JSON.parse(data._body);
-            console.log(_this.user);
+            // console.log(this.user);
         }, function (error) {
-            console.log(error);
+            // console.log(error);
         });
     };
     UserDetailComponent = __decorate([

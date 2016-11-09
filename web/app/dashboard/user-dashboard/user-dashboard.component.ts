@@ -30,7 +30,7 @@ export class UserDashboardComponent implements OnInit {
             .then((data: any) => {
                 this.users = JSON.parse(data._body);
             }, (error: any) => {
-                console.log(error);
+                // console.log(error);
             });
     }
 }

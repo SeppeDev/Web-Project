@@ -9,15 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var auth_service_1 = require("../shared/auth/auth.service");
 var HomeComponent = (function () {
-    function HomeComponent() {
+    function HomeComponent(authSvc) {
+        this.authSvc = authSvc;
     }
     HomeComponent = __decorate([
         core_1.Component({
             selector: "chorehub-home",
             templateUrl: "app/home/home.component.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [auth_service_1.AuthService])
     ], HomeComponent);
     return HomeComponent;
 }());

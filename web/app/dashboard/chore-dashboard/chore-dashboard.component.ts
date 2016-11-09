@@ -34,7 +34,7 @@ export class ChoreDashboardComponent implements OnInit {
      * Filter users list by selected category
      */
     changeCategory (category: any): void {
-        console.log(this.chores);
+        // console.log(this.chores);
         this.filteredChores = this.chores.filter((chore: any) => {
             return chore.category.id == category.id;
         });
@@ -54,9 +54,9 @@ export class ChoreDashboardComponent implements OnInit {
     //     this.dashSvc.getCategories()
     //         .then((data: any) => {
     //             this.categories = JSON.parse(data._body); 
-    //             console.log(data);       
+    //             // console.log(data);       
     //         }, (error: any) => {
-    //             console.log(error);
+    //             // console.log(error);
     //         });
     // }
 
@@ -70,7 +70,7 @@ export class ChoreDashboardComponent implements OnInit {
                 this.reset();
                 this.extractCategories(this.chores);
             }, (error: any) => {
-                console.log(error)
+                // console.log(error)
             });
     }
 
@@ -88,7 +88,7 @@ export class ChoreDashboardComponent implements OnInit {
         });
 
         let filtered = this.unique(this.categories);
-        console.log(filtered);
+        // console.log(filtered);
     }
 
     private unique (a: any){
@@ -113,7 +113,7 @@ export class ChoreDashboardComponent implements OnInit {
     //         .then((data: any) => {
     //             this.chores.push(data);
     //         }, (error: any) => {
-    //             console.log(error);
+    //             // console.log(error);
     //         })
     // } 
 }

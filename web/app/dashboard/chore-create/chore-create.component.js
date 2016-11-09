@@ -40,7 +40,7 @@ var ChoreCreateComponent = (function () {
      */
     ChoreCreateComponent.prototype.validate = function () {
         this.errors = [];
-        console.log(this.chore);
+        // console.log(this.chore);
         if (!this.chore.title || typeof (this.chore.title) == "undefined") {
             this.errors.titleError = "Vul dit veld aub in.";
         }
@@ -73,10 +73,10 @@ var ChoreCreateComponent = (function () {
         var _this = this;
         this.dashSvc.getCategories()
             .then(function (data) {
-            console.log(data);
+            // console.log(data);
             _this.categories = JSON.parse(data._body);
         }, function (error) {
-            console.log(error);
+            // console.log(error);
         });
     };
     /**
@@ -88,7 +88,7 @@ var ChoreCreateComponent = (function () {
             .then(function (data) {
             _this.router.navigate(["/hub/chores", JSON.parse(data._body).id]);
         }, function (error) {
-            console.log(error);
+            // console.log(error);
         });
     };
     ChoreCreateComponent = __decorate([

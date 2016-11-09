@@ -47,9 +47,9 @@ var ChoreDetailComponent = (function () {
         this.dashSvc.getChore(choreId)
             .then(function (data) {
             _this.chore = JSON.parse(data._body);
-            console.log(_this.chore);
+            // console.log(this.chore);
         }, function (error) {
-            console.log(error);
+            // console.log(error);
         });
     };
     ChoreDetailComponent = __decorate([

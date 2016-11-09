@@ -33,7 +33,7 @@ var ChoreDashboardComponent = (function () {
      * Filter users list by selected category
      */
     ChoreDashboardComponent.prototype.changeCategory = function (category) {
-        console.log(this.chores);
+        // console.log(this.chores);
         this.filteredChores = this.chores.filter(function (chore) {
             return chore.category.id == category.id;
         });
@@ -51,9 +51,9 @@ var ChoreDashboardComponent = (function () {
     //     this.dashSvc.getCategories()
     //         .then((data: any) => {
     //             this.categories = JSON.parse(data._body); 
-    //             console.log(data);       
+    //             // console.log(data);       
     //         }, (error: any) => {
-    //             console.log(error);
+    //             // console.log(error);
     //         });
     // }
     /**
@@ -67,7 +67,7 @@ var ChoreDashboardComponent = (function () {
             _this.reset();
             _this.extractCategories(_this.chores);
         }, function (error) {
-            console.log(error);
+            // console.log(error)
         });
     };
     /**
@@ -82,7 +82,7 @@ var ChoreDashboardComponent = (function () {
             // }
         });
         var filtered = this.unique(this.categories);
-        console.log(filtered);
+        // console.log(filtered);
     };
     ChoreDashboardComponent.prototype.unique = function (a) {
         a.sort();

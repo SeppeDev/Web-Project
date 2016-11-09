@@ -51,7 +51,7 @@ export class ChoreCreateComponent implements OnInit {
      */
     validate () {
         this.errors = [];
-        console.log(this.chore);
+        // console.log(this.chore);
         if(!this.chore.title || typeof(this.chore.title) == "undefined") {
             this.errors.titleError = "Vul dit veld aub in.";
         } else if (this.chore.title.length > 46) {
@@ -85,10 +85,10 @@ export class ChoreCreateComponent implements OnInit {
     private getCategories () {
         this.dashSvc.getCategories()   
             .then((data: any) => {
-                console.log(data);
+                // console.log(data);
                 this.categories = JSON.parse(data._body);
             }, (error: any) => {
-                console.log(error);
+                // console.log(error);
             });
     }
 
@@ -100,7 +100,7 @@ export class ChoreCreateComponent implements OnInit {
             .then((data: any) => {
                 this.router.navigate(["/hub/chores", JSON.parse(data._body).id]);
             }, (error: any) => {
-                console.log(error);
+                // console.log(error);
             })
     }
 }

@@ -47,9 +47,9 @@ export class ChoreDetailComponent implements OnInit {
         this.dashSvc.getChore(choreId)
             .then((data: any) => {
                 this.chore = JSON.parse(data._body);
-                console.log(this.chore);
+                // console.log(this.chore);
             }, (error: any) => {
-                console.log(error);
+                // console.log(error);
             });       
     }
 }

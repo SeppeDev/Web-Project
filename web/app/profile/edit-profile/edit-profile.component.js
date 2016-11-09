@@ -13,9 +13,10 @@ var router_1 = require("@angular/router");
 var profile_service_1 = require("../profile.service");
 var constants_1 = require("../../shared/constants");
 var EditProfileComponent = (function () {
-    function EditProfileComponent(profileSvc, route) {
+    function EditProfileComponent(profileSvc, route, router) {
         this.profileSvc = profileSvc;
         this.route = route;
+        this.router = router;
         /**
          * List of validation errors
          */
@@ -43,7 +44,7 @@ var EditProfileComponent = (function () {
                     .then(function (data) {
                     _this.profile = JSON.parse(data._body);
                 }, function (error) {
-                    console.log(error);
+                    // console.log(error);
                 });
             }
             else {
@@ -136,10 +137,10 @@ var EditProfileComponent = (function () {
     EditProfileComponent.prototype.saveProfile = function () {
         var _this = this;
         this.profileSvc.saveProfile(this.profile).then(function (data) {
-            _this.goBack();
+            _this.router.navigate(["/profile/chores"]);
             localStorage.setItem("user_profile", data._body);
         }, function (error) {
-            console.log(error);
+            // console.log(error)
         });
     };
     /**
@@ -151,9 +152,9 @@ var EditProfileComponent = (function () {
             localStorage.removeItem("user_profile");
             localStorage.setItem("user_profile", data._body);
             _this.goBack();
-            console.log(data);
+            // console.log(data);
         }, function (error) {
-            console.log(error);
+            // console.log(error)
         });
     };
     /**
@@ -173,7 +174,7 @@ var EditProfileComponent = (function () {
             providers: [profile_service_1.ProfileService],
             templateUrl: "app/profile/edit-profile/edit-profile.component.html"
         }), 
-        __metadata('design:paramtypes', [profile_service_1.ProfileService, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [profile_service_1.ProfileService, router_1.ActivatedRoute, router_1.Router])
     ], EditProfileComponent);
     return EditProfileComponent;
 }());

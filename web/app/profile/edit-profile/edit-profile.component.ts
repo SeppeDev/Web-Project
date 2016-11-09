@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, NgZone  } from "@angular/core";
-import { ActivatedRoute }                           from "@angular/router";
+import { ActivatedRoute, Router }                   from "@angular/router";
 
 import { ProfileService }   from "../profile.service";
 import { Constants }        from "../../shared/constants";
@@ -43,7 +43,8 @@ export class EditProfileComponent implements OnInit {
 
     constructor (
         private profileSvc: ProfileService,
-        private route: ActivatedRoute   
+        private route: ActivatedRoute,
+        private router: Router   
     ) { }
 
     /**
@@ -61,7 +62,7 @@ export class EditProfileComponent implements OnInit {
                     .then((data: any) => {
                         this.profile = JSON.parse(data._body);
                     }, (error: any) => {
-                        console.log(error);
+                        // console.log(error);
                     })
 
             } else {
@@ -163,10 +164,10 @@ export class EditProfileComponent implements OnInit {
      */
     private saveProfile () {
         this.profileSvc.saveProfile(this.profile).then((data: any) => {
-            this.goBack();
+            this.router.navigate(["/profile/chores"]);
             localStorage.setItem("user_profile", data._body);
         }, (error: any) => {
-            console.log(error)
+            // console.log(error)
         });
     }
 
@@ -178,9 +179,9 @@ export class EditProfileComponent implements OnInit {
             localStorage.removeItem("user_profile");
             localStorage.setItem("user_profile", data._body);            
             this.goBack();
-            console.log(data);
+            // console.log(data);
         }, (error: any) => {
-            console.log(error)
+            // console.log(error)
         });
     }
 
