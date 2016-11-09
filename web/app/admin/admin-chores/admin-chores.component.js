@@ -35,9 +35,11 @@ var AdminChoresComponent = (function () {
      * Deletes a chore
      */
     AdminChoresComponent.prototype.deleteChore = function (choreId) {
+        var _this = this;
         this.adminSvc.deleteChore(choreId)
             .then(function (data) {
             // console.log(data);
+            _this.chores = _this.chores.filter(function (u) { return u.id != choreId; });
         }, function (error) {
             // console.log(error);
         });

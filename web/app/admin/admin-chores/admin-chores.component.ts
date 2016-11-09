@@ -35,6 +35,7 @@ export class AdminChoresComponent implements OnInit {
           this.adminSvc.deleteChore(choreId)
             .then((data: any) => {
                 // console.log(data);
+                this.chores = this.chores.filter((u: any) => u.id != choreId)
             }, (error: any) => {
                 // console.log(error);
             });
