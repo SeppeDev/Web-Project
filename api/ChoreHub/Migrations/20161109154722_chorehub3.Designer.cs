@@ -8,9 +8,10 @@ using ChoreHub.DAL;
 namespace ChoreHub.Migrations
 {
     [DbContext(typeof(ChoreHubContext))]
-    partial class ChoreHubContextModelSnapshot : ModelSnapshot
+    [Migration("20161109154722_chorehub3")]
+    partial class chorehub3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -95,7 +96,7 @@ namespace ChoreHub.Migrations
                         .IsRequired()
                         .HasMaxLength(46);
 
-                    b.Property<int?>("ImageId");
+                    b.Property<int>("ImageId");
 
                     b.Property<bool>("IsAdmin");
 
@@ -133,7 +134,8 @@ namespace ChoreHub.Migrations
                 {
                     b.HasOne("ChoreHub.Models.Image", "Image")
                         .WithMany()
-                        .HasForeignKey("ImageId");
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

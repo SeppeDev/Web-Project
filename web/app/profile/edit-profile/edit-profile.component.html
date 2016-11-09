@@ -53,8 +53,9 @@
                 <img class="profile-picture" [src]="profile.image.link" alt="profiel foto" />
             </div>
         </div>
-        <div class="row mar-top-m">
-            <div class="columns six">
+        <div class="row mar-top-m">            
+            <label>Profiel foto (optioneel) - 4x3 ratio aangeraden</label>
+            <div class="columns six no-mar-l mar-top-m">
                 <input type="file"
                     (change)="fileChange($event)"
                     ngFileSelect

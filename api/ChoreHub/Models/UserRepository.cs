@@ -35,8 +35,19 @@ namespace ChoreHub.Models
 
         public User Find(int id)
         {
-            return _context.Users.Include(e => e.Image)
-                .SingleOrDefault(e => e.Id.Equals(id));
+            var user = new User(); 
+                
+            try
+            {
+                user = _context.Users.Include(e => e.Image)
+                            .SingleOrDefault(e => e.Id.Equals(id));
+            }
+            catch
+            {
+                user = _context.Users.SingleOrDefault(e => e.Id.Equals(id));
+            }
+
+            return user;
         }
 
         public User FindByUserId(string id)

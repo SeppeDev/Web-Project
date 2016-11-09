@@ -112,16 +112,23 @@ export class EditProfileComponent implements OnInit {
             this.errors.locationError = "Dit veld kan maximaal 46 letters bevatten";            
         }        
 
-        if(this.profile.isPublic == null || typeof(this.profile.isPublic) == "undefined") {
+        if(this.profile.isPublic == null || typeof(this.profile.isPublic) == "undefined" || this.profile.isPublic == "") {
             this.errors.isPublicError = "Selecteer een optie aub.";
         }
 
-        if(!this.hasFile && this.state == "Maak") {
-            this.errors.pictureError = "Selecteer een profielfoto";
-        }
+        // if(!this.hasFile && this.state == "Maak") {
+        //     this.errors.pictureError = "Selecteer een profielfoto";
+        // }
+
+        console.log(this.errors);
+        console.log(this.profile);
 
         if(Object.keys(this.errors).length == 0) {
-            this.startUpload();
+            if(this.hasFile) {
+                this.startUpload();
+            } else {
+                this.saveProfile();
+            }
         } 
     }
 

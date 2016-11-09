@@ -44,7 +44,6 @@ namespace ChoreHub.Models
         [Required]
         public bool IsPublic { get; set; }
 
-        [Required]
         public Image Image { get; set; }
     }
 }

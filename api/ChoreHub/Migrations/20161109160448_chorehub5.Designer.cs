@@ -8,9 +8,10 @@ using ChoreHub.DAL;
 namespace ChoreHub.Migrations
 {
     [DbContext(typeof(ChoreHubContext))]
-    partial class ChoreHubContextModelSnapshot : ModelSnapshot
+    [Migration("20161109160448_chorehub5")]
+    partial class chorehub5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

@@ -13,8 +13,7 @@ namespace ChoreHub.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        [DefaultValue("https://cdn0.iconfinder.com/data/icons/people-groups/512/User_Male-512.png")]
+            
         [Url]
         public string Link { get; set; }
     }
