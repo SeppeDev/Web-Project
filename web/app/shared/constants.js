@@ -15,7 +15,7 @@ var Constants = (function () {
     });
     ;
     Object.defineProperty(Constants, "API_BASE_URL", {
-        get: function () { return "http://chorehub20161008122945.azurewebsites.net/api"; },
+        get: function () { return "http://localhost:58766/api"; },
         enumerable: true,
         configurable: true
     });

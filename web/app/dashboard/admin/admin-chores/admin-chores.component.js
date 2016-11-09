@@ -22,14 +22,7 @@ var AdminChoresComponent = (function () {
      * Fires when component is loaded
      */
     AdminChoresComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.adminSvc.getChores()
-            .then(function (data) {
-            _this.chores = JSON.parse(data._body);
-            // console.log(data);
-        }, function (error) {
-            // console.log(error);
-        });
+        this.getChores();
     };
     /**
      * Deletes a chore
@@ -37,6 +30,19 @@ var AdminChoresComponent = (function () {
     AdminChoresComponent.prototype.deleteChore = function (choreId) {
         this.adminSvc.deleteChore(choreId)
             .then(function (data) {
+            // console.log(data);
+        }, function (error) {
+            // console.log(error);
+        });
+    };
+    /**
+     * Get all chores
+     */
+    AdminChoresComponent.prototype.getChores = function () {
+        var _this = this;
+        this.adminSvc.getChores()
+            .then(function (data) {
+            _this.chores = JSON.parse(data._body);
             // console.log(data);
         }, function (error) {
             // console.log(error);
