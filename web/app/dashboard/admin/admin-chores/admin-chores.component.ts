@@ -19,6 +19,25 @@ export class AdminChoresComponent implements OnInit {
      * Fires when component is loaded
      */
     ngOnInit() {
+        this.getChores();
+    }
+
+     /**
+      * Deletes a chore
+      */    
+    deleteChore (choreId: number) {
+        this.adminSvc.deleteChore(choreId)
+            .then((data: any) => {
+                // console.log(data);
+            }, (error: any) => {
+                // console.log(error);
+            });
+    } 
+
+    /**
+     * Get all chores
+     */
+    private getChores () {
         this.adminSvc.getChores()
             .then((data: any) => {
                 this.chores = JSON.parse(data._body);
@@ -26,17 +45,5 @@ export class AdminChoresComponent implements OnInit {
             }, (error: any) => {
                 // console.log(error);
             })
-     }
-
-     /**
-      * Deletes a chore
-      */
-      deleteChore (choreId: number) {
-          this.adminSvc.deleteChore(choreId)
-            .then((data: any) => {
-                // console.log(data);
-            }, (error: any) => {
-                // console.log(error);
-            });
-      } 
+    }
 }

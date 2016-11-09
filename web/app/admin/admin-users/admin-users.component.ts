@@ -22,6 +22,9 @@ export class AdminUsersComponent implements OnInit {
         this.getUsers();
     }
 
+    /**
+     * Delete a user
+     */
     deleteUser (user: any) {
         this.adminSvc.deleteUser(user.id)
             .then((data: any) => {
