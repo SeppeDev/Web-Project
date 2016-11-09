@@ -22,7 +22,7 @@ export class AppComponent {
                     this.topMenuActive = false;
                     this.bottomMenuActive = false;
                 }            
-            });
+            });        
     }
 
     showTopMenu (): void {

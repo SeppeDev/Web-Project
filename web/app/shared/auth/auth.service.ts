@@ -51,7 +51,8 @@ export class AuthService {
         private router: Router
     ) {         
         // Check for existence of token in localStorage
-        if(this.authenticated()) this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));
+        if(this.authenticated()) this.authProfile = JSON.parse(localStorage.getItem("auth_profile"));        
+        if(localStorage.getItem("user_profile") != null) this.isAdmin = JSON.parse(localStorage.getItem("user_profile")).isAdmin;
 
         // Listen to auth0 authenticated event and set token & user profile
         this.lock.on("authenticated", (authResult: any) => {
