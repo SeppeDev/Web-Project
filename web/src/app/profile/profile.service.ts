@@ -72,7 +72,7 @@ export class ProfileService {
      */
     saveProfile (profile: any) {
         profile.auth0Id = this.authProfile.user_id;
-        profile.email = this.authProfile.email;
+        profile.email = this.authProfile.name;
 
         const url = `${this.baseUrl}/users`;
         return this.http.post(url, JSON.stringify(profile), { headers: this.headers }).toPromise();
