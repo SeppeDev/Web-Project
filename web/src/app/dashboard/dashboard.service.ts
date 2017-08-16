@@ -90,4 +90,14 @@ export class DashboardService {
     private getData (url: string) {
         return this.http.get(url).toPromise();
     }
+
+
+
+    /**
+     * Send an email
+     */
+    sendMail (email: any) {
+        const url = `${this.baseUrl}/email`;
+        return this.http.post(url, JSON.stringify(email), { headers: this.headers }).toPromise();
+    }
 }

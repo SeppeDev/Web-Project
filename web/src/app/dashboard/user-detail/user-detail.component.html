@@ -31,6 +31,12 @@
             <div class="columns twelve">
                 <label>Contacteer mij</label>
                 <span>{{ user.email }}</span>
+
+                <label for="message">Bericht</label>
+                <input [(ngModel)]="email.message" class="u-full-width" type="text" id="message" />
+                <p class="error">{{ errors.MessageError }}</p>
+
+                <a class="ch-blue ch-link text-l clickable" (click)="sendMail()">Mail me</a>
             </div>
         </div>
     </div>
