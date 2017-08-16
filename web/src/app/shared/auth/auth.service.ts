@@ -32,14 +32,16 @@ export class AuthService {
 		domain: 'chorehub.eu.auth0.com',
 		responseType: 'token id_token',
 		audience: 'https://chorehub.eu.auth0.com/userinfo',
-		redirectUri: 'http://localhost:4200/callback',
+		redirectUri: 'http://localhost:4200/profile',
 		scope: 'openid profile'
 	});
 
 	constructor(
 		public router: Router,
 		public http: AuthHttp
-	) { }
+	) {
+		this.handleAuthentication();
+	 }
 
 	/**
 	 * Checks for logged in user.
@@ -123,7 +125,6 @@ export class AuthService {
             .then((data: any) => {
                 localStorage.setItem('user_profile', data._body);
                 this.isAdmin = JSON.parse(data._body).isAdmin;
-                console.log(data);
             }, (error: any) => {
 				this.router.navigate(['/profile/create']);
 				console.log(error);
