@@ -10,21 +10,21 @@
         </div>
         <div class="row">
             <div class="columns six">
-                <label for="title">Titel</label>
+                <label for="title">De naam van je zoekertje</label>
                 <input [(ngModel)]="chore.title" class="u-full-width" type="text" id="title" />
-                <p class="error">{{ errors.titleError }}</p>                
-            </div>         
+                <p class="error">{{ errors.titleError }}</p>
+            </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
                 <label for="description">Wat heb je nodig?</label>
                 <textarea style="height: 200px" [(ngModel)]="chore.description" class="u-full-width" id="description"></textarea>
-                <p class="error">{{ errors.descriptionError }}</p> 
+                <p class="error">{{ errors.descriptionError }}</p>
             </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
-                <label for="location">Waar vindt deze chore plaats?</label>
+                <label for="location">Waar vindt deze klus plaats?</label>
                 <input [(ngModel)]="chore.location" type="text" id="location">
                 <p class="error">{{ errors.locationError }}</p>
             </div>
@@ -40,7 +40,7 @@
             </div>
         </div>-->
         <div class="row mar-top-l">
-            <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable">Opslaan</a>
+            <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable"><i class="material-icons fix-icon-left">add</i>Opslaan</a>
         </div>
     </div>
 </section>

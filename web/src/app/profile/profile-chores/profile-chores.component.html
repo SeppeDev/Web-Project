@@ -2,10 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="columns six">
-                <h1>Mijn chores</h1>
+                <h1>Mijn zoekertjes</h1>
             </div>
             <div class="columns six">
-                <a routerLink="/hub/chores/create" class="mar-top-xs ch-btn ch-btn-lg ch-bg-green u-pull-right">Nieuwe chore</a>
+                <a routerLink="/hub/chores/create" class="mar-top-xs ch-btn ch-btn-lg ch-bg-green u-pull-right"><i class="material-icons fix-icon-left">add</i>Nieuw zoekertje plaatsen</a>
             </div>
         </div>
         <div class="row">
@@ -13,14 +13,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Title</th>
-                            <th>Actions</th>
+							<th>Naam van je zoekertje</th>
+							<th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let chore of chores">
-                            <td>{{ chore.id }}</td>
                             <td>{{ chore.title }}</td>
                             <td>
                                 <a [routerLink]="['/hub/chores', chore.id]" class="clickable ch-btn ch-btn-s ch-bg-green">Bekijk</a>
@@ -30,7 +28,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>          
+            </div>
         </div>
     </div>
 </section>

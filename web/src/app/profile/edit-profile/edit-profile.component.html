@@ -2,7 +2,7 @@
     <div class="container">
         <div *ngIf="state == 'Maak'" class="row">
             <div class="columns twelve">
-                <p class="text-white ch-bg-red alert">Je hebt nog geen profiel aangemaakt bij ons. Zonder profiel kan je ChoreHub niet volledig gebruiken.</p>
+                <p class="text-white ch-bg-red alert">Je hebt nog geen profiel aangemaakt bij ons. Zonder profiel kan je ChoreHub gebruiken.</p>
             </div>
         </div>
         <div class="row mar-top-l">
@@ -24,7 +24,7 @@
         </div>
         <div class="row mar-top-m">
             <div class="columns twelve">
-                <label for="description">Beschrijf jezelf</label>
+                <label for="description">Beschrijf jezelf kort</label>
                 <textarea [(ngModel)]="profile.description" class="u-full-width" id="description"></textarea>
                 <p class="error">{{ errors.descriptionError }}</p>
             </div>
@@ -38,7 +38,7 @@
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
-                <label for="is-active">Wenst u hulp aan te bieden?<small> (Indien u ja zegt wordt uw profiel mee in de Hub gestoken en kan je gecontacteerd worden door mensen die hulp nodig hebben)</small></label>
+                <label for="is-active">Wenst u hulp aan te bieden?<br /><small> (Indien u ja zegt wordt uw profiel mee bij de klussers gestoken en kan je gecontacteerd worden door mensen die hulp nodig hebben)</small></label>
                 <select [(ngModel)]="profile.isPublic" id="is-active">
                     <option value="">Kies hier ...</option>
                     <option value="true">Ja</option>

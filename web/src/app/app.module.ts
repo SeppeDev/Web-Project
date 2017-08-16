@@ -82,7 +82,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
             },
             {
                 path: 'hub',
-                canActivate: [ AuthGuard ],
+                canActivate: [ AuthGuard, AuthProfileGuard ],
                 children: [
                     {
                         path: 'users',

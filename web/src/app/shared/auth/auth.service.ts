@@ -40,8 +40,8 @@ export class AuthService {
 		public router: Router,
 		public http: AuthHttp
 	) {
-		this.handleAuthentication();
-	 }
+		this.checkAuthStatus();
+	}
 
 	/**
 	 * Checks for logged in user.
@@ -76,6 +76,15 @@ export class AuthService {
 	 */
 	public login (): void {
 		this.auth0.authorize();
+	}
+
+	/**
+	 * Go to the registration page.
+	 */
+	public register (): void {
+		this.auth0.authorize({
+			go_to_register: true
+		});
 	}
 
 	/**
@@ -129,5 +138,14 @@ export class AuthService {
 				this.router.navigate(['/profile/create']);
 				console.log(error);
             });
-    }
+	}
+
+	/**
+	 * Checks for currently active user and logs them in
+	 */
+	private checkAuthStatus () {
+		if (this.authenticated()) {
+			this.authProfile = JSON.parse(localStorage.getItem('auth_profile'));
+		}
+	}
 }

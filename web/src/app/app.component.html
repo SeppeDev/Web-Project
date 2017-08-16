@@ -54,7 +54,7 @@
             </ul>
             <ul *ngIf="authSvc.authenticated() && authSvc.authProfile" class="auth-list u-pull-right">
                 <li>
-                    <a class="clickable" (click)="showBottomMenu()">{{ authSvc.authProfile.nickname }}<i class="material-icons fix-icon">arrow_drop_down</i></a>
+                    <a class="clickable" (click)="showBottomMenu()">{{ authSvc.authProfile.nickname }}<i class="material-icons fix-icon-right">arrow_drop_down</i></a>
                     <ul class="dropdown-content dropdown-bottom shadow" *ngIf="bottomMenuActive">
                         <li><a *ngIf="authSvc.isAdmin" routerLink="/admin/categories">Admin Panel</a></li>
                         <li><a routerLink="/profile">Mijn Profiel</a></li>

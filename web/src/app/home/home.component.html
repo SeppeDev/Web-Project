@@ -4,7 +4,8 @@
         <div class="overlay-text-container">
             <h2>Meer tijd voor je leven.</h2>
             <p>ChoreHub is een online platform waar je hulp voor alledaagse klussen vindt of kan aanbieden.</p>
-            <a (click)="authSvc.showRegister()" class="clickable ch-btn ch-btn-lg ch-bg-blue">Registreer je nu</a>
+			<a *ngIf="!authSvc.authenticated()" (click)="authSvc.register()" class="clickable ch-btn ch-btn-lg ch-bg-blue">Registreer je nu</a>
+			<a *ngIf="authSvc.authenticated()" class="clickable ch-btn ch-btn-lg ch-bg-blue">Lees hier hoe je begint</a>
         </div>
      </div>
 </section>
