@@ -34,7 +34,7 @@ import { AuthService }  from './shared/auth/auth.service';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
-    tokenGetter: (() => localStorage.getItem('access_token')),
+    tokenGetter: (() => localStorage.getItem('id_token')),
   }), http, options);
 }
 

@@ -33,7 +33,7 @@ export class AuthService {
 		responseType: 'token id_token',
 		audience: 'https://chorehub.eu.auth0.com/userinfo',
 		redirectUri: 'http://localhost:4200/callback',
-		scope: 'openid'
+		scope: 'openid profile'
 	});
 
 	constructor(
@@ -84,6 +84,7 @@ export class AuthService {
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('id_token');
 		localStorage.removeItem('expires_at');
+		localStorage.removeItem('auth_profile');
 		// Go back to the home route
 		this.router.navigate(['/']);
 	}
@@ -104,7 +105,8 @@ export class AuthService {
     private getAuthProfile (accessToken: string): void {
 		this.auth0.client.userInfo(accessToken, (err, profile) => {
 			if (profile) {
-			  	this.authProfile = profile;
+				this.authProfile = profile;
+				this.authProfile.user_id = profile.sub;
 				localStorage.setItem('auth_profile', JSON.stringify(profile));
 				this.getUserProfile(this.authProfile.user_id);
 			}
