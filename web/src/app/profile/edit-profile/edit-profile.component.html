@@ -57,7 +57,6 @@
             <label>Profiel foto (optioneel) - 4x3 ratio aangeraden</label>
             <div class="columns six no-mar-l mar-top-m">
                 <input type="file"
-                    (change)="fileChange($event)"
                     ngFileSelect
                     [options]="ngUploadOptions"
                     [events]="uploadEvents"
@@ -67,7 +66,7 @@
         </div>
         <div class="row mar-top-l">
             <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable"><i class="material-icons fix-icon-left">done</i>Opslaan</a>
-            <a *ngIf="state == 'Bewerk'" (click)="goBack()" class="ch-btn ch-btn-lg ch-bg-red clickable mar-lft-m">Annuleer</a>
+            <a *ngIf="state == 'Bewerk'" (click)="goBack()" class="ch-btn ch-btn-lg ch-bg-red clickable mar-lft-m"><i class="material-icons fix-icon-left">clear</i>Annuleer</a>
         </div>
     </div>
 </section>

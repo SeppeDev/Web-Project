@@ -32,7 +32,7 @@ export class AuthService {
 		domain: 'chorehub.eu.auth0.com',
 		responseType: 'token id_token',
 		audience: 'https://chorehub.eu.auth0.com/userinfo',
-		redirectUri: 'http://localhost:4200/profile',
+		redirectUri: 'http://localhost:4200/callback',
 		scope: 'openid profile'
 	});
 

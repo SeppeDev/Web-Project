@@ -62,7 +62,7 @@ export class EditProfileComponent implements OnInit {
                     .then((response: any) => {
                         this.profile = JSON.parse(response._body);
                     }, (error: any) => {
-                        // console.log(error);
+                        console.log(error);
                     });
 
             } else {
@@ -75,7 +75,6 @@ export class EditProfileComponent implements OnInit {
 
         this.ngUploadOptions = {
             url: 'https://api.imgur.com/3/image',
-            autoUpload: false,
             authToken: Constants.IMGUR_CLIENTID,
             authTokenPrefix: 'Client-ID',
             fieldName: 'image'
@@ -124,22 +123,7 @@ export class EditProfileComponent implements OnInit {
         console.log(this.profile);
 
         if (Object.keys(this.errors).length === 0) {
-            if (this.hasFile) {
-                this.startUpload();
-            } else {
-                this.state === 'Maak' ? this.saveProfile() : this.updateProfile();
-            }
-        }
-    }
-
-    /**
-     * File input change listener
-     */
-    fileChange (fileInput: any) {
-        this.hasFile = false;
-
-        if (fileInput.target.files.length > 0) {
-            this.hasFile = true;
+            this.state === 'Maak' ? this.saveProfile() : this.updateProfile();
         }
     }
 
@@ -149,11 +133,12 @@ export class EditProfileComponent implements OnInit {
     handleUpload(data: any): void {
         this.zone.run(() => {
             if (data.response && JSON.parse(data.response).success) {
-                const parsedResponse = JSON.parse(data.response);
+				const parsedResponse = JSON.parse(data.response);
+				this.hasFile = true;
                 this.profile.image = {
                     link: parsedResponse.data.link
-                };
-                this.state === 'Maak' ? this.saveProfile() : this.updateProfile();
+				};
+				console.log('image uploaded');
             }
         });
     }
@@ -192,16 +177,5 @@ export class EditProfileComponent implements OnInit {
         }, (error: any) => {
             console.log(error);
         });
-    }
-
-    /**
-     * Fire upload event
-     */
-    private startUpload() {
-        if (this.state === 'Maak' || (this.hasFile && this.state === 'Bewerk')) {
-            // this.uploadEvents.emit('startUpload');
-        } else {
-            this.updateProfile();
-        }
     }
 }
