@@ -15,6 +15,10 @@
     color: #CC2A09;
 }
 
+.ch-bg-white {
+	background-color: #fff;
+}
+
 .ch-bg-green {
     background-color: #979926;
 }
@@ -31,7 +35,7 @@
     background-color: #CC2A09;
 }
 
-.align-container {
+.relative {
 	position: relative;
 }
 
@@ -111,6 +115,10 @@ main {
 
 .view {
     padding: 140px 0 40px 0;
+}
+
+.hub-view {
+	padding: 220px 0 120px 0;
 }
 
 .fix-icon-left {

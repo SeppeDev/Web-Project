@@ -8,8 +8,9 @@ import { DashboardService } from '../dashboard.service';
     templateUrl: 'chore-dashboard.component.html'
 })
 export class ChoreDashboardComponent implements OnInit {
-    selectedCategory: String = 'Cooking';
-    filteredChores: any;
+    selectedCategory: any;
+	location = '';
+	filteredChores: any;
 
     /**
      * Variable for all chores
@@ -34,31 +35,40 @@ export class ChoreDashboardComponent implements OnInit {
      * Filter users list by selected category
      */
     changeCategory (category: any): void {
-        // console.log(this.chores);
-        this.filteredChores = this.chores.filter((chore: any) => {
-            return chore.category.id === category.id;
-        });
-    }
+		this.selectedCategory = category;
+		this.filterChores();
+	}
+
+	/**
+	 * Filter users list by location
+	 */
+	changeLocation () {
+		console.log(this.location);
+		this.filterChores();
+	}
 
     /**
      * Reset users
      */
     reset (): void {
         this.filteredChores = this.chores;
-    }
+	}
 
-    // /**
-    //  * Get all categories
-    //  */
-    // private getCategories (): void {
-    //     this.dashSvc.getCategories()
-    //         .then((data: any) => {
-    //             this.categories = JSON.parse(data._body);
-    //             // console.log(data);
-    //         }, (error: any) => {
-    //             // console.log(error);
-    //         });
-    // }
+	/**
+	 * Filter lists
+	 */
+	private filterChores () {
+		if (this.selectedCategory) {
+			this.filteredChores = this.chores.filter ((chore: any) => {
+				return chore.category.id === this.selectedCategory.id && chore.location.toLowerCase().indexOf(this.location.toLowerCase()) > -1;
+			});
+		} else {
+			this.filteredChores = this.chores.filter ((chore: any) => {
+				return chore.location.toLowerCase().indexOf(this.location.toLowerCase()) > -1;
+			});
+		}
+
+	}
 
     /**
      * Get all chores

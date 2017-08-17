@@ -1,6 +1,6 @@
-<section class="view">
+<section class="hub-view bg-image">
     <div class="container shadow">
-			<div class="row mar-btm-l hub-header">
+			<div class="row hub-header ch-bg-white">
 				<div class="columns six">
 					<div class="row">
 						<h1 class="light ch-green no-mar-b">Zoekertjes</h1>
@@ -13,7 +13,7 @@
 					<div class="row">
 						<ul class="u-pull-right hub-nav-list mar-btm-s">
 							<li class="regular">Zoek op:</li>
-							<li><a routerLink="/hub/users"><i class="material-icons fix-icon-left">person</i>Personen</a></li>
+							<li><a routerLink="/hub/users"><i class="material-icons fix-icon-left">person</i>Klussers</a></li>
 							<li><a routerLink="/hub/chores"><i class="material-icons fix-icon-left">view_list</i>Zoekertjes</a></li>
 						</ul>
 					</div>
@@ -22,11 +22,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="row ch-bg-green">
+			<div class="row ch-bg-green hub-parent">
 				<aside class="three columns text-white">
-					<h5>Categoriëen</h5>
+					<h5>Filters</h5>
+					<label>Locatie:</label>
+					<input type="text" class="search-field" [(ngModel)]="location" (ngModelChange)="changeLocation($event)" />
+					<label class="mar-top-l">Categorie:</label>
 					<ul>
-						<li><a class="clickable" (click)="reset()" >Alle</a></li>
+						<li><a class="clickable" (click)="changeCategory()">Alle</a></li>
 						<li *ngFor="let category of categories">
 							<a class="clickable" (click)="changeCategory(category)">{{ category.name }}</a>
 						</li>
@@ -38,7 +41,7 @@
 						<div class="row">
 							<h5>{{ chore.title }}</h5>
 						</div>
-						<div class="row align-container">
+						<div class="row relative">
 							<div class="columns four">
 								<label class="chore-label">Waar?</label>
 								<p class="chore-info">{{ chore.location }}</p>

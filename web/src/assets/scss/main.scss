@@ -166,6 +166,13 @@ footer p {
 }
 
 /* Body - Hub */
+.bg-image{
+	background-image: url('assets/images/laundry.jpg');
+    background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
 aside {
     padding: 20px;
 }
@@ -202,9 +209,14 @@ aside > ul > li > a:hover {
 	padding: 30px 20px 20px 20px;
 }
 
+.hub-parent {
+	display: flex;
+}
+
 .hub-container {
     padding: 20px;
-    background-color: #fff;
+	background-color: #fff;
+	flex-grow: 1;
 }
 
 .hub-container > h5 {
@@ -285,6 +297,11 @@ aside > ul > li > a:hover {
 
 .category-list {
     list-style: none;
+}
+
+.search-field {
+	max-width: 100%;
+	color: #000;
 }
 
 .category-list > li {
