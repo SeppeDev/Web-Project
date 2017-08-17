@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'ch-info',
-    templateUrl: 'info.component.html'
+    selector: 'ch-instructions',
+    templateUrl: 'instructions.component.html'
 })
-export class InfoComponent { }
+export class InstructionsComponent { }
