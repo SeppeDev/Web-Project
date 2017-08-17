@@ -31,6 +31,16 @@
     background-color: #CC2A09;
 }
 
+.align-container {
+	position: relative;
+}
+
+.align-bottom-right {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
 /* Positioning */
 .left {
     float: left;

@@ -7,12 +7,12 @@
         </div>
         <div class="row">
             <div class="columns twelve">
-                <h1>Nieuwe Chore</h1>
+                <h1>Nieuwe zoeker</h1>
             </div>
         </div>
         <div class="row">
             <div class="columns six">
-                <label for="title">Naam van de chore</label>
+                <label for="title">Titel van je zoeker</label>
                 <input [(ngModel)]="chore.title" class="u-full-width" type="text" id="title" />
                 <p class="error">{{ errors.titleError }}</p>
             </div>
@@ -26,14 +26,14 @@
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
-                <label for="location">Waar vindt deze chore plaats?</label>
+                <label for="location">Waar vindt dit plaats?</label>
                 <input [(ngModel)]="chore.location" type="text" id="location">
                 <p class="error">{{ errors.locationError }}</p>
             </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
-                <label for="category">Welke categorie valt deze chore onder?</label>
+                <label for="category">Onder welke categorie valt dit?</label>
                 <select [(ngModel)]="chore.category" id="category">
                     <option value="">Kies hier ...</option>
                     <option *ngFor="let category of categories" [ngValue]="category">{{ category.name }}</option>

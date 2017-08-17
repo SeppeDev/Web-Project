@@ -177,7 +177,7 @@ aside > ul {
 aside > h5 {
     text-transform: uppercase;
     color: #fff;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
     margin-bottom: 40px;
 }
 
@@ -198,43 +198,63 @@ aside > ul > li > a:hover {
     text-decoration: underline;
 }
 
+.hub-header {
+	padding: 30px 20px 20px 20px;
+}
+
 .hub-container {
-    padding: 20px 4% 20px 4%;
+    padding: 20px;
     background-color: #fff;
 }
 
 .hub-container > h5 {
     text-transform: uppercase;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
     margin-bottom: 40px;
 }
 
-.card {
-    height: 350px;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 25px;
-    box-shadow: 0 0 2px rgba(80,80,80,0.6);
-}
+// .card {
+//     height: 350px;
+//     width: 100%;
+//     padding: 10px;
+//     margin-bottom: 25px;
+//     box-shadow: 0 0 2px rgba(80,80,80,0.6);
+// }
 
-.card > label {
-    font-size: 2rem;
-}
+// .card > label {
+//     font-size: 2rem;
+// }
 
-.card > ul {
-    list-style: none;
-}
+// .card > ul {
+//     list-style: none;
+// }
 
-.card > ul > li {
-    margin: 0;
-    line-height: 24px;
-}
+// .card > ul > li {
+//     margin: 0;
+//     line-height: 24px;
+// }
 
 .ch-link {
     text-decoration: none;
     border-bottom: 1px solid;
     font-family: "Lato";
     font-weight: 500;
+}
+
+.chore {
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+	border-bottom: 1px dashed #dfdfdf;
+}
+
+.chore-label {
+	margin-bottom: 0;
+	font-size: 1.6rem;
+	font-weight: 300;
+}
+
+.chore-info {
+	margin-bottom: 0;
 }
 
 .ch-link:hover {
