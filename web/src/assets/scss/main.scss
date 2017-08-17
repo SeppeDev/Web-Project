@@ -98,7 +98,8 @@ header .auth-list {
 .bg-img {
     background-image: url("assets/images/helping.jpg");
     height: 100vh;
-    width: 100%;
+	width: 100%;
+	background-size: cover;
 }
 
 .bg-img-overlay {
@@ -166,11 +167,20 @@ footer p {
 }
 
 /* Body - Hub */
-.bg-image{
+.chores-bg-img {
 	background-image: url('assets/images/laundry.jpg');
     background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
+	min-height: 80vh;
+}
+
+.users-bg-img {
+	background-image: url('assets/images/tools.jpg');
+    background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	min-height: 80vh;
 }
 
 aside {
@@ -225,27 +235,6 @@ aside > ul > li > a:hover {
     margin-bottom: 40px;
 }
 
-// .card {
-//     height: 350px;
-//     width: 100%;
-//     padding: 10px;
-//     margin-bottom: 25px;
-//     box-shadow: 0 0 2px rgba(80,80,80,0.6);
-// }
-
-// .card > label {
-//     font-size: 2rem;
-// }
-
-// .card > ul {
-//     list-style: none;
-// }
-
-// .card > ul > li {
-//     margin: 0;
-//     line-height: 24px;
-// }
-
 .ch-link {
     text-decoration: none;
     border-bottom: 1px solid;
@@ -253,7 +242,7 @@ aside > ul > li > a:hover {
     font-weight: 500;
 }
 
-.chore {
+.result {
 	padding-bottom: 30px;
 	margin-bottom: 30px;
 	border-bottom: 1px dashed #dfdfdf;
@@ -320,25 +309,10 @@ input, textarea, select {
 }
 
 .profile-picture {
-    height: 180px;
-    width: 240px;
-}
-
-.profile-picture-s {
-    height: 120px;
-    width: 160px;
+    max-width: 280px;
 }
 
 .alert {
     padding: 20px 0;
     text-align: center;
-}
-
-/* Auth0 lock widget */
-.auth0-lock-input {
-    font-weight: 500 !important;
-}
-
-.auth0-lock-alternative-link {
-    font-weight: 500 !important;
 }

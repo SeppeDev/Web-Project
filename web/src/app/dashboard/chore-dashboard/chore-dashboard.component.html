@@ -1,4 +1,4 @@
-<section class="hub-view bg-image">
+<section class="hub-view chores-bg-img">
     <div class="container shadow">
 			<div class="row hub-header ch-bg-white">
 				<div class="columns six">
@@ -37,7 +37,7 @@
 				</aside>
 				<div class="nine columns hub-container u-pull-right">
 					<h5 class="ch-green">Resultaten</h5>
-					<div *ngFor="let chore of filteredChores; let e = even;" class="columns twelve chore" [ngClass]="e == true ? 'no-mar-l' : ''">
+					<div *ngFor="let chore of filteredChores; let e = even;" class="columns twelve result" [ngClass]="e == true ? 'no-mar-l' : ''">
 						<div class="row">
 							<h5>{{ chore.title }}</h5>
 						</div>

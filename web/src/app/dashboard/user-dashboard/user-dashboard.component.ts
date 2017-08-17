@@ -11,7 +11,17 @@ export class UserDashboardComponent implements OnInit {
     /**
      * Users variable
      */
-    users: any = [];
+	users: any = [];
+
+	/**
+	 * Filtered users list
+	 */
+	filteredUsers: any = [];
+
+	/**
+	 * Current location to filter by
+	 */
+	location = '';
 
     constructor (private dashSvc: DashboardService) { }
 
@@ -23,14 +33,39 @@ export class UserDashboardComponent implements OnInit {
     }
 
     /**
-     * Get all users
+     * Reset users
      */
-    private getUsers () {
-        this.dashSvc.getUsers()
-            .then((data: any) => {
-                this.users = JSON.parse(data._body);
-            }, (error: any) => {
-                // console.log(error);
-            });
-    }
+    reset (): void {
+        this.filteredUsers = this.users;
+	}
+
+	/**
+	 * Filter users list by location
+	 */
+	changeLocation () {
+		console.log(this.location);
+		this.filterUsers();
+	}
+
+	/**
+	 * Filter lists
+	 */
+	private filterUsers () {
+		this.filteredUsers = this.users.filter ((user: any) => {
+			return user.location.toLowerCase().indexOf(this.location.toLowerCase()) > -1;
+		});
+	}
+
+	/**
+	 * Get all users
+	 */
+	private getUsers () {
+		this.dashSvc.getUsers()
+			.then((data: any) => {
+				this.users = JSON.parse(data._body);
+				this.reset();
+			}, (error: any) => {
+				// console.log(error);
+			});
+	}
 }

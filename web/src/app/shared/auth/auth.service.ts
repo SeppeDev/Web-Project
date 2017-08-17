@@ -147,5 +147,9 @@ export class AuthService {
 		if (this.authenticated()) {
 			this.authProfile = JSON.parse(localStorage.getItem('auth_profile'));
 		}
+
+		if (localStorage.getItem('user_profile')) {
+			this.isAdmin = JSON.parse(localStorage.getItem('user_profile')).isAdmin;
+		}
 	}
 }

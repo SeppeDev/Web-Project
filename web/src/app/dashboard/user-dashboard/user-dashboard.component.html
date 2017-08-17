@@ -1,28 +1,37 @@
-<section class="view">
-    <div class="container">
-        <div class="row">
+<section class="hub-view users-bg-img">
+    <div class="container shadow">
+        <div class="row hub-header ch-bg-white">
             <div class="columns six">
-                <h1 class="light ch-green no-mar-b">Hub</h1>
+                <h1 class="light ch-green no-mar-b">Klussers</h1>
                 <h5 class="light">Vind de juiste persoon om je te helpen</h5>
             </div>
             <div class="columns six">
                 <ul class="u-pull-right hub-nav-list">
                     <li class="regular">Zoek op:</li>
-                    <li><a routerLink="/hub/users"><i class="material-icons fix-icon-left">person</i>Personen</a></li>
-                    <li><a routerLink="/hub/chores"><i class="material-icons fix-icon-left">view_list</i>Chores</a></li>
+                    <li><a routerLink="/hub/users"><i class="material-icons fix-icon-left">person</i>Klussers</a></li>
+                    <li><a routerLink="/hub/chores"><i class="material-icons fix-icon-left">view_list</i>Zoekertjes</a></li>
                 </ul>
             </div>
-        </div>
-        <div class="row shadow ch-bg-green">
-            <div class="columns twelve hub-container u-pull-right">
-                <h5 class="ch-green">Zoek iemand die je kan helpen</h5>
-                <div *ngFor="let user of users; let e = even;" class="columns six card" [ngClass]="e == true ? 'no-mar-l' : ''">
-                    <h5>{{ user.firstName }} {{ user.lastName }}</h5>
-                    <img *ngIf="user.image && user.image.link" class="profile-picture" [src]="user.image.link" alt="profile picture" />
-                    <img *ngIf="!user.image" class="profile-picture" src="https://cdn0.iconfinder.com/data/icons/people-groups/512/User_Male-512.png" alt="profile picture" />
-                    <label>Waar?</label>
-                    <p>{{ user.location }}</p>
-                    <a class="ch-blue ch-link text-m" [routerLink]="['/hub/users/', user.id]">Verder...</a>
+		</div>
+        <div class="row ch-bg-green">
+			<aside class="three columns text-white">
+				<h5>Filters</h5>
+				<label>Locatie:</label>
+				<input type="text" class="search-field" [(ngModel)]="location" (ngModelChange)="changeLocation($event)" />
+			</aside>
+            <div class="columns nine hub-container u-pull-right">
+                <h5 class="ch-green">Resultaten</h5>
+                <div *ngFor="let user of filteredUsers; let e = even;" class="columns twelve result" [ngClass]="e == true ? 'no-mar-l' : ''">
+					<div class="columns six" *ngIf="user.image && user.image.link" >
+						<img class="profile-picture" [src]="user.image.link" alt="profile picture" />
+					</div>
+					<div class="columns six">
+						<h5>{{ user.firstName }} {{ user.lastName }}</h5>
+						<img *ngIf="!user.image" class="profile-picture" src="https://cdn0.iconfinder.com/data/icons/people-groups/512/User_Male-512.png" alt="profile picture" />
+						<label>Waar?</label>
+						<p>{{ user.location }}</p>
+						<a class="ch-blue ch-link text-m" [routerLink]="['/hub/users/', user.id]">Verder...</a>
+					</div>
                 </div>
             </div>
         </div>

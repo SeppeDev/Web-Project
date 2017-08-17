@@ -8,8 +8,19 @@ import { DashboardService } from '../dashboard.service';
     templateUrl: 'chore-dashboard.component.html'
 })
 export class ChoreDashboardComponent implements OnInit {
-    selectedCategory: any;
+	/**
+	 * Current category to filter by
+	 */
+	selectedCategory: any;
+
+	/**
+	 * Current location to filter by
+	 */
 	location = '';
+
+	/**
+	 * Filtered list of chores
+	 */
 	filteredChores: any;
 
     /**
@@ -32,7 +43,7 @@ export class ChoreDashboardComponent implements OnInit {
     }
 
     /**
-     * Filter users list by selected category
+     * Filter chores list by selected category
      */
     changeCategory (category: any): void {
 		this.selectedCategory = category;
@@ -40,7 +51,7 @@ export class ChoreDashboardComponent implements OnInit {
 	}
 
 	/**
-	 * Filter users list by location
+	 * Filter chores list by location
 	 */
 	changeLocation () {
 		console.log(this.location);
@@ -67,7 +78,6 @@ export class ChoreDashboardComponent implements OnInit {
 				return chore.location.toLowerCase().indexOf(this.location.toLowerCase()) > -1;
 			});
 		}
-
 	}
 
     /**
