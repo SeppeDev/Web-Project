@@ -21,7 +21,9 @@ export class UserDetailComponent implements OnInit {
     /**
      * Email variable
      */
-    email: any = {};
+    email: any = {
+        sent: false
+    };
 
     /**
      * List of errors
@@ -84,8 +86,7 @@ export class UserDetailComponent implements OnInit {
 
         this.dashSvc.sendMail(this.email)
             .then((data: any) => {
-                this.email.message = '';
-                this.errors.MessageError = 'Successfully sent';
+                this.email.sent = true;
             }, (error: any) => {
                 // console.log(error);
             });

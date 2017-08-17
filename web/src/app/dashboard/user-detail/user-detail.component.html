@@ -28,15 +28,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="columns twelve">
+            <div class="columns six">
                 <label>Contacteer mij</label>
-                <span>{{ user.email }}</span>
-
-                <label for="message">Bericht</label>
-                <input [(ngModel)]="email.message" class="u-full-width" type="text" id="message" />
+                <textarea [(ngModel)]="email.message" class="u-full-width" id="message"></textarea>
                 <p class="error">{{ errors.MessageError }}</p>
 
-                <a class="ch-blue ch-link text-l clickable" (click)="sendMail()">Mail me</a>
+                <a *ngIf="!email.sent" class="ch-btn ch-btn-lg ch-bg-blue" (click)="validate()"><i class="material-icons fix-icon-left">send</i>Versturen</a>
+                <a *ngIf="email.sent" class="ch-btn ch-btn-lg ch-bg-green"><i class="material-icons fix-icon-left">check</i>Verstuurd</a>
             </div>
         </div>
     </div>
