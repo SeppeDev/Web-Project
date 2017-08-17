@@ -11,6 +11,7 @@ import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { AppComponent }                 from './app.component';
 import { HomeComponent }                from './home/home.component';
 import { InfoComponent }                from './info/info.component';
+import { InstructionsComponent }        from './instructions/instructions.component';
 import { UserDashboardComponent }       from './dashboard/user-dashboard/user-dashboard.component';
 import { UserDetailComponent}           from './dashboard/user-detail/user-detail.component';
 import { ChoreDashboardComponent }      from './dashboard/chore-dashboard/chore-dashboard.component';
@@ -61,6 +62,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
             {
                 path: 'info',
                 component: InfoComponent
+            },
+            {
+                path: 'instructions',
+                component: InstructionsComponent
             },
             {
                 path: 'admin',
@@ -164,6 +169,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
         AppComponent,
         HomeComponent,
         InfoComponent,
+        InstructionsComponent,
         UserDashboardComponent,
         ChoreDashboardComponent,
         ProfileComponent,
