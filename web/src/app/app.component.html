@@ -1,18 +1,19 @@
-<header class="shadow">
+<header class="shadow u-cf">
     <div class="container row">
-        <div class="four columns">
+        <div class="three columns">
             <a routerLink="/home" class="logo ch-green"><span>Chore</span>Hub</a>
         </div>
-        <div class="four columns">
+        <div class="six columns">
             <nav>
                 <ul class="nav-list">
                     <li><a routerLink="/home" class="ch-blue">Home</a></li>
                     <li><a routerLink="/info" class="ch-red">Info</a></li>
-                    <li><a routerLink="/hub/chores" class="ch-green">Hub</a></li>
+					<li><a routerLink="/hub/chores" class="ch-green">Zoekertjes</a></li>
+					<li><a routerLink="/hub/users" class="ch-yellow">Klussers</a></li>
                 </ul>
             </nav>
         </div>
-        <div class="four columns">
+        <div class="three columns">
             <ul *ngIf="!authSvc.authenticated()" class="auth-list u-pull-right">
                 <li><a (click)="authSvc.login()" class="clickable">Aanmelden</a></li>
                 <li><a (click)="authSvc.register()" class="clickable">Registreer</a></li>
@@ -40,28 +41,12 @@
             <p>&copy; Benno Meysmans <br />
                 &amp; Seppe Goossens 2017</p>
         </div>
-        <div class="four columns">
+        <div class="eight columns">
             <ul class="cf nav-list">
                 <li><a routerLink="/home">Home</a></li>
                 <li><a routerLink="/info">Info</a></li>
-                <li><a routerLink="/hub/chores">Hub</a></li>
-            </ul>
-        </div>
-        <div class="four columns">
-            <ul *ngIf="!authSvc.authenticated()" class="auth-list">
-                <li><a (click)="authSvc.showLogin()" class="clickable">Aanmelden</a></li>
-                <li><a (click)="authSvc.showRegister()" class="clickable">Registreer</a></li>
-            </ul>
-            <ul *ngIf="authSvc.authenticated() && authSvc.authProfile" class="auth-list u-pull-right">
-                <li>
-                    <a class="clickable" (click)="showBottomMenu()">{{ authSvc.authProfile.nickname }}<i class="material-icons fix-icon-right">arrow_drop_down</i></a>
-                    <ul class="dropdown-content dropdown-bottom shadow" *ngIf="bottomMenuActive">
-                        <li><a *ngIf="authSvc.isAdmin" routerLink="/admin/categories">Admin Panel</a></li>
-                        <li><a routerLink="/profile">Mijn Profiel</a></li>
-                        <li><a routerLink="/profile/chores">Mijn Chores</a></li>
-                        <li><a (click)="authSvc.logout()" class="clickable">Logout</a></li>
-                    </ul>
-                </li>
+				<li><a routerLink="/hub/chores">Zoekertjes</a></li>
+				<li><a routerLink="/hub/users">Klussers</a></li>
             </ul>
         </div>
     </div>
