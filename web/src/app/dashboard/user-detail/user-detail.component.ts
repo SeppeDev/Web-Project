@@ -47,6 +47,25 @@ export class UserDetailComponent implements OnInit {
     }
 
     /**
+     * Validate profile data
+     */
+    validate () {
+        this.errors = {};
+
+        if (!this.email.message || typeof(this.email.message) === 'undefined') {
+            this.errors.MessageError = 'Vul dit veld aub in.';
+        } else if (this.email.message.length > 500) {
+            this.errors.MessageError = 'Dit veld kan maximaal 500 tekens bevatten.';
+        }
+
+        console.log(this.errors);
+
+        if (Object.keys(this.errors).length === 0) {
+            this.sendMail();
+        }
+    }
+
+    /**
      * Go to previous application state
      */
     goBack () {
