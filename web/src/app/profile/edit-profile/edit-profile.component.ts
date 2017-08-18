@@ -128,6 +128,13 @@ export class EditProfileComponent implements OnInit {
     }
 
     /**
+     * Checks if there are any errors
+     */
+    hasErrors() {
+        return Object.keys(this.errors).length > 0;
+    }
+
+    /**
      * Handle upload event
      */
     handleUpload(data: any): void {

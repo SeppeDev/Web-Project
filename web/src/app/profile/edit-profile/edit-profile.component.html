@@ -31,7 +31,7 @@
         </div>
         <div class="row mar-top-p">
             <div class="columns six">
-                <label for="location">Waar woont u? <small>(Geef hier de naam van je stad - zo kan je zoekers of klussers nabij vinden)</small></label>
+                <label for="location">Waar woont u? <br /><small>(Geef hier de naam van je stad - zo kan je zoekers of klussers nabij vinden)</small></label>
                 <input [(ngModel)]="profile.location" type="text">
                 <p class="error">{{ errors.locationError }}</p>
             </div>
@@ -49,7 +49,7 @@
         </div>
         <div *ngIf="profile.image" class="row mar-top-m">
             <div class="columns six">
-                <label>Profiel foto <small>(optioneel)</small></label>
+                <label>Foto van jezelf <br /><small>(optioneel maar <strong>aangeraden</strong>. ChoreHub bouwt rond vertrouwen en zowel wij als onze gebruikers vinden het belangrijk om bij elke persoon een gezicht te hebben)</small></label>
                 <img class="profile-picture" [src]="profile.image.link" alt="profiel foto" />
             </div>
         </div>
@@ -66,6 +66,9 @@
         <div class="row mar-top-l">
             <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable"><i class="material-icons fix-icon-left">done</i>Opslaan</a>
             <a *ngIf="state == 'Bewerk'" (click)="goBack()" class="ch-btn ch-btn-lg ch-bg-red clickable mar-lft-m"><i class="material-icons fix-icon-left">clear</i>Annuleer</a>
-        </div>
+		</div>
+		<div *ngIf="hasErrors()" class="mar-top-m">
+			<p class="error"><strong>Gelieve het formulier juist in te vullen - kijk naar de velden voor meer informatie</strong></p>
+		</div>
     </div>
 </section>

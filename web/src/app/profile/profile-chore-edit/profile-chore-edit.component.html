@@ -40,7 +40,10 @@
             </div>
         </div>-->
         <div class="row mar-top-l">
-            <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable"><i class="material-icons fix-icon-left">add</i>Opslaan</a>
+            <a (click)="validate()" class="ch-btn ch-btn-lg ch-bg-blue clickable"><i class="material-icons fix-icon-left">done</i>Opslaan</a>
         </div>
+		<div *ngIf="hasErrors()" class="mar-top-m">
+			<p class="error"><strong>Gelieve het formulier juist in te vullen - kijk naar de velden voor meer informatie</strong></p>
+		</div>
     </div>
 </section>

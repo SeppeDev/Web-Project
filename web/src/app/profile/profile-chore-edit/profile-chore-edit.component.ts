@@ -47,6 +47,13 @@ export class ProfileChoreEditComponent implements OnInit {
     }
 
     /**
+     * Checks if there are any errors
+     */
+    hasErrors() {
+        return Object.keys(this.errors).length > 0;
+    }
+
+    /**
      * Return to previous application state
      */
     goBack () {
