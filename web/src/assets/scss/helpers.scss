@@ -133,6 +133,10 @@ main {
 	margin-left: 5px;
 }
 
+.active-link--main {
+	border-bottom: 2px solid currentColor;
+}
+
 /* Components */
 .ch-btn {
     font-family: "Lato";

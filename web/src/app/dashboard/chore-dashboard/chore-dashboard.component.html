@@ -3,7 +3,7 @@
 			<div class="row hub-header ch-bg-white">
 				<div class="columns six">
 					<div class="row">
-						<h1 class="light ch-green no-mar-b">Zoekertjes</h1>
+						<h1 class="light ch-green no-mar-b">Zoekers</h1>
 					</div>
 					<div class="row">
 						<h5 class="light">Vind een klus dat bij je past</h5>
@@ -13,8 +13,8 @@
 					<div class="row">
 						<ul class="u-pull-right hub-nav-list mar-btm-s">
 							<li class="regular">Zoek op:</li>
-							<li><a routerLink="/hub/users"><i class="material-icons fix-icon-left">person</i>Klussers</a></li>
-							<li><a routerLink="/hub/chores"><i class="material-icons fix-icon-left">view_list</i>Zoekertjes</a></li>
+							<li><a routerLink="/hub/chores" routerLinkActive="is-active"><i class="material-icons fix-icon-left">view_list</i>Zoekers</a></li>
+							<li><a routerLink="/hub/users" routerLinkActive="is-active"><i class="material-icons fix-icon-left">person</i>Klussers</a></li>
 						</ul>
 					</div>
 					<div class="row">
@@ -35,7 +35,7 @@
 						</li>
 					</ul>
 				</aside>
-				<div class="nine columns hub-container u-pull-right">
+				<div class="nine columns hub-container u-pull-right no-mar-l">
 					<h5 class="ch-green">Resultaten</h5>
 					<div *ngFor="let chore of filteredChores; let e = even;" class="columns twelve result" [ngClass]="e == true ? 'no-mar-l' : ''">
 						<div class="row">
@@ -51,7 +51,7 @@
 								<p class="chore-info">{{ chore.user.firstName }} {{ chore.user.lastName }}</p>
 							</div>
 							<div class="columns four align-bottom-right">
-								<a class="ch-blue ch-link text-m" [routerLink]="['/hub/chores/', chore.id]">Bekijk details...</a>
+								<a class="ch-blue ch-link text-m" [routerLink]="['/hub/chores/', chore.id]">Bekijk zoeker</a>
 							</div>
 						</div>
 					</div>

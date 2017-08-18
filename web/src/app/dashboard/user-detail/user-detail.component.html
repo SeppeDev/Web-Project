@@ -1,41 +1,43 @@
-<section class="view">
-    <div class="container">
-        <div class="row">
-            <div class="columns twelve">
-               <a class="ch-blue ch-link text-l clickable" (click)="goBack()">Terug</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="columns twelve">
-                <h1>{{ user.firstName }} {{ user.lastName }}</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="columns twelve">
-                <img *ngIf="user.image && user.image.link" class="profile-picture" [src]="user.image.link" alt="profile picture" />
-                <img *ngIf="!user.image" class="profile-picture" src="https://cdn0.iconfinder.com/data/icons/people-groups/512/User_Male-512.png" alt="profile picture" /></div>
-            </div>
-        <div class="row mar-top-m">
-            <div class="columns twelve">
-                <label>Wie ben ik?</label>
-                <p>{{ user.description }}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="columns twelve">
-                <label>Waar ben ik?</label>
-                <p>{{ user.location }}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="columns six">
-                <label>Contacteer mij</label>
-                <textarea [(ngModel)]="email.message" class="u-full-width" id="message"></textarea>
-                <p class="error">{{ errors.MessageError }}</p>
+<section class="hub-view users-bg-img">
+    <div class="container shadow ch-bg-white">
+		<div class="hub-detail-container">
+			<div class="row">
+				<div class="columns twelve">
+					<a class="ch-blue ch-link text-l clickable" (click)="goBack()">Terug</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns twelve">
+					<h1>{{ user.firstName }} {{ user.lastName }}</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns twelve">
+					<img *ngIf="user.image && user.image.link" class="profile-picture" [src]="user.image.link" alt="profile picture" />
+					<img *ngIf="!user.image" class="profile-picture" src="https://cdn0.iconfinder.com/data/icons/people-groups/512/User_Male-512.png" alt="profile picture" /></div>
+				</div>
+			<div class="row mar-top-m">
+				<div class="columns twelve">
+					<label>Wie ben ik?</label>
+					<p>{{ user.description }}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns twelve">
+					<label>Waar ben ik?</label>
+					<p>{{ user.location }}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns six">
+					<label>Contacteer mij</label>
+					<textarea [(ngModel)]="email.message" class="u-full-width" id="message"></textarea>
+					<p class="error">{{ errors.MessageError }}</p>
 
-                <a *ngIf="!email.sent" class="ch-btn ch-btn-lg ch-bg-blue" (click)="validate()"><i class="material-icons fix-icon-left">send</i>Versturen</a>
-                <a *ngIf="email.sent" class="ch-btn ch-btn-lg ch-bg-green"><i class="material-icons fix-icon-left">check</i>Verstuurd</a>
-            </div>
-        </div>
+					<a *ngIf="!email.sent" class="ch-btn ch-btn-lg ch-bg-blue" (click)="validate()"><i class="material-icons fix-icon-left">send</i>Versturen</a>
+					<a *ngIf="email.sent" class="ch-btn ch-btn-lg ch-bg-green"><i class="material-icons fix-icon-left">check</i>Verstuurd</a>
+				</div>
+			</div>
+		</div>
     </div>
 </section>

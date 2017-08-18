@@ -1,40 +1,42 @@
-<section class="view">
-    <div class="container">
-        <div class="row">
-            <div class="columns twelve">
-                <a class="ch-blue ch-link text-l clickable" (click)="goBack()">Terug</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="columns twelve">
-                <h1>{{ chore.title }}</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="columns twelve">
-                <label>Waar heb ik hulp mee nodig?</label>
-                <span>{{ chore.category.name }}</span>
-            </div>
-        </div>
-        <div class="row mar-top-m">
-            <div class="columns twelve">
-                <label>Wat verwacht ik?</label>
-                <p>{{ chore.description }}</p>
-            </div>
-        </div>
-            <div class="row">
-            <div class="columns twelve">
-                <label>Waar is het?</label>
-                <p>{{ chore.location }}</p>
-            </div>
-        </div>
-        <div *ngIf="chore.user.firstName" class="row">
-            <div class="twelve columns">
-                <label>Geplaatst door</label>
-                <a class="ch-blue ch-link text-l" [routerLink]="['/hub/users/', chore.user.id ]">{{ chore.user.firstName }} {{ chore.user.lastName }}</a>
-                <label class="mar-top-m">Contacteer</label>
-                <span>{{ chore.user.email }}</span>
-            </div>
-        </div>
+<section class="hub-view chores-bg-img">
+    <div class="container shadow ch-bg-white">
+		<div class="hub-detail-container">
+			<div class="row">
+				<div class="columns twelve">
+					<a class="ch-blue ch-link text-l clickable" (click)="goBack()">Terug</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns twelve">
+					<h1>{{ chore.title }}</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns twelve">
+					<label>Waar heb ik hulp mee nodig?</label>
+					<span>{{ chore.category.name }}</span>
+				</div>
+			</div>
+			<div class="row mar-top-m">
+				<div class="columns twelve">
+					<label>Wat verwacht ik?</label>
+					<p>{{ chore.description }}</p>
+				</div>
+			</div>
+				<div class="row">
+				<div class="columns twelve">
+					<label>Waar is het?</label>
+					<p>{{ chore.location }}</p>
+				</div>
+			</div>
+			<div *ngIf="chore.user.firstName" class="row">
+				<div class="twelve columns">
+					<label>Geplaatst door</label>
+					<a class="ch-blue ch-link text-l" [routerLink]="['/hub/users/', chore.user.id ]">{{ chore.user.firstName }} {{ chore.user.lastName }}</a>
+					<label class="mar-top-m">Contacteer</label>
+					<span>{{ chore.user.email }}</span>
+				</div>
+			</div>
+		</div>
     </div>
 </section>
