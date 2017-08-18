@@ -40,7 +40,7 @@ namespace ChoreHub.Controllers
         {
             var message = new SendGrid.SendGridMessage();
             message.From = new MailAddress("info@chorehub.com", "ChoreHub");
-            message.Subject = "Iemand van ChoreHub heeft je een berichtje gestuurd";
+            message.Subject = "Iemand op ChoreHub heeft je een berichtje gestuurd";
             message.AddTo(email.Recipient);
             message.Html = email.Content;
             var client = new Web(configuration["SendGrid:Key"]);

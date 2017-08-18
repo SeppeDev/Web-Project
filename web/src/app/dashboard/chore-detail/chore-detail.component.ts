@@ -93,16 +93,17 @@ export class ChoreDetailComponent implements OnInit {
         this.email.recipient = this.chore.user.email;
         this.email.content = '<p>Hallo ' + this.chore.user.firstName +
                             '</br></br></br>' +
-                            this.authSvc.authProfile.nickname + ' heeft gereageerd op je "' + this.chore.title +
+                            this.authSvc.userProfile.firstName + ' ' + this.authSvc.userProfile.lastName  +
+                            ' heeft gereageerd op je "' + this.chore.title +
                             '" klusje met het volgende:' +
                             '</br></br>' +
                             this.email.message +
                             '</br></br>' +
-                            'Contacteer hem/haar op ' + this.chore.user.email +
+                            'Contacteer hem/haar op ' + this.authSvc.authProfile.name +
                             '</br></br>' +
                             'Groetjes' +
                             '</br>' +
-                            'Het ChoreHubTeam' +
+                            'Het ChoreHub team' +
                             '</p>';
 
         this.dashSvc.sendMail(this.email)
