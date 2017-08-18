@@ -20,6 +20,11 @@ export class AuthService {
 	authProfile: any = {};
 
 	/**
+	 * The ChoreHub user profile.
+	 */
+	userProfile: any = {};
+
+	/**
 	 * Is the current logged in user an admin.
 	 */
 	isAdmin = false;
@@ -96,6 +101,7 @@ export class AuthService {
 		localStorage.removeItem('id_token');
 		localStorage.removeItem('expires_at');
 		localStorage.removeItem('auth_profile');
+		localStorage.removeItem('user_profile');
 		// Go back to the home route
 		this.router.navigate(['/']);
 	}
@@ -149,6 +155,7 @@ export class AuthService {
 		}
 
 		if (localStorage.getItem('user_profile')) {
+			this.userProfile = JSON.parse(localStorage.getItem('user_profile'));
 			this.isAdmin = JSON.parse(localStorage.getItem('user_profile')).isAdmin;
 		}
 	}

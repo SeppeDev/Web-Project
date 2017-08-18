@@ -20,12 +20,12 @@
             </ul>
             <ul *ngIf="authSvc.authenticated() && authSvc.authProfile" class="auth-list u-pull-right">
                 <li>
-                    <a class="clickable" (click)="showTopMenu()">{{ authSvc.authProfile.nickname }}<i class="material-icons fix-icon-right">arrow_drop_down</i></a>
+                    <a class="clickable" (click)="showTopMenu()">{{ authSvc.userProfile.firstName || authSvc.authProfile.nickname }}<i class="material-icons fix-icon-right">arrow_drop_down</i></a>
                     <ul class="dropdown-content shadow" *ngIf="topMenuActive">
-                        <li><a *ngIf="authSvc.isAdmin" routerLink="/admin/categories">Admin Panel</a></li>
+                        <li><a *ngIf="authSvc.isAdmin" routerLink="/admin/categories">Admin Paneel</a></li>
                         <li><a routerLink="/profile">Mijn Profiel</a></li>
-                        <li><a routerLink="/profile/chores">Mijn Chores</a></li>
-                        <li><a (click)="authSvc.logout()" class="clickable">Logout</a></li>
+                        <li><a routerLink="/profile/chores">Mijn Zoekers</a></li>
+                        <li><a (click)="authSvc.logout()" class="clickable">Afmelden</a></li>
                     </ul>
                 </li>
             </ul>
