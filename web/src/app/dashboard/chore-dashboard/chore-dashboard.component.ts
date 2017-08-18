@@ -54,7 +54,6 @@ export class ChoreDashboardComponent implements OnInit {
 	 * Filter chores list by location
 	 */
 	changeLocation () {
-		console.log(this.location);
 		this.filterChores();
 	}
 

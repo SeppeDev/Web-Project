@@ -43,7 +43,6 @@ export class UserDashboardComponent implements OnInit {
 	 * Filter users list by location
 	 */
 	changeLocation () {
-		console.log(this.location);
 		this.filterUsers();
 	}
 

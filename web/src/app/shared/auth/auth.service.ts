@@ -102,6 +102,7 @@ export class AuthService {
 		localStorage.removeItem('expires_at');
 		localStorage.removeItem('auth_profile');
 		localStorage.removeItem('user_profile');
+		localStorage.removeItem('is_first_time');
 		// Go back to the home route
 		this.router.navigate(['/']);
 	}

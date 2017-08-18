@@ -115,10 +115,6 @@ export class EditProfileComponent implements OnInit {
             this.errors.isPublicError = 'Selecteer een optie aub.';
         }
 
-        // if(!this.hasFile && this.state == 'Maak') {
-        //     this.errors.pictureError = 'Selecteer een profielfoto';
-        // }
-
         console.log(this.errors);
         console.log(this.profile);
 
@@ -164,8 +160,9 @@ export class EditProfileComponent implements OnInit {
 		console.log('saving profile');
         this.profileSvc.saveProfile(this.profile).then((data: any) => {
 			console.log(data);
-            this.router.navigate(['/profile/chores']);
+            localStorage.setItem('is_first_time', 'true');
             localStorage.setItem('user_profile', data._body);
+            this.router.navigate(['/instructions']);
         }, (error: any) => {
             console.log(error);
         });

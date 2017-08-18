@@ -3,7 +3,7 @@
         <div class="three columns">
             <a routerLink="/home" class="logo ch-green"><span>Chore</span>Hub</a>
         </div>
-        <div class="five columns">
+        <div class="six columns">
             <nav>
                 <ul class="nav-list">
                     <li><a routerLink="/home" routerLinkActive="active-link--main" class="ch-blue">Home</a></li>
@@ -13,7 +13,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="four columns">
+        <div class="three columns">
             <ul *ngIf="!authSvc.authenticated()" class="auth-list u-pull-right">
                 <li><a (click)="authSvc.login()" class="clickable">Aanmelden</a></li>
                 <li><a (click)="authSvc.register()" class="clickable">Registreer</a></li>
