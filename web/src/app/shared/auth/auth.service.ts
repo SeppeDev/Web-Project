@@ -60,7 +60,7 @@ export class AuthService {
 				this.router.navigate(['/home']);
 			} else if (err) {
 				this.router.navigate(['/home']);
-				console.log(err);
+				// console.log(err);
 			}
 		});
 	}
@@ -143,7 +143,7 @@ export class AuthService {
                 this.isAdmin = JSON.parse(data._body).isAdmin;
             }, (error: any) => {
 				this.router.navigate(['/profile/create']);
-				console.log(error);
+				//console.log(error);
             });
 	}
 
