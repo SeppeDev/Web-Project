@@ -33,8 +33,16 @@
 				<div class="twelve columns">
 					<label>Geplaatst door</label>
 					<a class="ch-blue ch-link text-l" [routerLink]="['/hub/users/', chore.user.id ]">{{ chore.user.firstName }} {{ chore.user.lastName }}</a>
-					<label class="mar-top-m">Contacteer</label>
-					<span>{{ chore.user.email }}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns six">
+					<label>Contacteer mij</label>
+					<textarea [(ngModel)]="email.message" class="u-full-width" id="message"></textarea>
+					<p class="error">{{ errors.MessageError }}</p>
+
+					<a *ngIf="!email.sent" class="ch-btn ch-btn-lg ch-bg-blue" (click)="validate()"><i class="material-icons fix-icon-left">send</i>Versturen</a>
+					<a *ngIf="email.sent" class="ch-btn ch-btn-lg ch-bg-green"><i class="material-icons fix-icon-left">check</i>Verstuurd</a>
 				</div>
 			</div>
 		</div>
