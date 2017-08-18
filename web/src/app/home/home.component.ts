@@ -7,5 +7,5 @@ import { AuthService } from '../shared/auth/auth.service';
     templateUrl: 'home.component.html'
 })
 export class HomeComponent {
-    constructor (private authSvc: AuthService ) { }
+    constructor (public authSvc: AuthService ) { }
  }

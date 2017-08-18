@@ -11,10 +11,10 @@ import { AuthService }  from './shared/auth/auth.service';
 export class AppComponent {
     topMenuActive = false;
     bottomMenuActive = false;
-    hubMenuActive = false;
+	hubMenuActive = false;
 
     constructor (
-        private authSvc: AuthService,
+        public authSvc: AuthService,
         private router: Router
     ) {
         router.events.forEach((event: Event) => {

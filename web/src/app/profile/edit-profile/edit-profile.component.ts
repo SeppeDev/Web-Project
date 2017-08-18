@@ -38,7 +38,7 @@ export class EditProfileComponent implements OnInit {
     /**
      * Event emitter for uploads
      */
-    private uploadEvents: EventEmitter<any> = new EventEmitter();
+    uploadEvents: EventEmitter<any> = new EventEmitter();
     private zone: NgZone;
 
     constructor (

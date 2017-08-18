@@ -26,10 +26,10 @@
 				<aside class="three columns text-white">
 					<h5>Zoek op</h5>
 					<label>Locatie:</label>
-					<input type="text" class="search-field" [(ngModel)]="location" (ngModelChange)="changeLocation($event)" />
+					<input type="text" class="search-field" [(ngModel)]="location" (ngModelChange)="changeLocation()" />
 					<label class="mar-top-l">Categorie:</label>
 					<ul>
-						<li><a class="clickable" (click)="changeCategory()">Alle</a></li>
+						<li><a class="clickable" (click)="changeCategory('')">Alle</a></li>
 						<li *ngFor="let category of categories">
 							<a class="clickable" (click)="changeCategory(category)">{{ category.name }}</a>
 						</li>
