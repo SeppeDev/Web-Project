@@ -67,6 +67,11 @@
 	height: 0;
 }
 
+/* Images */
+img {
+    width: 100%;
+}
+
 /* Margins */
 .no-mar-l {
     margin-left: 0 !important;
@@ -74,6 +79,14 @@
 
 .mar-btm-s {
     margin-bottom: 10px;
+}
+
+.mar-btm-m {
+    margin-bottom: 15px;
+}
+
+.mar-btm-l {
+    margin-bottom: 30px;
 }
 
 .mar-top-l {
