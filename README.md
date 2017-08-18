@@ -1,19 +1,6 @@
 # ChoreHub
 
-## Wat?
-
-ChoreHub is een online platform voor het aanbieden van, of het vragen naar hulp voor alledaagse zaken.
-
-## Hoe werkt het?
-
-Gebruikers creëeren een account, hierna een profiel (deze flow komt uit het gebruik van auth0 voor authenticate - niet lokaal gehost).
-
-Hun profiel kan publiek of niet publiek zijn. Publieke profielen zijn de mensen die hun hulp aanbieden aan anderen.
-Nadat men een profiel heeft gemaakt kan men een "Chore" - klus/taak online plaatsen, die dan te vinden is in de hub.
-
-Gebruikers kunnen ten allen tijden hun eigen profiel en geplaatste Chores beheren.
-
-Er is een admin module voor administrators, waarin een dashboard is voorzien om Chores, gebruikers en categoriëen te beheren.
+ChoreHub positioneert zich als een online platform, een Hub als het ware, waar mensen hun klusjes, Chores, op kunnen plaatsen. Andere gebruikers kunnen hier door browsen, een klusje dicht bij huis vinden en zo een buurtbewoner helpen. Een van de doelen is dan ook om het buurtgevoel terug wat aan te wakkeren.
 
 ## Gebruikte technologiëen
 
