@@ -12,21 +12,21 @@
         </div>
         <div class="row">
             <div class="columns six">
-                <label for="title">Titel van je zoeker</label>
+                <label for="title">Titel van je zoeker <small>(Deze titel zullen mensen zien wanneer ze door de zoekertjes kijken)</small></label>
                 <input [(ngModel)]="chore.title" class="u-full-width" type="text" id="title" />
                 <p class="error">{{ errors.titleError }}</p>
             </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
-                <label for="description">Wat heb je nodig?</label>
+                <label for="description">Wat heb je nodig? <small>(Beschrijf welke klus er moet worden uitgevoerd)</small></label>
                 <textarea style="height: 200px" [(ngModel)]="chore.description" class="u-full-width" id="description"></textarea>
                 <p class="error">{{ errors.descriptionError }}</p>
             </div>
         </div>
         <div class="row mar-top-m">
             <div class="columns six">
-                <label for="location">Waar vindt dit plaats?</label>
+                <label for="location">Waar vindt dit plaats? <small>(Naam van stad of wijk)</small></label>
                 <input [(ngModel)]="chore.location" type="text" id="location">
                 <p class="error">{{ errors.locationError }}</p>
             </div>

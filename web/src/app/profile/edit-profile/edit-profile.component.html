@@ -31,7 +31,7 @@
         </div>
         <div class="row mar-top-p">
             <div class="columns six">
-                <label for="location">Waar woont u?</label>
+                <label for="location">Waar woont u? <small>(Geef hier de naam van je stad - zo kan je zoekers of klussers nabij vinden)</small></label>
                 <input [(ngModel)]="profile.location" type="text">
                 <p class="error">{{ errors.locationError }}</p>
             </div>
@@ -49,12 +49,11 @@
         </div>
         <div *ngIf="profile.image" class="row mar-top-m">
             <div class="columns six">
-                <label>Profiel foto (optioneel) - 4x3 ratio aangeraden</label>
+                <label>Profiel foto <small>(optioneel)</small></label>
                 <img class="profile-picture" [src]="profile.image.link" alt="profiel foto" />
             </div>
         </div>
         <div class="row mar-top-m">
-            <label>Profiel foto (optioneel) - 4x3 ratio aangeraden</label>
             <div class="columns six no-mar-l mar-top-m">
                 <input type="file"
                     ngFileSelect
