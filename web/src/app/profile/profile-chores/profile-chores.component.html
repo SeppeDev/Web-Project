@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <div class="columns twelve">
-                <table>
+                <table *ngIf="chores && chores.length > 0">
                     <thead>
                         <tr>
 							<th>Naam van je zoekertje</th>
@@ -27,7 +27,10 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
+				</table>
+				<h5 *ngIf="!chores || chores.length == 0">
+					Je hebt nog geen zoekers geplaatst
+				</h5>
             </div>
         </div>
     </div>

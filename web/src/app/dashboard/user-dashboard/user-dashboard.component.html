@@ -7,7 +7,7 @@
             </div>
             <div class="columns six">
                 <ul class="u-pull-right hub-nav-list">
-                    <li class="regular">Zoek op:</li>
+                    <li class="regular">Bladeren door:</li>
 					<li><a routerLink="/hub/chores" routerLinkActive="is-active"><i class="material-icons fix-icon-left">view_list</i>Zoekers</a></li>
 					<li><a routerLink="/hub/users" routerLinkActive="is-active"><i class="material-icons fix-icon-left">person</i>Klussers</a></li>
 		</ul>
@@ -15,7 +15,7 @@
 		</div>
         <div class="row ch-bg-green hub-parent">
 			<aside class="three columns text-white">
-				<h5>Filters</h5>
+				<h5>Zoek op</h5>
 				<label>Locatie:</label>
 				<input type="text" class="search-field" [(ngModel)]="location" (ngModelChange)="changeLocation($event)" />
 			</aside>
@@ -32,7 +32,10 @@
 						<p>{{ user.location }}</p>
 						<a class="ch-blue ch-link text-m" [routerLink]="['/hub/users/', user.id]">Bekijk profiel</a>
 					</div>
-                </div>
+				</div>
+				<div *ngIf="!filteredUsers || filteredUsers.length == 0" class="columsn twelve result">
+						<h5>Geen klussers gevonden</h5>
+					</div>
             </div>
         </div>
     </div>

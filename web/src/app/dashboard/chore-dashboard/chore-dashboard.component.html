@@ -12,7 +12,7 @@
 				<div class="columns six">
 					<div class="row">
 						<ul class="u-pull-right hub-nav-list mar-btm-s">
-							<li class="regular">Zoek op:</li>
+							<li class="regular">Bladeren door:</li>
 							<li><a routerLink="/hub/chores" routerLinkActive="is-active"><i class="material-icons fix-icon-left">view_list</i>Zoekers</a></li>
 							<li><a routerLink="/hub/users" routerLinkActive="is-active"><i class="material-icons fix-icon-left">person</i>Klussers</a></li>
 						</ul>
@@ -24,7 +24,7 @@
 			</div>
 			<div class="row ch-bg-green hub-parent">
 				<aside class="three columns text-white">
-					<h5>Filters</h5>
+					<h5>Zoek op</h5>
 					<label>Locatie:</label>
 					<input type="text" class="search-field" [(ngModel)]="location" (ngModelChange)="changeLocation($event)" />
 					<label class="mar-top-l">Categorie:</label>
@@ -54,6 +54,9 @@
 								<a class="ch-blue ch-link text-m" [routerLink]="['/hub/chores/', chore.id]">Bekijk zoeker</a>
 							</div>
 						</div>
+					</div>
+					<div *ngIf="!filteredChores || filteredChores.length == 0" class="columsn twelve result">
+						<h5>Geen zoekers gevonden</h5>
 					</div>
 				</div>
 			</div>
