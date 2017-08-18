@@ -1,5 +1,5 @@
-import { Component }                        from '@angular/core';
-import { Router, Event, NavigationStart }   from '@angular/router';
+import { Component }                         from '@angular/core';
+import { Router, Event, NavigationStart }    from '@angular/router';
 
 import { AuthService }  from './shared/auth/auth.service';
 
@@ -19,6 +19,7 @@ export class AppComponent {
     ) {
         router.events.forEach((event: Event) => {
                 if (event instanceof NavigationStart) {
+                    window.scrollTo(0, 0);
                     this.topMenuActive = false;
                     this.bottomMenuActive = false;
                 }
